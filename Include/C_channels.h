@@ -322,13 +322,6 @@ typedef struct CltChCmd_ASCII_BIN
     ASCII_BIN *pCmd;
   } CltChCmd_ASCII_BIN;
 
-typedef struct CltChCmd_AuxHmiWithMqtt 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    AuxHmiWithMqtt *pCmd;
-  } CltChCmd_AuxHmiWithMqtt;
-
 typedef struct CltChCmd_CanDriverBase 
   {
     struct SvrChCmd_DINT *pCh;

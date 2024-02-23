@@ -231,11 +231,6 @@ TYPE
     dData : DINT;
     pCmd : ^ASCII_BIN;
   END_STRUCT;
-  CltChCmd_AuxHmiWithMqtt : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^AuxHmiWithMqtt;
-  END_STRUCT;
   CltChCmd_CanDriverBase : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;

@@ -19,6 +19,8 @@
 	Objectsize         = "(1050,120)">
 	<Channels>
 		<Server Name="ClassSvr" GUID="{6D0A19F5-315A-4680-AAD3-2E5CC554CE68}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="HmiInterface" GUID="{8AA2075E-95B0-443C-8B5C-FD29B936A673}" Class="I_Hmi" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Client Name="Obj_Hmi" Required="true" Internal="true"/>
 		<Client Name="ObjCntrlAuxHmi" Required="true" Internal="true"/>
 		<Client Name="ObjHimMqttInterface" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
@@ -31,6 +33,17 @@
 	<Network Name="AuxHmiWithMqtt">
 		<!-- List of Components in this network -->
 		<Components>
+			<Object
+				Name       = "Obj_Hmi"
+				GUID       = "{E2651BD1-12D0-42BE-922A-1E35DDAA1DE3}"
+				Class      = "I_Hmi"
+				Position   = "(4140,690)"
+				Visualized = "false">
+				<Channels>
+					<Server Name="ClassSvr"/>
+					<Client Name="ErrorMessage"/>
+				</Channels>
+			</Object>
 			<Object
 				Name       = "ObjCntrlAuxHmi"
 				GUID       = "{64EA4809-9DE7-44D7-80AC-2DFB48F78D07}"
@@ -81,7 +94,6 @@
 					<Server Name="TopicPath" Value="&quot;Hmi&quot;"/>
 					<Server Name="TopicState"/>
 					<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
-					<Client Name="DintDataChanel"/>
 					<Client Name="ocMQTTClient_Interface"/>
 					<Client Name="op_LogData"/>
 				</Channels>
@@ -104,7 +116,6 @@
 					<Server Name="TopicPath" Value="&quot;Hmi&quot;"/>
 					<Server Name="TopicState"/>
 					<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
-					<Client Name="DintDataChanel"/>
 					<Client Name="ocMQTTClient_Interface"/>
 					<Client Name="op_LogData"/>
 				</Channels>
@@ -122,11 +133,12 @@
 			<Connection Source="ObjCntrlAuxHmi.ToSettings" Destination="this.ToSettings" Vertices="(1260,510),(38,330),"/>
 			<Connection Source="ObjCntrlAuxHmi.ToConfiguration" Destination="this.ToConfiguration" Vertices="(1260,450),(38,270),"/>
 			<Connection Source="ObjHimMqttInterface.op_LogData" Destination="this.op_LogData" Vertices="(1260,810),(38,390),"/>
-			<Connection Source="WewoMqtt1.DintDataChanel" Destination="ObjCntrlAuxHmi.ErrorMessage" Vertices="(2670,480),(2236,390),"/>
+			<Connection Source="this.HmiInterface" Destination="Obj_Hmi.ClassSvr" Vertices="(5348,270),(5176,780),"/>
 			<Connection Source="ObjCntrlAuxHmi.p_NextObject" Destination="this.p_NextObject" Vertices="(1260,390),(38,210),"/>
 			<Connection Source="this.WewoMqtt1_Copy" Destination="WewoMqtt1_Copy.TopicState"/>
 			<Connection Source="WewoMqtt1_Copy.ocMQTTClient_Interface" Destination="ObjHimMqttInterface.InterfaceState" Vertices="(2670,1080),(2236,870),"/>
-			<Connection Source="WewoMqtt1_Copy.DintDataChanel" Destination="ObjCntrlAuxHmi.AgvState" Vertices="(2670,1200),(2236,450),"/>
+			<Connection Source="Obj_Hmi.ErrorMessage" Destination="WewoMqtt1.DataString" Vertices="(4140,780),(3826,780),"/>
+			<Connection Source="this.Obj_Hmi" Destination="Obj_Hmi.ClassSvr"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -137,6 +149,7 @@
 AuxHmiWithMqtt : CLASS
   //Servers:
 	ClassSvr 	: SvrChCmd_DINT;
+	HmiInterface 	: SvrChCmd_DINT;
   //Clients:
 	ObjCntrlAuxHmi 	: CltChCmd_CntrlAuxHmi;
 	ObjHimMqttInterface 	: CltChCmd_MqttInterface;
@@ -146,8 +159,14 @@ AuxHmiWithMqtt : CLASS
 	ToSettings 	: CltChCmd_AgvSettings;
 	op_LogData 	: CltCh_gpt_LogData;
 	WewoMqtt1_Copy 	: CltChCmd_WewoMqtt;
+	Obj_Hmi 	: CltChCmd_I_Hmi;
   //Variables:
   //Functions:
+	
+	FUNCTION VIRTUAL GLOBAL HmiInterface::Read
+		VAR_OUTPUT
+			output (EAX) 	: DINT;
+		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -157,6 +176,7 @@ AuxHmiWithMqtt : CLASS
 END_CLASS;
 
 #pragma using CntrlAuxHmi
+#pragma using I_Hmi
 #pragma using MqttInterface
 #pragma using WewoMqtt
 #pragma usingLtd AgvConfig
@@ -171,11 +191,12 @@ FUNCTION GLOBAL TAB AuxHmiWithMqtt::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_AUXHMIWITHMQTT
 0$UINT, 0$UINT, (SIZEOF(::AuxHmiWithMqtt))$UINT, 
-1$UINT, 8$UINT, 0$UINT, 
+2$UINT, 9$UINT, 0$UINT, 
 TO_UDINT(2434555120), "AuxHmiWithMqtt", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::AuxHmiWithMqtt.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
+(::AuxHmiWithMqtt.HmiInterface.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(2767624575), "HmiInterface", 
 //Clients:
 (::AuxHmiWithMqtt.ObjCntrlAuxHmi.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3150731451), "ObjCntrlAuxHmi", TO_UDINT(291023078), "CntrlAuxHmi", 0$UINT, 0$UINT, 
 (::AuxHmiWithMqtt.ObjHimMqttInterface.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2698189172), "ObjHimMqttInterface", TO_UDINT(3165441852), "MqttInterface", 0$UINT, 0$UINT, 
@@ -185,6 +206,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::AuxHmiWithMqtt.ToSettings.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000110$UINT, TO_UDINT(336224626), "ToSettings", TO_UDINT(1195094022), "AgvSettings", 0$UINT, 0$UINT, 
 (::AuxHmiWithMqtt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
 (::AuxHmiWithMqtt.WewoMqtt1_Copy.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(421103629), "WewoMqtt1_Copy", TO_UDINT(1359692133), "WewoMqtt", 0$UINT, 0$UINT, 
+(::AuxHmiWithMqtt.Obj_Hmi.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3637262993), "Obj_Hmi", TO_UDINT(888260309), "I_Hmi", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
@@ -201,9 +223,43 @@ FUNCTION AuxHmiWithMqtt::@STD
 	VAR_OUTPUT
 		ret_code	: CONFSTATES;
 	END_VAR
+	VAR
+		vmt	: _LSL_STD_VMETH;
+	END_VAR
 
-	ret_code := C_OK;
+	//Command Methods
+	InitCmdTable (nCmd := nSTDCMD + USER_CNT_AuxHmiWithMqtt, pCmd := #vmt.CmdTable);
+	ClassSvr.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+
+	IF ClassSvr.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
+	_memcpy((#vmt.CmdTable)$^USINT, HmiInterface.pMeth, SIZEOF(CMDMETH));
+	vmt.CmdTable.nCmds		:= nSTDCMD;
+	vmt.CmdTable.Read		:= #HmiInterface::Read();
+	HmiInterface.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+
+	IF HmiInterface.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
 
 END_FUNCTION
 
 //{{LSL_IMPLEMENTATION
+
+
+FUNCTION VIRTUAL GLOBAL AuxHmiWithMqtt::HmiInterface::Read
+	VAR_OUTPUT
+		output (EAX) 	: DINT;
+	END_VAR
+
+	HmiInterface := Obj_Hmi.ClassSvr.Read();
+	output := HmiInterface;
+
+END_FUNCTION

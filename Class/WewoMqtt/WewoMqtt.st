@@ -20,7 +20,6 @@
 	<Channels>
 		<Server Name="TopicItem" GUID="{A603EDC0-4FEF-490D-89FF-2D492784DFC1}" Class="String" Visualized="true" Remotely="true" Initialize="true" WriteProtected="false" Retentive="false" Comment="use this channel to access the string functions"/>
 		<Server Name="TopicPath" GUID="{10AEE0FF-32A1-4CB5-8670-A1C40B7D8B96}" Class="String" Visualized="true" Remotely="true" Initialize="true" WriteProtected="false" Retentive="false" Comment="use this channel to access the string functions"/>
-		<Client Name="DintDataChanel" Required="false" Internal="false"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
 		<Client Name="String1" Required="true" Internal="true"/>
 		<Client Name="String2" Required="true" Internal="true"/>
@@ -134,7 +133,6 @@ WewoMqtt : CLASS
 	String2 	: CltChCmd_String;
 	WewoBase2 	: CltChCmd_WewoBase;
 	op_LogData 	: CltCh_gpt_LogData;
-	DintDataChanel 	: CltCh_DINT;
   //Variables:
 		Stringdata1 	: ^CHAR;
 		Stringdata2 	: ^CHAR;
@@ -188,7 +186,7 @@ FUNCTION GLOBAL TAB WewoMqtt::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_WEWOMQTT
 0$UINT, 0$UINT, (SIZEOF(::WewoMqtt))$UINT, 
-2$UINT, 5$UINT, 0$UINT, 
+2$UINT, 4$UINT, 0$UINT, 
 TO_UDINT(1359692133), "WewoMqtt", //Class
 TO_UDINT(3831352762), "MQTTTopicString", 1$UINT, 1$UINT, //Baseclass
 //Servers:
@@ -199,7 +197,6 @@ TO_UDINT(3831352762), "MQTTTopicString", 1$UINT, 1$UINT, //Baseclass
 (::WewoMqtt.String2.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2976564513), "String2", TO_UDINT(1850111279), "String", 1$UINT, 11$UINT, 
 (::WewoMqtt.WewoBase2.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2743326016), "WewoBase2", TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, 
 (::WewoMqtt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
-(::WewoMqtt.DintDataChanel.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(2242650474), "DintDataChanel", 
 END_FUNCTION
 
 

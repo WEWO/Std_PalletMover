@@ -201,7 +201,6 @@
 		<File Path=".\Class\HAL_BMS_Base\HAL_BMS_Base.st"/>
 		<File Path=".\Class\HAL_BMS_MasterVolt\HAL_BMS_MasterVolt.st"/>
 		<File Path=".\Class\I_Hmi\I_Hmi.st"/>
-		<File Path=".\Class\HmiOption1_MqttCommuncation\HmiOption1_MqttCommuncation.st"/>
 		<File Path=".\Class\I_Bms\I_Bms.st"/>
 		<File Path=".\Class\Per_Hal_Bms_MasterVolt\Per_Hal_Bms_MasterVolt.st"/>
 	</ClassFiles>

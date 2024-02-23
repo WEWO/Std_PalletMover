@@ -19,6 +19,7 @@
 	Objectsize         = "(1020,120)">
 	<Channels>
 		<Server Name="ClassSvr" GUID="{4E653495-DD9C-4915-9C63-B83F164FD320}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Client Name="ErrorMessage" Required="true" Internal="false"/>
 	</Channels>
 </Class>
 *)
@@ -26,6 +27,7 @@ I_Hmi : CLASS
   //Servers:
 	ClassSvr 	: SvrChCmd_DINT;
   //Clients:
+	ErrorMessage 	: CltChCmd_String;
   //Variables:
   //Functions:
   //Tables:
@@ -36,6 +38,9 @@ I_Hmi : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
+#pragma usingLtd String
+
+
 //}}LSL_DECLARATION
 
 
@@ -43,12 +48,13 @@ FUNCTION GLOBAL TAB I_Hmi::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_I_HMI
 0$UINT, 0$UINT, (SIZEOF(::I_Hmi))$UINT, 
-1$UINT, 0$UINT, 0$UINT, 
+1$UINT, 1$UINT, 0$UINT, 
 TO_UDINT(888260309), "I_Hmi", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::I_Hmi.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
 //Clients:
+(::I_Hmi.ErrorMessage.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1285168489), "ErrorMessage", TO_UDINT(1850111279), "String", 1$UINT, 11$UINT, 
 END_FUNCTION
 
 

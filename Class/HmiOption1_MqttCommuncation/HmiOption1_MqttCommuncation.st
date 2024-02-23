@@ -20,46 +20,15 @@
 	<Channels>
 		<Server Name="ClassSvr" GUID="{9A9257F3-5880-4CD1-89B1-124189F8ABB2}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="HmiInterface" GUID="{92D76F15-B24B-49E8-9666-8ADB8E5D00B1}" Class="I_Hmi" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Client Name="AuxHmi" Required="true" Internal="true"/>
-		<Client Name="I_Hmi1" Required="true" Internal="true"/>
 	</Channels>
 	<Network Name="HmiOption1_MqttCommuncation">
 		<!-- List of Components in this network -->
 		<Components>
-			<Object
-				Name       = "AuxHmi"
-				GUID       = "{EA0092AA-55F5-4268-85B5-824F7C25ACF9}"
-				Class      = "AuxHmiWithMqtt"
-				Position   = "(1050,150)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="ClassSvr"/>
-					<Client Name="op_LogData"/>
-					<Client Name="p_NextObject"/>
-					<Client Name="ToConfiguration"/>
-					<Client Name="ToSettings"/>
-				</Channels>
-			</Object>
-			<Object
-				Name       = "I_Hmi1"
-				GUID       = "{145AC59B-0DEA-4591-B612-0F00B51A8A0E}"
-				Class      = "I_Hmi"
-				Position   = "(1050,600)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="ClassSvr"/>
-				</Channels>
-			</Object>
 		</Components>
 		<Comments>
 		</Comments>
 		<!-- List of Connections in this network -->
 		<Connections>
-			<Connection Source="this.I_Hmi1" Destination="I_Hmi1.ClassSvr"/>
-			<Connection Source="this.AuxHmi" Destination="AuxHmi.ClassSvr"/>
-			<Connection Source="AuxHmi.ToConfiguration" Destination="ObjConfig.ClassSvr"/>
-			<Connection Source="AuxHmi.ToSettings" Destination="ObjMachine.ClassSvr"/>
-			<Connection Source="this.HmiInterface" Destination="I_Hmi1.ClassSvr" Vertices="(2288,270),(2086,690),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -72,8 +41,6 @@ HmiOption1_MqttCommuncation : CLASS
 	ClassSvr 	: SvrChCmd_DINT;
 	HmiInterface 	: SvrChCmd_DINT;
   //Clients:
-	I_Hmi1 	: CltChCmd_I_Hmi;
-	AuxHmi 	: CltChCmd_AuxHmiWithMqtt;
   //Variables:
   //Functions:
 	
@@ -89,10 +56,6 @@ HmiOption1_MqttCommuncation : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
-#pragma using AuxHmiWithMqtt
-#pragma using I_Hmi
-
-
 //}}LSL_DECLARATION
 
 
@@ -100,15 +63,13 @@ FUNCTION GLOBAL TAB HmiOption1_MqttCommuncation::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_HMIOPTION1_MQTTCOMMUNCATION
 0$UINT, 0$UINT, (SIZEOF(::HmiOption1_MqttCommuncation))$UINT, 
-2$UINT, 2$UINT, 0$UINT, 
+2$UINT, 0$UINT, 0$UINT, 
 TO_UDINT(3171332114), "HmiOption1_MqttCommuncation", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::HmiOption1_MqttCommuncation.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
 (::HmiOption1_MqttCommuncation.HmiInterface.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(2767624575), "HmiInterface", 
 //Clients:
-(::HmiOption1_MqttCommuncation.I_Hmi1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1968257066), "I_Hmi1", TO_UDINT(888260309), "I_Hmi", 0$UINT, 0$UINT, 
-(::HmiOption1_MqttCommuncation.AuxHmi.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3218213784), "AuxHmi", TO_UDINT(2434555120), "AuxHmiWithMqtt", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
