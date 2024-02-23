@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="MainAuxControl" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjMainAux"
+			GUID       = "{8E3BEA1E-D83F-4BF0-8ECC-CEBC25585EA6}"
+			Class      = "MainAuxCntrl"
+			Position   = "(450,120)"
+			Visualized = "false"
+			CyclicTime = "10 ms">
+			<Channels>
+				<Server Name="AuxMainControl"/>
+				<Server Name="NumberOfPeripherals"/>
+				<Server Name="ToObject"/>
+				<Client Name="op_LogData"/>
+				<Client Name="p_FirstObject" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{95351F4E-C8F1-4B37-90C8-FC11E952AD9F}" Class="LinkedListControlBase">
+							<Channels>
+								<Server Name="NumberOfPeripherals"/>
+								<Server Name="ToObject"/>
+								<Client Name="op_LogData"/>
+								<Client Name="p_FirstObject" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{EB3774D0-83BE-44F1-9080-5D7A9A61B517}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjMainAux.op_LogData" Destination="ObjMLog.ip_LogData"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

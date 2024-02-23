@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Logger" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name           = "ObjMLog"
+			GUID           = "{E25D55F3-71DD-4822-A44E-8014EDB5603E}"
+			Class          = "WewoMainLogger"
+			Position       = "(1260,330)"
+			Visualized     = "false"
+			BackgroundTime = "100 ms">
+			<Channels>
+				<Server Name="Command" Value="LOGCMD_IDLE"/>
+				<Server Name="InsertRtStartLogNr"/>
+				<Server Name="ip_LogData"/>
+				<Server Name="ip_RtLogFile"/>
+				<Server Name="m_Id"/>
+				<Server Name="m_p_Name"/>
+				<Server Name="MsgLogLevel" Value="LL_INFO"/>
+				<Server Name="MsgLogTarget" Value="LT_SCREEN"/>
+				<Server Name="o_ErrorWarningStatus"/>
+				<Server Name="o_MsgLogCnt"/>
+				<Server Name="o_rtLogDataCnt"/>
+				<Server Name="ObjectStatus"/>
+				<Server Name="op_sfnObjChain"/>
+				<Server Name="RtLogBufMode" Value="FIFOBUFMODE_ONCE"/>
+				<Server Name="ToObject"/>
+				<Client Name="c_FlushTime" Value="1000"/>
+				<Client Name="c_Group"/>
+				<Client Name="c_RtNrOfLogEntries" Value="10000"/>
+				<Client Name="o_ErrorWarningEvent"/>
+				<Client Name="o_RtTriggerEvent" Value="0"/>
+				<Client Name="op_LogData"/>
+				<Client Name="toEnumTranslator"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{FDDCF024-35F7-4586-A39E-C3C876EC2DBB}" Class="WewoLogger">
+							<Channels>
+								<Server Name="Command" Value="LOGCMD_IDLE"/>
+								<Server Name="InsertRtStartLogNr"/>
+								<Server Name="ip_LogData"/>
+								<Server Name="ip_RtLogFile"/>
+								<Server Name="m_Id"/>
+								<Server Name="m_p_Name"/>
+								<Server Name="MsgLogLevel" Value="LL_INFO"/>
+								<Server Name="MsgLogTarget" Value="LT_SCREEN"/>
+								<Server Name="o_ErrorWarningStatus"/>
+								<Server Name="o_MsgLogCnt"/>
+								<Server Name="o_rtLogDataCnt"/>
+								<Server Name="ObjectStatus"/>
+								<Server Name="op_sfnObjChain"/>
+								<Server Name="RtLogBufMode" Value="FIFOBUFMODE_ONCE"/>
+								<Server Name="ToObject"/>
+								<Client Name="c_FlushTime" Value="1000"/>
+								<Client Name="c_Group"/>
+								<Client Name="c_RtNrOfLogEntries" Value="10000"/>
+								<Client Name="o_ErrorWarningEvent"/>
+								<Client Name="o_RtTriggerEvent" Value="0"/>
+								<Client Name="op_LogData"/>
+								<Client Name="toEnumTranslator"/>
+								<Client Name="ToOsKernel"/>
+								<Client Name="ToSysMsg"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{C28C336F-5EF3-4CE8-A259-10B8CA6A1787}" Class="WewoFileBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="ToFileSys"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{9DDD7F57-C65C-42C0-AE20-3BAFED4BE68D}" Class="WewoBase">
+															<Channels>
+																<Server Name="m_Id"/>
+																<Server Name="m_p_Name"/>
+																<Server Name="o_ErrorWarningStatus"/>
+																<Server Name="ObjectStatus"/>
+																<Server Name="ToObject"/>
+																<Client Name="c_Group"/>
+																<Client Name="op_LogData"/>
+																<Client Name="toOsLibTaskObjControl"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																			<Channels>
+																				<Server Name="ToObject"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="Obj_RtLogDataBuffer" GUID="{B7DE47D8-23AC-4905-A83E-474C8D733678}" Class="Wewo_DynamicBuffer">
+											<Channels>
+												<Server Name="BufferSize"/>
+												<Server Name="FiFoBufMode"/>
+												<Server Name="m_Id"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="p_NextObject"/>
+												<Client Name="toStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{16B9DBAB-BC4F-45A3-8541-26301DF85B86}" Class="Wewo_LinkedObjectBase">
+															<Channels>
+																<Server Name="m_Id"/>
+																<Server Name="m_p_Name"/>
+																<Server Name="o_ErrorWarningStatus"/>
+																<Server Name="ObjectStatus"/>
+																<Server Name="ToObject"/>
+																<Client Name="c_Group"/>
+																<Client Name="op_LogData"/>
+																<Client Name="p_NextObject"/>
+																<Client Name="p_PreviousObject"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{A552B37B-F16D-44A8-B20B-D9653B9D9C8F}" Class="WewoBase">
+																			<Channels>
+																				<Server Name="m_Id"/>
+																				<Server Name="m_p_Name"/>
+																				<Server Name="o_ErrorWarningStatus"/>
+																				<Server Name="ObjectStatus"/>
+																				<Server Name="ToObject"/>
+																				<Client Name="c_Group"/>
+																				<Client Name="op_LogData"/>
+																				<Client Name="toOsLibTaskObjControl"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																							<Channels>
+																								<Server Name="ToObject"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "Wewo_EnumTranslator1"
+			GUID       = "{EC62D7AC-7D9C-4F70-A573-48D813F7A6F9}"
+			Class      = "Wewo_EnumTranslator"
+			Position   = "(210,450)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="m_Id"/>
+				<Server Name="m_p_Name"/>
+				<Server Name="o_ErrorWarningStatus"/>
+				<Server Name="o_NrOfObjectsInList"/>
+				<Server Name="ObjectStatus"/>
+				<Server Name="ToObject"/>
+				<Client Name="p_FirstObject"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{892FED79-0978-4D9E-A9E0-C69E46DE363B}" Class="Wewo_LinkedListControlBase">
+							<Channels>
+								<Server Name="m_Id"/>
+								<Server Name="m_p_Name"/>
+								<Server Name="o_ErrorWarningStatus"/>
+								<Server Name="o_NrOfObjectsInList"/>
+								<Server Name="ObjectStatus"/>
+								<Server Name="ToObject"/>
+								<Client Name="c_Group"/>
+								<Client Name="op_LogData"/>
+								<Client Name="p_FirstObject"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{EB3774D0-83BE-44F1-9080-5D7A9A61B517}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjMLog.toEnumTranslator" Destination="Wewo_EnumTranslator1.ToObject" Vertices="(1260,540),(880,540),"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

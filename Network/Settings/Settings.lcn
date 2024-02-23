@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Settings" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjAgvProgram"
+			GUID       = "{0A6B2760-5533-4882-A8F1-58D98A4CD9A7}"
+			Class      = "AgvProgram"
+			Position   = "(390,900)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Command"/>
+				<Server Name="ItemError"/>
+				<Server Name="ItemOk"/>
+				<Client Name="op_LogData"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{547753A9-B776-4464-99F9-B3FFB26D24D9}" Class="_SettingsBase">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="ItemError"/>
+								<Server Name="ItemOk"/>
+								<Client Name="op_LogData"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object
+											Name           = "JsReader"
+											GUID           = "{B434C39C-358C-4AB1-A5D3-F6E245BF6B4C}"
+											Class          = "_JSONReader"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="ReadFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object
+															Name    = "_cJSON"
+															GUID    = "{CCA87F71-9990-469E-AE89-CEF7ED76C0EA}"
+															Class   = "_cJSON"
+															Comment = "This instance of the _cJSON class is used by the encapsulating _JSONReader to access the cJSON library functions.">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object
+											Name           = "JsWriter"
+											GUID           = "{EB46B8C3-4883-43D2-8066-FF0FE36506F2}"
+											Class          = "_JSONWriter"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="WriteFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_cJSON" GUID="{759A0F94-3E24-455F-AF8D-03264D380AB3}" Class="_cJSON">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="WewoBase3" GUID="{87D8A843-3879-41DD-B42D-092B0E8E1D91}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ObjConfig"
+			GUID       = "{902282F9-1A88-4EE7-998A-41840F1A24CA}"
+			Class      = "AgvConfig"
+			Position   = "(387,90)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Command"/>
+				<Server Name="ItemError"/>
+				<Server Name="ItemOk"/>
+				<Client Name="op_LogData"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{9E61C4BA-C5D0-4C02-B9E0-D3CE96CAA5EF}" Class="_SettingsBase">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="ItemError"/>
+								<Server Name="ItemOk"/>
+								<Client Name="op_LogData"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object
+											Name           = "JsReader"
+											GUID           = "{B434C39C-358C-4AB1-A5D3-F6E245BF6B4C}"
+											Class          = "_JSONReader"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="ReadFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object
+															Name    = "_cJSON"
+															GUID    = "{CCA87F71-9990-469E-AE89-CEF7ED76C0EA}"
+															Class   = "_cJSON"
+															Comment = "This instance of the _cJSON class is used by the encapsulating _JSONReader to access the cJSON library functions.">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object
+											Name           = "JsWriter"
+											GUID           = "{EB46B8C3-4883-43D2-8066-FF0FE36506F2}"
+											Class          = "_JSONWriter"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="WriteFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_cJSON" GUID="{759A0F94-3E24-455F-AF8D-03264D380AB3}" Class="_cJSON">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="WewoBase3" GUID="{87D8A843-3879-41DD-B42D-092B0E8E1D91}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ObjMachine"
+			GUID       = "{81631F5F-25A1-4B48-9B7F-4958E321E8B5}"
+			Class      = "AgvSettings"
+			Position   = "(387,510)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Command"/>
+				<Server Name="ItemError"/>
+				<Server Name="ItemOk"/>
+				<Client Name="op_LogData"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{8ABDFBED-2E3C-4826-8474-D7F9C35EA290}" Class="_SettingsBase">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="ItemError"/>
+								<Server Name="ItemOk"/>
+								<Client Name="op_LogData"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object
+											Name           = "JsReader"
+											GUID           = "{B434C39C-358C-4AB1-A5D3-F6E245BF6B4C}"
+											Class          = "_JSONReader"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="ReadFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object
+															Name    = "_cJSON"
+															GUID    = "{CCA87F71-9990-469E-AE89-CEF7ED76C0EA}"
+															Class   = "_cJSON"
+															Comment = "This instance of the _cJSON class is used by the encapsulating _JSONReader to access the cJSON library functions.">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object
+											Name           = "JsWriter"
+											GUID           = "{EB46B8C3-4883-43D2-8066-FF0FE36506F2}"
+											Class          = "_JSONWriter"
+											BackgroundTime = "10 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Server Name="WriteFSM"/>
+												<Client Name="_FileSys"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_cJSON" GUID="{759A0F94-3E24-455F-AF8D-03264D380AB3}" Class="_cJSON">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Server Name="LibraryVersion"/>
+																<Client Name="SigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="WewoBase3" GUID="{87D8A843-3879-41DD-B42D-092B0E8E1D91}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjConfig.op_LogData" Destination="ObjMLog.ip_LogData"/>
+		<Connection Source="ObjMachine.op_LogData" Destination="ObjMLog.ip_LogData"/>
+		<Connection Source="ObjAgvProgram.op_LogData" Destination="ObjMLog.ip_LogData"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="Main" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjAgvMainControl"
+			GUID       = "{8F1B45D6-0DDE-4DFF-B807-85B390571B8C}"
+			Class      = "AgvMain"
+			Position   = "(1410,330)"
+			Visualized = "false"
+			CyclicTime = "10 ms">
+			<Channels>
+				<Server Name="MainState" Value="Agv_idle"/>
+				<Server Name="ToObject"/>
+				<Client Name="op_LogData"/>
+				<Client Name="ToAutoControl"/>
+				<Client Name="ToConfigSettingsCmd"/>
+				<Client Name="ToMainAux"/>
+				<Client Name="ToMainPeripheral" Value="PerIdle"/>
+				<Client Name="ToManualControl"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{F5B6BD90-416C-4A55-9D53-953C9FD06AE5}" Class="WewoBase">
+							<Channels>
+								<Server Name="m_Id"/>
+								<Server Name="m_p_Name"/>
+								<Server Name="o_ErrorWarningStatus"/>
+								<Server Name="ObjectStatus"/>
+								<Server Name="ToObject"/>
+								<Client Name="c_Group"/>
+								<Client Name="op_LogData"/>
+								<Client Name="toOsLibTaskObjControl"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+											<Channels>
+												<Server Name="ToObject"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ObjAutoControl"
+			GUID       = "{0987D8FB-E62D-4A38-ABFE-423EF6D5B693}"
+			Class      = "AutoControl"
+			Position   = "(150,780)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="AgvAutoControl" Value="AutoIdle"/>
+				<Server Name="ToObject"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{D24FBE04-5A41-4729-8E77-3EEA7CB1F3F4}" Class="WewoBase">
+							<Channels>
+								<Server Name="m_Id"/>
+								<Server Name="m_p_Name"/>
+								<Server Name="o_ErrorWarningStatus"/>
+								<Server Name="ObjectStatus"/>
+								<Server Name="ToObject"/>
+								<Client Name="c_Group"/>
+								<Client Name="op_LogData"/>
+								<Client Name="toOsLibTaskObjControl"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+											<Channels>
+												<Server Name="ToObject"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ObjManualControl"
+			GUID       = "{F7A27584-878E-4504-8873-5487476C4A0B}"
+			Class      = "ManualControl"
+			Position   = "(150,510)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="AgvManualControl" Value="ManualIdle"/>
+				<Server Name="ToObject"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{6FAAF957-F945-4641-AA39-460FDACD8733}" Class="WewoBase">
+							<Channels>
+								<Server Name="m_Id"/>
+								<Server Name="m_p_Name"/>
+								<Server Name="o_ErrorWarningStatus"/>
+								<Server Name="ObjectStatus"/>
+								<Server Name="ToObject"/>
+								<Client Name="c_Group"/>
+								<Client Name="op_LogData"/>
+								<Client Name="toOsLibTaskObjControl"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+											<Channels>
+												<Server Name="ToObject"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+		<Comment Position="(390,1200)" Size="(900,570)"/>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjAgvMainControl.ToAutoControl" Destination="ObjAutoControl.AgvAutoControl" Vertices="(1410,720),(886,930),"/>
+		<Connection Source="ObjAgvMainControl.ToManualControl" Destination="ObjManualControl.AgvManualControl" Vertices="(1410,660),(886,660),"/>
+		<Connection Source="ObjAgvMainControl.ToMainAux" Destination="ObjMainAux.AuxMainControl"/>
+		<Connection Source="ObjAgvMainControl.ToConfigSettingsCmd" Destination="ObjConfig.Command"/>
+		<Connection Source="ObjAgvMainControl.op_LogData" Destination="ObjMLog.ip_LogData"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>
