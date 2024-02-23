@@ -18,12 +18,11 @@
 	SharedCommandTable = "true"
 	Objectsize         = "(750,180)">
 	<Channels>
-		<Server Name="BMSInterface" GUID="{01D0F4D4-C170-4AFA-9B38-5A0B353EDE4A}" Class="I_Bms" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="BmsInterface" GUID="{6A3A9A85-38CC-4162-B2AA-3CE94F7285B1}" Class="HalBmsMastervoltinterface" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="ClassSvr" GUID="{D6C45C05-89B0-45EA-B249-556EA38DD653}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="ToObject" GUID="{DA313DCF-7EA4-48DC-854F-F48724B8DF67}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="ToObject:&#13;&#10;Object channel server.&#13;&#10;Channel to reach the methodes of this object.&#13;&#10;&#13;&#10;In case this object should be Accessible by a pointer&#13;&#10;the variable ToObject is used to handover the address of this object.&#13;&#10;&#13;&#10;This server is never used for anything else!!!&#13;&#10;&#13;&#10;&#13;&#10;"/>
 		<Client Name="Driver" Required="false" Internal="false"/>
 		<Client Name="HAL_BMS_MasterVolt" Required="true" Internal="true"/>
-		<Client Name="I_Bms1" Required="true" Internal="true"/>
+		<Client Name="ObjHalBmsMastervoltinterface" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
 		<Client Name="p_NextObject" Required="false" Internal="false" Comment="Pointer to next object in linked list"/>
 	</Channels>
@@ -51,21 +50,19 @@
 					<Server Name="LowBatteryLimit" Value="40"/>
 					<Server Name="NMT"/>
 					<Server Name="StateOfCharge"/>
-					<Server Name="ToObject"/>
 					<Client Name="cNode" Value="32"/>
 					<Client Name="Driver"/>
-					<Client Name="op_LogData"/>
-					<Client Name="p_NextObject"/>
 				</Channels>
 			</Object>
 			<Object
-				Name       = "I_Bms1"
-				GUID       = "{FDABCDE1-8EA0-4626-A6E3-32734E935518}"
-				Class      = "I_Bms"
+				Name       = "ObjHalBmsMastervoltinterface"
+				GUID       = "{A77571A2-5BEF-480C-BECF-AFEC8A553B61}"
+				Class      = "HalBmsMastervoltinterface"
 				Position   = "(450,1140)"
 				Visualized = "false">
 				<Channels>
 					<Server Name="ClassSvr"/>
+					<Client Name="ToBmsMastervolt"/>
 				</Channels>
 			</Object>
 		</Components>
@@ -74,12 +71,10 @@
 		<!-- List of Connections in this network -->
 		<Connections>
 			<Connection Source="this.HAL_BMS_MasterVolt" Destination="HAL_BMS_MasterVolt.ClassSvr"/>
-			<Connection Source="this.I_Bms1" Destination="I_Bms1.ClassSvr"/>
+			<Connection Source="this.ObjHalBmsMastervoltinterface" Destination="ObjHalBmsMastervoltinterface.ClassSvr"/>
 			<Connection Source="HAL_BMS_MasterVolt.Driver" Destination="this.Driver" Vertices="(454,180),(38,210),"/>
-			<Connection Source="this.ToObject" Destination="HAL_BMS_MasterVolt.ToObject" Vertices="(1482,270),(1310,1020),"/>
-			<Connection Source="HAL_BMS_MasterVolt.op_LogData" Destination="this.op_LogData" Vertices="(454,360),(38,270),"/>
-			<Connection Source="HAL_BMS_MasterVolt.p_NextObject" Destination="this.p_NextObject" Vertices="(454,300),(38,330),"/>
-			<Connection Source="this.BMSInterface" Destination="I_Bms1.ClassSvr" Vertices="(1482,330),(1306,1230),"/>
+			<Connection Source="this.BmsInterface" Destination="ObjHalBmsMastervoltinterface.ClassSvr" Vertices="(1482,270),(1306,1230),"/>
+			<Connection Source="ObjHalBmsMastervoltinterface.ToBmsMastervolt" Destination="HAL_BMS_MasterVolt.ClassSvr" Vertices="(450,1230),(1310,180),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -90,23 +85,17 @@
 Per_Hal_Bms_MasterVolt : CLASS
   //Servers:
 	ClassSvr 	: SvrChCmd_DINT;
-	ToObject 	: SvrCh_pVoid;
-	BMSInterface 	: SvrChCmd_DINT;
+	BmsInterface 	: SvrChCmd_DINT;
   //Clients:
 	HAL_BMS_MasterVolt 	: CltChCmd_HAL_BMS_MasterVolt;
-	I_Bms1 	: CltChCmd_I_Bms;
 	Driver 	: CltChCmd_CanDriverBase;
 	op_LogData 	: CltCh_gpt_LogData;
 	p_NextObject 	: CltChCmd_LinkedObjectBase;
+	ObjHalBmsMastervoltinterface 	: CltChCmd_HalBmsMastervoltinterface;
   //Variables:
   //Functions:
 	
-	FUNCTION VIRTUAL GLOBAL ToObject::Read
-		VAR_OUTPUT
-			output (EAX) 	: pVoid;
-		END_VAR;
-	
-	FUNCTION VIRTUAL GLOBAL BMSInterface::Read
+	FUNCTION VIRTUAL GLOBAL BmsInterface::Read
 		VAR_OUTPUT
 			output (EAX) 	: DINT;
 		END_VAR;
@@ -119,7 +108,7 @@ Per_Hal_Bms_MasterVolt : CLASS
 END_CLASS;
 
 #pragma using HAL_BMS_MasterVolt
-#pragma using I_Bms
+#pragma using HalBmsMastervoltinterface
 #pragma usingLtd CanDriverBase
 #pragma usingLtd LinkedObjectBase
 
@@ -131,19 +120,18 @@ FUNCTION GLOBAL TAB Per_Hal_Bms_MasterVolt::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_PER_HAL_BMS_MASTERVOLT
 0$UINT, 0$UINT, (SIZEOF(::Per_Hal_Bms_MasterVolt))$UINT, 
-3$UINT, 5$UINT, 0$UINT, 
+2$UINT, 5$UINT, 0$UINT, 
 TO_UDINT(2019661302), "Per_Hal_Bms_MasterVolt", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::Per_Hal_Bms_MasterVolt.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
-(::Per_Hal_Bms_MasterVolt.ToObject.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(4019907084), "ToObject", 
-(::Per_Hal_Bms_MasterVolt.BMSInterface.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(2119000127), "BMSInterface", 
+(::Per_Hal_Bms_MasterVolt.BmsInterface.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(2119000127), "BmsInterface", 
 //Clients:
 (::Per_Hal_Bms_MasterVolt.HAL_BMS_MasterVolt.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2936894554), "HAL_BMS_MasterVolt", TO_UDINT(2936894554), "HAL_BMS_MasterVolt", 0$UINT, 0$UINT, 
-(::Per_Hal_Bms_MasterVolt.I_Bms1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2864784021), "I_Bms1", TO_UDINT(3288644217), "I_Bms", 0$UINT, 0$UINT, 
 (::Per_Hal_Bms_MasterVolt.Driver.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(3785276255), "Driver", TO_UDINT(1472885325), "CanDriverBase", 0$UINT, 7$UINT, 
-(::Per_Hal_Bms_MasterVolt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
-(::Per_Hal_Bms_MasterVolt.p_NextObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(5254340), "p_NextObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
+(::Per_Hal_Bms_MasterVolt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(1597732449), "op_LogData", 
+(::Per_Hal_Bms_MasterVolt.p_NextObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(5254340), "p_NextObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
+(::Per_Hal_Bms_MasterVolt.ObjHalBmsMastervoltinterface.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3974655013), "ObjHalBmsMastervoltinterface", TO_UDINT(445437407), "HalBmsMastervoltinterface", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
@@ -174,19 +162,12 @@ FUNCTION Per_Hal_Bms_MasterVolt::@STD
 		ret_code	:= C_OUTOF_NEAR;
 		RETURN;
 	END_IF;
-	ToObject.pMeth			:= StoreMethod( #ToObject::Read(), #M_NO_F() );
-	IF ToObject.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
-	_memcpy((#vmt.CmdTable)$^USINT, BMSInterface.pMeth, SIZEOF(CMDMETH));
+	_memcpy((#vmt.CmdTable)$^USINT, BmsInterface.pMeth, SIZEOF(CMDMETH));
 	vmt.CmdTable.nCmds		:= nSTDCMD;
-	vmt.CmdTable.Read		:= #BMSInterface::Read();
-	BMSInterface.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+	vmt.CmdTable.Read		:= #BmsInterface::Read();
+	BmsInterface.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
 
-	IF BMSInterface.pMeth THEN
+	IF BmsInterface.pMeth THEN
 		ret_code	:= C_OK;
 	ELSE
 		ret_code	:= C_OUTOF_NEAR;
@@ -198,23 +179,12 @@ END_FUNCTION
 //{{LSL_IMPLEMENTATION
 
 
-FUNCTION VIRTUAL GLOBAL Per_Hal_Bms_MasterVolt::ToObject::Read
-	VAR_OUTPUT
-		output (EAX) 	: pVoid;
-	END_VAR
-
-	ToObject := HAL_BMS_MasterVolt.ToObject.Read();
-	output := ToObject;
-
-END_FUNCTION
-
-
-FUNCTION VIRTUAL GLOBAL Per_Hal_Bms_MasterVolt::BMSInterface::Read
+FUNCTION VIRTUAL GLOBAL Per_Hal_Bms_MasterVolt::BmsInterface::Read
 	VAR_OUTPUT
 		output (EAX) 	: DINT;
 	END_VAR
 
-	BMSInterface := I_Bms1.ClassSvr.Read();
-	output := BMSInterface;
+	BmsInterface := ObjHalBmsMastervoltinterface.ClassSvr.Read();
+	output := BmsInterface;
 
 END_FUNCTION

@@ -20,7 +20,7 @@
 	<Channels>
 		<Server Name="ClassSvr" GUID="{E9BB0470-4004-4A73-934C-9F4092585B2B}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="PiviotInterface" GUID="{B1E9B11B-6A71-4314-A535-4713FD0717C8}" Class="I_PivotWheel" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="ToObject" GUID="{29E81C74-CE17-4130-902B-29E0A31BF89C}" Class="PeripheralsBase" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="ToObject:&#13;&#10;Object channel server.&#13;&#10;Channel to reach the methodes of this object.&#13;&#10;&#13;&#10;In case this object should be Accessible by a pointer&#13;&#10;the variable ToObject is used to handover the address of this object.&#13;&#10;&#13;&#10;This server is never used for anything else!!!&#13;&#10;&#13;&#10;&#13;&#10;"/>
+		<Server Name="ToObject" GUID="{0949C2EB-AE20-401C-993C-A2ECDC9EC46A}" Class="CntrlPeriperalPiviotWheels" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="ToObject:&#13;&#10;Object channel server.&#13;&#10;Channel to reach the methodes of this object.&#13;&#10;&#13;&#10;In case this object should be Accessible by a pointer&#13;&#10;the variable ToObject is used to handover the address of this object.&#13;&#10;&#13;&#10;This server is never used for anything else!!!&#13;&#10;&#13;&#10;&#13;&#10;"/>
 		<Client Name="Curtis_AC2F_IO2_steer" Required="true" Internal="true"/>
 		<Client Name="EncoderPulses" Required="false" Internal="false"/>
 		<Client Name="Merker1" Required="true" Internal="true"/>
@@ -29,12 +29,14 @@
 		<Client Name="ObjCurtisSteer" Required="true" Internal="true"/>
 		<Client Name="ObjDrive" Required="true" Internal="true"/>
 		<Client Name="ObjEncoderpulsesToDegrees" Required="true" Internal="true"/>
-		<Client Name="ObjPeripheralsBase" Required="true" Internal="true"/>
+		<Client Name="ObjPeriperalPiviotWheels" Required="true" Internal="true"/>
 		<Client Name="ObjPW" Required="true" Internal="true"/>
 		<Client Name="ObjSteer" Required="true" Internal="true"/>
 		<Client Name="p_NextObject" Required="false" Internal="false" Comment="Pointer to next object in linked list"/>
 		<Client Name="SafetyEncoderValue" Required="true" Internal="false"/>
 		<Client Name="SpeedCalculator" Required="true" Internal="true"/>
+		<Client Name="ToAgvConfig" Required="true" Internal="false"/>
+		<Client Name="ToAgvSettings" Required="true" Internal="false"/>
 	</Channels>
 	<Network Name="PerPiviotWeel">
 		<!-- List of Components in this network -->
@@ -299,15 +301,17 @@
 				</Channels>
 			</Object>
 			<Object
-				Name       = "ObjPeripheralsBase"
-				GUID       = "{B83D40E3-1016-4A39-9518-5DCB335FE41B}"
-				Class      = "PeripheralsBase"
-				Position   = "(390,120)"
+				Name       = "ObjPeriperalPiviotWheels"
+				GUID       = "{BA76D4AA-ACCF-4D9E-A1EC-09DF62BFEE76}"
+				Class      = "CntrlPeriperalPiviotWheels"
+				Position   = "(4200,1050)"
 				Visualized = "false">
 				<Channels>
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_NextObject"/>
+					<Client Name="ToAgvConfig"/>
+					<Client Name="ToAgvSettings"/>
 				</Channels>
 			</Object>
 			<Object
@@ -389,12 +393,14 @@
 			<Connection Source="ObjSteer.SafetyEncoderValue" Destination="ObjEncoderpulsesToDegrees.Degrees" Vertices="(3240,450),(3078,810),"/>
 			<Connection Source="ObjPW.objSteer" Destination="ObjSteer.ClassSvr" Vertices="(4200,780),(3886,390),"/>
 			<Connection Source="ObjPW.objDrive" Destination="ObjDrive.ClassSvr" Vertices="(4200,840),(3736,3720),"/>
-			<Connection Source="this.ObjPeripheralsBase" Destination="ObjPeripheralsBase.ToObject"/>
-			<Connection Source="ObjPeripheralsBase.p_NextObject" Destination="this.p_NextObject" Vertices="(390,270),(38,210),"/>
-			<Connection Source="this.ToObject" Destination="ObjPeripheralsBase.ToObject" Vertices="(5138,270),(976,210),"/>
-			<Connection Source="ObjEncoderpulsesToDegrees.EncoderPulses" Destination="this.EncoderPulses" Vertices="(2550,630),(38,270),"/>
-			<Connection Source="this.PiviotInterface" Destination="ObjPW.ClassSvr" Vertices="(5138,330),(4966,780),"/>
-			<Connection Source="ObjDrive.SafetyEncoderValue" Destination="this.SafetyEncoderValue" Vertices="(3090,3780),(38,330),"/>
+			<Connection Source="this.ObjPeriperalPiviotWheels" Destination="ObjPeriperalPiviotWheels.ToObject"/>
+			<Connection Source="ObjPeriperalPiviotWheels.p_NextObject" Destination="this.p_NextObject" Vertices="(4200,1200),(38,330),"/>
+			<Connection Source="this.ToObject" Destination="ObjPeriperalPiviotWheels.ToObject" Vertices="(5138,330),(4966,1140),"/>
+			<Connection Source="ObjEncoderpulsesToDegrees.EncoderPulses" Destination="this.EncoderPulses" Vertices="(2550,630),(38,210),"/>
+			<Connection Source="this.PiviotInterface" Destination="ObjPW.ClassSvr" Vertices="(5138,270),(4966,780),"/>
+			<Connection Source="ObjDrive.SafetyEncoderValue" Destination="this.SafetyEncoderValue" Vertices="(3090,3780),(38,270),"/>
+			<Connection Source="ObjPeriperalPiviotWheels.ToAgvConfig" Destination="this.ToAgvConfig" Vertices="(4200,1260),(38,390),"/>
+			<Connection Source="ObjPeriperalPiviotWheels.ToAgvSettings" Destination="this.ToAgvSettings" Vertices="(4200,1320),(38,450),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -405,34 +411,36 @@
 PerPiviotWeel : CLASS
   //Servers:
 	ClassSvr 	: SvrChCmd_DINT;
-	ToObject 	: SvrChCmd_pVoid;
 	PiviotInterface 	: SvrChCmd_DINT;
+	ToObject 	: SvrChCmd_pVoid;
   //Clients:
 	Merker1 	: CltChCmd_Merker;
-	p_NextObject 	: CltChCmd_LinkedObjectBase;
 	ObjCurtisSteer 	: CltChCmd_Curtis_AC2F;
 	ObjCurtisDrive 	: CltChCmd_Curtis_AC2F;
 	ObjDrive 	: CltChCmd_HandleSteeringCurtisAC2F;
 	SpeedCalculator 	: CltChCmd_SpeedCalculator;
 	Obj_Curtis_AC2F_IO2_drive 	: CltChCmd_Curtis_AC2F_IO;
 	Curtis_AC2F_IO2_steer 	: CltChCmd_Curtis_AC2F_IO;
-	ObjPeripheralsBase 	: CltChCmd_PeripheralsBase;
 	ObjPW 	: CltChCmd_I_PivotWheel;
 	ObjSteer 	: CltChCmd_HandleSteeringCurtisAC2F;
 	ObjEncoderpulsesToDegrees 	: CltChCmd_EncoderpulsesToDegrees;
 	EncoderPulses 	: CltCh_DINT;
 	SafetyEncoderValue 	: CltCh_REAL;
+	ObjPeriperalPiviotWheels 	: CltChCmd_CntrlPeriperalPiviotWheels;
+	p_NextObject 	: CltChCmd_LinkedObjectBase;
+	ToAgvConfig 	: CltChCmd_AgvConfig;
+	ToAgvSettings 	: CltChCmd_AgvSettings;
   //Variables:
   //Functions:
-	
-	FUNCTION VIRTUAL GLOBAL ToObject::Read
-		VAR_OUTPUT
-			output (EAX) 	: pVoid;
-		END_VAR;
 	
 	FUNCTION VIRTUAL GLOBAL PiviotInterface::Read
 		VAR_OUTPUT
 			output (EAX) 	: DINT;
+		END_VAR;
+	
+	FUNCTION VIRTUAL GLOBAL ToObject::Read
+		VAR_OUTPUT
+			output (EAX) 	: pVoid;
 		END_VAR;
   //Tables:
 	FUNCTION @STD
@@ -442,14 +450,16 @@ PerPiviotWeel : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
+#pragma using CntrlPeriperalPiviotWheels
 #pragma using Curtis_AC2F
 #pragma using Curtis_AC2F_IO
 #pragma using EncoderpulsesToDegrees
 #pragma using HandleSteeringCurtisAC2F
 #pragma using I_PivotWheel
 #pragma using Merker
-#pragma using PeripheralsBase
 #pragma using SpeedCalculator
+#pragma usingLtd AgvConfig
+#pragma usingLtd AgvSettings
 #pragma usingLtd LinkedObjectBase
 
 
@@ -460,28 +470,30 @@ FUNCTION GLOBAL TAB PerPiviotWeel::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_PERPIVIOTWEEL
 0$UINT, 0$UINT, (SIZEOF(::PerPiviotWeel))$UINT, 
-3$UINT, 14$UINT, 0$UINT, 
+3$UINT, 16$UINT, 0$UINT, 
 TO_UDINT(3865129840), "PerPiviotWeel", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::PerPiviotWeel.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
-(::PerPiviotWeel.ToObject.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(4019907084), "ToObject", 
 (::PerPiviotWeel.PiviotInterface.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3513820974), "PiviotInterface", 
+(::PerPiviotWeel.ToObject.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(4019907084), "ToObject", 
 //Clients:
 (::PerPiviotWeel.Merker1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1189176136), "Merker1", TO_UDINT(2276934072), "Merker", 1$UINT, 0$UINT, 
-(::PerPiviotWeel.p_NextObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(5254340), "p_NextObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
 (::PerPiviotWeel.ObjCurtisSteer.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1109607473), "ObjCurtisSteer", TO_UDINT(883538238), "Curtis_AC2F", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.ObjCurtisDrive.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1588489550), "ObjCurtisDrive", TO_UDINT(883538238), "Curtis_AC2F", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.ObjDrive.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2980282960), "ObjDrive", TO_UDINT(1916796469), "HandleSteeringCurtisAC2F", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.SpeedCalculator.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3450022799), "SpeedCalculator", TO_UDINT(3450022799), "SpeedCalculator", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.Obj_Curtis_AC2F_IO2_drive.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2417579551), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(3951156929), "Curtis_AC2F_IO", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.Curtis_AC2F_IO2_steer.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3574107649), "Curtis_AC2F_IO2_steer", TO_UDINT(3951156929), "Curtis_AC2F_IO", 0$UINT, 0$UINT, 
-(::PerPiviotWeel.ObjPeripheralsBase.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3005494750), "ObjPeripheralsBase", TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.ObjPW.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(522533158), "ObjPW", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.ObjSteer.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2905516847), "ObjSteer", TO_UDINT(1916796469), "HandleSteeringCurtisAC2F", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.ObjEncoderpulsesToDegrees.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3293007898), "ObjEncoderpulsesToDegrees", TO_UDINT(3419776214), "EncoderpulsesToDegrees", 0$UINT, 0$UINT, 
 (::PerPiviotWeel.EncoderPulses.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1023394085), "EncoderPulses", 
 (::PerPiviotWeel.SafetyEncoderValue.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(2038653895), "SafetyEncoderValue", 
+(::PerPiviotWeel.ObjPeriperalPiviotWheels.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2768238829), "ObjPeriperalPiviotWheels", TO_UDINT(3831059627), "CntrlPeriperalPiviotWheels", 0$UINT, 0$UINT, 
+(::PerPiviotWeel.p_NextObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(5254340), "p_NextObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
+(::PerPiviotWeel.ToAgvConfig.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000110$UINT, TO_UDINT(4082436611), "ToAgvConfig", TO_UDINT(3641531850), "AgvConfig", 0$UINT, 0$UINT, 
+(::PerPiviotWeel.ToAgvSettings.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000110$UINT, TO_UDINT(2819371534), "ToAgvSettings", TO_UDINT(1195094022), "AgvSettings", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
@@ -512,17 +524,6 @@ FUNCTION PerPiviotWeel::@STD
 		ret_code	:= C_OUTOF_NEAR;
 		RETURN;
 	END_IF;
-	_memcpy((#vmt.CmdTable)$^USINT, ToObject.pMeth, SIZEOF(CMDMETH));
-	vmt.CmdTable.nCmds		:= nSTDCMD;
-	vmt.CmdTable.Read		:= #ToObject::Read();
-	ToObject.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
-
-	IF ToObject.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
 	_memcpy((#vmt.CmdTable)$^USINT, PiviotInterface.pMeth, SIZEOF(CMDMETH));
 	vmt.CmdTable.nCmds		:= nSTDCMD;
 	vmt.CmdTable.Read		:= #PiviotInterface::Read();
@@ -534,21 +535,21 @@ FUNCTION PerPiviotWeel::@STD
 		ret_code	:= C_OUTOF_NEAR;
 		RETURN;
 	END_IF;
+	_memcpy((#vmt.CmdTable)$^USINT, ToObject.pMeth, SIZEOF(CMDMETH));
+	vmt.CmdTable.nCmds		:= nSTDCMD;
+	vmt.CmdTable.Read		:= #ToObject::Read();
+	ToObject.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+
+	IF ToObject.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
 
 END_FUNCTION
 
 //{{LSL_IMPLEMENTATION
-
-
-FUNCTION VIRTUAL GLOBAL PerPiviotWeel::ToObject::Read
-	VAR_OUTPUT
-		output (EAX) 	: pVoid;
-	END_VAR
-
-	ToObject := ObjPeripheralsBase.ToObject.Read();
-	output := ToObject;
-
-END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL PerPiviotWeel::PiviotInterface::Read
@@ -558,5 +559,16 @@ FUNCTION VIRTUAL GLOBAL PerPiviotWeel::PiviotInterface::Read
 
 	PiviotInterface := ObjPW.ClassSvr.Read();
 	output := PiviotInterface;
+
+END_FUNCTION
+
+
+FUNCTION VIRTUAL GLOBAL PerPiviotWeel::ToObject::Read
+	VAR_OUTPUT
+		output (EAX) 	: pVoid;
+	END_VAR
+
+	ToObject := ObjPeriperalPiviotWheels.ToObject.Read();
+	output := ToObject;
 
 END_FUNCTION

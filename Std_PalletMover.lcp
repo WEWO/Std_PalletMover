@@ -204,6 +204,8 @@
 		<File Path=".\Class\I_Bms\I_Bms.st"/>
 		<File Path=".\Class\Per_Hal_Bms_MasterVolt\Per_Hal_Bms_MasterVolt.st"/>
 		<File Path=".\Class\InterfaceAuxHmiMqtt\InterfaceAuxHmiMqtt.st"/>
+		<File Path=".\Class\HalBmsMastervoltinterface\HalBmsMastervoltinterface.st"/>
+		<File Path=".\Class\CntrlPeriperalPiviotWheels\CntrlPeriperalPiviotWheels.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>

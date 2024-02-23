@@ -36,14 +36,10 @@
 		<Server Name="HMIIconState" GUID="{86E33F69-D002-4794-A078-6D2944ACF3F3}" Visualized="true" Initialize="false" WriteProtected="false" Retentive="false"/>
 		<Server Name="LowBatteryLimit" GUID="{B36C7ED9-6965-4CD7-9B9F-DFB15099E0FE}" Visualized="false" Initialize="true" WriteProtected="false" Retentive="File"/>
 		<Server Name="NMT" GUID="{7EF7D335-C84B-4AA9-A011-635BA2A713C4}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="StateOfCharge" GUID="{33838AF3-8BEF-4740-A10E-84564B8CFC03}" Visualized="true" Initialize="false" WriteProtected="false" Retentive="false"/>
-		<Server Name="ToObject" GUID="{294A2006-5F73-4088-9EC4-E1CD95681A4A}" Class="PeripheralsBase" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="ToObject:&#13;&#10;Object channel server.&#13;&#10;Channel to reach the methodes of this object.&#13;&#10;&#13;&#10;In case this object should be Accessible by a pointer&#13;&#10;the variable ToObject is used to handover the address of this object.&#13;&#10;&#13;&#10;This server is never used for anything else!!!&#13;&#10;&#13;&#10;&#13;&#10;"/>
+		<Server Name="StateOfCharge" GUID="{33838AF3-8BEF-4740-A10E-84564B8CFC03}" Visualized="false" Initialize="false" WriteProtected="false" Retentive="false"/>
 		<Client Name="cNode" Required="true" Internal="false"/>
 		<Client Name="Driver" Required="false" Internal="false"/>
 		<Client Name="ObjCanOpenBase" Required="true" Internal="true"/>
-		<Client Name="ObjPeripheralsBase" Required="true" Internal="true"/>
-		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
-		<Client Name="p_NextObject" Required="false" Internal="false" Comment="Pointer to next object in linked list"/>
 	</Channels>
 	<Separators>
 		<Servers>
@@ -67,7 +63,7 @@
 				Name       = "ObjCanOpenBase"
 				GUID       = "{E1FD22A8-7DEB-467E-921B-7DE89AFEAD99}"
 				Class      = "CanOpenWewoBase"
-				Position   = "(270,420)"
+				Position   = "(210,420)"
 				Visualized = "false"
 				CyclicTime = "1 ms">
 				<Channels>
@@ -77,31 +73,15 @@
 					<Client Name="Driver"/>
 				</Channels>
 			</Object>
-			<Object
-				Name       = "ObjPeripheralsBase"
-				GUID       = "{4F8789F5-94D7-47D9-B568-23225BA8AFB7}"
-				Class      = "PeripheralsBase"
-				Position   = "(240,840)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="ToObject"/>
-					<Client Name="op_LogData"/>
-					<Client Name="p_NextObject"/>
-				</Channels>
-			</Object>
 		</Components>
 		<Comments>
 		</Comments>
 		<!-- List of Connections in this network -->
 		<Connections>
-			<Connection Source="this.ClassSvr" Destination="_base.ClassSvr" Vertices="(998,210),(518,210),"/>
+			<Connection Source="this.ClassSvr" Destination="_base.ClassSvr" Vertices="(938,210),(518,210),"/>
 			<Connection Source="this.ObjCanOpenBase" Destination="ObjCanOpenBase.Server0"/>
-			<Connection Source="ObjCanOpenBase.Driver" Destination="this.Driver" Vertices="(270,510),(38,270),"/>
-			<Connection Source="ObjCanOpenBase.cNode" Destination="this.cNode" Vertices="(270,570),(38,330),"/>
-			<Connection Source="this.ObjPeripheralsBase" Destination="ObjPeripheralsBase.ToObject"/>
-			<Connection Source="ObjPeripheralsBase.p_NextObject" Destination="this.p_NextObject" Vertices="(240,990),(38,390),"/>
-			<Connection Source="ObjPeripheralsBase.op_LogData" Destination="this.op_LogData" Vertices="(240,930),(30,540),(38,450),"/>
-			<Connection Source="this.ToObject" Destination="ObjPeripheralsBase.ToObject" Vertices="(998,990),(826,930),"/>
+			<Connection Source="ObjCanOpenBase.Driver" Destination="this.Driver" Vertices="(210,510),(38,270),"/>
+			<Connection Source="ObjCanOpenBase.cNode" Destination="this.cNode" Vertices="(210,570),(38,330),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -134,13 +114,9 @@ HAL_BMS_MasterVolt : CLASS
 	BatteryCharging 	: SvrCh_DINT;
 	LowBatteryLimit 	: SvrCh_DINT;
 	BatteryVirtualStateOfCharge 	: SvrCh_DINT;
-	ToObject 	: SvrChCmd_pVoid;
   //Clients:
 	Driver 	: CltChCmd_CanDriverBase;
 	cNode 	: CltCh_DINT;
-	p_NextObject 	: CltChCmd_LinkedObjectBase;
-	op_LogData 	: CltCh_gpt_LogData;
-	ObjPeripheralsBase 	: CltChCmd_PeripheralsBase;
 	ObjCanOpenBase 	: CltChCmd_CanOpenWewoBase;
   //Variables:
 		_pdoIn1 	: PDOStr;
@@ -179,11 +155,6 @@ HAL_BMS_MasterVolt : CLASS
 	FUNCTION _handleAlarms;
 	
 	FUNCTION _handleAlarmResets;
-	
-	FUNCTION VIRTUAL GLOBAL ToObject::Read
-		VAR_OUTPUT
-			output (EAX) 	: pVoid;
-		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -193,9 +164,7 @@ HAL_BMS_MasterVolt : CLASS
 END_CLASS;
 
 #pragma using CanOpenWewoBase
-#pragma using PeripheralsBase
 #pragma usingLtd CanDriverBase
-#pragma usingLtd LinkedObjectBase
 
 
 //}}LSL_DECLARATION
@@ -205,7 +174,7 @@ FUNCTION GLOBAL TAB HAL_BMS_MasterVolt::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_HAL_BMS_MASTERVOLT
 0$UINT, 0$UINT, (SIZEOF(::HAL_BMS_MasterVolt))$UINT, 
-13$UINT, 6$UINT, 0$UINT, 
+12$UINT, 3$UINT, 0$UINT, 
 TO_UDINT(2936894554), "HAL_BMS_MasterVolt", //Class
 TO_UDINT(3662255972), "HAL_BMS_Base", 0$UINT, 0$UINT, //Baseclass
 //Servers:
@@ -221,13 +190,9 @@ TO_UDINT(3662255972), "HAL_BMS_Base", 0$UINT, 0$UINT, //Baseclass
 (::HAL_BMS_MasterVolt.BatteryCharging.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(4071763180), "BatteryCharging", 
 (::HAL_BMS_MasterVolt.LowBatteryLimit.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000011000$UINT, TO_UDINT(3749759677), "LowBatteryLimit", 
 (::HAL_BMS_MasterVolt.BatteryVirtualStateOfCharge.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(64529072), "BatteryVirtualStateOfCharge", 
-(::HAL_BMS_MasterVolt.ToObject.pMeth)$UINT, _CH_SVR_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(4019907084), "ToObject", 
 //Clients:
 (::HAL_BMS_MasterVolt.Driver.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(3785276255), "Driver", TO_UDINT(1472885325), "CanDriverBase", 0$UINT, 7$UINT, 
 (::HAL_BMS_MasterVolt.cNode.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(1272909673), "cNode", 
-(::HAL_BMS_MasterVolt.p_NextObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000100$UINT, TO_UDINT(5254340), "p_NextObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
-(::HAL_BMS_MasterVolt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
-(::HAL_BMS_MasterVolt.ObjPeripheralsBase.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3005494750), "ObjPeripheralsBase", TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, 
 (::HAL_BMS_MasterVolt.ObjCanOpenBase.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1439302300), "ObjCanOpenBase", TO_UDINT(2527060916), "CanOpenWewoBase", 0$UINT, 1$UINT, 
 END_FUNCTION
 
@@ -302,17 +267,6 @@ FUNCTION HAL_BMS_MasterVolt::@STD
 	END_IF;
 	LowBatteryLimit.pMeth			:= StoreMethod( #M_RD_DIRECT(), #M_WR_DIRECT() );
 	IF LowBatteryLimit.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
-	_memcpy((#vmt.CmdTable)$^USINT, ToObject.pMeth, SIZEOF(CMDMETH));
-	vmt.CmdTable.nCmds		:= nSTDCMD;
-	vmt.CmdTable.Read		:= #ToObject::Read();
-	ToObject.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
-
-	IF ToObject.pMeth THEN
 		ret_code	:= C_OK;
 	ELSE
 		ret_code	:= C_OUTOF_NEAR;
@@ -508,16 +462,5 @@ FUNCTION HAL_BMS_MasterVolt::_handleAlarmResets
 
   
   
-
-END_FUNCTION
-
-
-FUNCTION VIRTUAL GLOBAL HAL_BMS_MasterVolt::ToObject::Read
-	VAR_OUTPUT
-		output (EAX) 	: pVoid;
-	END_VAR
-
-	ToObject := ObjPeripheralsBase.ToObject.Read();
-	output := ToObject;
 
 END_FUNCTION

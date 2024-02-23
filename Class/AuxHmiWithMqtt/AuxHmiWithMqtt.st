@@ -19,10 +19,10 @@
 	Objectsize         = "(1050,120)">
 	<Channels>
 		<Server Name="ClassSvr" GUID="{6D0A19F5-315A-4680-AAD3-2E5CC554CE68}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="HmiInterface" GUID="{8AA2075E-95B0-443C-8B5C-FD29B936A673}" Class="I_Hmi" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Client Name="InterfaceAuxHmiMqtt1" Required="true" Internal="true"/>
+		<Server Name="HmiInterface" GUID="{4B82CBAD-004C-40B5-9223-8DA2356E39E2}" Class="InterfaceAuxHmiMqtt" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Client Name="ObjCntrlAuxHmi" Required="true" Internal="true"/>
 		<Client Name="ObjHimMqttInterface" Required="true" Internal="true"/>
+		<Client Name="ObjInterfaceAuxHmiMqtt" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
 		<Client Name="p_NextObject" Required="false" Internal="false" Comment="Pointer to next object in linked list"/>
 		<Client Name="ToConfiguration" Required="true" Internal="false"/>
@@ -33,16 +33,6 @@
 	<Network Name="AuxHmiWithMqtt">
 		<!-- List of Components in this network -->
 		<Components>
-			<Object
-				Name       = "InterfaceAuxHmiMqtt1"
-				GUID       = "{14723CA8-A316-4D29-A3C1-71D0E56ECF26}"
-				Class      = "InterfaceAuxHmiMqtt"
-				Position   = "(4740,690)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="ClassSvr"/>
-				</Channels>
-			</Object>
 			<Object
 				Name       = "ObjCntrlAuxHmi"
 				GUID       = "{64EA4809-9DE7-44D7-80AC-2DFB48F78D07}"
@@ -73,6 +63,16 @@
 					<Server Name="InterfaceState"/>
 					<Server Name="LastErrorCode"/>
 					<Client Name="op_LogData"/>
+				</Channels>
+			</Object>
+			<Object
+				Name       = "ObjInterfaceAuxHmiMqtt"
+				GUID       = "{14723CA8-A316-4D29-A3C1-71D0E56ECF26}"
+				Class      = "InterfaceAuxHmiMqtt"
+				Position   = "(4230,690)"
+				Visualized = "false">
+				<Channels>
+					<Server Name="ClassSvr"/>
 				</Channels>
 			</Object>
 			<Object
@@ -132,10 +132,11 @@
 			<Connection Source="ObjCntrlAuxHmi.ToSettings" Destination="this.ToSettings" Vertices="(1260,510),(38,330),"/>
 			<Connection Source="ObjCntrlAuxHmi.ToConfiguration" Destination="this.ToConfiguration" Vertices="(1260,450),(38,270),"/>
 			<Connection Source="ObjHimMqttInterface.op_LogData" Destination="this.op_LogData" Vertices="(1260,810),(38,390),"/>
-			<Connection Source="this.InterfaceAuxHmiMqtt1" Destination="InterfaceAuxHmiMqtt1.ClassSvr"/>
+			<Connection Source="this.ObjInterfaceAuxHmiMqtt" Destination="ObjInterfaceAuxHmiMqtt.ClassSvr"/>
 			<Connection Source="ObjCntrlAuxHmi.p_NextObject" Destination="this.p_NextObject" Vertices="(1260,390),(38,210),"/>
 			<Connection Source="this.WewoMqtt1_Copy" Destination="WewoMqtt1_Copy.TopicState"/>
 			<Connection Source="WewoMqtt1_Copy.ocMQTTClient_Interface" Destination="ObjHimMqttInterface.InterfaceState" Vertices="(2670,1080),(2236,870),"/>
+			<Connection Source="this.HmiInterface" Destination="ObjInterfaceAuxHmiMqtt.ClassSvr" Vertices="(5228,270),(5056,780),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -156,7 +157,7 @@ AuxHmiWithMqtt : CLASS
 	ToSettings 	: CltChCmd_AgvSettings;
 	op_LogData 	: CltCh_gpt_LogData;
 	WewoMqtt1_Copy 	: CltChCmd_WewoMqtt;
-	InterfaceAuxHmiMqtt1 	: CltChCmd_InterfaceAuxHmiMqtt;
+	ObjInterfaceAuxHmiMqtt 	: CltChCmd_InterfaceAuxHmiMqtt;
   //Variables:
   //Functions:
 	
@@ -203,7 +204,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::AuxHmiWithMqtt.ToSettings.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000110$UINT, TO_UDINT(336224626), "ToSettings", TO_UDINT(1195094022), "AgvSettings", 0$UINT, 0$UINT, 
 (::AuxHmiWithMqtt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
 (::AuxHmiWithMqtt.WewoMqtt1_Copy.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(421103629), "WewoMqtt1_Copy", TO_UDINT(1359692133), "WewoMqtt", 0$UINT, 0$UINT, 
-(::AuxHmiWithMqtt.InterfaceAuxHmiMqtt1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3215926124), "InterfaceAuxHmiMqtt1", TO_UDINT(1881672228), "InterfaceAuxHmiMqtt", 0$UINT, 0$UINT, 
+(::AuxHmiWithMqtt.ObjInterfaceAuxHmiMqtt.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1712653704), "ObjInterfaceAuxHmiMqtt", TO_UDINT(1881672228), "InterfaceAuxHmiMqtt", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
@@ -256,7 +257,7 @@ FUNCTION VIRTUAL GLOBAL AuxHmiWithMqtt::HmiInterface::Read
 		output (EAX) 	: DINT;
 	END_VAR
 
-	HmiInterface := Obj_Hmi.ClassSvr.Read();
+	HmiInterface := ObjInterfaceAuxHmiMqtt.ClassSvr.Read();
 	output := HmiInterface;
 
 END_FUNCTION

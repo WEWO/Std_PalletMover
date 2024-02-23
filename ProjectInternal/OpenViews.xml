@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
+	<View Key="AuxMqttHmi" Type="0"/>
+	<View Key="Main" Type="0"/>
+	<View Key="I_Hmi" Type="2" LineNr="9"/>
+	<View Key="ObjAuxHmi\ObjCntrlAuxHmi" Type="1"/>
+	<View Key="ObjAuxHmi" Type="1"/>
+	<View Key="AuxHmiWithMqtt" Type="5"/>
+	<View Key="HAL_BMS_MasterVolt" Type="2" LineNr="44"/>
+	<View Key="CAN_Driver" Type="0"/>
+	<View Key="MainAuxControl" Type="0"/>
+	<View Key="I_PivotWheel" Type="2" LineNr="1"/>
+	<View Key="I_PivotWheel" Type="2" LineNr="1"/>
 	<Setting Variable="OutputDebugger" Value="0"/>
 </OpenViews>

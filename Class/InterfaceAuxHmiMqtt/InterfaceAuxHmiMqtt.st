@@ -16,7 +16,7 @@
 	Automatic          = "false"
 	UpdateMode         = "Prescan"
 	SharedCommandTable = "true"
-	Objectsize         = "(284,120)">
+	Objectsize         = "(810,120)">
 	<Channels>
 	</Channels>
 	<Network Name="InterfaceAuxHmiMqtt">

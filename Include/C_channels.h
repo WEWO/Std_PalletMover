@@ -364,6 +364,13 @@ typedef struct CltChCmd_CntrlAuxHmi
     CntrlAuxHmi *pCmd;
   } CltChCmd_CntrlAuxHmi;
 
+typedef struct CltChCmd_CntrlPeriperalPiviotWheels 
+  {
+    struct SvrChCmd_pVoid *pCh;
+    pVoid dData;
+    CntrlPeriperalPiviotWheels *pCmd;
+  } CltChCmd_CntrlPeriperalPiviotWheels;
+
 typedef struct CltChCmd_ComDiagnosis_MQTT 
   {
     struct SvrChCmd_DINT *pCh;
@@ -455,6 +462,13 @@ typedef struct CltChCmd_HAL_BMS_MasterVolt
     HAL_BMS_MasterVolt *pCmd;
   } CltChCmd_HAL_BMS_MasterVolt;
 
+typedef struct CltChCmd_HalBmsMastervoltinterface 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HalBmsMastervoltinterface *pCmd;
+  } CltChCmd_HalBmsMastervoltinterface;
+
 typedef struct CltChCmd_HandleSteering 
   {
     struct SvrChCmd_DINT *pCh;
@@ -468,13 +482,6 @@ typedef struct CltChCmd_HandleSteeringCurtisAC2F
     DINT dData;
     HandleSteeringCurtisAC2F *pCmd;
   } CltChCmd_HandleSteeringCurtisAC2F;
-
-typedef struct CltChCmd_I_Bms 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    I_Bms *pCmd;
-  } CltChCmd_I_Bms;
 
 typedef struct CltChCmd_I_PivotWheel 
   {
@@ -580,13 +587,6 @@ typedef struct CltChCmd_MQTTTopic_RetVals
     DINT dData;
     MQTTTopic_RetVals *pCmd;
   } CltChCmd_MQTTTopic_RetVals;
-
-typedef struct CltChCmd_PeripheralsBase 
-  {
-    struct SvrChCmd_pVoid *pCh;
-    pVoid dData;
-    PeripheralsBase *pCmd;
-  } CltChCmd_PeripheralsBase;
 
 typedef struct CltChCmd_RAMex 
   {

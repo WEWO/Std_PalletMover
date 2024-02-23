@@ -21,26 +21,6 @@
 				<Network>
 					<!-- List of Components in this network -->
 					<Components>
-						<Object Name="InterfaceAuxHmiMqtt1" GUID="{14723CA8-A316-4D29-A3C1-71D0E56ECF26}" Class="InterfaceAuxHmiMqtt">
-							<Channels>
-								<Server Name="ClassSvr"/>
-							</Channels>
-							<!-- List of Networks in this component -->
-							<Networks>
-								<Network>
-									<!-- List of Components in this network -->
-									<Components>
-										<Object Name="_base" GUID="{72A471A3-4330-4526-BDFC-70949EC85C38}" Class="I_Hmi">
-											<Channels>
-												<Server Name="ClassSvr"/>
-											</Channels>
-										</Object>
-									</Components>
-									<Connections>
-									</Connections>
-								</Network>
-							</Networks>
-						</Object>
 						<Object Name="ObjCntrlAuxHmi" GUID="{64EA4809-9DE7-44D7-80AC-2DFB48F78D07}" Class="CntrlAuxHmi">
 							<Channels>
 								<Server Name="AgvState"/>
@@ -1858,6 +1838,26 @@
 													</Connections>
 												</Network>
 											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ObjInterfaceAuxHmiMqtt" GUID="{14723CA8-A316-4D29-A3C1-71D0E56ECF26}" Class="InterfaceAuxHmiMqtt">
+							<Channels>
+								<Server Name="ClassSvr"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{72A471A3-4330-4526-BDFC-70949EC85C38}" Class="I_Hmi">
+											<Channels>
+												<Server Name="ClassSvr"/>
+											</Channels>
 										</Object>
 									</Components>
 									<Connections>
