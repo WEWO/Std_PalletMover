@@ -455,6 +455,25 @@ HandleSteering : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
+I_PivotWheel : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tPivotWheelParameters : STRUCT
+	    pwp_DistanceToCenterX : REAL;
+	    pwp_DistanceToCenterY : REAL;
+	    pwp_PivotWheelReferenced : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 4)
+	  tPivotWheelStatus : STRUCT
+	    pws_PivotWheelExists : BOOL;
+	    pws_Driving : HandleSteering::tDriveStatus;
+	    pws_Steering : HandleSteering::tDriveStatus;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
 MainAuxCntrl : CLASS_PUBLIC
 	TYPE
 	  tAuxMainStatus : BDINT
@@ -795,25 +814,6 @@ MQTTTopic : CLASS_PUBLIC
 	    udSubscribeTimeout : UDINT;
 	    udUnsubscribeTimeout : UDINT;
 	    udPublishTimeout : UDINT;
-	  END_STRUCT;
-#pragma pack(pop)
-	END_TYPE
-END_CLASS;
-#pragma define (restore)
-PivotWheel : CLASS_PUBLIC
-	TYPE
-#pragma pack(push, 1)
-	  tPivotWheelParameters : STRUCT
-	    pwp_DistanceToCenterX : REAL;
-	    pwp_DistanceToCenterY : REAL;
-	    pwp_PivotWheelReferenced : DINT;
-	  END_STRUCT;
-#pragma pack(pop)
-#pragma pack(push, 4)
-	  tPivotWheelStatus : STRUCT
-	    pws_PivotWheelExists : BOOL;
-	    pws_Driving : HandleSteering::tDriveStatus;
-	    pws_Steering : HandleSteering::tDriveStatus;
 	  END_STRUCT;
 #pragma pack(pop)
 	END_TYPE

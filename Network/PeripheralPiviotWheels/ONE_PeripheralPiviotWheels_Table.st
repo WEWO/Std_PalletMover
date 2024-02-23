@@ -25,331 +25,118 @@ FUNCTION GLOBAL TAB ONE_PeripheralPiviotWheels
 17$UDINT,
 TO_UDINT(472728498), "CanBase", 1$UINT, 2$UINT, 0$UINT,
 TO_UDINT(4284412609), "CanOpenBase", 1$UINT, 6$UINT, 0$UINT,
-TO_UDINT(1561954402), "CanOpenBaseRiwo", 0$UINT, 1$UINT, 8$UINT,
-TO_UDINT(883538238), "Curtis_AC2F", 0$UINT, 0$UINT, 8$UINT,
-TO_UDINT(3951156929), "Curtis_AC2F_IO", 0$UINT, 0$UINT, 8$UINT,
+TO_UDINT(1561954402), "CanOpenBaseRiwo", 0$UINT, 1$UINT, 2$UINT,
+TO_UDINT(883538238), "Curtis_AC2F", 0$UINT, 0$UINT, 2$UINT,
+TO_UDINT(3951156929), "Curtis_AC2F_IO", 0$UINT, 0$UINT, 2$UINT,
 TO_UDINT(3229075938), "Curtis_Base", 0$UINT, 0$UINT, 0$UINT,
-TO_UDINT(3419776214), "EncoderpulsesToDegrees", 0$UINT, 0$UINT, 4$UINT,
+TO_UDINT(3419776214), "EncoderpulsesToDegrees", 0$UINT, 0$UINT, 1$UINT,
 TO_UDINT(934856050), "HandleSteering", 0$UINT, 0$UINT, 0$UINT,
-TO_UDINT(1916796469), "HandleSteeringCurtisAC2F", 0$UINT, 0$UINT, 8$UINT,
+TO_UDINT(1916796469), "HandleSteeringCurtisAC2F", 0$UINT, 0$UINT, 2$UINT,
+TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 1$UINT,
 TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 0$UINT,
-TO_UDINT(2276934072), "Merker", 1$UINT, 0$UINT, 4$UINT,
-TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, 4$UINT,
-TO_UDINT(3865129840), "PerPiviotWeel", 0$UINT, 0$UINT, 4$UINT,
-TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 4$UINT,
-TO_UDINT(3450022799), "SpeedCalculator", 0$UINT, 0$UINT, 4$UINT,
+TO_UDINT(2276934072), "Merker", 1$UINT, 0$UINT, 1$UINT,
+TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, 1$UINT,
+TO_UDINT(3865129840), "PerPiviotWeel", 0$UINT, 0$UINT, 1$UINT,
+TO_UDINT(3450022799), "SpeedCalculator", 0$UINT, 0$UINT, 1$UINT,
 TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, 0$UINT,
-TO_UDINT(1771708268), "WewoStringUtils", 0$UINT, 10$UINT, 4$UINT,
+TO_UDINT(1771708268), "WewoStringUtils", 0$UINT, 10$UINT, 1$UINT,
 
 
 
 1$UINT, TO_UDINT(503232507), "OBJPIVIOTWEEL1\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO", 
 1$UINT, TO_UDINT(3804605098), "OBJPIVIOTWEEL1\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(3462769408), "OBJPIVIOTWEEL2\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(828290641), "OBJPIVIOTWEEL2\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(2162991273), "OBJPIVIOTWEEL3\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(2144845304), "OBJPIVIOTWEEL3\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(2988610743), "OBJPIVIOTWEEL4\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO", 
-1$UINT, TO_UDINT(1293519334), "OBJPIVIOTWEEL4\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO", 
 
 1$UINT, TO_UDINT(2821537684), "OBJPIVIOTWEEL1\OBJCURTISDRIVE", 
 1$UINT, TO_UDINT(3030390507), "OBJPIVIOTWEEL1\OBJCURTISSTEER", 
-1$UINT, TO_UDINT(2179304294), "OBJPIVIOTWEEL2\OBJCURTISDRIVE", 
-1$UINT, TO_UDINT(2640880153), "OBJPIVIOTWEEL2\OBJCURTISSTEER", 
-1$UINT, TO_UDINT(797776631), "OBJPIVIOTWEEL3\OBJCURTISDRIVE", 
-1$UINT, TO_UDINT(855651208), "OBJPIVIOTWEEL3\OBJCURTISSTEER", 
-1$UINT, TO_UDINT(3530875522), "OBJPIVIOTWEEL4\OBJCURTISDRIVE", 
-1$UINT, TO_UDINT(3472477181), "OBJPIVIOTWEEL4\OBJCURTISSTEER", 
 
 1$UINT, TO_UDINT(3468097743), "OBJPIVIOTWEEL1\CURTIS_AC2F_IO2_STEER", 
 1$UINT, TO_UDINT(2798948626), "OBJPIVIOTWEEL1\OBJ_CURTIS_AC2F_IO2_DRIVE", 
-1$UINT, TO_UDINT(3092496882), "OBJPIVIOTWEEL2\CURTIS_AC2F_IO2_STEER", 
-1$UINT, TO_UDINT(356564177), "OBJPIVIOTWEEL2\OBJ_CURTIS_AC2F_IO2_DRIVE", 
-1$UINT, TO_UDINT(589310758), "OBJPIVIOTWEEL3\CURTIS_AC2F_IO2_STEER", 
-1$UINT, TO_UDINT(2077009808), "OBJPIVIOTWEEL3\OBJ_CURTIS_AC2F_IO2_DRIVE", 
-1$UINT, TO_UDINT(1436136328), "OBJPIVIOTWEEL4\CURTIS_AC2F_IO2_STEER", 
-1$UINT, TO_UDINT(2837045526), "OBJPIVIOTWEEL4\OBJ_CURTIS_AC2F_IO2_DRIVE", 
 
 
 1$UINT, TO_UDINT(16638183), "OBJPIVIOTWEEL1\OBJENCODERPULSESTODEGREES1", 
-1$UINT, TO_UDINT(35907520), "OBJPIVIOTWEEL2\OBJENCODERPULSESTODEGREES1", 
-1$UINT, TO_UDINT(60168925), "OBJPIVIOTWEEL3\OBJENCODERPULSESTODEGREES1", 
-1$UINT, TO_UDINT(127920526), "OBJPIVIOTWEEL4\OBJENCODERPULSESTODEGREES1", 
 
 
 1$UINT, TO_UDINT(3307560114), "OBJPIVIOTWEEL1\OBJDRIVE", 
 1$UINT, TO_UDINT(1724971471), "OBJPIVIOTWEEL1\OBJSTEER1", 
-1$UINT, TO_UDINT(772990897), "OBJPIVIOTWEEL2\OBJDRIVE", 
-1$UINT, TO_UDINT(4281507790), "OBJPIVIOTWEEL2\OBJSTEER1", 
-1$UINT, TO_UDINT(3251670159), "OBJPIVIOTWEEL3\OBJDRIVE", 
-1$UINT, TO_UDINT(1052524558), "OBJPIVIOTWEEL3\OBJSTEER1", 
-1$UINT, TO_UDINT(588027894), "OBJPIVIOTWEEL4\OBJDRIVE", 
-1$UINT, TO_UDINT(394745229), "OBJPIVIOTWEEL4\OBJSTEER1", 
+
+1$UINT, TO_UDINT(2240625816), "OBJPIVIOTWEEL1\OBJPW1", 
 
 
 1$UINT, TO_UDINT(1911364555), "OBJPIVIOTWEEL1\MERKER1", 
-1$UINT, TO_UDINT(1214261006), "OBJPIVIOTWEEL2\MERKER1", 
-1$UINT, TO_UDINT(1595618125), "OBJPIVIOTWEEL3\MERKER1", 
-1$UINT, TO_UDINT(997875332), "OBJPIVIOTWEEL4\MERKER1", 
 
 1$UINT, TO_UDINT(3515157084), "OBJPIVIOTWEEL1\OBJPERIPHERALSBASE", 
-1$UINT, TO_UDINT(2116831126), "OBJPIVIOTWEEL2\OBJPERIPHERALSBASE", 
-1$UINT, TO_UDINT(457931984), "OBJPIVIOTWEEL3\OBJPERIPHERALSBASE", 
-1$UINT, TO_UDINT(4195342915), "OBJPIVIOTWEEL4\OBJPERIPHERALSBASE", 
 
 _NO_ATTR, TO_UDINT(2491345528), "OBJPIVIOTWEEL1", 
-_NO_ATTR, TO_UDINT(225950658), "OBJPIVIOTWEEL2", 
-_NO_ATTR, TO_UDINT(2054196052), "OBJPIVIOTWEEL3", 
-_NO_ATTR, TO_UDINT(3826523895), "OBJPIVIOTWEEL4", 
-
-1$UINT, TO_UDINT(2240625816), "OBJPIVIOTWEEL1\OBJPW1", 
-1$UINT, TO_UDINT(184695675), "OBJPIVIOTWEEL2\OBJPW1", 
-1$UINT, TO_UDINT(3349691365), "OBJPIVIOTWEEL3\OBJPW1", 
-1$UINT, TO_UDINT(3446485756), "OBJPIVIOTWEEL4\OBJPW1", 
 
 1$UINT, TO_UDINT(2874381079), "OBJPIVIOTWEEL1\SPEEDCALCULATOR", 
-1$UINT, TO_UDINT(4173973651), "OBJPIVIOTWEEL2\SPEEDCALCULATOR", 
-1$UINT, TO_UDINT(2137981904), "OBJPIVIOTWEEL3\SPEEDCALCULATOR", 
-1$UINT, TO_UDINT(1610448795), "OBJPIVIOTWEEL4\SPEEDCALCULATOR", 
 
 
 1$UINT, TO_UDINT(1345822959), "OBJPIVIOTWEEL1\OBJPERIPHERALSBASE\_BASE\_BASE\OBJ_STRINGUTILS", 
-1$UINT, TO_UDINT(384144779), "OBJPIVIOTWEEL2\OBJPERIPHERALSBASE\_BASE\_BASE\OBJ_STRINGUTILS", 
-1$UINT, TO_UDINT(726956375), "OBJPIVIOTWEEL3\OBJPERIPHERALSBASE\_BASE\_BASE\OBJ_STRINGUTILS", 
-1$UINT, TO_UDINT(2604793667), "OBJPIVIOTWEEL4\OBJPERIPHERALSBASE\_BASE\_BASE\OBJ_STRINGUTILS", 
 
 //Internal connections
 0$UDINT,
-56$UDINT,
-TO_UDINT(8), "_CanOpenBaseRiwo", TO_UDINT(0),
-TO_UDINT(9), "_CanOpenBaseRiwo", TO_UDINT(1),
-TO_UDINT(10), "_CanOpenBaseRiwo", TO_UDINT(2),
-TO_UDINT(11), "_CanOpenBaseRiwo", TO_UDINT(3),
-TO_UDINT(12), "_CanOpenBaseRiwo", TO_UDINT(4),
-TO_UDINT(13), "_CanOpenBaseRiwo", TO_UDINT(5),
-TO_UDINT(14), "_CanOpenBaseRiwo", TO_UDINT(6),
-TO_UDINT(15), "_CanOpenBaseRiwo", TO_UDINT(7),
-TO_UDINT(40), "Obj_StringUtils", TO_UDINT(56),
-TO_UDINT(41), "Obj_StringUtils", TO_UDINT(57),
-TO_UDINT(42), "Obj_StringUtils", TO_UDINT(58),
-TO_UDINT(43), "Obj_StringUtils", TO_UDINT(59),
-TO_UDINT(44), "Merker1", TO_UDINT(36),
-TO_UDINT(44), "ObjPW1", TO_UDINT(48),
-TO_UDINT(44), "ObjSteer1", TO_UDINT(29),
-TO_UDINT(44), "ObjEncoderpulsesToDegrees1", TO_UDINT(24),
-TO_UDINT(44), "ObjCurtisSteer", TO_UDINT(9),
-TO_UDINT(44), "ObjCurtisDrive", TO_UDINT(8),
-TO_UDINT(44), "ObjDrive", TO_UDINT(28),
-TO_UDINT(44), "SpeedCalculator", TO_UDINT(52),
-TO_UDINT(44), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(17),
-TO_UDINT(44), "Curtis_AC2F_IO2_steer", TO_UDINT(16),
-TO_UDINT(44), "ObjPeripheralsBase", TO_UDINT(40),
-TO_UDINT(45), "Merker1", TO_UDINT(37),
-TO_UDINT(45), "ObjPW1", TO_UDINT(49),
-TO_UDINT(45), "ObjSteer1", TO_UDINT(31),
-TO_UDINT(45), "ObjEncoderpulsesToDegrees1", TO_UDINT(25),
-TO_UDINT(45), "ObjCurtisSteer", TO_UDINT(11),
-TO_UDINT(45), "ObjCurtisDrive", TO_UDINT(10),
-TO_UDINT(45), "ObjDrive", TO_UDINT(30),
-TO_UDINT(45), "SpeedCalculator", TO_UDINT(53),
-TO_UDINT(45), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(19),
-TO_UDINT(45), "Curtis_AC2F_IO2_steer", TO_UDINT(18),
-TO_UDINT(45), "ObjPeripheralsBase", TO_UDINT(41),
-TO_UDINT(46), "Merker1", TO_UDINT(38),
-TO_UDINT(46), "ObjPW1", TO_UDINT(50),
-TO_UDINT(46), "ObjSteer1", TO_UDINT(33),
-TO_UDINT(46), "ObjEncoderpulsesToDegrees1", TO_UDINT(26),
-TO_UDINT(46), "ObjCurtisSteer", TO_UDINT(13),
-TO_UDINT(46), "ObjCurtisDrive", TO_UDINT(12),
-TO_UDINT(46), "ObjDrive", TO_UDINT(32),
-TO_UDINT(46), "SpeedCalculator", TO_UDINT(54),
-TO_UDINT(46), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(21),
-TO_UDINT(46), "Curtis_AC2F_IO2_steer", TO_UDINT(20),
-TO_UDINT(46), "ObjPeripheralsBase", TO_UDINT(42),
-TO_UDINT(47), "Merker1", TO_UDINT(39),
-TO_UDINT(47), "ObjPW1", TO_UDINT(51),
-TO_UDINT(47), "ObjSteer1", TO_UDINT(35),
-TO_UDINT(47), "ObjEncoderpulsesToDegrees1", TO_UDINT(27),
-TO_UDINT(47), "ObjCurtisSteer", TO_UDINT(15),
-TO_UDINT(47), "ObjCurtisDrive", TO_UDINT(14),
-TO_UDINT(47), "ObjDrive", TO_UDINT(34),
-TO_UDINT(47), "SpeedCalculator", TO_UDINT(55),
-TO_UDINT(47), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(23),
-TO_UDINT(47), "Curtis_AC2F_IO2_steer", TO_UDINT(22),
-TO_UDINT(47), "ObjPeripheralsBase", TO_UDINT(43),
+14$UDINT,
+TO_UDINT(2), "_CanOpenBaseRiwo", TO_UDINT(0),
+TO_UDINT(3), "_CanOpenBaseRiwo", TO_UDINT(1),
+TO_UDINT(11), "Obj_StringUtils", TO_UDINT(14),
+TO_UDINT(12), "Merker1", TO_UDINT(10),
+TO_UDINT(12), "ObjPW1", TO_UDINT(9),
+TO_UDINT(12), "ObjSteer1", TO_UDINT(8),
+TO_UDINT(12), "ObjEncoderpulsesToDegrees1", TO_UDINT(6),
+TO_UDINT(12), "ObjCurtisSteer", TO_UDINT(3),
+TO_UDINT(12), "ObjCurtisDrive", TO_UDINT(2),
+TO_UDINT(12), "ObjDrive", TO_UDINT(7),
+TO_UDINT(12), "SpeedCalculator", TO_UDINT(13),
+TO_UDINT(12), "Obj_Curtis_AC2F_IO2_drive", TO_UDINT(5),
+TO_UDINT(12), "Curtis_AC2F_IO2_steer", TO_UDINT(4),
+TO_UDINT(12), "ObjPeripheralsBase", TO_UDINT(11),
 0$UDINT,
-47$UDINT,
-TO_UDINT(8), "objCurtis_AC2F_IO", TO_UDINT(17), "ClassSvr",
-TO_UDINT(9), "objCurtis_AC2F_IO", TO_UDINT(16), "ClassSvr",
-TO_UDINT(10), "objCurtis_AC2F_IO", TO_UDINT(19), "ClassSvr",
-TO_UDINT(11), "objCurtis_AC2F_IO", TO_UDINT(18), "ClassSvr",
-TO_UDINT(12), "objCurtis_AC2F_IO", TO_UDINT(21), "ClassSvr",
-TO_UDINT(13), "objCurtis_AC2F_IO", TO_UDINT(20), "ClassSvr",
-TO_UDINT(14), "objCurtis_AC2F_IO", TO_UDINT(23), "ClassSvr",
-TO_UDINT(15), "objCurtis_AC2F_IO", TO_UDINT(22), "ClassSvr",
-TO_UDINT(28), "objCurtisAC2F", TO_UDINT(8), "ClassSvr",
-TO_UDINT(28), "ActualRaw", TO_UDINT(8), "MotorRPM",
-TO_UDINT(28), "SetpointRaw", TO_UDINT(8), "AutomaticSetpoint",
-TO_UDINT(29), "objCurtisAC2F", TO_UDINT(9), "ClassSvr",
-TO_UDINT(29), "SafetyEncoderValue", TO_UDINT(24), "Degrees",
-TO_UDINT(29), "ActualRaw", TO_UDINT(9), "EncoderValue",
-TO_UDINT(29), "SetpointRaw", TO_UDINT(9), "AutomaticSetpoint",
-TO_UDINT(30), "objCurtisAC2F", TO_UDINT(10), "ClassSvr",
-TO_UDINT(30), "ActualRaw", TO_UDINT(10), "MotorRPM",
-TO_UDINT(30), "SetpointRaw", TO_UDINT(10), "AutomaticSetpoint",
-TO_UDINT(31), "objCurtisAC2F", TO_UDINT(11), "ClassSvr",
-TO_UDINT(31), "SafetyEncoderValue", TO_UDINT(25), "Degrees",
-TO_UDINT(31), "ActualRaw", TO_UDINT(11), "EncoderValue",
-TO_UDINT(31), "SetpointRaw", TO_UDINT(11), "AutomaticSetpoint",
-TO_UDINT(32), "objCurtisAC2F", TO_UDINT(12), "ClassSvr",
-TO_UDINT(32), "ActualRaw", TO_UDINT(12), "MotorRPM",
-TO_UDINT(32), "SetpointRaw", TO_UDINT(12), "AutomaticSetpoint",
-TO_UDINT(33), "objCurtisAC2F", TO_UDINT(13), "ClassSvr",
-TO_UDINT(33), "SafetyEncoderValue", TO_UDINT(26), "Degrees",
-TO_UDINT(33), "ActualRaw", TO_UDINT(13), "EncoderValue",
-TO_UDINT(33), "SetpointRaw", TO_UDINT(13), "AutomaticSetpoint",
-TO_UDINT(34), "objCurtisAC2F", TO_UDINT(14), "ClassSvr",
-TO_UDINT(34), "ActualRaw", TO_UDINT(14), "MotorRPM",
-TO_UDINT(34), "SetpointRaw", TO_UDINT(14), "AutomaticSetpoint",
-TO_UDINT(35), "objCurtisAC2F", TO_UDINT(15), "ClassSvr",
-TO_UDINT(35), "SafetyEncoderValue", TO_UDINT(27), "Degrees",
-TO_UDINT(35), "ActualRaw", TO_UDINT(15), "EncoderValue",
-TO_UDINT(35), "SetpointRaw", TO_UDINT(15), "AutomaticSetpoint",
-TO_UDINT(45), "p_NextObject", TO_UDINT(40), "ToObject",
-TO_UDINT(46), "p_NextObject", TO_UDINT(41), "ToObject",
-TO_UDINT(47), "p_NextObject", TO_UDINT(42), "ToObject",
-TO_UDINT(48), "objSteer", TO_UDINT(29), "ClassSvr",
-TO_UDINT(48), "objDrive", TO_UDINT(28), "ClassSvr",
-TO_UDINT(49), "objSteer", TO_UDINT(31), "ClassSvr",
-TO_UDINT(49), "objDrive", TO_UDINT(30), "ClassSvr",
-TO_UDINT(50), "objSteer", TO_UDINT(33), "ClassSvr",
-TO_UDINT(50), "objDrive", TO_UDINT(32), "ClassSvr",
-TO_UDINT(51), "objSteer", TO_UDINT(35), "ClassSvr",
-TO_UDINT(51), "objDrive", TO_UDINT(34), "ClassSvr",
+11$UDINT,
+TO_UDINT(2), "objCurtis_AC2F_IO", TO_UDINT(5), "ClassSvr",
+TO_UDINT(3), "objCurtis_AC2F_IO", TO_UDINT(4), "ClassSvr",
+TO_UDINT(7), "objCurtisAC2F", TO_UDINT(2), "ClassSvr",
+TO_UDINT(7), "ActualRaw", TO_UDINT(2), "MotorRPM",
+TO_UDINT(7), "SetpointRaw", TO_UDINT(2), "AutomaticSetpoint",
+TO_UDINT(8), "objCurtisAC2F", TO_UDINT(3), "ClassSvr",
+TO_UDINT(8), "SafetyEncoderValue", TO_UDINT(6), "Degrees",
+TO_UDINT(8), "ActualRaw", TO_UDINT(3), "EncoderValue",
+TO_UDINT(8), "SetpointRaw", TO_UDINT(3), "AutomaticSetpoint",
+TO_UDINT(9), "objSteer", TO_UDINT(8), "ClassSvr",
+TO_UDINT(9), "objDrive", TO_UDINT(7), "ClassSvr",
 
 //Initialization values
 0$UDINT,
-120$UDINT,
+30$UDINT,
 TO_UDINT(0), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel1\_CanOpenBaseRiwo.Driver;
 TO_UDINT(0), "cNode", TO_UDINT(1),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel1\_CanOpenBaseRiwo.cNode;
 TO_UDINT(1), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel1\_CanOpenBaseRiwo.Driver;
 TO_UDINT(1), "cNode", TO_UDINT(2),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel1\_CanOpenBaseRiwo.cNode;
-TO_UDINT(2), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel2\_CanOpenBaseRiwo.Driver;
-TO_UDINT(2), "cNode", TO_UDINT(1),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel2\_CanOpenBaseRiwo.cNode;
-TO_UDINT(3), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel2\_CanOpenBaseRiwo.Driver;
-TO_UDINT(3), "cNode", TO_UDINT(2),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel2\_CanOpenBaseRiwo.cNode;
-TO_UDINT(4), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel3\_CanOpenBaseRiwo.Driver;
-TO_UDINT(4), "cNode", TO_UDINT(1),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel3\_CanOpenBaseRiwo.cNode;
-TO_UDINT(5), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel3\_CanOpenBaseRiwo.Driver;
-TO_UDINT(5), "cNode", TO_UDINT(2),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel3\_CanOpenBaseRiwo.cNode;
-TO_UDINT(6), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel4\_CanOpenBaseRiwo.Driver;
-TO_UDINT(6), "cNode", TO_UDINT(1),//|PeripheralPiviotWheels._base\ObjCurtisDrive\ObjPiviotweel4\_CanOpenBaseRiwo.cNode;
-TO_UDINT(7), "Driver", TO_UDINT(0),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel4\_CanOpenBaseRiwo.Driver;
-TO_UDINT(7), "cNode", TO_UDINT(2),//|PeripheralPiviotWheels._base\ObjCurtisSteer\ObjPiviotweel4\_CanOpenBaseRiwo.cNode;
-TO_UDINT(8), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.Enabled;
-TO_UDINT(8), "AutoAccelTime", TO_UDINT(50),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AutoAccelTime;
-TO_UDINT(8), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AutoDecelTime;
-TO_UDINT(8), "AlarmStartId", TO_UDINT(1200),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AlarmStartId;
-TO_UDINT(8), "NodeId", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.NodeId;
-TO_UDINT(8), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.objDriver;
-TO_UDINT(8), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.objCurtis_AC2F_IO;
-TO_UDINT(8), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.Interlock;
-TO_UDINT(9), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.Enabled;
-TO_UDINT(9), "AutoAccelTime", TO_UDINT(100),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AutoAccelTime;
-TO_UDINT(9), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AutoDecelTime;
-TO_UDINT(9), "AlarmStartId", TO_UDINT(1100),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AlarmStartId;
-TO_UDINT(9), "NodeId", TO_UDINT(2),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.NodeId;
-TO_UDINT(9), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.objDriver;
-TO_UDINT(9), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.objCurtis_AC2F_IO;
-TO_UDINT(9), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.Interlock;
-TO_UDINT(10), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.Enabled;
-TO_UDINT(10), "AutoAccelTime", TO_UDINT(50),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.AutoAccelTime;
-TO_UDINT(10), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.AutoDecelTime;
-TO_UDINT(10), "AlarmStartId", TO_UDINT(1200),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.AlarmStartId;
-TO_UDINT(10), "NodeId", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.NodeId;
-TO_UDINT(10), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.objDriver;
-TO_UDINT(10), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.objCurtis_AC2F_IO;
-TO_UDINT(10), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisDrive.Interlock;
-TO_UDINT(11), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.Enabled;
-TO_UDINT(11), "AutoAccelTime", TO_UDINT(100),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.AutoAccelTime;
-TO_UDINT(11), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.AutoDecelTime;
-TO_UDINT(11), "AlarmStartId", TO_UDINT(1100),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.AlarmStartId;
-TO_UDINT(11), "NodeId", TO_UDINT(2),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.NodeId;
-TO_UDINT(11), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.objDriver;
-TO_UDINT(11), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.objCurtis_AC2F_IO;
-TO_UDINT(11), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjCurtisSteer.Interlock;
-TO_UDINT(12), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.Enabled;
-TO_UDINT(12), "AutoAccelTime", TO_UDINT(50),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.AutoAccelTime;
-TO_UDINT(12), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.AutoDecelTime;
-TO_UDINT(12), "AlarmStartId", TO_UDINT(1200),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.AlarmStartId;
-TO_UDINT(12), "NodeId", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.NodeId;
-TO_UDINT(12), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.objDriver;
-TO_UDINT(12), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.objCurtis_AC2F_IO;
-TO_UDINT(12), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisDrive.Interlock;
-TO_UDINT(13), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.Enabled;
-TO_UDINT(13), "AutoAccelTime", TO_UDINT(100),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.AutoAccelTime;
-TO_UDINT(13), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.AutoDecelTime;
-TO_UDINT(13), "AlarmStartId", TO_UDINT(1100),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.AlarmStartId;
-TO_UDINT(13), "NodeId", TO_UDINT(2),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.NodeId;
-TO_UDINT(13), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.objDriver;
-TO_UDINT(13), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.objCurtis_AC2F_IO;
-TO_UDINT(13), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjCurtisSteer.Interlock;
-TO_UDINT(14), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.Enabled;
-TO_UDINT(14), "AutoAccelTime", TO_UDINT(50),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.AutoAccelTime;
-TO_UDINT(14), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.AutoDecelTime;
-TO_UDINT(14), "AlarmStartId", TO_UDINT(1200),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.AlarmStartId;
-TO_UDINT(14), "NodeId", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.NodeId;
-TO_UDINT(14), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.objDriver;
-TO_UDINT(14), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.objCurtis_AC2F_IO;
-TO_UDINT(14), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisDrive.Interlock;
-TO_UDINT(15), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.Enabled;
-TO_UDINT(15), "AutoAccelTime", TO_UDINT(100),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.AutoAccelTime;
-TO_UDINT(15), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.AutoDecelTime;
-TO_UDINT(15), "AlarmStartId", TO_UDINT(1100),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.AlarmStartId;
-TO_UDINT(15), "NodeId", TO_UDINT(2),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.NodeId;
-TO_UDINT(15), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.objDriver;
-TO_UDINT(15), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.objCurtis_AC2F_IO;
-TO_UDINT(15), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjCurtisSteer.Interlock;
-TO_UDINT(24), "PulsesPerRound", TO_REAL(8192),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.PulsesPerRound;
-TO_UDINT(24), "GearRatio", TO_REAL(4.057),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.GearRatio;
-TO_UDINT(24), "EncoderPulses", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.EncoderPulses;
-TO_UDINT(25), "PulsesPerRound", TO_REAL(8192),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjEncoderpulsesToDegrees1.PulsesPerRound;
-TO_UDINT(25), "GearRatio", TO_REAL(4.057),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjEncoderpulsesToDegrees1.GearRatio;
-TO_UDINT(25), "EncoderPulses", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjEncoderpulsesToDegrees1.EncoderPulses;
-TO_UDINT(26), "PulsesPerRound", TO_REAL(8192),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjEncoderpulsesToDegrees1.PulsesPerRound;
-TO_UDINT(26), "GearRatio", TO_REAL(4.057),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjEncoderpulsesToDegrees1.GearRatio;
-TO_UDINT(26), "EncoderPulses", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjEncoderpulsesToDegrees1.EncoderPulses;
-TO_UDINT(27), "PulsesPerRound", TO_REAL(8192),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjEncoderpulsesToDegrees1.PulsesPerRound;
-TO_UDINT(27), "GearRatio", TO_REAL(4.057),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjEncoderpulsesToDegrees1.GearRatio;
-TO_UDINT(27), "EncoderPulses", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjEncoderpulsesToDegrees1.EncoderPulses;
-TO_UDINT(28), "ScalingFactor", TO_REAL(-3642.25),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjDrive.ScalingFactor;
-TO_UDINT(28), "SafetyEncoderValue", TO_REAL(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjDrive.SafetyEncoderValue;
-TO_UDINT(29), "ScalingFactor", TO_REAL(-50),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjSteer1.ScalingFactor;
-TO_UDINT(30), "ScalingFactor", TO_REAL(-3642.25),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjDrive.ScalingFactor;
-TO_UDINT(30), "SafetyEncoderValue", TO_REAL(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjDrive.SafetyEncoderValue;
-TO_UDINT(31), "ScalingFactor", TO_REAL(-50),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjSteer1.ScalingFactor;
-TO_UDINT(32), "ScalingFactor", TO_REAL(-3642.25),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjDrive.ScalingFactor;
-TO_UDINT(32), "SafetyEncoderValue", TO_REAL(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjDrive.SafetyEncoderValue;
-TO_UDINT(33), "ScalingFactor", TO_REAL(-50),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjSteer1.ScalingFactor;
-TO_UDINT(34), "ScalingFactor", TO_REAL(-3642.25),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjDrive.ScalingFactor;
-TO_UDINT(34), "SafetyEncoderValue", TO_REAL(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjDrive.SafetyEncoderValue;
-TO_UDINT(35), "ScalingFactor", TO_REAL(-50),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjSteer1.ScalingFactor;
-TO_UDINT(48), "DistanceToCenterX", TO_REAL(2179.966),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.DistanceToCenterX;
-TO_UDINT(48), "DistanceToCenterY", TO_REAL(896.5),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.DistanceToCenterY;
-TO_UDINT(48), "objSteer", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.objSteer;
-TO_UDINT(49), "DistanceToCenterX", TO_REAL(2179.966),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjPW1.DistanceToCenterX;
-TO_UDINT(49), "DistanceToCenterY", TO_REAL(896.5),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjPW1.DistanceToCenterY;
-TO_UDINT(49), "objSteer", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\ObjPW1.objSteer;
-TO_UDINT(50), "DistanceToCenterX", TO_REAL(2179.966),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjPW1.DistanceToCenterX;
-TO_UDINT(50), "DistanceToCenterY", TO_REAL(896.5),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjPW1.DistanceToCenterY;
-TO_UDINT(50), "objSteer", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\ObjPW1.objSteer;
-TO_UDINT(51), "DistanceToCenterX", TO_REAL(2179.966),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjPW1.DistanceToCenterX;
-TO_UDINT(51), "DistanceToCenterY", TO_REAL(896.5),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjPW1.DistanceToCenterY;
-TO_UDINT(51), "objSteer", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\ObjPW1.objSteer;
-TO_UDINT(52), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\SpeedCalculator.SafetyPulsjes;
-TO_UDINT(53), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel2\SpeedCalculator.SafetyPulsjes;
-TO_UDINT(54), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel3\SpeedCalculator.SafetyPulsjes;
-TO_UDINT(55), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel4\SpeedCalculator.SafetyPulsjes;
+TO_UDINT(2), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.Enabled;
+TO_UDINT(2), "AutoAccelTime", TO_UDINT(50),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AutoAccelTime;
+TO_UDINT(2), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AutoDecelTime;
+TO_UDINT(2), "AlarmStartId", TO_UDINT(1200),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.AlarmStartId;
+TO_UDINT(2), "NodeId", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.NodeId;
+TO_UDINT(2), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.objDriver;
+TO_UDINT(2), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.objCurtis_AC2F_IO;
+TO_UDINT(2), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisDrive.Interlock;
+TO_UDINT(3), "Enabled", TO_UDINT(1),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.Enabled;
+TO_UDINT(3), "AutoAccelTime", TO_UDINT(100),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AutoAccelTime;
+TO_UDINT(3), "AutoDecelTime", TO_UDINT(10),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AutoDecelTime;
+TO_UDINT(3), "AlarmStartId", TO_UDINT(1100),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.AlarmStartId;
+TO_UDINT(3), "NodeId", TO_UDINT(2),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.NodeId;
+TO_UDINT(3), "objDriver", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.objDriver;
+TO_UDINT(3), "objCurtis_AC2F_IO", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.objCurtis_AC2F_IO;
+TO_UDINT(3), "Interlock", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjCurtisSteer.Interlock;
+TO_UDINT(6), "PulsesPerRound", TO_REAL(8192),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.PulsesPerRound;
+TO_UDINT(6), "GearRatio", TO_REAL(4.057),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.GearRatio;
+TO_UDINT(6), "EncoderPulses", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjEncoderpulsesToDegrees1.EncoderPulses;
+TO_UDINT(7), "ScalingFactor", TO_REAL(-3642.25),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjDrive.ScalingFactor;
+TO_UDINT(7), "SafetyEncoderValue", TO_REAL(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjDrive.SafetyEncoderValue;
+TO_UDINT(8), "ScalingFactor", TO_REAL(-50),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjSteer1.ScalingFactor;
+TO_UDINT(9), "DistanceToCenterX", TO_REAL(2179.966),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.DistanceToCenterX;
+TO_UDINT(9), "DistanceToCenterY", TO_REAL(896.5),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.DistanceToCenterY;
+TO_UDINT(9), "objSteer", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\ObjPW1.objSteer;
+TO_UDINT(13), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotweel1\SpeedCalculator.SafetyPulsjes;
 
 //Symbolic initialization values
 0$UDINT,
@@ -364,79 +151,34 @@ TO_UDINT(55), "SafetyPulsjes", TO_UDINT(0),//|PeripheralPiviotWheels.ObjPiviotwe
 0$UDINT,
 
 0$UDINT,
-32$UDINT,
+8$UDINT,
 TO_UDINT(0), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
 TO_UDINT(1), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-TO_UDINT(2), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-TO_UDINT(3), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-TO_UDINT(4), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-TO_UDINT(5), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-TO_UDINT(6), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-TO_UDINT(7), (1)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-TO_UDINT(8), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISDRIVE
-TO_UDINT(9), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISSTEER
-TO_UDINT(10), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJCURTISDRIVE
-TO_UDINT(11), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJCURTISSTEER
-TO_UDINT(12), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJCURTISDRIVE
-TO_UDINT(13), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJCURTISSTEER
-TO_UDINT(14), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJCURTISDRIVE
-TO_UDINT(15), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJCURTISSTEER
-TO_UDINT(24), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJENCODERPULSESTODEGREES1
-TO_UDINT(25), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJENCODERPULSESTODEGREES1
-TO_UDINT(26), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJENCODERPULSESTODEGREES1
-TO_UDINT(27), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJENCODERPULSESTODEGREES1
-TO_UDINT(28), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJDRIVE
-TO_UDINT(29), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJSTEER1
-TO_UDINT(30), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJDRIVE
-TO_UDINT(31), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\OBJSTEER1
-TO_UDINT(32), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJDRIVE
-TO_UDINT(33), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\OBJSTEER1
-TO_UDINT(34), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJDRIVE
-TO_UDINT(35), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\OBJSTEER1
-TO_UDINT(52), (1000)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\SPEEDCALCULATOR
-TO_UDINT(53), (1000)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL2\SPEEDCALCULATOR
-TO_UDINT(54), (1000)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL3\SPEEDCALCULATOR
-TO_UDINT(55), (1000)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL4\SPEEDCALCULATOR
+TO_UDINT(2), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISDRIVE
+TO_UDINT(3), (5)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJCURTISSTEER
+TO_UDINT(6), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJENCODERPULSESTODEGREES1
+TO_UDINT(7), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJDRIVE
+TO_UDINT(8), (100)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\OBJSTEER1
+TO_UDINT(13), (1000)$UDINT, 4194303$DINT, 	//OBJPIVIOTWEEL1\SPEEDCALCULATOR
 
 0$UDINT,
 0$UDINT,
 
 //External connections
 0$UDINT,
-9$UDINT,
-TO_UDINT(8), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(9), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(10), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(11), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(12), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(13), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(14), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(15), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
-TO_UDINT(44), "p_NextObject", C_TRY, TO_UDINT(2260543744), "HAL_BMS_MasterVolt\ObjPeripheralsBase","ToObject",
+3$UDINT,
+TO_UDINT(2), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
+TO_UDINT(3), "objDriver", C_TRY, TO_UDINT(415298359), "ObjCanDriver1","Command",
+TO_UDINT(12), "p_NextObject", C_TRY, TO_UDINT(979943340), "Per_Hal_Bms_MasterVolt\HAL_BMS_MasterVolt\ObjPeripheralsBase","ToObject",
 
 //Magic internal connections
 0$UDINT,
-20$UDINT,
-TO_UDINT(0), "Driver", TO_UDINT(8), "objDriver",
-TO_UDINT(0), "cNode", TO_UDINT(8), "NodeId",
-TO_UDINT(1), "Driver", TO_UDINT(9), "objDriver",
-TO_UDINT(1), "cNode", TO_UDINT(9), "NodeId",
-TO_UDINT(2), "Driver", TO_UDINT(10), "objDriver",
-TO_UDINT(2), "cNode", TO_UDINT(10), "NodeId",
-TO_UDINT(3), "Driver", TO_UDINT(11), "objDriver",
-TO_UDINT(3), "cNode", TO_UDINT(11), "NodeId",
-TO_UDINT(4), "Driver", TO_UDINT(12), "objDriver",
-TO_UDINT(4), "cNode", TO_UDINT(12), "NodeId",
-TO_UDINT(5), "Driver", TO_UDINT(13), "objDriver",
-TO_UDINT(5), "cNode", TO_UDINT(13), "NodeId",
-TO_UDINT(6), "Driver", TO_UDINT(14), "objDriver",
-TO_UDINT(6), "cNode", TO_UDINT(14), "NodeId",
-TO_UDINT(7), "Driver", TO_UDINT(15), "objDriver",
-TO_UDINT(7), "cNode", TO_UDINT(15), "NodeId",
-TO_UDINT(40), "p_NextObject", TO_UDINT(44), "p_NextObject",
-TO_UDINT(41), "p_NextObject", TO_UDINT(45), "p_NextObject",
-TO_UDINT(42), "p_NextObject", TO_UDINT(46), "p_NextObject",
-TO_UDINT(43), "p_NextObject", TO_UDINT(47), "p_NextObject",
+5$UDINT,
+TO_UDINT(0), "Driver", TO_UDINT(2), "objDriver",
+TO_UDINT(0), "cNode", TO_UDINT(2), "NodeId",
+TO_UDINT(1), "Driver", TO_UDINT(3), "objDriver",
+TO_UDINT(1), "cNode", TO_UDINT(3), "NodeId",
+TO_UDINT(11), "p_NextObject", TO_UDINT(12), "p_NextObject",
 
 //Configuration of timeslots of tasks (RealTime, Cyclic)
 #ifdef __LSLLDR_TIMESLOTS__
@@ -461,39 +203,15 @@ TO_UDINT(43), "p_NextObject", TO_UDINT(47), "p_NextObject",
 0$UDINT,
 
 0$UDINT,
-32$UDINT,
+8$UDINT,
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJCURTISDRIVE\_BASE\_CANOPENBASERIWO
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJCURTISSTEER\_BASE\_CANOPENBASERIWO
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJCURTISDRIVE
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJCURTISSTEER
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJCURTISDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJCURTISSTEER
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJCURTISDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJCURTISSTEER
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJCURTISDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJCURTISSTEER
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJENCODERPULSESTODEGREES1
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJENCODERPULSESTODEGREES1
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJENCODERPULSESTODEGREES1
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJENCODERPULSESTODEGREES1
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJDRIVE
 (0)$UDINT, 	//OBJPIVIOTWEEL1\OBJSTEER1
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL2\OBJSTEER1
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL3\OBJSTEER1
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJDRIVE
-(0)$UDINT, 	//OBJPIVIOTWEEL4\OBJSTEER1
 (0)$UDINT, 	//OBJPIVIOTWEEL1\SPEEDCALCULATOR
-(0)$UDINT, 	//OBJPIVIOTWEEL2\SPEEDCALCULATOR
-(0)$UDINT, 	//OBJPIVIOTWEEL3\SPEEDCALCULATOR
-(0)$UDINT, 	//OBJPIVIOTWEEL4\SPEEDCALCULATOR
 
 0$UDINT,
 0$UDINT,

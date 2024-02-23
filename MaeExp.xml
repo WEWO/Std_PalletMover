@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<File CRC="7316F409" Version="1.1">
+<File CRC="E4E7F55A" Version="1.1">
 	<Classes>
 		<Class
 			Name     = "_CanLib"
@@ -41,37 +41,8 @@
 				<Server Name="HeartbeatTime" Datatype="UDINT" Guid="C98E3493-C9E2-4F85-AD81-3CA8DEFC7B67" WriteProtected="false"/>
 			</Servers>
 		</Class>
-		<Class
-			Name     = "HAL_BMS_Base"
-			Datatype = "DINT"
-			Size     = "12"
-			Guid     = "816AED84-D8CA-4112-B22C-A9796F995DE5">
-		</Class>
-		<Class
-			Name     = "HAL_BMS_MasterVolt"
-			Datatype = "DINT"
-			Base     = "HAL_BMS_Base"
-			Size     = "312"
-			Guid     = "C990C64B-0225-4E8B-97CF-7B3CD518EA58">
-			<Types>
-				<Type Name="tHMIAdditionalIconBMS" Datatype="UDINT" TypeId="ENUM">
-					<Elements>
-						<Type Name="HAI_None" Value="0"/>
-						<Type Name="HAI_Attention" Value="1"/>
-						<Type Name="HAI_Charging" Value="2"/>
-					</Elements>
-				</Type>
-			</Types>
-			<Servers>
-				<Server Name="StateOfCharge" Datatype="DINT" Guid="33838AF3-8BEF-4740-A10E-84564B8CFC03" WriteProtected="false"/>
-				<Server Name="HMIIconState" Datatype="DINT" Guid="86E33F69-D002-4794-A078-6D2944ACF3F3" WriteProtected="false"/>
-				<Server Name="HMIAdditionalIcon" Datatype="HAL_BMS_MasterVolt::tHMIAdditionalIconBMS" Guid="52C15628-4C15-44CC-9AB1-4C8F7EEB8EC6" WriteProtected="false"/>
-				<Server Name="BatteryVirtualStateOfCharge" Datatype="DINT" Guid="9ACE4856-0DE9-42B4-99C2-5FAD8716E361" WriteProtected="true"/>
-			</Servers>
-		</Class>
 	</Classes>
 	<Objects>
-		<Object Name="HAL_BMS_MasterVolt" Datatype="HAL_BMS_MasterVolt" Guid="CE70CB6A-3D8E-4B66-A5FF-15A46352F95A"/>
 		<Object Name="ObjCanDriver1" Datatype="CanDriverCPU" Guid="4D278664-C979-46BD-BED2-0E8587B4232E"/>
 		<Object Name="ObjCanSyncMaster" Datatype="CanOpenCyncMaster" Guid="EA5F9656-46E5-4CFA-AB7F-A776BA523E47"/>
 	</Objects>

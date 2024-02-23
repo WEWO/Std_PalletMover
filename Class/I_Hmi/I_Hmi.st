@@ -6,7 +6,7 @@
 <Class
 	Name               = "I_Hmi"
 	Revision           = "0.0"
-	GUID               = "{8533EF94-5770-4629-B130-0D1630C4D88F}"
+	GUID               = "{1DF65F3E-335F-442A-A14C-25D72C2D949F}"
 	RealtimeTask       = "false"
 	CyclicTask         = "false"
 	BackgroundTask     = "false"
@@ -16,9 +16,9 @@
 	Automatic          = "false"
 	UpdateMode         = "Prescan"
 	SharedCommandTable = "true"
-	Objectsize         = "(284,120)">
+	Objectsize         = "(1020,120)">
 	<Channels>
-		<Server Name="ClassSvr" GUID="{0124C658-03D9-405B-8A9E-93D0D9D3173A}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="ClassSvr" GUID="{4E653495-DD9C-4915-9C63-B83F164FD320}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 	</Channels>
 </Class>
 *)

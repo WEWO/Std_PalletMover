@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="PeripheralbatteryMangementSystems" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "Per_Hal_Bms_MasterVolt"
+			GUID       = "{53BD1AC3-B688-4716-93CE-6B997F62BF5C}"
+			Class      = "Per_Hal_Bms_MasterVolt"
+			Position   = "(420,120)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="BMSInterface"/>
+				<Server Name="ClassSvr"/>
+				<Server Name="ToObject"/>
+				<Client Name="Driver"/>
+				<Client Name="op_LogData"/>
+				<Client Name="p_NextObject"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object
+							Name       = "HAL_BMS_MasterVolt"
+							GUID       = "{863324C2-9383-4404-B703-A1EF6EA62971}"
+							Class      = "HAL_BMS_MasterVolt"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="BatteryAlarms"/>
+								<Server Name="BatteryCharging"/>
+								<Server Name="BatteryCurrent"/>
+								<Server Name="BatteryTemperature"/>
+								<Server Name="BatteryVirtualStateOfCharge"/>
+								<Server Name="BatteryVoltage"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="EnergyDraw"/>
+								<Server Name="HMIAdditionalIcon"/>
+								<Server Name="HMIIconState"/>
+								<Server Name="LowBatteryLimit" Value="40"/>
+								<Server Name="NMT"/>
+								<Server Name="StateOfCharge"/>
+								<Server Name="ToObject"/>
+								<Client Name="cNode" Value="32"/>
+								<Client Name="Driver"/>
+								<Client Name="op_LogData"/>
+								<Client Name="p_NextObject"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{7A69FD96-722C-4ACA-AA19-8ACD17AC21A1}" Class="HAL_BMS_Base">
+											<Channels>
+												<Server Name="ClassSvr"/>
+											</Channels>
+										</Object>
+										<Object
+											Name       = "ObjCanOpenBase"
+											GUID       = "{E1FD22A8-7DEB-467E-921B-7DE89AFEAD99}"
+											Class      = "CanOpenWewoBase"
+											CyclicTime = "1 ms">
+											<Channels>
+												<Server Name="Server0"/>
+												<Client Name="cNode" Value="32"/>
+												<Client Name="ConfigData"/>
+												<Client Name="Driver"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{E5D8A2B4-B053-4A0C-9C64-4ED575216687}" Class="CanOpenBase">
+															<Channels>
+																<Server Name="Server0"/>
+																<Client Name="cNode" Value="32"/>
+																<Client Name="ConfigData"/>
+																<Client Name="Driver"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object
+																			Name       = "_base"
+																			GUID       = "{6E02ADFA-C291-40B1-8EC2-D5314DB6358B}"
+																			Class      = "CanBase"
+																			CyclicTime = "10 ms">
+																			<Channels>
+																				<Server Name="Server0"/>
+																				<Client Name="Driver"/>
+																				<Client Name="System"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="ObjPeripheralsBase" GUID="{4F8789F5-94D7-47D9-B568-23225BA8AFB7}" Class="PeripheralsBase">
+											<Channels>
+												<Server Name="ToObject"/>
+												<Client Name="op_LogData"/>
+												<Client Name="p_NextObject"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{D2F0E01E-6B03-4CE3-90A0-8EAD1B9F28A8}" Class="LinkedObjectBase">
+															<Channels>
+																<Server Name="ToObject"/>
+																<Client Name="op_LogData"/>
+																<Client Name="p_NextObject"/>
+																<Client Name="p_PreviousObject"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{A552B37B-F16D-44A8-B20B-D9653B9D9C8F}" Class="WewoBase">
+																			<Channels>
+																				<Server Name="m_Id"/>
+																				<Server Name="m_p_Name"/>
+																				<Server Name="o_ErrorWarningStatus"/>
+																				<Server Name="ObjectStatus"/>
+																				<Server Name="ToObject"/>
+																				<Client Name="c_Group"/>
+																				<Client Name="op_LogData"/>
+																				<Client Name="toOsLibTaskObjControl"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																							<Channels>
+																								<Server Name="ToObject"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="I_Bms1" GUID="{FDABCDE1-8EA0-4626-A6E3-32734E935518}" Class="I_Bms">
+							<Channels>
+								<Server Name="ClassSvr"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

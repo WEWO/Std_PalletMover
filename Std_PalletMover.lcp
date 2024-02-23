@@ -171,9 +171,7 @@
 		<File Path=".\Class\RAMex\RAMex.st"/>
 		<File Path=".\Class\StringRAM\StringRAM.st"/>
 		<File Path=".\Class\WewoMqtt\WewoMqtt.st"/>
-		<File Path=".\Class\AuxHmi\AuxHmi.st"/>
-		<File Path=".\Class\I_Hmi\I_Hmi.st"/>
-		<File Path=".\Class\I_PiviotWheel\I_PiviotWheel.st"/>
+		<File Path=".\Class\AuxHmiWithMqtt\AuxHmiWithMqtt.st"/>
 		<File Path=".\Source\code\OsiBase.st"/>
 		<File Path=".\Class\_Can\_Can.st"/>
 		<File Path=".\Class\_CanLib\_CanLib.st"/>
@@ -193,8 +191,7 @@
 		<File Path=".\Class\Merker\Merker.st"/>
 		<File Path=".\Class\PeripheralsBase\PeripheralsBase.st"/>
 		<File Path=".\Class\PerPiviotWeel\PerPiviotWeel.st"/>
-		<File Path=".\Class\PivotWheel\PivotWheel.st"/>
-		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.st"/>
+		<File Path=".\Class\I_PivotWheel\I_PivotWheel.st"/>
 		<File Path=".\Class\SpeedCalculator\SpeedCalculator.st"/>
 		<File Path=".\Class\System\System.st"/>
 		<File Path=".\Class\CanDriverCPU\CanDriverCPU.st"/>
@@ -203,6 +200,10 @@
 		<File Path=".\Class\Dana_Tm4\Dana_Tm4.st"/>
 		<File Path=".\Class\HAL_BMS_Base\HAL_BMS_Base.st"/>
 		<File Path=".\Class\HAL_BMS_MasterVolt\HAL_BMS_MasterVolt.st"/>
+		<File Path=".\Class\I_Hmi\I_Hmi.st"/>
+		<File Path=".\Class\HmiOption1_MqttCommuncation\HmiOption1_MqttCommuncation.st"/>
+		<File Path=".\Class\I_Bms\I_Bms.st"/>
+		<File Path=".\Class\Per_Hal_Bms_MasterVolt\Per_Hal_Bms_MasterVolt.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>
@@ -212,7 +213,7 @@
 		<File Path=".\Network\AuxMqttHmi\AuxMqttHmi.lcn"/>
 		<File Path=".\Network\PeripheralPiviotWheels\PeripheralPiviotWheels.lcn"/>
 		<File Path=".\Network\CAN_Driver\CAN_Driver.lcn"/>
-		<File Path=".\Network\PeripheralBMS\PeripheralBMS.lcn"/>
+		<File Path=".\Network\PeripheralbatteryMangementSystems\PeripheralbatteryMangementSystems.lcn"/>
 	</NetworkFiles>
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
@@ -243,7 +244,6 @@
 		<File Path=".\Class\ComDiagnosis_MQTT\ComDiagnosis_MQTT_en.pdf"/>
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_de.pdf"/>
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_en.pdf"/>
-		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.pdf"/>
 	</DocuFiles>
 	<Options>
 		<Target UseFPU="true">
@@ -377,26 +377,26 @@
 					</Folder>
 				</Folder>
 			</Folder>
-			<Folder Name="DataInterface">
-			</Folder>
 			<Folder Name="Hardware">
 				<Folder Name="BMS">
 					<Class Name="HAL_BMS_Base"/>
 					<Class Name="HAL_BMS_MasterVolt"/>
 				</Folder>
 			</Folder>
+			<Folder Name="Interface">
+				<Class Name="I_Bms"/>
+				<Class Name="I_Hmi"/>
+				<Class Name="I_PivotWheel"/>
+			</Folder>
 			<Folder Name="Main">
 				<Class Name="AgvMain"/>
 				<Class Name="MainAuxCntrl"/>
 				<Folder Name="Interfaces">
-					<Class Name="I_Hmi"/>
-					<Class Name="I_PiviotWheel"/>
 				</Folder>
 			</Folder>
 			<Folder Name="Motion">
 				<Folder Name="Calculations">
 					<Class Name="HandleSteering"/>
-					<Class Name="PivotWheel"/>
 				</Folder>
 				<Folder Name="MotorDrivers">
 					<Class Name="Dana_Tm4"/>
@@ -446,7 +446,6 @@
 			</Folder>
 		</Folder>
 		<Folder Name="WEWO_AGVLib">
-			<Class Name="SFN_StringUtils"/>
 			<Class Name="WewoStringUtils"/>
 			<Folder Name="Communication">
 				<Class Name="MqttInterface"/>
@@ -512,7 +511,7 @@
 				<Network Name="Main"/>
 			</Folder>
 			<Folder Name="peripheral">
-				<Network Name="PeripheralBMS"/>
+				<Network Name="PeripheralbatteryMangementSystems"/>
 				<Network Name="PeripheralPiviotWheels"/>
 			</Folder>
 		</Folder>

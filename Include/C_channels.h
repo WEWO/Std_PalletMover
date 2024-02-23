@@ -322,6 +322,13 @@ typedef struct CltChCmd_ASCII_BIN
     ASCII_BIN *pCmd;
   } CltChCmd_ASCII_BIN;
 
+typedef struct CltChCmd_AuxHmiWithMqtt 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    AuxHmiWithMqtt *pCmd;
+  } CltChCmd_AuxHmiWithMqtt;
+
 typedef struct CltChCmd_CanDriverBase 
   {
     struct SvrChCmd_DINT *pCh;
@@ -448,6 +455,13 @@ typedef struct CltChCmd_ENVStringAction
     ENVStringAction *pCmd;
   } CltChCmd_ENVStringAction;
 
+typedef struct CltChCmd_HAL_BMS_MasterVolt 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HAL_BMS_MasterVolt *pCmd;
+  } CltChCmd_HAL_BMS_MasterVolt;
+
 typedef struct CltChCmd_HandleSteering 
   {
     struct SvrChCmd_DINT *pCh;
@@ -461,6 +475,27 @@ typedef struct CltChCmd_HandleSteeringCurtisAC2F
     DINT dData;
     HandleSteeringCurtisAC2F *pCmd;
   } CltChCmd_HandleSteeringCurtisAC2F;
+
+typedef struct CltChCmd_I_Bms 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    I_Bms *pCmd;
+  } CltChCmd_I_Bms;
+
+typedef struct CltChCmd_I_Hmi 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    I_Hmi *pCmd;
+  } CltChCmd_I_Hmi;
+
+typedef struct CltChCmd_I_PivotWheel 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    I_PivotWheel *pCmd;
+  } CltChCmd_I_PivotWheel;
 
 typedef struct CltChCmd_LinkedObjectBase 
   {
@@ -559,20 +594,6 @@ typedef struct CltChCmd_PeripheralsBase
     pVoid dData;
     PeripheralsBase *pCmd;
   } CltChCmd_PeripheralsBase;
-
-typedef struct CltChCmd_PerPiviotWeel 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    PerPiviotWeel *pCmd;
-  } CltChCmd_PerPiviotWeel;
-
-typedef struct CltChCmd_PivotWheel 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    PivotWheel *pCmd;
-  } CltChCmd_PivotWheel;
 
 typedef struct CltChCmd_RAMex 
   {

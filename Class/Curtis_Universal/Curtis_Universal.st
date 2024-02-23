@@ -285,7 +285,7 @@
 			<Connection Source="Curtis_1232E.NodeId" Destination="this.NodeId" Vertices="(990,450),(330,450),(330,270),(38,270),"/>
 			<Connection Source="Curtis_1232E.objDriver" Destination="this.objDriver" Vertices="(990,510),(270,510),(270,330),(38,330),"/>
 			<Connection Source="Curtis_AC2F.objDriver" Destination="this.objDriver" Vertices="(1140,3840),(270,3840),(270,330),(38,330),"/>
-			<Connection Source="Curtis_AC2F.objCurtis_AC2F_IO" Destination="Curtis_AC2F_IO1.ClassSvr" Vertices="(1140,3900),(1140,3960),(810,3960),(706,4020),"/>
+			<Connection Source="Curtis_AC2F.objCurtis_AC2F_IO" Destination="Curtis_AC2F_IO1.ClassSvr" Vertices="(1140,3900),(1140,3960),(810,3960),(766,4020),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>

@@ -231,6 +231,11 @@ TYPE
     dData : DINT;
     pCmd : ^ASCII_BIN;
   END_STRUCT;
+  CltChCmd_AuxHmiWithMqtt : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^AuxHmiWithMqtt;
+  END_STRUCT;
   CltChCmd_CanDriverBase : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
@@ -321,6 +326,11 @@ TYPE
     dData : UDINT;
     pCmd : ^ENVStringAction;
   END_STRUCT;
+  CltChCmd_HAL_BMS_MasterVolt : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HAL_BMS_MasterVolt;
+  END_STRUCT;
   CltChCmd_HandleSteering : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
@@ -330,6 +340,21 @@ TYPE
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^HandleSteeringCurtisAC2F;
+  END_STRUCT;
+  CltChCmd_I_Bms : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^I_Bms;
+  END_STRUCT;
+  CltChCmd_I_Hmi : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^I_Hmi;
+  END_STRUCT;
+  CltChCmd_I_PivotWheel : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^I_PivotWheel;
   END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;
@@ -400,16 +425,6 @@ TYPE
     pCh : ^SvrChCmd_pVoid;
     dData : pVoid;
     pCmd : ^PeripheralsBase;
-  END_STRUCT;
-  CltChCmd_PerPiviotWeel : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^PerPiviotWeel;
-  END_STRUCT;
-  CltChCmd_PivotWheel : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^PivotWheel;
   END_STRUCT;
   CltChCmd_RAMex : STRUCT
     pCh : ^SvrChCmd_UDINT;

@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
+	<View Key="AuxMqttHmi" Type="0"/>
+	<View Key="Main" Type="0"/>
+	<View Key="I_Hmi" Type="2" LineNr="1"/>
+	<View Key="PeripheralbatteryMangementSystems" Type="0"/>
+	<View Key="Per_Hal_Bms_MasterVolt" Type="1"/>
+	<View Key="Per_Hal_Bms_MasterVolt" Type="2" LineNr="22"/>
+	<View Key="PeripheralbatteryMangementSystems" Type="0"/>
 	<Setting Variable="OutputDebugger" Value="0"/>
 </OpenViews>
