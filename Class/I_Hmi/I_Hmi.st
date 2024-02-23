@@ -6,7 +6,7 @@
 <Class
 	Name               = "I_Hmi"
 	Revision           = "0.0"
-	GUID               = "{0F048E44-F136-4FCC-B4F4-1AAF6CF1BBB5}"
+	GUID               = "{8533EF94-5770-4629-B130-0D1630C4D88F}"
 	RealtimeTask       = "false"
 	CyclicTask         = "false"
 	BackgroundTask     = "false"
@@ -16,59 +16,15 @@
 	Automatic          = "false"
 	UpdateMode         = "Prescan"
 	SharedCommandTable = "true"
-	Objectsize         = "(720,360)">
+	Objectsize         = "(284,120)">
 	<Channels>
-		<Server Name="GetManualLiftHeight" GUID="{2CC7CE14-0742-44EC-9362-B46338FB69FD}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="SetAgvState" GUID="{E1B004D3-5D91-4506-8CF9-83D46E00800E}" Visualized="false" Initialize="false" WriteProtected="false" Retentive="false"/>
-		<Server Name="SetErrorMessage" GUID="{D6560B49-D465-4AC4-B62E-C1CBD3CD4565}" Visualized="false" Initialize="false" WriteProtected="false" Retentive="false"/>
+		<Server Name="ClassSvr" GUID="{0124C658-03D9-405B-8A9E-93D0D9D3173A}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 	</Channels>
-	<Network Name="I_Hmi">
-		<!-- List of Components in this network -->
-		<Components>
-			<Object
-				Name       = "_base"
-				GUID       = "{74560BBF-D582-423E-955E-A541392AE1A8}"
-				Class      = "WewoBase"
-				Position   = "(218,120)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="m_Id"/>
-					<Server Name="m_p_Name"/>
-					<Server Name="o_ErrorWarningStatus"/>
-					<Server Name="ObjectStatus"/>
-					<Server Name="ToObject"/>
-					<Client Name="c_Group"/>
-					<Client Name="op_LogData"/>
-					<Client Name="toOsLibTaskObjControl"/>
-				</Channels>
-			</Object>
-		</Components>
-		<Comments>
-		</Comments>
-		<!-- List of Connections in this network -->
-		<Connections>
-			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(856,210),(684,210),"/>
-		</Connections>
-		<!-- Headerfiles -->
-		<Options>
-		</Options>
-	</Network>
 </Class>
 *)
-#pragma using WewoBase
-
 I_Hmi : CLASS
-: WewoBase
-	TYPE
-	  HmiErrorMessages :  //! <Type Public="true" Name="HmiErrorMessages"/>
-	  (
-	    NoError
-	  )$UDINT;
-	END_TYPE
   //Servers:
-	SetErrorMessage 	: SvrCh_HmiErrorMessages_PTofCls_I_Hmi;
-	SetAgvState 	: SvrCh_DINT;
-	GetManualLiftHeight 	: SvrCh_DINT;
+	ClassSvr 	: SvrChCmd_DINT;
   //Clients:
   //Variables:
   //Functions:
@@ -87,18 +43,16 @@ FUNCTION GLOBAL TAB I_Hmi::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_I_HMI
 0$UINT, 0$UINT, (SIZEOF(::I_Hmi))$UINT, 
-3$UINT, 0$UINT, 0$UINT, 
+1$UINT, 0$UINT, 0$UINT, 
 TO_UDINT(888260309), "I_Hmi", //Class
-TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, //Baseclass
+TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
-(::I_Hmi.SetErrorMessage.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1934725841), "SetErrorMessage", 
-(::I_Hmi.SetAgvState.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(4049556335), "SetAgvState", 
-(::I_Hmi.GetManualLiftHeight.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(2111435209), "GetManualLiftHeight", 
+(::I_Hmi.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
 //Clients:
 END_FUNCTION
 
 
-#define USER_CNT_I_Hmi 12
+#define USER_CNT_I_Hmi 0
 
 TYPE
 	_LSL_STD_VMETH	: STRUCT
@@ -111,41 +65,8 @@ FUNCTION I_Hmi::@STD
 	VAR_OUTPUT
 		ret_code	: CONFSTATES;
 	END_VAR
-	VAR
-		vmt	: _LSL_STD_VMETH;
-		nCmdSize	: UINT;
-	END_VAR
 
-	ret_code	:= WewoBase::@STD();
-	IF ret_code <> C_OK THEN
-		RETURN;
-	END_IF;
-	nCmdSize		:= WewoBase::ToObject.pMeth^.nCmds$UINT*SIZEOF(pVoid) + CMDMETH.Init;
-
-	_memcpy((#vmt.CmdTable)$^USINT, WewoBase::ToObject.pMeth, nCmdSize);
-	vmt.CmdTable.nCmds		:= nSTDCMD + USER_CNT_I_Hmi;
-	WewoBase::ToObject.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
-
-	IF WewoBase::ToObject.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
-	SetErrorMessage.pMeth			:= StoreMethod( #M_RD_DIRECT(), #M_WR_DIRECT() );
-	IF SetErrorMessage.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
-	SetAgvState.pMeth			:= StoreMethod( #M_RD_DIRECT(), #M_WR_DIRECT() );
-	IF SetAgvState.pMeth THEN
-		ret_code	:= C_OK;
-	ELSE
-		ret_code	:= C_OUTOF_NEAR;
-		RETURN;
-	END_IF;
+	ret_code := C_OK;
 
 END_FUNCTION
 

@@ -22,6 +22,14 @@
 #include <lsl_st_syssernum.h>
 #include "..\Class\MQTTClient\mqtt_client.h"
 #include "..\Class\_XMLStructCreator\XML_Defines.h"
+#include <CanTypes.h>
+#include "..\Class\Ram\Ram.h"
+#include <St_grconst.h>
+#include <St_graph.h>
+#include <GraphicTypes.h>
+#include "..\Class\CanDriverBase\GlCanDriverBase.h"
+#include "..\Class\CanBase\CanBaseGl.h"
+#include "..\Class\CanOpenBase\CanOpenBaseGl.h"
 
 #include "unit.h"
 #include "UserDef.h"

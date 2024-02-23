@@ -70,6 +70,15 @@
 		<File Path=".\Class\_TCPIPClient\_TCPIPClient.h"/>
 		<File Path=".\Class\_TCPIPClient\SalamanderDelay.h"/>
 		<File Path=".\Class\_TCPIPClient\lsl_st_ssl_user.h"/>
+		<File Path=".\CanTypes.h" Global="true"/>
+		<File Path=".\Class\Ram\Ram.h" Global="true"/>
+		<File Path=".\St_grconst.h" Global="true"/>
+		<File Path=".\St_graph.h" Global="true"/>
+		<File Path=".\Source\code\OsiBase.h"/>
+		<File Path=".\GraphicTypes.h" Global="true"/>
+		<File Path=".\Class\CanDriverBase\GlCanDriverBase.h" Global="true"/>
+		<File Path=".\Class\CanBase\CanBaseGl.h" Global="true"/>
+		<File Path=".\Class\CanOpenBase\CanOpenBaseGl.h" Global="true"/>
 	</HeaderFiles>
 	<ClassFiles>
 		<File Path=".\Source\code\OsiBaseNew.st"/>
@@ -127,7 +136,6 @@
 		<File Path=".\Class\LinkedListControlBase\LinkedListControlBase.st"/>
 		<File Path=".\Class\LinkedObjectBase\LinkedObjectBase.st"/>
 		<File Path=".\Class\MainAuxCntrl\MainAuxCntrl.st"/>
-		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.st"/>
 		<File Path=".\Class\_CheckSum\_CheckSum.st"/>
 		<File Path=".\Class\_ComDiagnosis\_ComDiagnosis.st"/>
 		<File Path=".\Class\_ComLogging\_ComLogging.st"/>
@@ -150,7 +158,6 @@
 		<File Path=".\Class\EnvironmentVariable\EnvironmentVariable.st"/>
 		<File Path=".\Class\ENVLib\ENVLib.st"/>
 		<File Path=".\Class\ENVStringAction\ENVStringAction.st"/>
-		<File Path=".\Class\I_Hmi\I_Hmi.st"/>
 		<File Path=".\Class\MQTTBackgroundWorker\MQTTBackgroundWorker.st"/>
 		<File Path=".\Class\MQTTClient\MQTTClient.st"/>
 		<File Path=".\Class\MQTTClient_Interface\MQTTClient_Interface.st"/>
@@ -165,6 +172,37 @@
 		<File Path=".\Class\StringRAM\StringRAM.st"/>
 		<File Path=".\Class\WewoMqtt\WewoMqtt.st"/>
 		<File Path=".\Class\AuxHmi\AuxHmi.st"/>
+		<File Path=".\Class\I_Hmi\I_Hmi.st"/>
+		<File Path=".\Class\I_PiviotWheel\I_PiviotWheel.st"/>
+		<File Path=".\Source\code\OsiBase.st"/>
+		<File Path=".\Class\_Can\_Can.st"/>
+		<File Path=".\Class\_CanLib\_CanLib.st"/>
+		<File Path=".\Class\CanBase\CanBase.st"/>
+		<File Path=".\Class\CanDriverBase\CanDriverBase.st"/>
+		<File Path=".\Class\CanOpenBase\CanOpenBase.st"/>
+		<File Path=".\Class\CanOpenBaseRiwo\CanOpenBaseRiwo.st"/>
+		<File Path=".\Class\ConfigDefBase\ConfigDefBase.st"/>
+		<File Path=".\Class\Curtis_1232E\Curtis_1232E.st"/>
+		<File Path=".\Class\Curtis_AC2F\Curtis_AC2F.st"/>
+		<File Path=".\Class\Curtis_AC2F_IO\Curtis_AC2F_IO.st"/>
+		<File Path=".\Class\Curtis_Base\Curtis_Base.st"/>
+		<File Path=".\Class\Curtis_Universal\Curtis_Universal.st"/>
+		<File Path=".\Class\EncoderpulsesToDegrees\EncoderpulsesToDegrees.st"/>
+		<File Path=".\Class\HandleSteering\HandleSteering.st"/>
+		<File Path=".\Class\HandleSteeringCurtisAC2F\HandleSteeringCurtisAC2F.st"/>
+		<File Path=".\Class\Merker\Merker.st"/>
+		<File Path=".\Class\PeripheralsBase\PeripheralsBase.st"/>
+		<File Path=".\Class\PerPiviotWeel\PerPiviotWeel.st"/>
+		<File Path=".\Class\PivotWheel\PivotWheel.st"/>
+		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.st"/>
+		<File Path=".\Class\SpeedCalculator\SpeedCalculator.st"/>
+		<File Path=".\Class\System\System.st"/>
+		<File Path=".\Class\CanDriverCPU\CanDriverCPU.st"/>
+		<File Path=".\Class\CanOpenCyncMaster\CanOpenCyncMaster.st"/>
+		<File Path=".\Class\CanOpenWewoBase\CanOpenWewoBase.st"/>
+		<File Path=".\Class\Dana_Tm4\Dana_Tm4.st"/>
+		<File Path=".\Class\HAL_BMS_Base\HAL_BMS_Base.st"/>
+		<File Path=".\Class\HAL_BMS_MasterVolt\HAL_BMS_MasterVolt.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>
@@ -172,6 +210,9 @@
 		<File Path=".\Network\Settings\Settings.lcn"/>
 		<File Path=".\Network\MainAuxControl\MainAuxControl.lcn"/>
 		<File Path=".\Network\AuxMqttHmi\AuxMqttHmi.lcn"/>
+		<File Path=".\Network\PeripheralPiviotWheels\PeripheralPiviotWheels.lcn"/>
+		<File Path=".\Network\CAN_Driver\CAN_Driver.lcn"/>
+		<File Path=".\Network\PeripheralBMS\PeripheralBMS.lcn"/>
 	</NetworkFiles>
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
@@ -179,7 +220,6 @@
 	<DocuFiles>
 		<File Path=".\Class\WewoBase\SFN_Base.pdf"/>
 		<File Path=".\Class\WewoStringUtils\SFN_StringUtils.pdf"/>
-		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.pdf"/>
 		<File Path=".\Class\WewoFileBase\SFN_FileBase.pdf"/>
 		<File Path=".\Class\Wewo_DynamicBuffer\SFN_DynamicBuffer.pdf"/>
 		<File Path=".\Class\WewoLogger\SFN_Logger.pdf"/>
@@ -203,6 +243,7 @@
 		<File Path=".\Class\ComDiagnosis_MQTT\ComDiagnosis_MQTT_en.pdf"/>
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_de.pdf"/>
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_en.pdf"/>
+		<File Path=".\Class\SFN_StringUtils\SFN_StringUtils.pdf"/>
 	</DocuFiles>
 	<Options>
 		<Target UseFPU="true">
@@ -237,9 +278,15 @@
 		</Directories>
 	</Options>
 	<SigmatekFolders>
+		<OSInterfaceFolders>
+			<Folder Name="old">
+				<Class Name="System"/>
+			</Folder>
+		</OSInterfaceFolders>
 		<Folder Name="System">
 			<Folder Name="Memory">
 				<Class Name="_MemoryBubbles"/>
+				<Class Name="Merker"/>
 				<Class Name="MerkerEx"/>
 				<Class Name="RAMex"/>
 				<Class Name="String"/>
@@ -250,6 +297,7 @@
 		</Folder>
 		<Folder Name="Tools">
 			<Folder Name="Communication">
+				<Class Name="_CanLib"/>
 				<Folder Name="MQTT">
 					<Folder Name="MQTTClient">
 						<Class Name="ComDiagnosis_MQTT"/>
@@ -320,13 +368,43 @@
 					<Class Name="AuxBase"/>
 				</Folder>
 			</Folder>
+			<Folder Name="Comunication">
+				<Folder Name="CAN_OPEN">
+					<Folder Name="SigmatekLibrary">
+						<Folder Name="LibCanOpen">
+							<Class Name="ConfigDefBase"/>
+						</Folder>
+					</Folder>
+				</Folder>
+			</Folder>
 			<Folder Name="DataInterface">
-				<Class Name="I_Hmi"/>
+			</Folder>
+			<Folder Name="Hardware">
+				<Folder Name="BMS">
+					<Class Name="HAL_BMS_Base"/>
+					<Class Name="HAL_BMS_MasterVolt"/>
+				</Folder>
 			</Folder>
 			<Folder Name="Main">
 				<Class Name="AgvMain"/>
 				<Class Name="MainAuxCntrl"/>
 				<Folder Name="Interfaces">
+					<Class Name="I_Hmi"/>
+					<Class Name="I_PiviotWheel"/>
+				</Folder>
+			</Folder>
+			<Folder Name="Motion">
+				<Folder Name="Calculations">
+					<Class Name="HandleSteering"/>
+					<Class Name="PivotWheel"/>
+				</Folder>
+				<Folder Name="MotorDrivers">
+					<Class Name="Dana_Tm4"/>
+				</Folder>
+			</Folder>
+			<Folder Name="peripherals">
+				<Folder Name="Base">
+					<Class Name="PeripheralsBase"/>
 				</Folder>
 			</Folder>
 			<Folder Name="Settings">
@@ -338,12 +416,61 @@
 				</Folder>
 			</Folder>
 		</Folder>
+		<Folder Name="L0_Hardware_Layer">
+			<Folder Name="CAN_OPEN">
+				<Folder Name="Curtis">
+					<Class Name="Curtis_Base"/>
+					<Class Name="Curtis_Universal"/>
+					<Folder Name="MotorController_1232E">
+						<Class Name="Curtis_1232E"/>
+					</Folder>
+					<Folder Name="MotorController_AC2F">
+						<Class Name="Curtis_AC2F"/>
+						<Class Name="Curtis_AC2F_IO"/>
+					</Folder>
+				</Folder>
+			</Folder>
+		</Folder>
+		<Folder Name="L4_Equipments">
+			<Class Name="HandleSteeringCurtisAC2F"/>
+		</Folder>
+		<Folder Name="RiwoLibrary">
+			<Folder Name="Communication">
+				<Folder Name="LibCan">
+					<Folder Name="LibCanOpen">
+						<Folder Name="Base">
+							<Class Name="CanOpenBaseRiwo"/>
+						</Folder>
+					</Folder>
+				</Folder>
+			</Folder>
+		</Folder>
 		<Folder Name="WEWO_AGVLib">
 			<Class Name="SFN_StringUtils"/>
 			<Class Name="WewoStringUtils"/>
 			<Folder Name="Communication">
 				<Class Name="MqttInterface"/>
 				<Class Name="WewoMqtt"/>
+				<Folder Name="LibCan">
+					<Class Name="CanDriverBase"/>
+					<Class Name="CanDriverCPU"/>
+					<Folder Name="LibCanOpen">
+						<Folder Name="Base">
+							<Class Name="CanOpenWewoBase"/>
+						</Folder>
+						<Folder Name="Communication">
+							<Folder Name="Can">
+								<Folder Name="LibCan">
+									<Class Name="CanBase"/>
+								</Folder>
+							</Folder>
+						</Folder>
+					</Folder>
+				</Folder>
+				<Folder Name="LibCanOpen">
+					<Class Name="CanOpenBase"/>
+					<Class Name="CanOpenCyncMaster"/>
+				</Folder>
 			</Folder>
 			<Folder Name="Uitzoeken">
 				<Class Name="Wewo_DynamicBuffer"/>
@@ -369,6 +496,11 @@
 				<Network Name="MainAuxControl"/>
 			</Folder>
 			<Folder Name="Configuration">
+				<Folder Name="Hardware">
+					<Folder Name="Can">
+						<Network Name="CAN_Driver"/>
+					</Folder>
+				</Folder>
 				<Folder Name="Settings">
 					<Network Name="Settings"/>
 				</Folder>
@@ -379,6 +511,12 @@
 			<Folder Name="Main">
 				<Network Name="Main"/>
 			</Folder>
+			<Folder Name="peripheral">
+				<Network Name="PeripheralBMS"/>
+				<Network Name="PeripheralPiviotWheels"/>
+			</Folder>
+		</Folder>
+		<Folder Name="L4_Equipments">
 		</Folder>
 	</NetworkFolders>
 	<TypeFolders>
@@ -386,6 +524,8 @@
 			<Folder Name="Application">
 				<Type Name="gt_AgvHandleState"/>
 				<Type Name="gt_AgvMainState"/>
+				<Type Name="gt_AgvMotorControl"/>
+				<Type Name="gt_AgvMotorState"/>
 				<Type Name="gt_AgvSettingsCmd"/>
 				<Folder Name="AutoMode">
 					<Type Name="gt_AgvMainAuto"/>

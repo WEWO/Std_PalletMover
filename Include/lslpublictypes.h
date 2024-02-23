@@ -174,12 +174,284 @@ _XMLStructCreator : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
-I_Hmi : CLASS_PUBLIC
+#pragma InclDefBlk CanOpenBase
+CanOpenBase : CLASS_PUBLIC
 	TYPE
-	  HmiErrorMessages :
+	  CanDeviceState :
 	  (
-	    NoError
+	    cds_Initialising,
+	    cds_Disconnected,
+	    cds_Connecting,
+	    cds_Preparing,
+	    cds_Prepared,
+	    cds_Operational,
+	    cds_PreOperational:=127,
+	    cds_Idle:=255
+	  )$DINT;
+#pragma pack(push, 1)
+	  tCanOpenBasePdoMap : STRUCT
+	    NumberOfItems : DINT;
+	    Config : ARRAY [0..5] OF DINT;
+	    ItemValues : ARRAY [1..4] OF DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	  tCanOpenBasePdo : ARRAY [0..3] OF tCanOpenBasePdoMap;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+CanOpenCyncMaster : CLASS_PUBLIC
+	TYPE
+	  NMT_Commands :
+	  (
+	    NC_Start:=1,
+	    NC_Stop:=2,
+	    NC_GotoPreOperational:=128,
+	    NC_Reset:=129,
+	    NC_ResetComm:=130
+	  )$DINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+Curtis_Base : CLASS_PUBLIC
+	TYPE
+	  eCurtisDriveMode :
+	  (
+	    cdm_Idle,
+	    cdm_TimeOut,
+	    cdm_EmergencyStop,
+	    cdm_Referencing,
+	    cdm_Manual,
+	    cdm_Auto,
+	    cdm_DriveReset,
+	    cdm_ExtInterlockReset
 	  )$UDINT;
+	  eCurtisDriveModeRequest :
+	  (
+	    cdmr_NoReq:=4294967295,
+	    cdmr_Idle,
+	    cdmr_Reference,
+	    cdmr_Manual:=2,
+	    cdmr_Automatic:=3,
+	    cdmr_ResetDrive:=4,
+	    cdmr_ResetExtInterlock:=5
+	  )$DINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+Curtis_AC2F : CLASS_PUBLIC
+: Curtis_Base
+	TYPE
+	  tCurtisFault :
+	  (
+	    cf_NoFault:=0,
+	    cf_ControllerOvercurrent:=18,
+	    cf_CurrentSensorFault:=19,
+	    cf_PrechargeFailed:=20,
+	    cf_ControllerSevereUndertemp:=21,
+	    cf_ControllerSevereOvertemp:=22,
+	    cf_SevereBPlusUndervoltage:=23,
+	    cf_SevereBPlusOvervoltage:=24,
+	    cf_ControllerOvertempCutback:=34,
+	    cf_BPlusUndervoltageCutback:=35,
+	    cf_BPlusOvervoltageCutback:=36,
+	    cf_5VSupplyFailure:=37,
+	    cf_DigitalOut6OpenShort:=38,
+	    cf_DigitalOut7OpenShort:=39,
+	    cf_MotorTempHotCutback:=40,
+	    cf_MotorTempSensorFault:=41,
+	    cf_Coil1DriverOpenShort:=49,
+	    cf_Coil2DriverOpenShort:=50,
+	    cf_Coil3OpenShort:=51,
+	    cf_Coil4OpenShort:=52,
+	    cf_PDOpenShort:=53,
+	    cf_EncoderFault:=54,
+	    cf_MotorOpen:=55,
+	    cf_MainContactorWelded:=56,
+	    cf_MainContactorDidNotClose:=57,
+	    cf_ThrottleWiperHigh:=64,
+	    cf_ThrottleWiperLow:=65,
+	    cf_Pot2WiperHigh:=66,
+	    cf_Pot2WiperLow:=68,
+	    cf_PotLowOvercurrent:=69,
+	    cf_EEPROMFailure:=70,
+	    cf_HPDSequencingFault:=71,
+	    cf_EmerRevHPD:=72,
+	    cf_ParameterChangeFault:=73,
+	    cf_ExternalSupplyOutOfRange:=105,
+	    cf_OSGeneral:=113,
+	    cf_PDOTimeout:=114,
+	    cf_StallDetected:=115,
+	    cf_FaultOnOtherTractionController:=116,
+	    cf_DualSevereFault:=117,
+	    cf_SupervisorFault:=119,
+	    cf_SupervisorIncompatible:=120,
+	    cf_BadCalibrations:=130,
+	    cf_DriverSupply:=131,
+	    cf_MotorCharacterizationFault:=135,
+	    cf_EncoderPulseCountFault:=136,
+	    cf_MotorTypeFault:=137,
+	    cf_VCLOSMismatch:=145,
+	    cf_EMBrakeFailedToSet:=146,
+	    cf_EncoderLOS:=147,
+	    cf_EMRRevTimeout:=148,
+	    cf_IllegalModelNumber:=152,
+	    cf_DualmotorParameterMismatch:=153,
+	    cf_VCLRuntimeError:=201
+	  )$UDINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+Curtis_Universal : CLASS_PUBLIC
+	TYPE
+	  eCurtisDriveMode :
+	  (
+	    cdm_Idle,
+	    cdm_TimeOut,
+	    cdm_EmergencyStop,
+	    cdm_Referencing,
+	    cdm_Manual,
+	    cdm_Auto,
+	    cdm_DriveReset,
+	    cdm_ExtInterlockReset
+	  )$UDINT;
+	  eCurtisDriveModel :
+	  (
+	    Model_1232e:=1,
+	    Model_AC2F:=2
+	  )$UDINT;
+	  eCurtisDriveModeRequest :
+	  (
+	    cdmr_NoReq:=4294967295,
+	    cdmr_Idle,
+	    cdmr_Reference,
+	    cdmr_Automatic,
+	    cdmr_ResetDrive,
+	    cdmr_ResetExtInterlock
+	  )$DINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+Dana_Tm4 : CLASS_PUBLIC
+	TYPE
+	  tControlWord : BINT
+	  [
+	    1 DriveEnable,
+	    2 MainContactor,
+	    3 BrakeRelease,
+	    4 Output_01,
+	    5 Output_02,
+	    6 Output_03,
+	    7 Output_04,
+	    8 SafeStop,
+	    9 Bit9,
+	    10 Bit10,
+	    11 Bit11,
+	    12 Bit12,
+	    13 Bit13,
+	    14 Bit14,
+	    15 Bit15,
+	    16 Reset,
+	  ];
+	  tStatusbyte : BSINT
+	  [
+	    1 PowerActive,
+	    2 Fault,
+	    3 TorqueMode,
+	    4 ModeAnalog,
+	    5 ModeCan,
+	    6 ccwActive,
+	    7 SafeStopActive,
+	    8 ToggelBit,
+	  ];
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+HAL_BMS_Base : CLASS_PUBLIC
+	TYPE
+	  tBMSAlarms : BDINT
+	  [
+	    1 ba_OverVoltage,
+	    2 ba_UnderVoltage,
+	    3 ba_AlmostUnderVoltage,
+	    4 ba_BatteryEmpty,
+	    5 ba_BatteryAlmostEmpty,
+	    6 ba_InternalDefect,
+	    7 ba_NoCommunication,
+	    8 Bit8,
+	    9 Bit9,
+	    10 Bit10,
+	    11 Bit11,
+	    12 Bit12,
+	    13 Bit13,
+	    14 Bit14,
+	    15 Bit15,
+	    16 Bit16,
+	    17 Bit17,
+	    18 Bit18,
+	    19 Bit19,
+	    20 Bit20,
+	    21 Bit21,
+	    22 Bit22,
+	    23 Bit23,
+	    24 Bit24,
+	    25 Bit25,
+	    26 Bit26,
+	    27 Bit27,
+	    28 Bit28,
+	    29 Bit29,
+	    30 Bit30,
+	    31 Bit31,
+	    32 Bit32,
+	  ];
+#pragma pack(push, 1)
+	  tBMSData : STRUCT
+	    bd_StateOfCharge : UINT;
+	    bd_TimeToGo : UINT;
+	    bd_EnergyDraw : INT;
+	    bd_BatteryVoltage : UINT;
+	    bd_BatteryCurrent : INT;
+	    bd_BatteryTemperature : INT;
+	    bd_BatteryCharging : BOOL;
+	    bd_BatteryLowIndication : BOOL;
+	    bd_Alarm : tBMSAlarms;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+HAL_BMS_MasterVolt : CLASS_PUBLIC
+: HAL_BMS_Base
+	TYPE
+	  tHMIAdditionalIconBMS :
+	  (
+	    HAI_None,
+	    HAI_Attention,
+	    HAI_Charging
+	  )$UDINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+HandleSteering : CLASS_PUBLIC
+	TYPE
+	  eDriveMode :
+	  (
+	    dm_Idle,
+	    dm_Manual,
+	    dm_Auto,
+	    dm_Referencing,
+	    dm_EmergencyStop
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tDriveStatus : STRUCT
+	    ds_DriveMode : eDriveMode;
+	    ds_Referenced : DINT;
+	    ds_Setpoint : REAL;
+	    ds_Actual : REAL;
+	    ds_FaultCode : DINT;
+	    ds_CommunicationOK : DINT;
+	    ds_EstopOK : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
@@ -523,6 +795,25 @@ MQTTTopic : CLASS_PUBLIC
 	    udSubscribeTimeout : UDINT;
 	    udUnsubscribeTimeout : UDINT;
 	    udPublishTimeout : UDINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+PivotWheel : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tPivotWheelParameters : STRUCT
+	    pwp_DistanceToCenterX : REAL;
+	    pwp_DistanceToCenterY : REAL;
+	    pwp_PivotWheelReferenced : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 4)
+	  tPivotWheelStatus : STRUCT
+	    pws_PivotWheelExists : BOOL;
+	    pws_Driving : HandleSteering::tDriveStatus;
+	    pws_Steering : HandleSteering::tDriveStatus;
 	  END_STRUCT;
 #pragma pack(pop)
 	END_TYPE

@@ -81,6 +81,16 @@ TYPE
     dData : gt_AgvSettingsCmd;
     pCmd : ^SVRCHCMD;
   END_STRUCT;
+  SvrCh_REAL : STRUCT
+    pMeth : ^CHMETH;
+    dData : REAL;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  CltCh_REAL : STRUCT
+    pCh : ^SvrCh_REAL;
+    dData : REAL;
+    pCmd : ^SVRCHCMD;
+  END_STRUCT;
   SvrCh_UDINT : STRUCT
     pMeth : ^CHMETH;
     dData : UDINT;
@@ -95,6 +105,16 @@ TYPE
     pMeth : ^CMDMETH;
     dData : DINT;
     pDsc : ^SVRDSC;
+  END_STRUCT;
+  CltChCmd__Can : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^_Can;
+  END_STRUCT;
+  CltChCmd__CanLib : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^_CanLib;
   END_STRUCT;
   CltChCmd__CheckSum : STRUCT
     pCh : ^SvrChCmd_DINT;
@@ -211,6 +231,26 @@ TYPE
     dData : DINT;
     pCmd : ^ASCII_BIN;
   END_STRUCT;
+  CltChCmd_CanDriverBase : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^CanDriverBase;
+  END_STRUCT;
+  CltChCmd_CanOpenBase : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^CanOpenBase;
+  END_STRUCT;
+  CltChCmd_CanOpenBaseRiwo : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^CanOpenBaseRiwo;
+  END_STRUCT;
+  CltChCmd_CanOpenWewoBase : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^CanOpenWewoBase;
+  END_STRUCT;
   SvrChCmd_pVoid : STRUCT
     pMeth : ^CMDMETH;
     dData : pVoid;
@@ -226,15 +266,40 @@ TYPE
     dData : DINT;
     pCmd : ^ComDiagnosis_MQTT;
   END_STRUCT;
+  CltChCmd_ConfigDefBase : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^ConfigDefBase;
+  END_STRUCT;
   CltChCmd_CriticalSection : STRUCT
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
     pCmd : ^CriticalSection;
   END_STRUCT;
+  CltChCmd_Curtis_1232E : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Curtis_1232E;
+  END_STRUCT;
+  CltChCmd_Curtis_AC2F : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Curtis_AC2F;
+  END_STRUCT;
+  CltChCmd_Curtis_AC2F_IO : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Curtis_AC2F_IO;
+  END_STRUCT;
   CltChCmd_DINT : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^SVRCHCMD;
+  END_STRUCT;
+  CltChCmd_EncoderpulsesToDegrees : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^EncoderpulsesToDegrees;
   END_STRUCT;
   SvrChCmd_ENV_Status : STRUCT
     pMeth : ^CMDMETH;
@@ -256,10 +321,25 @@ TYPE
     dData : UDINT;
     pCmd : ^ENVStringAction;
   END_STRUCT;
+  CltChCmd_HandleSteering : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HandleSteering;
+  END_STRUCT;
+  CltChCmd_HandleSteeringCurtisAC2F : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HandleSteeringCurtisAC2F;
+  END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;
     dData : pVoid;
     pCmd : ^LinkedObjectBase;
+  END_STRUCT;
+  CltChCmd_Merker : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Merker;
   END_STRUCT;
   CltChCmd_MerkerEx : STRUCT
     pCh : ^SvrChCmd_UDINT;
@@ -316,6 +396,21 @@ TYPE
     dData : DINT;
     pCmd : ^MQTTTopic_RetVals;
   END_STRUCT;
+  CltChCmd_PeripheralsBase : STRUCT
+    pCh : ^SvrChCmd_pVoid;
+    dData : pVoid;
+    pCmd : ^PeripheralsBase;
+  END_STRUCT;
+  CltChCmd_PerPiviotWeel : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^PerPiviotWeel;
+  END_STRUCT;
+  CltChCmd_PivotWheel : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^PivotWheel;
+  END_STRUCT;
   CltChCmd_RAMex : STRUCT
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
@@ -326,6 +421,11 @@ TYPE
     dData : DINT;
     pCmd : ^SigCLib;
   END_STRUCT;
+  CltChCmd_SpeedCalculator : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^SpeedCalculator;
+  END_STRUCT;
   CltChCmd_String : STRUCT
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
@@ -335,6 +435,11 @@ TYPE
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
     pCmd : ^StringRAM;
+  END_STRUCT;
+  CltChCmd_System : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^System;
   END_STRUCT;
   CltChCmd_Wewo_DynamicBuffer : STRUCT
     pCh : ^SvrChCmd_pVoid;
@@ -386,9 +491,39 @@ TYPE
     dData : _XMLReader::_XML_PARSE_ERROR;
     pDsc : ^SVRDSC;
   END_STRUCT;
+  SvrCh_CanDeviceState_PTofCls_CanOpenBase : STRUCT
+    pMeth : ^CHMETH;
+    dData : CanOpenBase::CanDeviceState;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eCurtisDriveMode_PTofCls_Curtis_Base : STRUCT
+    pMeth : ^CHMETH;
+    dData : Curtis_Base::eCurtisDriveMode;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eCurtisDriveModel_PTofCls_Curtis_Universal : STRUCT
+    pMeth : ^CHMETH;
+    dData : Curtis_Universal::eCurtisDriveModel;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base : STRUCT
+    pMeth : ^CHMETH;
+    dData : Curtis_Base::eCurtisDriveModeRequest;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
   SvrCh_gt_AgvMainState : STRUCT
     pMeth : ^CHMETH;
     dData : gt_AgvMainState;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_gt_AgvMotorControl : STRUCT
+    pMeth : ^CHMETH;
+    dData : gt_AgvMotorControl;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_gt_AgvMotorState : STRUCT
+    pMeth : ^CHMETH;
+    dData : gt_AgvMotorState;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_gt_FifoBufMode : STRUCT
@@ -416,11 +551,6 @@ TYPE
     dData : gt_ObjectStatus;
     pDsc : ^SVRDSC;
   END_STRUCT;
-  SvrCh_HmiErrorMessages_PTofCls_I_Hmi : STRUCT
-    pMeth : ^CHMETH;
-    dData : I_Hmi::HmiErrorMessages;
-    pDsc : ^SVRDSC;
-  END_STRUCT;
   SvrCh_pChar : STRUCT
     pMeth : ^CHMETH;
     dData : pChar;
@@ -444,6 +574,21 @@ TYPE
   SvrCh_t_e_WRITESTEPS_PTofCls__JSONWriter : STRUCT
     pMeth : ^CHMETH;
     dData : _JSONWriter::t_e_WRITESTEPS;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tBMSAlarms_PTofCls_HAL_BMS_Base : STRUCT
+    pMeth : ^CHMETH;
+    dData : HAL_BMS_Base::tBMSAlarms;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tCurtisFault_PTofCls_Curtis_AC2F : STRUCT
+    pMeth : ^CHMETH;
+    dData : Curtis_AC2F::tCurtisFault;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt : STRUCT
+    pMeth : ^CHMETH;
+    dData : HAL_BMS_MasterVolt::tHMIAdditionalIconBMS;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_XML_READ_STATE_PTofCls__XMLReader : STRUCT

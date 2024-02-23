@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="CAN_Driver" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjCanDriver1"
+			GUID       = "{4D278664-C979-46BD-BED2-0E8587B4232E}"
+			Class      = "CanDriverCPU"
+			Position   = "(60,60)"
+			Visualized = "true">
+			<Channels>
+				<Server Name="CanBus" Value="1"/>
+				<Server Name="Command"/>
+				<Server Name="ErrCntr"/>
+				<Server Name="Status"/>
+				<Client Name="cBaudrate" Value="250"/>
+				<Client Name="IrqChannel"/>
+				<Client Name="To_Can"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{F726EE06-7B7B-4D84-84C2-A45BEBB45F43}" Class="CanDriverBase">
+							<Channels>
+								<Server Name="Command"/>
+								<Server Name="ErrCntr"/>
+								<Server Name="Status"/>
+								<Client Name="CanChannel"/>
+								<Client Name="cBaudrate" Value="250"/>
+								<Client Name="IrqChannel"/>
+							</Channels>
+						</Object>
+						<Object Name="_CanLib0" GUID="{777082AF-C7C5-4C96-A8A9-1E951BD20087}" Class="_CanLib">
+							<Channels>
+								<Server Name="CanBus" Value="1"/>
+								<Server Name="Command"/>
+								<Client Name="To_Can"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+		<Object
+			Name       = "ObjCanSyncMaster"
+			GUID       = "{EA5F9656-46E5-4CFA-AB7F-A776BA523E47}"
+			Class      = "CanOpenCyncMaster"
+			Position   = "(1530,60)"
+			Visualized = "true"
+			RealTime   = "50 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="HeartbeatTime" Value="1000"/>
+				<Client Name="cNode" Value="1"/>
+				<Client Name="Driver"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object
+							Name       = "CanOpen"
+							GUID       = "{23575C73-62AE-4727-9D4F-8AFCB56482F5}"
+							Class      = "CanOpenBase"
+							CyclicTime = "10 ms">
+							<Channels>
+								<Server Name="Server0"/>
+								<Client Name="cNode" Value="1"/>
+								<Client Name="ConfigData"/>
+								<Client Name="Driver"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{6E02ADFA-C291-40B1-8EC2-D5314DB6358B}" Class="CanBase">
+											<Channels>
+												<Server Name="Server0"/>
+												<Client Name="Driver"/>
+												<Client Name="System"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjCanSyncMaster.Driver" Destination="ObjCanDriver1.Command" Vertices="(1530,150),(616,150),"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

@@ -112,6 +112,20 @@ typedef struct CltCh_gt_AgvSettingsCmd
     SVRCHCMD *pCmd;
   } CltCh_gt_AgvSettingsCmd;
 
+typedef struct SvrCh_REAL 
+  {
+    CHMETH *pMeth;
+    REAL dData;
+    SVRDSC *pDsc;
+  } SvrCh_REAL;
+
+typedef struct CltCh_REAL 
+  {
+    struct SvrCh_REAL *pCh;
+    REAL dData;
+    SVRCHCMD *pCmd;
+  } CltCh_REAL;
+
 typedef struct SvrCh_UDINT 
   {
     CHMETH *pMeth;
@@ -132,6 +146,20 @@ typedef struct SvrChCmd_DINT
     DINT dData;
     SVRDSC *pDsc;
   } SvrChCmd_DINT;
+
+typedef struct CltChCmd__Can 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    _Can *pCmd;
+  } CltChCmd__Can;
+
+typedef struct CltChCmd__CanLib 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    _CanLib *pCmd;
+  } CltChCmd__CanLib;
 
 typedef struct CltChCmd__CheckSum 
   {
@@ -294,6 +322,34 @@ typedef struct CltChCmd_ASCII_BIN
     ASCII_BIN *pCmd;
   } CltChCmd_ASCII_BIN;
 
+typedef struct CltChCmd_CanDriverBase 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    CanDriverBase *pCmd;
+  } CltChCmd_CanDriverBase;
+
+typedef struct CltChCmd_CanOpenBase 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    CanOpenBase *pCmd;
+  } CltChCmd_CanOpenBase;
+
+typedef struct CltChCmd_CanOpenBaseRiwo 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    CanOpenBaseRiwo *pCmd;
+  } CltChCmd_CanOpenBaseRiwo;
+
+typedef struct CltChCmd_CanOpenWewoBase 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    CanOpenWewoBase *pCmd;
+  } CltChCmd_CanOpenWewoBase;
+
 typedef struct SvrChCmd_pVoid 
   {
     CMDMETH *pMeth;
@@ -315,6 +371,13 @@ typedef struct CltChCmd_ComDiagnosis_MQTT
     ComDiagnosis_MQTT *pCmd;
   } CltChCmd_ComDiagnosis_MQTT;
 
+typedef struct CltChCmd_ConfigDefBase 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    ConfigDefBase *pCmd;
+  } CltChCmd_ConfigDefBase;
+
 typedef struct CltChCmd_CriticalSection 
   {
     struct SvrChCmd_UDINT *pCh;
@@ -322,12 +385,40 @@ typedef struct CltChCmd_CriticalSection
     CriticalSection *pCmd;
   } CltChCmd_CriticalSection;
 
+typedef struct CltChCmd_Curtis_1232E 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Curtis_1232E *pCmd;
+  } CltChCmd_Curtis_1232E;
+
+typedef struct CltChCmd_Curtis_AC2F 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Curtis_AC2F *pCmd;
+  } CltChCmd_Curtis_AC2F;
+
+typedef struct CltChCmd_Curtis_AC2F_IO 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Curtis_AC2F_IO *pCmd;
+  } CltChCmd_Curtis_AC2F_IO;
+
 typedef struct CltChCmd_DINT 
   {
     struct SvrChCmd_DINT *pCh;
     DINT dData;
     SVRCHCMD *pCmd;
   } CltChCmd_DINT;
+
+typedef struct CltChCmd_EncoderpulsesToDegrees 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    EncoderpulsesToDegrees *pCmd;
+  } CltChCmd_EncoderpulsesToDegrees;
 
 typedef struct SvrChCmd_ENV_Status 
   {
@@ -357,12 +448,33 @@ typedef struct CltChCmd_ENVStringAction
     ENVStringAction *pCmd;
   } CltChCmd_ENVStringAction;
 
+typedef struct CltChCmd_HandleSteering 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HandleSteering *pCmd;
+  } CltChCmd_HandleSteering;
+
+typedef struct CltChCmd_HandleSteeringCurtisAC2F 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HandleSteeringCurtisAC2F *pCmd;
+  } CltChCmd_HandleSteeringCurtisAC2F;
+
 typedef struct CltChCmd_LinkedObjectBase 
   {
     struct SvrChCmd_pVoid *pCh;
     pVoid dData;
     LinkedObjectBase *pCmd;
   } CltChCmd_LinkedObjectBase;
+
+typedef struct CltChCmd_Merker 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Merker *pCmd;
+  } CltChCmd_Merker;
 
 typedef struct CltChCmd_MerkerEx 
   {
@@ -441,6 +553,27 @@ typedef struct CltChCmd_MQTTTopic_RetVals
     MQTTTopic_RetVals *pCmd;
   } CltChCmd_MQTTTopic_RetVals;
 
+typedef struct CltChCmd_PeripheralsBase 
+  {
+    struct SvrChCmd_pVoid *pCh;
+    pVoid dData;
+    PeripheralsBase *pCmd;
+  } CltChCmd_PeripheralsBase;
+
+typedef struct CltChCmd_PerPiviotWeel 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    PerPiviotWeel *pCmd;
+  } CltChCmd_PerPiviotWeel;
+
+typedef struct CltChCmd_PivotWheel 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    PivotWheel *pCmd;
+  } CltChCmd_PivotWheel;
+
 typedef struct CltChCmd_RAMex 
   {
     struct SvrChCmd_UDINT *pCh;
@@ -455,6 +588,13 @@ typedef struct CltChCmd_SigCLib
     SigCLib *pCmd;
   } CltChCmd_SigCLib;
 
+typedef struct CltChCmd_SpeedCalculator 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    SpeedCalculator *pCmd;
+  } CltChCmd_SpeedCalculator;
+
 typedef struct CltChCmd_String 
   {
     struct SvrChCmd_UDINT *pCh;
@@ -468,6 +608,13 @@ typedef struct CltChCmd_StringRAM
     UDINT dData;
     StringRAM *pCmd;
   } CltChCmd_StringRAM;
+
+typedef struct CltChCmd_System 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    System *pCmd;
+  } CltChCmd_System;
 
 typedef struct CltChCmd_Wewo_DynamicBuffer 
   {
@@ -539,12 +686,54 @@ typedef struct SvrCh__XML_PARSE_ERROR_PTofCls__XMLReader
     SVRDSC *pDsc;
   } SvrCh__XML_PARSE_ERROR_PTofCls__XMLReader;
 
+typedef struct SvrCh_CanDeviceState_PTofCls_CanOpenBase 
+  {
+    CHMETH *pMeth;
+    CanDeviceState dData;
+    SVRDSC *pDsc;
+  } SvrCh_CanDeviceState_PTofCls_CanOpenBase;
+
+typedef struct SvrCh_eCurtisDriveMode_PTofCls_Curtis_Base 
+  {
+    CHMETH *pMeth;
+    eCurtisDriveMode dData;
+    SVRDSC *pDsc;
+  } SvrCh_eCurtisDriveMode_PTofCls_Curtis_Base;
+
+typedef struct SvrCh_eCurtisDriveModel_PTofCls_Curtis_Universal 
+  {
+    CHMETH *pMeth;
+    eCurtisDriveModel dData;
+    SVRDSC *pDsc;
+  } SvrCh_eCurtisDriveModel_PTofCls_Curtis_Universal;
+
+typedef struct SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base 
+  {
+    CHMETH *pMeth;
+    eCurtisDriveModeRequest dData;
+    SVRDSC *pDsc;
+  } SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base;
+
 typedef struct SvrCh_gt_AgvMainState 
   {
     CHMETH *pMeth;
     gt_AgvMainState dData;
     SVRDSC *pDsc;
   } SvrCh_gt_AgvMainState;
+
+typedef struct SvrCh_gt_AgvMotorControl 
+  {
+    CHMETH *pMeth;
+    gt_AgvMotorControl dData;
+    SVRDSC *pDsc;
+  } SvrCh_gt_AgvMotorControl;
+
+typedef struct SvrCh_gt_AgvMotorState 
+  {
+    CHMETH *pMeth;
+    gt_AgvMotorState dData;
+    SVRDSC *pDsc;
+  } SvrCh_gt_AgvMotorState;
 
 typedef struct SvrCh_gt_FifoBufMode 
   {
@@ -581,13 +770,6 @@ typedef struct SvrCh_gt_ObjectStatus
     SVRDSC *pDsc;
   } SvrCh_gt_ObjectStatus;
 
-typedef struct SvrCh_HmiErrorMessages_PTofCls_I_Hmi 
-  {
-    CHMETH *pMeth;
-    HmiErrorMessages dData;
-    SVRDSC *pDsc;
-  } SvrCh_HmiErrorMessages_PTofCls_I_Hmi;
-
 typedef struct SvrCh_pChar 
   {
     CHMETH *pMeth;
@@ -622,6 +804,27 @@ typedef struct SvrCh_t_e_WRITESTEPS_PTofCls__JSONWriter
     t_e_WRITESTEPS dData;
     SVRDSC *pDsc;
   } SvrCh_t_e_WRITESTEPS_PTofCls__JSONWriter;
+
+typedef struct SvrCh_tBMSAlarms_PTofCls_HAL_BMS_Base 
+  {
+    CHMETH *pMeth;
+    tBMSAlarms dData;
+    SVRDSC *pDsc;
+  } SvrCh_tBMSAlarms_PTofCls_HAL_BMS_Base;
+
+typedef struct SvrCh_tCurtisFault_PTofCls_Curtis_AC2F 
+  {
+    CHMETH *pMeth;
+    tCurtisFault dData;
+    SVRDSC *pDsc;
+  } SvrCh_tCurtisFault_PTofCls_Curtis_AC2F;
+
+typedef struct SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt 
+  {
+    CHMETH *pMeth;
+    tHMIAdditionalIconBMS dData;
+    SVRDSC *pDsc;
+  } SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt;
 
 typedef struct SvrCh_XML_READ_STATE_PTofCls__XMLReader 
   {

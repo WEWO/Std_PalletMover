@@ -38,6 +38,13 @@ typedef struct _XML_FILE
   } _XML_FILE;
 #pragma pack(pop)
 
+typedef struct CanObjStr   //! <Type Comment="Can object ( ID, Size and Data)" Name="CanObjStr"/>
+  {
+    HDINT ID;  //! <Type Comment="CAN ID of the message" Name="CanObjStr.ID"/>
+    DINT Size;  //! <Type Comment="The size of CAN data message" Name="CanObjStr.Size"/>
+    HSINT Data [cMaxCanData+1-1];  //! <Type Comment="The Data in CAN message" Name="CanObjStr.Data"/>
+  } CanObjStr;
+
 typedef UDINT ENV_Status; 
     #define ENV_NoVariableName 0
     #define ENV_ValidValue 1
@@ -114,6 +121,50 @@ typedef UDINT gt_AgvManual;
     #define ManualError 4
     #define ManualReset 5
 
+typedef struct 
+  {
+    long CommunicationError : 1;
+    long Bit2 : 1;
+    long Bit3 : 1;
+    long Bit4 : 1;
+    long Bit5 : 1;
+    long Bit6 : 1;
+    long Bit7 : 1;
+    long Bit8 : 1;
+    long Bit9 : 1;
+    long Bit10 : 1;
+    long Bit11 : 1;
+    long Bit12 : 1;
+    long Bit13 : 1;
+    long Bit14 : 1;
+    long Bit15 : 1;
+    long Bit16 : 1;
+    long Bit17 : 1;
+    long Bit18 : 1;
+    long Bit19 : 1;
+    long Bit20 : 1;
+    long Bit21 : 1;
+    long Bit22 : 1;
+    long Bit23 : 1;
+    long Bit24 : 1;
+    long Bit25 : 1;
+    long Bit26 : 1;
+    long Bit27 : 1;
+    long Bit28 : 1;
+    long Bit29 : 1;
+    long Bit30 : 1;
+    long Bit31 : 1;
+    long Bit32 : 1;
+  }gt_AgvMotorControl;
+
+typedef UDINT gt_AgvMotorState; 
+    #define M_St_Config 1
+    #define M_St_Error 2
+    #define M_St_Ready 3
+    #define M_St_Operational 4
+    #define M_St_Reset 5
+    #define M_St_Busy 6
+
 typedef UDINT gt_AgvSettingsCmd; 
     #define LoadSettings 0
     #define LoadReadyOk 1
@@ -187,5 +238,28 @@ typedef struct gt_RtLogTrigger   //! <Type Comment="OWNER: SF_Logger&#13;&#10;Tr
     UDINT Id;  //! <Type Comment="Id of logged data" Name="gt_RtLogTrigger.Id"/>
     DINT Value;  //! <Type Comment="Data value" Name="gt_RtLogTrigger.Value"/>
   } gt_RtLogTrigger;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+typedef struct PDOStr 
+  {
+    INT Val1;
+    INT Val2;
+    INT Val3;
+    INT Val4;
+  } PDOStr;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+typedef struct SDOStr   //! <Type Comment="SDO communication struct" Name="SDOStr"/>
+  {
+    HINT SdoId;  //! <Type Comment="CAN ID number" Name="SDOStr.SdoId"/>
+    struct   //! <Type Comment="SDO action code" Name="SDOStr.CmndCode"/>
+    {
+    }CmndCode;
+    UINT Index;  //! <Type Comment="Paramtere index" Name="SDOStr.Index"/>
+    USINT SIndex;  //! <Type Comment="Parameter sub index" Name="SDOStr.SIndex"/>
+    DINT Value;  //! <Type Comment="Value" Name="SDOStr.Value"/>
+  } SDOStr;
 #pragma pack(pop)
 

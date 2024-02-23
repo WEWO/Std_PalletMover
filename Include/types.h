@@ -31,6 +31,11 @@ TYPE
     MajorElement : ^_XML_ELEMENT;  //! <Type Comment="Major and first element in the XML file" Name="_XML_FILE.MajorElement"/>
   END_STRUCT;
 #pragma pack(pop)
+  CanObjStr : STRUCT  //! <Type Comment="Can object ( ID, Size and Data)" Name="CanObjStr"/>
+    ID : HDINT;  //! <Type Comment="CAN ID of the message" Name="CanObjStr.ID"/>
+    Size : DINT;  //! <Type Comment="The size of CAN data message" Name="CanObjStr.Size"/>
+    Data : ARRAY [1..cMaxCanData] OF HSINT;  //! <Type Comment="The Data in CAN message" Name="CanObjStr.Data"/>
+  END_STRUCT;
   ENV_Status :
   (
     ENV_NoVariableName,
@@ -112,6 +117,50 @@ TYPE
     ManualError,
     ManualReset
   )$UDINT;
+  gt_AgvMotorControl : BDINT
+  [
+    1 CommunicationError,
+    2 Bit2,
+    3 Bit3,
+    4 Bit4,
+    5 Bit5,
+    6 Bit6,
+    7 Bit7,
+    8 Bit8,
+    9 Bit9,
+    10 Bit10,
+    11 Bit11,
+    12 Bit12,
+    13 Bit13,
+    14 Bit14,
+    15 Bit15,
+    16 Bit16,
+    17 Bit17,
+    18 Bit18,
+    19 Bit19,
+    20 Bit20,
+    21 Bit21,
+    22 Bit22,
+    23 Bit23,
+    24 Bit24,
+    25 Bit25,
+    26 Bit26,
+    27 Bit27,
+    28 Bit28,
+    29 Bit29,
+    30 Bit30,
+    31 Bit31,
+    32 Bit32,
+  ];
+  gt_AgvMotorState :
+  (
+    M_St_Config:=1,
+    M_St_Error,
+    M_St_Ready,
+    M_St_Operational,
+    M_St_Reset,
+    M_St_Busy
+  )$UDINT;
   gt_AgvSettingsCmd :
   (
     LoadSettings,
@@ -184,6 +233,25 @@ TYPE
     ];
     Id : UDINT;  //! <Type Comment="Id of logged data" Name="gt_RtLogTrigger.Id"/>
     Value : DINT;  //! <Type Comment="Data value" Name="gt_RtLogTrigger.Value"/>
+  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+  PDOStr : STRUCT
+    Val1 : INT;
+    Val2 : INT;
+    Val3 : INT;
+    Val4 : INT;
+  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+  SDOStr : STRUCT  //! <Type Comment="SDO communication struct" Name="SDOStr"/>
+    SdoId : HINT;  //! <Type Comment="CAN ID number" Name="SDOStr.SdoId"/>
+    CmndCode : BSINT  //! <Type Comment="SDO action code" Name="SDOStr.CmndCode"/>
+    [
+    ];
+    Index : UINT;  //! <Type Comment="Paramtere index" Name="SDOStr.Index"/>
+    SIndex : USINT;  //! <Type Comment="Parameter sub index" Name="SDOStr.SIndex"/>
+    Value : DINT;  //! <Type Comment="Value" Name="SDOStr.Value"/>
   END_STRUCT;
 #pragma pack(pop)
 END_TYPE
