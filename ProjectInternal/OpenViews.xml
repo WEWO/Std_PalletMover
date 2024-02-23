@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
+	<View Key="MainAuxCntrl" Type="2" LineNr="113"/>
+	<View Key="MainAuxControl" Type="0"/>
+	<View Key="ObjMainAux" Type="1"/>
+	<View Key="ObjMainAux\_base" Type="1"/>
+	<View Key="CntrlAuxHmi" Type="2" LineNr="5"/>
+	<View Key="AuxMqttHmi" Type="0"/>
+	<View Key="Main" Type="0"/>
+	<View Key="_Settingsbase" Type="2" LineNr="139"/>
+	<View Key="AuxHmi" Type="1"/>
+	<View Key="Settings" Type="0"/>
+	<View Key="Logger" Type="0"/>
+	<View Key="Logger" Type="0"/>
 	<Setting Variable="OutputDebugger" Value="0"/>
 </OpenViews>
