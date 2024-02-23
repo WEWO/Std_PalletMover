@@ -21,11 +21,25 @@
 				<Network>
 					<!-- List of Components in this network -->
 					<Components>
-						<Object Name="Obj_Hmi" GUID="{E2651BD1-12D0-42BE-922A-1E35DDAA1DE3}" Class="I_Hmi">
+						<Object Name="InterfaceAuxHmiMqtt1" GUID="{14723CA8-A316-4D29-A3C1-71D0E56ECF26}" Class="InterfaceAuxHmiMqtt">
 							<Channels>
 								<Server Name="ClassSvr"/>
-								<Client Name="ErrorMessage"/>
 							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{72A471A3-4330-4526-BDFC-70949EC85C38}" Class="I_Hmi">
+											<Channels>
+												<Server Name="ClassSvr"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
 						</Object>
 						<Object Name="ObjCntrlAuxHmi" GUID="{64EA4809-9DE7-44D7-80AC-2DFB48F78D07}" Class="CntrlAuxHmi">
 							<Channels>
@@ -124,6 +138,33 @@
 								<Network>
 									<!-- List of Components in this network -->
 									<Components>
+										<Object Name="ObjBase" GUID="{D07E7690-CD50-4059-A4A4-6E9D0363F96B}" Class="WewoBase">
+											<Channels>
+												<Server Name="m_Id"/>
+												<Server Name="m_p_Name"/>
+												<Server Name="o_ErrorWarningStatus"/>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="c_Group"/>
+												<Client Name="op_LogData"/>
+												<Client Name="toOsLibTaskObjControl"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+															<Channels>
+																<Server Name="ToObject"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
 										<Object
 											Name           = "ObjComDiagnosisMQTT"
 											GUID           = "{DE5B62DA-E1CC-49BA-95B4-F2E16CF97E75}"
@@ -1811,33 +1852,6 @@
 																	</Connections>
 																</Network>
 															</Networks>
-														</Object>
-													</Components>
-													<Connections>
-													</Connections>
-												</Network>
-											</Networks>
-										</Object>
-										<Object Name="WewoBase1" GUID="{D07E7690-CD50-4059-A4A4-6E9D0363F96B}" Class="WewoBase">
-											<Channels>
-												<Server Name="m_Id"/>
-												<Server Name="m_p_Name"/>
-												<Server Name="o_ErrorWarningStatus"/>
-												<Server Name="ObjectStatus"/>
-												<Server Name="ToObject"/>
-												<Client Name="c_Group"/>
-												<Client Name="op_LogData"/>
-												<Client Name="toOsLibTaskObjControl"/>
-											</Channels>
-											<!-- List of Networks in this component -->
-											<Networks>
-												<Network>
-													<!-- List of Components in this network -->
-													<Components>
-														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
-															<Channels>
-																<Server Name="ToObject"/>
-															</Channels>
 														</Object>
 													</Components>
 													<Connections>

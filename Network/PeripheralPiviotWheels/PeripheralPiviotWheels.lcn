@@ -12,8 +12,9 @@
 				<Server Name="ClassSvr"/>
 				<Server Name="PiviotInterface"/>
 				<Server Name="ToObject"/>
-				<Client Name="op_LogData"/>
+				<Client Name="EncoderPulses" Value="0"/>
 				<Client Name="p_NextObject"/>
+				<Client Name="SafetyEncoderValue" Value="0"/>
 			</Channels>
 			<!-- List of Networks in this component -->
 			<Networks>
@@ -506,7 +507,7 @@
 							</Networks>
 						</Object>
 						<Object
-							Name       = "ObjEncoderpulsesToDegrees1"
+							Name       = "ObjEncoderpulsesToDegrees"
 							GUID       = "{C81AFE99-569A-42AA-8ADE-5C26FA623102}"
 							Class      = "EncoderpulsesToDegrees"
 							CyclicTime = "100 ms">
@@ -580,7 +581,7 @@
 								</Network>
 							</Networks>
 						</Object>
-						<Object Name="ObjPW1" GUID="{43AF5DFB-E45C-49EE-8D4F-4497DCC24536}" Class="I_PivotWheel">
+						<Object Name="ObjPW" GUID="{43AF5DFB-E45C-49EE-8D4F-4497DCC24536}" Class="I_PivotWheel">
 							<Channels>
 								<Server Name="ClassSvr"/>
 								<Server Name="DistanceToCenterX" Value="2179.966"/>
@@ -591,7 +592,7 @@
 							</Channels>
 						</Object>
 						<Object
-							Name       = "ObjSteer1"
+							Name       = "ObjSteer"
 							GUID       = "{F618BBE3-BCAC-4666-B951-7048CD0F6E70}"
 							Class      = "HandleSteeringCurtisAC2F"
 							CyclicTime = "100 ms">

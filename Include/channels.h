@@ -341,15 +341,15 @@ TYPE
     dData : DINT;
     pCmd : ^I_Bms;
   END_STRUCT;
-  CltChCmd_I_Hmi : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^I_Hmi;
-  END_STRUCT;
   CltChCmd_I_PivotWheel : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^I_PivotWheel;
+  END_STRUCT;
+  CltChCmd_InterfaceAuxHmiMqtt : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^InterfaceAuxHmiMqtt;
   END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;

@@ -22,15 +22,32 @@
 		<Server Name="ErrorCnt" GUID="{4B0D54F6-0537-4AF8-A6AB-8D21FFA48A20}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="Number of Errors - Read is called every cycle."/>
 		<Server Name="InterfaceState" GUID="{5A15C246-2DE0-4342-99AF-0DE7642D5706}" Class="MQTTClient_Interface" Visualized="true" Remotely="true" Initialize="false" WriteProtected="true" Retentive="false" Comment="Shows the current state of the MQTTClient_Interface."/>
 		<Server Name="LastErrorCode" GUID="{62094BDF-1C82-4B1F-958F-65278E47DA50}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="Last error code of connected ComObject - Read is called every cycle."/>
+		<Client Name="ObjBase" Required="true" Internal="true"/>
 		<Client Name="ObjComDiagnosisMQTT" Required="true" Internal="true"/>
 		<Client Name="ObjMQTTClientInterface" Required="true" Internal="true"/>
 		<Client Name="ObjMQTTClientInterfaceConfig" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
-		<Client Name="WewoBase1" Required="true" Internal="true"/>
 	</Channels>
 	<Network Name="MqttInterface">
 		<!-- List of Components in this network -->
 		<Components>
+			<Object
+				Name       = "ObjBase"
+				GUID       = "{D07E7690-CD50-4059-A4A4-6E9D0363F96B}"
+				Class      = "WewoBase"
+				Position   = "(570,1170)"
+				Visualized = "false">
+				<Channels>
+					<Server Name="m_Id"/>
+					<Server Name="m_p_Name"/>
+					<Server Name="o_ErrorWarningStatus"/>
+					<Server Name="ObjectStatus"/>
+					<Server Name="ToObject"/>
+					<Client Name="c_Group"/>
+					<Client Name="op_LogData"/>
+					<Client Name="toOsLibTaskObjControl"/>
+				</Channels>
+			</Object>
 			<Object
 				Name           = "ObjComDiagnosisMQTT"
 				GUID           = "{DE5B62DA-E1CC-49BA-95B4-F2E16CF97E75}"
@@ -143,23 +160,6 @@
 					<Client Name="SigCLib"/>
 				</Channels>
 			</Object>
-			<Object
-				Name       = "WewoBase1"
-				GUID       = "{D07E7690-CD50-4059-A4A4-6E9D0363F96B}"
-				Class      = "WewoBase"
-				Position   = "(570,1170)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="m_Id"/>
-					<Server Name="m_p_Name"/>
-					<Server Name="o_ErrorWarningStatus"/>
-					<Server Name="ObjectStatus"/>
-					<Server Name="ToObject"/>
-					<Client Name="c_Group"/>
-					<Client Name="op_LogData"/>
-					<Client Name="toOsLibTaskObjControl"/>
-				</Channels>
-			</Object>
 		</Components>
 		<Comments>
 		</Comments>
@@ -173,8 +173,8 @@
 			<Connection Source="ObjMQTTClientInterfaceConfig.MQTTClient_Interface" Destination="ObjMQTTClientInterface.InterfaceState" Vertices="(2220,300),(1032,300),"/>
 			<Connection Source="this.ErrorCnt" Destination="ObjComDiagnosisMQTT.ErrorCnt" Vertices="(3252,330),(1926,1200),"/>
 			<Connection Source="this.LastErrorCode" Destination="ObjComDiagnosisMQTT.LastErrorCode" Vertices="(3252,390),(1926,1140),"/>
-			<Connection Source="this.WewoBase1" Destination="WewoBase1.ToObject"/>
-			<Connection Source="WewoBase1.op_LogData" Destination="this.op_LogData" Vertices="(570,1260),(38,210),"/>
+			<Connection Source="this.ObjBase" Destination="ObjBase.ToObject"/>
+			<Connection Source="ObjBase.op_LogData" Destination="this.op_LogData" Vertices="(570,1260),(38,210),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -192,8 +192,8 @@ MqttInterface : CLASS
 	ObjMQTTClientInterface 	: CltChCmd_MQTTClient_Interface;
 	ObjComDiagnosisMQTT 	: CltChCmd_ComDiagnosis_MQTT;
 	ObjMQTTClientInterfaceConfig 	: CltChCmd_MQTTClient_Interface_Config;
-	WewoBase1 	: CltChCmd_WewoBase;
 	op_LogData 	: CltCh_gpt_LogData;
+	ObjBase 	: CltChCmd_WewoBase;
   //Variables:
   //Functions:
 	
@@ -244,8 +244,8 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::MqttInterface.ObjMQTTClientInterface.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1760666068), "ObjMQTTClientInterface", TO_UDINT(2880242173), "MQTTClient_Interface", 1$UINT, 16$UINT, 
 (::MqttInterface.ObjComDiagnosisMQTT.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3314622388), "ObjComDiagnosisMQTT", TO_UDINT(1778423797), "ComDiagnosis_MQTT", 1$UINT, 0$UINT, 
 (::MqttInterface.ObjMQTTClientInterfaceConfig.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2558847935), "ObjMQTTClientInterfaceConfig", TO_UDINT(23675622), "MQTTClient_Interface_Config", 1$UINT, 1$UINT, 
-(::MqttInterface.WewoBase1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(982156538), "WewoBase1", TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, 
 (::MqttInterface.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
+(::MqttInterface.ObjBase.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2828664232), "ObjBase", TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, 
 END_FUNCTION
 
 

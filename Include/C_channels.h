@@ -476,19 +476,19 @@ typedef struct CltChCmd_I_Bms
     I_Bms *pCmd;
   } CltChCmd_I_Bms;
 
-typedef struct CltChCmd_I_Hmi 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    I_Hmi *pCmd;
-  } CltChCmd_I_Hmi;
-
 typedef struct CltChCmd_I_PivotWheel 
   {
     struct SvrChCmd_DINT *pCh;
     DINT dData;
     I_PivotWheel *pCmd;
   } CltChCmd_I_PivotWheel;
+
+typedef struct CltChCmd_InterfaceAuxHmiMqtt 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    InterfaceAuxHmiMqtt *pCmd;
+  } CltChCmd_InterfaceAuxHmiMqtt;
 
 typedef struct CltChCmd_LinkedObjectBase 
   {

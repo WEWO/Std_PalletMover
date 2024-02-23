@@ -19,7 +19,6 @@
 	Objectsize         = "(1020,120)">
 	<Channels>
 		<Server Name="ClassSvr" GUID="{4E653495-DD9C-4915-9C63-B83F164FD320}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Client Name="ErrorMessage" Required="true" Internal="false"/>
 	</Channels>
 </Class>
 *)
@@ -27,9 +26,13 @@ I_Hmi : CLASS
   //Servers:
 	ClassSvr 	: SvrChCmd_DINT;
   //Clients:
-	ErrorMessage 	: CltChCmd_String;
   //Variables:
   //Functions:
+	
+	FUNCTION VIRTUAL GLOBAL SendErrorMessage
+		VAR_OUTPUT
+			OutParam 	: DINT;
+		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -38,9 +41,6 @@ I_Hmi : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
-#pragma usingLtd String
-
-
 //}}LSL_DECLARATION
 
 
@@ -48,17 +48,16 @@ FUNCTION GLOBAL TAB I_Hmi::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_I_HMI
 0$UINT, 0$UINT, (SIZEOF(::I_Hmi))$UINT, 
-1$UINT, 1$UINT, 0$UINT, 
+1$UINT, 0$UINT, 0$UINT, 
 TO_UDINT(888260309), "I_Hmi", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
 (::I_Hmi.ClassSvr.pMeth)$UINT, _CH_CMD$UINT, 2#0000000000000000$UINT, TO_UDINT(619352855), "ClassSvr", 
 //Clients:
-(::I_Hmi.ErrorMessage.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1285168489), "ErrorMessage", TO_UDINT(1850111279), "String", 1$UINT, 11$UINT, 
 END_FUNCTION
 
 
-#define USER_CNT_I_Hmi 0
+#define USER_CNT_I_Hmi 1
 
 TYPE
 	_LSL_STD_VMETH	: STRUCT
@@ -71,9 +70,33 @@ FUNCTION I_Hmi::@STD
 	VAR_OUTPUT
 		ret_code	: CONFSTATES;
 	END_VAR
+	VAR
+		vmt	: _LSL_STD_VMETH;
+	END_VAR
 
-	ret_code := C_OK;
+	//Command Methods
+	InitCmdTable (nCmd := nSTDCMD + USER_CNT_I_Hmi, pCmd := #vmt.CmdTable);
+#pragma warning (disable : 74)
+	vmt.UserFcts[0]		:= #SendErrorMessage();
+
+#pragma warning (default : 74)
+	ClassSvr.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+
+	IF ClassSvr.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
 
 END_FUNCTION
 
 //{{LSL_IMPLEMENTATION
+
+
+FUNCTION VIRTUAL GLOBAL I_Hmi::SendErrorMessage
+	VAR_OUTPUT
+		OutParam 	: DINT;
+	END_VAR
+
+END_FUNCTION

@@ -20,7 +20,7 @@
 	<Channels>
 		<Server Name="ClassSvr" GUID="{6D0A19F5-315A-4680-AAD3-2E5CC554CE68}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="HmiInterface" GUID="{8AA2075E-95B0-443C-8B5C-FD29B936A673}" Class="I_Hmi" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Client Name="Obj_Hmi" Required="true" Internal="true"/>
+		<Client Name="InterfaceAuxHmiMqtt1" Required="true" Internal="true"/>
 		<Client Name="ObjCntrlAuxHmi" Required="true" Internal="true"/>
 		<Client Name="ObjHimMqttInterface" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
@@ -34,14 +34,13 @@
 		<!-- List of Components in this network -->
 		<Components>
 			<Object
-				Name       = "Obj_Hmi"
-				GUID       = "{E2651BD1-12D0-42BE-922A-1E35DDAA1DE3}"
-				Class      = "I_Hmi"
-				Position   = "(4140,690)"
+				Name       = "InterfaceAuxHmiMqtt1"
+				GUID       = "{14723CA8-A316-4D29-A3C1-71D0E56ECF26}"
+				Class      = "InterfaceAuxHmiMqtt"
+				Position   = "(4740,690)"
 				Visualized = "false">
 				<Channels>
 					<Server Name="ClassSvr"/>
-					<Client Name="ErrorMessage"/>
 				</Channels>
 			</Object>
 			<Object
@@ -133,12 +132,10 @@
 			<Connection Source="ObjCntrlAuxHmi.ToSettings" Destination="this.ToSettings" Vertices="(1260,510),(38,330),"/>
 			<Connection Source="ObjCntrlAuxHmi.ToConfiguration" Destination="this.ToConfiguration" Vertices="(1260,450),(38,270),"/>
 			<Connection Source="ObjHimMqttInterface.op_LogData" Destination="this.op_LogData" Vertices="(1260,810),(38,390),"/>
-			<Connection Source="this.HmiInterface" Destination="Obj_Hmi.ClassSvr" Vertices="(5348,270),(5176,780),"/>
+			<Connection Source="this.InterfaceAuxHmiMqtt1" Destination="InterfaceAuxHmiMqtt1.ClassSvr"/>
 			<Connection Source="ObjCntrlAuxHmi.p_NextObject" Destination="this.p_NextObject" Vertices="(1260,390),(38,210),"/>
 			<Connection Source="this.WewoMqtt1_Copy" Destination="WewoMqtt1_Copy.TopicState"/>
 			<Connection Source="WewoMqtt1_Copy.ocMQTTClient_Interface" Destination="ObjHimMqttInterface.InterfaceState" Vertices="(2670,1080),(2236,870),"/>
-			<Connection Source="Obj_Hmi.ErrorMessage" Destination="WewoMqtt1.DataString" Vertices="(4140,780),(3826,780),"/>
-			<Connection Source="this.Obj_Hmi" Destination="Obj_Hmi.ClassSvr"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -159,7 +156,7 @@ AuxHmiWithMqtt : CLASS
 	ToSettings 	: CltChCmd_AgvSettings;
 	op_LogData 	: CltCh_gpt_LogData;
 	WewoMqtt1_Copy 	: CltChCmd_WewoMqtt;
-	Obj_Hmi 	: CltChCmd_I_Hmi;
+	InterfaceAuxHmiMqtt1 	: CltChCmd_InterfaceAuxHmiMqtt;
   //Variables:
   //Functions:
 	
@@ -176,7 +173,7 @@ AuxHmiWithMqtt : CLASS
 END_CLASS;
 
 #pragma using CntrlAuxHmi
-#pragma using I_Hmi
+#pragma using InterfaceAuxHmiMqtt
 #pragma using MqttInterface
 #pragma using WewoMqtt
 #pragma usingLtd AgvConfig
@@ -206,7 +203,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::AuxHmiWithMqtt.ToSettings.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000110$UINT, TO_UDINT(336224626), "ToSettings", TO_UDINT(1195094022), "AgvSettings", 0$UINT, 0$UINT, 
 (::AuxHmiWithMqtt.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000100$UINT, TO_UDINT(1597732449), "op_LogData", 
 (::AuxHmiWithMqtt.WewoMqtt1_Copy.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(421103629), "WewoMqtt1_Copy", TO_UDINT(1359692133), "WewoMqtt", 0$UINT, 0$UINT, 
-(::AuxHmiWithMqtt.Obj_Hmi.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3637262993), "Obj_Hmi", TO_UDINT(888260309), "I_Hmi", 0$UINT, 0$UINT, 
+(::AuxHmiWithMqtt.InterfaceAuxHmiMqtt1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3215926124), "InterfaceAuxHmiMqtt1", TO_UDINT(1881672228), "InterfaceAuxHmiMqtt", 0$UINT, 0$UINT, 
 END_FUNCTION
 
 
