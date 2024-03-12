@@ -16,7 +16,7 @@
 				<Server Name="ip_RtLogFile"/>
 				<Server Name="m_Id"/>
 				<Server Name="m_p_Name"/>
-				<Server Name="MsgLogLevel" Value="LL_INFO"/>
+				<Server Name="MsgLogLevel" Value="LL_ERROR_CRITICAL"/>
 				<Server Name="MsgLogTarget" Value="LT_SCREEN"/>
 				<Server Name="o_ErrorWarningStatus"/>
 				<Server Name="o_MsgLogCnt"/>
@@ -46,7 +46,7 @@
 								<Server Name="ip_RtLogFile"/>
 								<Server Name="m_Id"/>
 								<Server Name="m_p_Name"/>
-								<Server Name="MsgLogLevel" Value="LL_INFO"/>
+								<Server Name="MsgLogLevel" Value="LL_ERROR_CRITICAL"/>
 								<Server Name="MsgLogTarget" Value="LT_SCREEN"/>
 								<Server Name="o_ErrorWarningStatus"/>
 								<Server Name="o_MsgLogCnt"/>

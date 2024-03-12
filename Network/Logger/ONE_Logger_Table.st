@@ -56,7 +56,7 @@ TO_UDINT(2), "toEnumTranslator", TO_UDINT(1), "ToObject",
 //Initialization values
 0$UDINT,
 7$UDINT,
-TO_UDINT(2), "MsgLogLevel", TO_UDINT(LL_INFO),//|Logger.ObjMLog.MsgLogLevel;
+TO_UDINT(2), "MsgLogLevel", TO_UDINT(LL_ERROR_CRITICAL),//|Logger.ObjMLog.MsgLogLevel;
 TO_UDINT(2), "MsgLogTarget", TO_UDINT(LT_SCREEN),//|Logger.ObjMLog.MsgLogTarget;
 TO_UDINT(2), "RtLogBufMode", TO_UDINT(FIFOBUFMODE_ONCE),//|Logger.ObjMLog.RtLogBufMode;
 TO_UDINT(2), "Command", TO_UDINT(LOGCMD_IDLE),//|Logger.ObjMLog.Command;

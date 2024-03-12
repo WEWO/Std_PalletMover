@@ -237,8 +237,6 @@
 		<File Path=".\Class\WewoStringUtils\SFN_StringUtils.pdf"/>
 		<File Path=".\Class\WewoFileBase\SFN_FileBase.pdf"/>
 		<File Path=".\Class\Wewo_DynamicBuffer\SFN_DynamicBuffer.pdf"/>
-		<File Path=".\Class\WewoLogger\SFN_Logger.pdf"/>
-		<File Path=".\Class\WewoLogger\Logging.vov"/>
 		<File Path=".\Class\WewoMainLogger\SF_PB_Logger.pdf"/>
 		<File Path=".\Class\MQTTClient_Interface_ConfigBase\MQTTClient_Interface_Config_de.pdf"/>
 		<File Path=".\Class\MQTTClient_Interface_ConfigBase\MQTTClient_Interface_Config_en.pdf"/>
@@ -561,6 +559,9 @@
 				<Folder Name="Aux">
 					<Type Name="gt_AgvMainAux"/>
 				</Folder>
+				<Folder Name="ErrorList">
+					<Type Name="gt_AgvErrors"/>
+				</Folder>
 				<Folder Name="Hardware">
 					<Type Name="gt_AgvMainHardware"/>
 				</Folder>
@@ -576,6 +577,7 @@
 			</Folder>
 			<Folder Name="WewoLogger">
 				<Type Name="gpt_LogData"/>
+				<Type Name="gt_GroupLevel"/>
 				<Type Name="gt_LogData"/>
 				<Type Name="gt_LogLevel"/>
 			</Folder>

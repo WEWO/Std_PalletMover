@@ -346,11 +346,6 @@ TYPE
     dData : DINT;
     pCmd : ^HandleSteeringCurtisAC2F;
   END_STRUCT;
-  CltChCmd_HwI_BasicLift : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^HwI_BasicLift;
-  END_STRUCT;
   CltChCmd_I_Lift : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;

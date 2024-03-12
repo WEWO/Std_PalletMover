@@ -62,6 +62,8 @@ AgvConfig : CLASS
   //Variables:
   //Functions:
 	
+	FUNCTION VIRTUAL GLOBAL Init;
+	
 	FUNCTION VIRTUAL GLOBAL Command::Read
 		VAR_OUTPUT
 			output (EAX) 	: gt_AgvSettingsCmd;
@@ -124,6 +126,7 @@ FUNCTION AgvConfig::@STD
 
 	_memcpy((#vmt.CmdTable)$^USINT, _Settingsbase::ClassSvr.pMeth, nCmdSize);
 	vmt.CmdTable.nCmds		:= nSTDCMD + USER_CNT_AgvConfig;
+	vmt.CmdTable.Init		:= #Init();
 	_Settingsbase::ClassSvr.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
 
 	IF _Settingsbase::ClassSvr.pMeth THEN
@@ -159,7 +162,7 @@ FUNCTION VIRTUAL GLOBAL AgvConfig::Command::Write
         LoadSettings:
 
             if UpdateFile(Name:="c:\settings\machinesettings.json") = true then
-    	        result := LoadReadyOk;
+    	        result := LoadLoading;
             else
                 result:= LoadReadError;
             end_if;
@@ -177,8 +180,20 @@ FUNCTION VIRTUAL GLOBAL AgvConfig::Command::Read
 		output (EAX) 	: gt_AgvSettingsCmd;
 	END_VAR
 
-    
+    if JSreader.ReadFSM.Read() = _JSONReader::t_e_READSTEPS::RS_COMPLETE then
+          pObjectHandle := JsReader.GetMainElement();
+          if pObjectHandle <> nil then
+              Command := ::gt_AgvSettingsCmd::LoadReadyOk;
+           end_if;
+    end_if;
 
 	output := Command;
+
+END_FUNCTION
+
+
+FUNCTION VIRTUAL GLOBAL AgvConfig::Init
+
+    
 
 END_FUNCTION

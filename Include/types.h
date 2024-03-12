@@ -66,6 +66,10 @@ TYPE
   END_STRUCT;
 #pragma pack(pop)
   gpt_LogData : ^gt_LogData;  //! <Type Comment="OWNER: SF_Logger&#13;&#10;Pointer to logdata, interface between safan logger and other classes." Name="gpt_LogData"/>
+  gt_AgvErrors :
+  (
+    SettingNotFound
+  )$UDINT;
   gt_AgvHandleState :
   (
     HandleOperational,
@@ -173,12 +177,19 @@ TYPE
   (
     LoadSettings,
     LoadReadyOk,
-    LoadReadError
+    LoadReadError,
+    LoadLoading
   )$UDINT;
   gt_FifoBufMode :  //! <Type Comment="OWNER: SF_DynamicBuffer&#13;&#10;FiFo Buffer mode &#13;&#10;- Cyclic (overwrite buffer if buffer is full)&#13;&#10;- Once   (Stop writing if buffer is full)&#13;&#10;&#13;&#10;&#13;&#10;FiFo := First In First Out" Name="gt_FifoBufMode"/>
   (
     FIFOBUFMODE_ONCE,  //! <Type Comment="Stop writing if buffer is full" Name="gt_FifoBufMode.FIFOBUFMODE_ONCE"/>
     FIFOBUFMODE_CYCLIC  //! <Type Comment="Overwrite buffer if buffer is full&#13;&#10;" Name="gt_FifoBufMode.FIFOBUFMODE_CYCLIC"/>
+  )$UDINT;
+  gt_GroupLevel :
+  (
+    NoGroup,
+    Settings,
+    Config
   )$UDINT;
   gt_LogCmd :  //! <Type Comment="OWNER: SF_Logger&#13;&#10;Log commands" Name="gt_LogCmd"/>
   (

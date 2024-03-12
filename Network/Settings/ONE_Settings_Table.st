@@ -120,7 +120,7 @@ TO_UDINT(26), "DataBuffer", TO_UDINT(20), "m_udLength",
 
 //Initialization values
 0$UDINT,
-12$UDINT,
+13$UDINT,
 TO_UDINT(15), "ThreadSafe", TO_UDINT(0),//|Settings.cJSONVersion\_cJSON\JsReader\_base\ObjAgvProgram\MerkerEx0.ThreadSafe;
 TO_UDINT(16), "ThreadSafe", TO_UDINT(0),//|Settings.cJSONVersion\_cJSON\JsWriter\_base\ObjAgvProgram\MerkerEx0.ThreadSafe;
 TO_UDINT(17), "ThreadSafe", TO_UDINT(0),//|Settings.cJSONVersion\_cJSON\JsReader\_base\ObjConfig\MerkerEx0.ThreadSafe;
@@ -133,6 +133,7 @@ TO_UDINT(23), "SingleRealloc", TO_UDINT(1),//|Settings._cJSON\JsReader\_base\Obj
 TO_UDINT(24), "SingleRealloc", TO_UDINT(1),//|Settings._cJSON\JsWriter\_base\ObjConfig\cJSONVersion.SingleRealloc;
 TO_UDINT(25), "SingleRealloc", TO_UDINT(1),//|Settings._cJSON\JsReader\_base\ObjMachine\cJSONVersion.SingleRealloc;
 TO_UDINT(26), "SingleRealloc", TO_UDINT(1),//|Settings._cJSON\JsWriter\_base\ObjMachine\cJSONVersion.SingleRealloc;
+TO_UDINT(28), "c_Group", TO_UDINT(0),//|Settings._base\ObjConfig\WewoBase3.c_Group;
 
 //Symbolic initialization values
 0$UDINT,

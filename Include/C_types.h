@@ -76,6 +76,9 @@ typedef struct gt_LogData   //! <Type Comment="OWNER: SF_Logger&#13;&#10;Log dat
 
 typedef gt_LogData *gpt_LogData;  //! <Type Comment="OWNER: SF_Logger&#13;&#10;Pointer to logdata, interface between safan logger and other classes." Name="gpt_LogData"/>
 
+typedef UDINT gt_AgvErrors; 
+    #define SettingNotFound 0
+
 typedef UDINT gt_AgvHandleState; 
     #define HandleOperational 0
     #define HandleStartUp 1
@@ -176,10 +179,16 @@ typedef UDINT gt_AgvSettingsCmd;
     #define LoadSettings 0
     #define LoadReadyOk 1
     #define LoadReadError 2
+    #define LoadLoading 3
 
 typedef UDINT gt_FifoBufMode;   //! <Type Comment="OWNER: SF_DynamicBuffer&#13;&#10;FiFo Buffer mode &#13;&#10;- Cyclic (overwrite buffer if buffer is full)&#13;&#10;- Once   (Stop writing if buffer is full)&#13;&#10;&#13;&#10;&#13;&#10;FiFo := First In First Out" Name="gt_FifoBufMode"/>
     #define FIFOBUFMODE_ONCE 0
     #define FIFOBUFMODE_CYCLIC 1
+
+typedef UDINT gt_GroupLevel; 
+    #define NoGroup 0
+    #define Settings 1
+    #define Config 2
 
 typedef UDINT gt_LogCmd;   //! <Type Comment="OWNER: SF_Logger&#13;&#10;Log commands" Name="gt_LogCmd"/>
     #define LOGCMD_IDLE 0

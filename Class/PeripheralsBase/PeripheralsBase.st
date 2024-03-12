@@ -96,13 +96,25 @@ PeripheralsBase : CLASS
   //Variables:
   //Functions:
 	
-	FUNCTION VIRTUAL GLOBAL HandleOperational;
+	FUNCTION VIRTUAL GLOBAL HandleOperational
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
-	FUNCTION VIRTUAL GLOBAL Handleconfiguration;
+	FUNCTION VIRTUAL GLOBAL Handleconfiguration
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
-	FUNCTION VIRTUAL GLOBAL HandleGetSettings;
+	FUNCTION VIRTUAL GLOBAL HandleGetSettings
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
-	FUNCTION VIRTUAL GLOBAL HandleStartUp;
+	FUNCTION VIRTUAL GLOBAL HandleStartUp
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -185,16 +197,25 @@ END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL PeripheralsBase::HandleOperational
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 
 END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL PeripheralsBase::Handleconfiguration
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 
 END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL PeripheralsBase::HandleGetSettings
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 
 
 
@@ -202,5 +223,8 @@ END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL PeripheralsBase::HandleStartUp
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 
 END_FUNCTION

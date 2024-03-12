@@ -8,7 +8,7 @@
 	Revision           = "0.0"
 	GUID               = "{7B6CD543-93AF-4258-8D66-62A5DBFDA723}"
 	RealtimeTask       = "false"
-	CyclicTask         = "false"
+	CyclicTask         = "true"
 	BackgroundTask     = "false"
 	Sigmatek           = "false"
 	OSInterface        = "false"
@@ -19,7 +19,7 @@
 	Objectsize         = "(284,120)">
 	<Channels>
 		<Server Name="ClassSvr" GUID="{FD8B4204-5452-435F-9930-4D105E4D4296}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
-		<Server Name="Test" GUID="{D7686C8F-0289-4BA0-B337-6B0CA1EDCDEB}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="Test" GUID="{D7686C8F-0289-4BA0-B337-6B0CA1EDCDEB}" Visualized="false" Initialize="false" WriteProtected="false" Retentive="false"/>
 	</Channels>
 </Class>
 *)
@@ -30,6 +30,27 @@ Dummy : CLASS
   //Clients:
   //Variables:
   //Functions:
+	
+	FUNCTION VIRTUAL GLOBAL CyWork
+		VAR_INPUT
+			EAX 	: UDINT;
+		END_VAR
+		VAR_OUTPUT
+			state (EAX) 	: UDINT := READY;
+		END_VAR;
+	
+	FUNCTION VIRTUAL GLOBAL Test::Read
+		VAR_OUTPUT
+			output (EAX) 	: DINT;
+		END_VAR;
+	
+	FUNCTION VIRTUAL GLOBAL Test::Write
+		VAR_INPUT
+			input (EAX) 	: DINT;
+		END_VAR
+		VAR_OUTPUT
+			result (EAX) 	: DINT;
+		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -68,9 +89,68 @@ FUNCTION Dummy::@STD
 	VAR_OUTPUT
 		ret_code	: CONFSTATES;
 	END_VAR
+	VAR
+		vmt	: _LSL_STD_VMETH;
+	END_VAR
 
-	ret_code := C_OK;
+	//Command Methods
+	InitCmdTable (nCmd := nSTDCMD + USER_CNT_Dummy, pCmd := #vmt.CmdTable);
+	vmt.CmdTable.CyWork		:= #CyWork();
+	ClassSvr.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
+
+	IF ClassSvr.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
+	Test.pMeth			:= StoreMethod( #Test::Read(), #Test::Write() );
+	IF Test.pMeth THEN
+		ret_code	:= C_OK;
+	ELSE
+		ret_code	:= C_OUTOF_NEAR;
+		RETURN;
+	END_IF;
 
 END_FUNCTION
 
 //{{LSL_IMPLEMENTATION
+
+
+FUNCTION VIRTUAL GLOBAL Dummy::CyWork
+	VAR_INPUT
+		EAX 	: UDINT;
+	END_VAR
+	VAR_OUTPUT
+		state (EAX) 	: UDINT;(* := READY *)
+	END_VAR
+
+
+    Test := test + 1;
+    Test.Write(input:=test);
+
+END_FUNCTION
+
+
+FUNCTION VIRTUAL GLOBAL Dummy::Test::Write
+	VAR_INPUT
+		input (EAX) 	: DINT;
+	END_VAR
+	VAR_OUTPUT
+		result (EAX) 	: DINT;
+	END_VAR
+
+	Test := input;
+	result := Test;
+
+END_FUNCTION
+
+
+FUNCTION VIRTUAL GLOBAL Dummy::Test::Read
+	VAR_OUTPUT
+		output (EAX) 	: DINT;
+	END_VAR
+
+	output := Test;
+
+END_FUNCTION

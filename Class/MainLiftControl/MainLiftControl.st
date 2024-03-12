@@ -27,9 +27,8 @@
 		<Client Name="AgvConfig" Required="true" Internal="false"/>
 		<Client Name="AgvSettings" Required="true" Internal="false"/>
 		<Client Name="Ain_AnalogPosition" Required="true" Internal="false"/>
-		<Client Name="HwI_Lift" Required="true" Internal="true"/>
 		<Client Name="I_Lift" Required="true" Internal="true"/>
-		<Client Name="SensorMaxHeight" Required="true" Internal="false"/>
+		<Client Name="SensorMaxHeight" Required="false" Internal="false"/>
 		<Client Name="SensorMinHeight" Required="true" Internal="false"/>
 		<Client Name="Speed" Required="true" Internal="false"/>
 	</Channels>
@@ -46,22 +45,6 @@
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_NextObject"/>
-				</Channels>
-			</Object>
-			<Object
-				Name       = "HwI_Lift"
-				GUID       = "{9D536542-C5AD-4214-A431-11F0052B7376}"
-				Class      = "HwI_BasicLift"
-				Position   = "(210,840)"
-				Visualized = "false">
-				<Channels>
-					<Server Name="ClassSvr"/>
-					<Client Name="ActuatorValveDown"/>
-					<Client Name="ActuatorValveUp"/>
-					<Client Name="Ain_AnalogPosition"/>
-					<Client Name="SensorMaxHeight"/>
-					<Client Name="SensorMinHeight"/>
-					<Client Name="Speed"/>
 				</Channels>
 			</Object>
 			<Object
@@ -87,17 +70,10 @@
 			<Connection Source="_base.op_LogData" Destination="this.op_LogData" Vertices="(218,210),(38,210),"/>
 			<Connection Source="_base.p_NextObject" Destination="this.p_NextObject" Vertices="(218,270),(38,270),"/>
 			<Connection Source="this.I_Lift" Destination="I_Lift.ClassSvr"/>
-			<Connection Source="this.HwI_Lift" Destination="HwI_Lift.ClassSvr"/>
-			<Connection Source="HwI_Lift.Ain_AnalogPosition" Destination="this.Ain_AnalogPosition" Vertices="(210,930),(38,450),"/>
-			<Connection Source="HwI_Lift.SensorMaxHeight" Destination="this.SensorMaxHeight" Vertices="(210,990),(38,510),"/>
-			<Connection Source="HwI_Lift.SensorMinHeight" Destination="this.SensorMinHeight" Vertices="(210,1050),(38,570),"/>
 			<Connection Source="this.ActualHeight" Destination="I_Lift.ActualHeight" Vertices="(976,330),(796,540),"/>
 			<Connection Source="this.SetHeight" Destination="I_Lift.SetHeight" Vertices="(976,390),(796,600),"/>
 			<Connection Source="this.SetSpeed" Destination="I_Lift.SetSpeed" Vertices="(976,450),(796,660),"/>
 			<Connection Source="this.State" Destination="I_Lift.State" Vertices="(976,510),(796,720),"/>
-			<Connection Source="HwI_Lift.ActuatorValveUp" Destination="this.ActuValveUp" Vertices="(210,1110),(38,630),"/>
-			<Connection Source="HwI_Lift.ActuatorValveDown" Destination="this.ActuValveDown" Vertices="(210,1170),(38,690),"/>
-			<Connection Source="HwI_Lift.Speed" Destination="this.Speed" Vertices="(210,1230),(38,750),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -116,7 +92,6 @@ MainLiftControl : CLASS
 	State 	: SvrCh_LiftState_PTofCls_I_Lift;
   //Clients:
 	I_Lift 	: CltChCmd_I_Lift;
-	HwI_Lift 	: CltChCmd_HwI_BasicLift;
 	AgvConfig 	: CltChCmd_AgvConfig;
 	AgvSettings 	: CltCh_DINT;
 	Ain_AnalogPosition 	: CltCh_DINT;
@@ -126,14 +101,24 @@ MainLiftControl : CLASS
 	ActuValveDown 	: CltCh_DINT;
 	Speed 	: CltCh_DINT;
   //Variables:
-		HasMaxHeightSensor 	: ^CHAR;
+		ConnectionMaxHeightSensor 	: ^CHAR;
+		Stepper 	: DINT;
   //Functions:
 	
-	FUNCTION VIRTUAL GLOBAL HandleOperational;
+	FUNCTION VIRTUAL GLOBAL HandleOperational
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
-	FUNCTION VIRTUAL GLOBAL Handleconfiguration;
+	FUNCTION VIRTUAL GLOBAL Handleconfiguration
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
-	FUNCTION VIRTUAL GLOBAL HandleGetSettings;
+	FUNCTION VIRTUAL GLOBAL HandleGetSettings
+		VAR_OUTPUT
+			RetValue 	: DINT;
+		END_VAR;
 	
 	FUNCTION GetConfigSettings;
 	
@@ -166,7 +151,6 @@ MainLiftControl : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
-#pragma using HwI_BasicLift
 #pragma using I_Lift
 #pragma usingLtd AgvConfig
 
@@ -178,7 +162,7 @@ FUNCTION GLOBAL TAB MainLiftControl::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_MAINLIFTCONTROL
 0$UINT, 0$UINT, (SIZEOF(::MainLiftControl))$UINT, 
-4$UINT, 10$UINT, 0$UINT, 
+4$UINT, 9$UINT, 0$UINT, 
 TO_UDINT(1395773024), "MainLiftControl", //Class
 TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, //Baseclass
 //Servers:
@@ -188,15 +172,14 @@ TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, //Baseclass
 (::MainLiftControl.State.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1422331979), "State", 
 //Clients:
 (::MainLiftControl.I_Lift.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1199214265), "I_Lift", TO_UDINT(1199214265), "I_Lift", 0$UINT, 0$UINT, 
-(::MainLiftControl.HwI_Lift.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2408644114), "HwI_Lift", TO_UDINT(298123817), "HwI_BasicLift", 0$UINT, 0$UINT, 
 (::MainLiftControl.AgvConfig.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3641531850), "AgvConfig", TO_UDINT(3641531850), "AgvConfig", 0$UINT, 0$UINT, 
 (::MainLiftControl.AgvSettings.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(1195094022), "AgvSettings", 
-(::MainLiftControl.Ain_AnalogPosition.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(116367619), "Ain_AnalogPosition", 
-(::MainLiftControl.SensorMaxHeight.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(391493714), "SensorMaxHeight", 
-(::MainLiftControl.SensorMinHeight.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(3233679891), "SensorMinHeight", 
-(::MainLiftControl.ActuValveUp.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(371618052), "ActuValveUp", 
-(::MainLiftControl.ActuValveDown.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(2583098308), "ActuValveDown", 
-(::MainLiftControl.Speed.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000110$UINT, TO_UDINT(4168236102), "Speed", 
+(::MainLiftControl.Ain_AnalogPosition.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(116367619), "Ain_AnalogPosition", 
+(::MainLiftControl.SensorMaxHeight.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(391493714), "SensorMaxHeight", 
+(::MainLiftControl.SensorMinHeight.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(3233679891), "SensorMinHeight", 
+(::MainLiftControl.ActuValveUp.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(371618052), "ActuValveUp", 
+(::MainLiftControl.ActuValveDown.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(2583098308), "ActuValveDown", 
+(::MainLiftControl.Speed.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(4168236102), "Speed", 
 END_FUNCTION
 
 
@@ -325,16 +308,40 @@ END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL MainLiftControl::HandleOperational
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 
 END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL MainLiftControl::Handleconfiguration
-GetConfigSettings();
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
+    
+    RetValue := False;;
+    
+    case Stepper of
+        
+        0:
+                 GetConfigSettings();
+                Stepper += 1;
+        1:
+              SensorMaxHeight := SensorMaxHeight.Read();
+        
+                // RetValue := true;
+      end_case;
+
 END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL MainLiftControl::HandleGetSettings
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
+    
+    
 
 END_FUNCTION
 
@@ -345,11 +352,14 @@ FUNCTION MainLiftControl::GetConfigSettings
 // Use sensor and make connection with hardware
 
 
+// Get config
+ConnectionMaxHeightSensor := AgvConfig.GetStringValue(Path:="AGV.Peripherals.BasicActuator.Connection.SensorMaxHeight");
 
-HasMaxHeightSensor := AgvConfig.GetStringValue(Path:="AGV.Peripherals.Actuator.UseSensorMaxHeight");
 
-
-
+// Set connection's
+if ConnectionMaxHeightSensor<> nil then
+   ConnectClientChannels(ConnectionMaxHeightSensor);
+end_if;
 
 END_FUNCTION
 

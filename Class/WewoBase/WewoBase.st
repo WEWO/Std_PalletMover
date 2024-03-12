@@ -313,6 +313,9 @@ WewoBase : CLASS
 	FUNCTION ParseConectionLine
 		VAR_INPUT
 			ConnectionStr 	: ^CHAR;
+		END_VAR
+		VAR_OUTPUT
+			RetValue 	: DINT;
 		END_VAR;
 	
 	FUNCTION VIRTUAL GLOBAL ObjectStatus::Write
@@ -1431,7 +1434,7 @@ FUNCTION VIRTUAL GLOBAL WewoBase::ConnectClientChannels
     
     Logdata.LogLevel := LL_ERROR_APPLICATION;
     Logdata.p_ObjName := "WewoBase.connection";
-    Logdata.p_Msg :=ConnectionString
+    Logdata.p_Msg :=ConnectionString;
 
      ParseConectionLine(ConnectionString);
 
@@ -1660,16 +1663,16 @@ FUNCTION WewoBase::ParseConectionLine
 	VAR_INPUT
 		ConnectionStr 	: ^CHAR;
 	END_VAR
+	VAR_OUTPUT
+		RetValue 	: DINT;
+	END_VAR
 VAR
   after_equal   :dint;
   configtype    :dint;
   index         : Usint;
   counter       :dint;
-  temp          :pVoid;
-  DataType      :ARRAY[0..201] OF CHAR;
-  Str_DataValue :ARRAY[0..201] OF CHAR;
-  String2 :Array[0..201] of CHAR;
-  String :Array[0..201] of CHAR;
+  ClientChanel          :ARRAY[0..201] OF CHAR;
+  ServerChannel       :ARRAY[0..201] OF CHAR;
   CurVal : char;
 END_VAR
  
@@ -1678,48 +1681,40 @@ END_VAR
   configtype  := 0;
   
   for index := 0 to 200 by 1 do
-    Str_DataValue[index]  := 0;
-    String2[index]        := 0;//dbg
+    ClientChanel[index]  := 0;
+    ServerChannel[index] := 0;
   end_for;
   
   index       := 0;
   
-  while  ConnectionStr^+index <> 0 do
- CurVal  := ConnectionStr^+index ;
-    if  CurVal='<' & (CurVal= '>') then
+  while  (ConnectionStr+index)^ <> 0 do
+ CurVal  :=  (ConnectionStr+index)^  ;
+    if  CurVal='<' | (CurVal= '>') then
       configtype := 1; // This is a connection line.  server <> client
  
-    end_if;
-    if (CurVal='$') then
-      configtype := 2; // This is a string server >> string
-     CurVal :='=';
-    end_if;
-    
-    if (CurVal> 31) & (CurVal < 123) then   // Filter all wrong Ascii characters from string
-     if (CurVal = '=') & (after_equal =0)then
-      after_equal         := index;
-      DataType[counter]   := 0;
-      string[counter]     := 0;
-      counter := 0;
+    elsif  (CurVal> 31) & (CurVal < 123) then   // Filter all wrong Ascii characters from string
+        if (CurVal = '=') then
+            after_equal         := index;
+            counter := 0;
       elsif (after_equal = 0) then
-        DataType[counter]      := CurVal
-        string[counter]        := CurVal; //dbg
-        counter += 1;
+           ClientChanel[counter]      := CurVal;
+           counter += 1;
       else
-        Str_DataValue[counter]  := CurVal;
-        String2[counter]        := CurVal;//dbg
+        ServerChannel[counter]  := CurVal;
         counter += 1;
       end_if;
     end_if;
     Index +=1;
   end_while;
-  
-  Str_DataValue[counter] := 0;
+ 
   counter += 1;
   case configtype of
 
     1:// Connection   cl         client
-      ConnectCltSvr(#DataType[1], #DataType[0]);
+     RetValue :=  ConnectCltSvr(#ClientChanel[0], #ServerChannel[0]);
          
+     else
+        RetValue := false;
+     
    end_case;
 END_FUNCTION

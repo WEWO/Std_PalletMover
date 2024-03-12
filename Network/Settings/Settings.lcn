@@ -452,7 +452,7 @@
 												<Server Name="o_ErrorWarningStatus"/>
 												<Server Name="ObjectStatus"/>
 												<Server Name="ToObject"/>
-												<Client Name="c_Group"/>
+												<Client Name="c_Group" Value="0"/>
 												<Client Name="op_LogData"/>
 												<Client Name="toOsLibTaskObjControl"/>
 											</Channels>

@@ -8,9 +8,8 @@ FUNCTION GLOBAL TAB ONE_PeripheralLift
 -1$UINT, 0$UINT, 
 0$UINT, 0$UINT,
 
-8$UDINT,
+7$UDINT,
 TO_UDINT(3097505935), "Dummy", 0$UINT, 0$UINT, 1$UINT,
-TO_UDINT(298123817), "HwI_BasicLift", 0$UINT, 0$UINT, 1$UINT,
 TO_UDINT(1199214265), "I_Lift", 0$UINT, 0$UINT, 1$UINT,
 TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 0$UINT,
 TO_UDINT(1395773024), "MainLiftControl", 0$UINT, 0$UINT, 1$UINT,
@@ -19,8 +18,6 @@ TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, 0$UINT,
 TO_UDINT(1771708268), "WewoStringUtils", 0$UINT, 10$UINT, 1$UINT,
 
 _NO_ATTR, TO_UDINT(3926584543), "OBJD", 
-
-1$UINT, TO_UDINT(4060292732), "OBJMAINLIFTCONTROL\HWI_LIFT", 
 
 1$UINT, TO_UDINT(1704887600), "OBJMAINLIFTCONTROL\I_LIFT", 
 
@@ -33,28 +30,21 @@ _NO_ATTR, TO_UDINT(4240207655), "OBJMAINLIFTCONTROL",
 
 //Internal connections
 0$UDINT,
-3$UDINT,
-TO_UDINT(3), "_ObjStr", TO_UDINT(4),
-TO_UDINT(3), "I_Lift", TO_UDINT(2),
-TO_UDINT(3), "HwI_Lift", TO_UDINT(1),
+2$UDINT,
+TO_UDINT(2), "_ObjStr", TO_UDINT(3),
+TO_UDINT(2), "I_Lift", TO_UDINT(1),
 0$UDINT,
 0$UDINT,
 
 //Initialization values
 0$UDINT,
-12$UDINT,
-TO_UDINT(1), "Ain_AnalogPosition", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.Ain_AnalogPosition;
-TO_UDINT(1), "SensorMaxHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.SensorMaxHeight;
-TO_UDINT(1), "SensorMinHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.SensorMinHeight;
-TO_UDINT(1), "ActuatorValveUp", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.ActuatorValveUp;
-TO_UDINT(1), "ActuatorValveDown", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.ActuatorValveDown;
-TO_UDINT(1), "Speed", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl\HwI_Lift.Speed;
-TO_UDINT(3), "Ain_AnalogPosition", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Ain_AnalogPosition;
-TO_UDINT(3), "SensorMaxHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.SensorMaxHeight;
-TO_UDINT(3), "SensorMinHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.SensorMinHeight;
-TO_UDINT(3), "ActuValveUp", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.ActuValveUp;
-TO_UDINT(3), "ActuValveDown", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.ActuValveDown;
-TO_UDINT(3), "Speed", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Speed;
+6$UDINT,
+TO_UDINT(2), "Ain_AnalogPosition", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Ain_AnalogPosition;
+TO_UDINT(2), "SensorMaxHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.SensorMaxHeight;
+TO_UDINT(2), "SensorMinHeight", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.SensorMinHeight;
+TO_UDINT(2), "ActuValveUp", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.ActuValveUp;
+TO_UDINT(2), "ActuValveDown", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.ActuValveDown;
+TO_UDINT(2), "Speed", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Speed;
 
 //Symbolic initialization values
 0$UDINT,
@@ -69,7 +59,8 @@ TO_UDINT(3), "Speed", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Speed;
 0$UDINT,
 
 0$UDINT,
-0$UDINT,
+1$UDINT,
+TO_UDINT(0), (1sec)$UDINT, 4194303$DINT, 	//OBJD
 
 0$UDINT,
 0$UDINT,
@@ -77,18 +68,12 @@ TO_UDINT(3), "Speed", TO_UDINT(0),//|PeripheralLift.ObjMainLiftControl.Speed;
 //External connections
 0$UDINT,
 2$UDINT,
-TO_UDINT(3), "AgvConfig", C_DIR, TO_UDINT(4182867590), "ObjConfig","ClassSvr",
-TO_UDINT(3), "AgvSettings", C_DIR, TO_UDINT(1932410655), "ObjMachine","ClassSvr",
+TO_UDINT(2), "AgvConfig", C_DIR, TO_UDINT(4182867590), "ObjConfig","ClassSvr",
+TO_UDINT(2), "AgvSettings", C_DIR, TO_UDINT(1932410655), "ObjMachine","ClassSvr",
 
 //Magic internal connections
 0$UDINT,
-6$UDINT,
-TO_UDINT(1), "Ain_AnalogPosition", TO_UDINT(3), "Ain_AnalogPosition",
-TO_UDINT(1), "SensorMaxHeight", TO_UDINT(3), "SensorMaxHeight",
-TO_UDINT(1), "SensorMinHeight", TO_UDINT(3), "SensorMinHeight",
-TO_UDINT(1), "ActuatorValveUp", TO_UDINT(3), "ActuValveUp",
-TO_UDINT(1), "ActuatorValveDown", TO_UDINT(3), "ActuValveDown",
-TO_UDINT(1), "Speed", TO_UDINT(3), "Speed",
+0$UDINT,
 
 //Configuration of timeslots of tasks (RealTime, Cyclic)
 #ifdef __LSLLDR_TIMESLOTS__
@@ -113,7 +98,8 @@ TO_UDINT(1), "Speed", TO_UDINT(3), "Speed",
 0$UDINT,
 
 0$UDINT,
-0$UDINT,
+1$UDINT,
+(0)$UDINT, 	//OBJD
 
 0$UDINT,
 0$UDINT,

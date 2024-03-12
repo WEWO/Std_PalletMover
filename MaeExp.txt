@@ -2,8 +2,6 @@
 B6AB01F0
 [VERSION]
 2.08
-[VOV]
-.\Class\WewoLogger\Logging.vov
 [ENUM]
 [TYPES]
 [STRUCTURES]

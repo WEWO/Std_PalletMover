@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <Breakpoints>
-	<BP ClassName="MainPeripheralCntrl" SrcName=".\Class\MainPeripheralCntrl\MainPeripheralCntrl.st" Line="89" LineOffset="229" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
-	<BP ClassName="_Settingsbase" SrcName=".\Class\_Settingsbase\_Settingsbase.st" Line="160" LineOffset="228" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
-	<BP ClassName="MainLiftControl" SrcName=".\Class\MainLiftControl\MainLiftControl.st" Line="74" LineOffset="280" OffsetAddr="-1" State="65537" ObjectCondition="" Condition="" ConditionCount="0"/>
+	<BP ClassName="AgvMain" SrcName=".\Class\AgvMain\AgvMain.st" Line="51" LineOffset="208" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
+	<BP ClassName="MainLiftControl" SrcName=".\Class\MainLiftControl\MainLiftControl.st" Line="60" LineOffset="263" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
+	<BP ClassName="MainLiftControl" SrcName=".\Class\MainLiftControl\MainLiftControl.st" Line="93" LineOffset="263" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
+	<BP ClassName="AgvMain" SrcName=".\Class\AgvMain\AgvMain.st" Line="73" LineOffset="208" OffsetAddr="-1" State="65536" ObjectCondition="" Condition="" ConditionCount="0"/>
 </Breakpoints>

@@ -1,39 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
-	<View Key="AuxMqttHmi" Type="0"/>
-	<View Key="Main" Type="0"/>
-	<View Key="I_Hmi" Type="2" LineNr="9"/>
-	<View Key="ObjAuxHmi\ObjCntrlAuxHmi" Type="1"/>
-	<View Key="ObjAuxHmi" Type="1"/>
-	<View Key="AuxHmiWithMqtt" Type="5"/>
-	<View Key="HAL_BMS_MasterVolt" Type="2" LineNr="44"/>
-	<View Key="CAN_Driver" Type="0"/>
-	<View Key="I_PivotWheel" Type="2" LineNr="55"/>
-	<View Key="PeripheralPiviotWheels" Type="0"/>
-	<View Key="HardwareControl" Type="0"/>
-	<View Key=".\Include\channels.h" Type="4" LineNr="46"/>
-	<View Key="MainAuxCntrl" Type="2" LineNr="35"/>
-	<View Key="PeripheralbatteryMangementSystems" Type="0"/>
-	<View Key="Logger" Type="0"/>
-	<View Key="PeripheralLift" Type="0"/>
-	<View Key="ObjMainLiftControl" Type="1"/>
-	<View Key="PeripheralsBase" Type="2" LineNr="10"/>
-	<View Key="MainLiftControl" Type="2" LineNr="74"/>
-	<View Key="_Settingsbase" Type="2" LineNr="20"/>
-	<View Key="Settings" Type="0"/>
-	<View Key="WewoLogger" Type="2" LineNr="415"/>
-	<View Key="MainHardwareCntrl1\_base" Type="1"/>
-	<View Key=".\Class\LinkedListControlBase\LinkedListControlBase.st" Type="4" LineNr="29"/>
-	<View Key=".\Class\LinkedObjectBase\LinkedObjectBase.st" Type="4" LineNr="26"/>
-	<View Key=".\Class\WewoBase\WewoBase.st" Type="4" LineNr="40"/>
-	<View Key=".\Include\types.h" Type="4" LineNr="59"/>
-	<View Key=".\Include\global.h" Type="4" LineNr="16"/>
-	<View Key="AgvMain" Type="2" LineNr="99"/>
-	<View Key="MainPeripheral" Type="0"/>
-	<View Key="MainAuxControl" Type="0"/>
-	<View Key="MainPeripheralCntrl" Type="2" LineNr="10"/>
-	<View Key="_JSONReader" Type="2" LineNr="305"/>
-	<View Key="AgvConfig" Type="2" LineNr="35"/>
-	<View Key="MainLiftControl" Type="2" LineNr="74"/>
-	<Setting Variable="OutputDebugger" Value="2"/>
+	<Setting Variable="OutputDebugger" Value="3"/>
 </OpenViews>

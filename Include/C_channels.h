@@ -483,13 +483,6 @@ typedef struct CltChCmd_HandleSteeringCurtisAC2F
     HandleSteeringCurtisAC2F *pCmd;
   } CltChCmd_HandleSteeringCurtisAC2F;
 
-typedef struct CltChCmd_HwI_BasicLift 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    HwI_BasicLift *pCmd;
-  } CltChCmd_HwI_BasicLift;
-
 typedef struct CltChCmd_I_Lift 
   {
     struct SvrChCmd_DINT *pCh;

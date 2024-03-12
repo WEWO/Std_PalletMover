@@ -39,12 +39,6 @@
 		<Client Name="ToOsKernel" Required="false" Internal="false" Comment="To OS Kernel&#13;&#10;(Automatically connected to OS)"/>
 		<Client Name="ToSysMsg" Required="false" Internal="false" Comment="To OS System Message&#13;&#10;(Automatically connected to OS)"/>
 	</Channels>
-	<Dependencies>
-		<Files>
-			<File Path=".\Class\WewoLogger\SFN_Logger.pdf"/>
-			<File Path=".\Class\WewoLogger\Logging.vov"/>
-		</Files>
-	</Dependencies>
 	<RevDoku>
 		<Owner Company="Safan" Author="HenOdi"/>
 		<Dokumentation Revision="0.8" Date="2012-06-07" Author="HenOdi" Company="Safan" Description="Take over retentive server values on startup before the first time Init() is called."/>
@@ -1188,7 +1182,7 @@ FUNCTION VIRTUAL GLOBAL WewoLogger::ip_LogData::Write
         
         if ip_LogData^.rtCall = FALSE then
           // Write Message is called outside a RT-task
-
+      
           // Be sure first stored message is handled before 
           if RtTaskMsgData.p_ObjName <> NIL then
             TRACE("Delayed logged message from a RealTime task:");
@@ -1221,12 +1215,16 @@ FUNCTION VIRTUAL GLOBAL WewoLogger::ip_LogData::Write
                 
         
       end_if;  
+       
+    
+    
+  
     
       if ip_LogData^.LogLevel > LL_WARNING then
         // Error detected, Send event
         o_ErrorWarningEvent := ip_LogData^.Id;
         o_ErrorWarningEvent.Write(input:=o_ErrorWarningEvent);
-        
+      
       end_if;
 
     end_if;

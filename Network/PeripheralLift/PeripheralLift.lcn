@@ -7,7 +7,8 @@
 			GUID       = "{6CB304BC-09BF-497E-BEDB-B07C8FDA893F}"
 			Class      = "Dummy"
 			Position   = "(1920,390)"
-			Visualized = "false">
+			Visualized = "false"
+			CyclicTime = "1sec">
 			<Channels>
 				<Server Name="ClassSvr"/>
 				<Server Name="Test"/>
@@ -102,17 +103,6 @@
 									</Connections>
 								</Network>
 							</Networks>
-						</Object>
-						<Object Name="HwI_Lift" GUID="{9D536542-C5AD-4214-A431-11F0052B7376}" Class="HwI_BasicLift">
-							<Channels>
-								<Server Name="ClassSvr"/>
-								<Client Name="ActuatorValveDown" Value="0"/>
-								<Client Name="ActuatorValveUp" Value="0"/>
-								<Client Name="Ain_AnalogPosition" Value="0"/>
-								<Client Name="SensorMaxHeight" Value="0"/>
-								<Client Name="SensorMinHeight" Value="0"/>
-								<Client Name="Speed" Value="0"/>
-							</Channels>
 						</Object>
 						<Object Name="I_Lift" GUID="{E26D8194-2357-4E3D-85F3-2B210961C2C6}" Class="I_Lift">
 							<Channels>

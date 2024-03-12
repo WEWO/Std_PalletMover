@@ -243,6 +243,9 @@ FUNCTION _Settingsbase::UpdateFile
         pObjectHandle := JsReader.GetMainElement();
         ItemOk      :=  0;
         ItemError   :=  0;
+        else
+        
+        
     end_if;
      
 END_FUNCTION
@@ -314,6 +317,8 @@ FUNCTION GLOBAL _Settingsbase::GetDintValue
     pReadVariableHandle := GetObjectPath(Path);
     if pReadVariableHandle <> nil then
         value := pReadVariableHandle^.Val_Int$Dint;
+    else
+        WewoBase3.WriteActiveErrorWarning(IntErrorWarningId:=::gt_AgvErrors::SettingNotFound, LogLevel:=::gt_LogLevel::LL_ERROR_INTERNAL, p_msg:=Path);
     end_if;
 
 END_FUNCTION
@@ -334,6 +339,9 @@ FUNCTION GLOBAL _Settingsbase::GetStringValue
     pReadVariableHandle := GetObjectPath(Path);
     if pReadVariableHandle <> nil then
         value := pReadVariableHandle^.Val_String$^char;
+        else
+        value := nil;
+        WewoBase3.WriteActiveErrorWarning(IntErrorWarningId:=::gt_AgvErrors::SettingNotFound, LogLevel:=::gt_LogLevel::LL_ERROR_INTERNAL, p_msg:=Path);
     end_if;
 
 END_FUNCTION
@@ -357,6 +365,8 @@ FUNCTION GLOBAL _Settingsbase::GetDoubleValue
     pReadVariableHandle := GetObjectPath(Path);
     if pReadVariableHandle <> nil then
         temp :=pReadVariableHandle^.Val_String$dint;
+          else
+        WewoBase3.WriteActiveErrorWarning(IntErrorWarningId:=::gt_AgvErrors::SettingNotFound, LogLevel:=::gt_LogLevel::LL_ERROR_INTERNAL, p_msg:=Path);
     end_if;
 
     value := to_real(temp);
@@ -393,7 +403,8 @@ FUNCTION GLOBAL _Settingsbase::GetBooleanValue
           end_if;
       end_if;
       else
-            value := false
+                WewoBase3.WriteActiveErrorWarning(IntErrorWarningId:=::gt_AgvErrors::SettingNotFound, LogLevel:=::gt_LogLevel::LL_ERROR_INTERNAL, p_msg:=Path);
+            value := false;
             // write error
      end_if;
 

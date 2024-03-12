@@ -257,7 +257,7 @@ FUNCTION AgvMain::MainLoop
     
         Agv_Configuration:
             AgvConfiguration();
-             
+           
         Agv_StartUp:
             AgvStartup();
 
@@ -277,7 +277,6 @@ FUNCTION AgvMain::MainLoop
             AgvRecoverError();
         
     end_case;
-
 
 
 END_FUNCTION
@@ -324,16 +323,18 @@ FUNCTION AgvMain::AgvConfiguration
             end_if;
             
         CleanUpState:                                // CleanUpState Local and Start next step.
-           AgvCurHandleState := ReadyState;
+            AgvCurHandleState :=ReadyState;
     
         ErrorState:                            // Start State Error Sequence.
-            //AgvCurHandleState := ReadyState;
+               AgvCurHandleState :=ReadyState;
         
         ReqExitState:                          // Run config exit.
-            AgvCurHandleState := ReadyState;
+              AgvCurHandleState :=ReadyState;
         
-       
-        
+        ReadyState:
+             ReqMainState := CurMainState := Agv_idle;
+             AgvCurHandleState  := StartPreState;
+             
       end_case;
         
 
@@ -360,13 +361,18 @@ FUNCTION AgvMain::AgvStartup
             
         CleanUpState:                                // CleanUpState Local and Start next step.
            AgvCurHandleState := ReadyState;
-    
+        
+            
         ErrorState:                            // Start State Error Sequence.
             AgvCurHandleState := ReadyState;
+            
         
         ReqExitState:                          // Run config exit.
             AgvCurHandleState := ReadyState;
+      
         
+        ReadyState:
+           
       end_case;
 END_FUNCTION
 
