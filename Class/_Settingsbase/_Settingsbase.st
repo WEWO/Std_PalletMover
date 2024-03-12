@@ -151,6 +151,14 @@ _Settingsbase : CLASS
 		VAR_OUTPUT
 			value 	: REAL;
 		END_VAR;
+	
+	FUNCTION GLOBAL GetBooleanValue
+		VAR_INPUT
+			Path 	: ^CHAR;
+		END_VAR
+		VAR_OUTPUT
+			value 	: BOOL;
+		END_VAR;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -228,7 +236,7 @@ FUNCTION _Settingsbase::UpdateFile
 		Value 	: BOOL;
 	END_VAR
 
-  //  Name:="c:\settings\machinesettings.json";
+  Name:="c:\settings\Configuration.json";
     
     Value :=JsReader.ReadFile(Name) ;
     if Value = TRUE then
@@ -357,4 +365,36 @@ END_FUNCTION
 
 FUNCTION VIRTUAL GLOBAL _Settingsbase::Init
    
+END_FUNCTION
+
+
+FUNCTION GLOBAL _Settingsbase::GetBooleanValue
+	VAR_INPUT
+		Path 	: ^CHAR;
+	END_VAR
+	VAR_OUTPUT
+		value 	: BOOL;
+	END_VAR
+       VAR
+    	pReadVariableHandle  : ^_cJSON::t_s_cJSON;
+        temp : ^char;
+    END_VAR
+    
+      value := false;
+
+    pReadVariableHandle := GetObjectPath(Path);
+    if pReadVariableHandle <> nil then
+        if pReadVariableHandle^.Val_String <> nil then
+        _strupr(str:=pReadVariableHandle^.Val_String);
+           if _stricmp(pReadVariableHandle^.Val_String ,temp) = 0 then
+            value := true;
+            else
+            Value := false;
+          end_if;
+      end_if;
+      else
+            value := false
+            // write error
+     end_if;
+
 END_FUNCTION

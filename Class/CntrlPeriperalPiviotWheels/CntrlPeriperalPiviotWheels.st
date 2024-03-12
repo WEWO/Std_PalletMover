@@ -90,7 +90,7 @@ TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, //Baseclass
 END_FUNCTION
 
 
-#define USER_CNT_CntrlPeriperalPiviotWheels 18
+#define USER_CNT_CntrlPeriperalPiviotWheels 19
 
 TYPE
 	_LSL_STD_VMETH	: STRUCT

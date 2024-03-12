@@ -22,16 +22,16 @@ _NO_ATTR, TO_UDINT(421070726), "OBJAUTOCONTROL",
 _NO_ATTR, TO_UDINT(3482420597), "OBJMANUALCONTROL", 
 
 
-1$UINT, TO_UDINT(4064313380), "OBJAGVMAINCONTROL\_BASE\OBJ_STRINGUTILS", 
-1$UINT, TO_UDINT(777639867), "OBJAUTOCONTROL\_BASE\OBJ_STRINGUTILS", 
-1$UINT, TO_UDINT(3392196176), "OBJMANUALCONTROL\_BASE\OBJ_STRINGUTILS", 
+1$UINT, TO_UDINT(782922779), "OBJAGVMAINCONTROL\_BASE\_OBJSTR", 
+1$UINT, TO_UDINT(1996985888), "OBJAUTOCONTROL\_BASE\_OBJSTR", 
+1$UINT, TO_UDINT(594363622), "OBJMANUALCONTROL\_BASE\_OBJSTR", 
 
 //Internal connections
 0$UDINT,
 3$UDINT,
-TO_UDINT(0), "Obj_StringUtils", TO_UDINT(3),
-TO_UDINT(1), "Obj_StringUtils", TO_UDINT(4),
-TO_UDINT(2), "Obj_StringUtils", TO_UDINT(5),
+TO_UDINT(0), "_ObjStr", TO_UDINT(3),
+TO_UDINT(1), "_ObjStr", TO_UDINT(4),
+TO_UDINT(2), "_ObjStr", TO_UDINT(5),
 0$UDINT,
 2$UDINT,
 TO_UDINT(0), "ToManualControl", TO_UDINT(2), "AgvManualControl",
@@ -40,7 +40,7 @@ TO_UDINT(0), "ToAutoControl", TO_UDINT(1), "AgvAutoControl",
 //Initialization values
 0$UDINT,
 4$UDINT,
-TO_UDINT(0), "MainState", TO_UDINT(Agv_idle),//|Main.ObjAgvMainControl.MainState;
+TO_UDINT(0), "MainState", TO_UDINT(Agv_Configuration),//|Main.ObjAgvMainControl.MainState;
 TO_UDINT(0), "ToMainPeripheral", TO_UDINT(PerIdle),//|Main.ObjAgvMainControl.ToMainPeripheral;
 TO_UDINT(1), "AgvAutoControl", TO_UDINT(AutoIdle),//|Main.ObjAutoControl.AgvAutoControl;
 TO_UDINT(2), "AgvManualControl", TO_UDINT(ManualIdle),//|Main.ObjManualControl.AgvManualControl;
@@ -66,10 +66,11 @@ TO_UDINT(0), (10)$UDINT, 4194303$DINT, 	//OBJAGVMAINCONTROL
 
 //External connections
 0$UDINT,
-3$UDINT,
+4$UDINT,
 TO_UDINT(0), "op_LogData", C_TRY, TO_UDINT(4032512732), "ObjMLog","ip_LogData",
 TO_UDINT(0), "ToConfigSettingsCmd", C_DIR, TO_UDINT(4182867590), "ObjConfig","Command",
 TO_UDINT(0), "ToMainAux", C_DIR, TO_UDINT(3637939865), "ObjMainAux","AuxMainControl",
+TO_UDINT(0), "ToMainPeripheral", C_DIR, TO_UDINT(3744668534), "MainPeripheralCntrl1","PeripheralControl",
 
 //Magic internal connections
 0$UDINT,

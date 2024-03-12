@@ -346,6 +346,16 @@ TYPE
     dData : DINT;
     pCmd : ^HandleSteeringCurtisAC2F;
   END_STRUCT;
+  CltChCmd_HwI_BasicLift : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HwI_BasicLift;
+  END_STRUCT;
+  CltChCmd_I_Lift : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^I_Lift;
+  END_STRUCT;
   CltChCmd_I_PivotWheel : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
@@ -521,6 +531,11 @@ TYPE
     dData : Curtis_Base::eCurtisDriveModeRequest;
     pDsc : ^SVRDSC;
   END_STRUCT;
+  SvrCh_gt_AgvMainHardware : STRUCT
+    pMeth : ^CHMETH;
+    dData : gt_AgvMainHardware;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
   SvrCh_gt_AgvMainState : STRUCT
     pMeth : ^CHMETH;
     dData : gt_AgvMainState;
@@ -559,6 +574,11 @@ TYPE
   SvrCh_gt_ObjectStatus : STRUCT
     pMeth : ^CHMETH;
     dData : gt_ObjectStatus;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_LiftState_PTofCls_I_Lift : STRUCT
+    pMeth : ^CHMETH;
+    dData : I_Lift::LiftState;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_pChar : STRUCT

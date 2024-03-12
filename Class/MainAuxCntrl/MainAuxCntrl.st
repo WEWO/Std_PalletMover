@@ -30,7 +30,7 @@
 				Position   = "(218,120)"
 				Visualized = "false">
 				<Channels>
-					<Server Name="NumberOfPeripherals"/>
+					<Server Name="HardwareInterfaces"/>
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_FirstObject"/>
@@ -42,7 +42,7 @@
 		<!-- List of Connections in this network -->
 		<Connections>
 			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(1216,210),(1044,210),"/>
-			<Connection Source="this.NumberOfPeripherals" Destination="_base.NumberOfPeripherals" Vertices="(1216,270),(1044,270),"/>
+			<Connection Source="this.HardwareInterfaces" Destination="_base.HardwareInterfaces" Vertices="(1216,270),(1044,270),"/>
 			<Connection Source="_base.p_FirstObject" Destination="this.p_FirstObject" Vertices="(218,270),(90,270),(38,270),"/>
 			<Connection Source="_base.op_LogData" Destination="this.op_LogData" Vertices="(218,210),(38,210),"/>
 		</Connections>

@@ -290,10 +290,9 @@ FUNCTION AgvMain::AgvConfiguration
     case AgvCurHandleState of
     
         StartPreState:                                    
-            if ToConfigSettingsCmd.Write(input:=LoadSettings) = LoadReadyOk then
-                AgvCurHandleState :=   waitPreState;
+            ToConfigSettingsCmd.Write(input:=LoadSettings);
+            AgvCurHandleState := t_StateHandeling::waitPreState;
           
-            end_if;
             
         waitPreState:
             if ToConfigSettingsCmd.Read() = LoadReadyOk then

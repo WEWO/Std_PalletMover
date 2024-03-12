@@ -11,7 +11,7 @@
 			CyclicTime = "10 ms">
 			<Channels>
 				<Server Name="AuxMainControl"/>
-				<Server Name="NumberOfPeripherals"/>
+				<Server Name="HardwareInterfaces"/>
 				<Server Name="ToObject"/>
 				<Client Name="op_LogData"/>
 				<Client Name="p_FirstObject" Value="0"/>
@@ -23,7 +23,7 @@
 					<Components>
 						<Object Name="_base" GUID="{95351F4E-C8F1-4B37-90C8-FC11E952AD9F}" Class="LinkedListControlBase">
 							<Channels>
-								<Server Name="NumberOfPeripherals"/>
+								<Server Name="HardwareInterfaces"/>
 								<Server Name="ToObject"/>
 								<Client Name="op_LogData"/>
 								<Client Name="p_FirstObject" Value="0"/>
@@ -49,7 +49,7 @@
 												<Network>
 													<!-- List of Components in this network -->
 													<Components>
-														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+														<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
 															<Channels>
 																<Server Name="ToObject"/>
 															</Channels>

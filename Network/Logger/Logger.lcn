@@ -102,7 +102,7 @@
 																<Network>
 																	<!-- List of Components in this network -->
 																	<Components>
-																		<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																		<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
 																			<Channels>
 																				<Server Name="ToObject"/>
 																			</Channels>
@@ -170,7 +170,7 @@
 																				<Network>
 																					<!-- List of Components in this network -->
 																					<Components>
-																						<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																						<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
 																							<Channels>
 																								<Server Name="ToObject"/>
 																							</Channels>
@@ -258,7 +258,7 @@
 												<Network>
 													<!-- List of Components in this network -->
 													<Components>
-														<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+														<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
 															<Channels>
 																<Server Name="ToObject"/>
 															</Channels>

@@ -668,15 +668,15 @@ FUNCTION WewoLogger::HandleRtLogDataState
         
         p_RtLogEntry := GET_RT_LOGENTRY(RdRtDataIdx);
 
-        Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.RelLogTime);
+        _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.RelLogTime);
         WriteString(p_String:=#str[0], Flush:=FALSE);
         WriteChar(c:=';', Flush:=FALSE);
 
-        Obj_StringUtils.ConvertUDintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.Id);
+        _ObjStr.ConvertUDintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.Id);
         WriteString(p_String:=#str[0], Flush:=FALSE);
         WriteChar(c:=';', Flush:=FALSE);
 
-        Obj_StringUtils.ConvertDintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.Value);
+        _ObjStr.ConvertDintToAsciiDec(p_string:=#str[0], Value:=p_RtLogEntry^.Value);
         WriteString(p_String:=#str[0], Flush:=FALSE);
         
         WriteChar(c:=';', Flush:=FALSE);
@@ -741,7 +741,7 @@ FUNCTION WewoLogger::WriteStringEnumValue
 
     else
       // Write Id
-      Obj_StringUtils.ConvertUDintToAsciiDec(p_string:=#str[0], Value:=enumTableId);
+      _ObjStr.ConvertUDintToAsciiDec(p_string:=#str[0], Value:=enumTableId);
       WriteString(p_String:=#str[0], Flush:=FALSE);
     
     end_if;
@@ -756,7 +756,7 @@ FUNCTION WewoLogger::WriteStringEnumValue
     WriteString(p_String:=p_string, Flush:=FALSE);
   else
     // Write Id
-    Obj_StringUtils.ConvertDintToAsciiDec(p_string:=#str[0], Value:=enumValueId);
+    _ObjStr.ConvertDintToAsciiDec(p_string:=#str[0], Value:=enumValueId);
     WriteString(p_String:=#str[0], Flush:=FALSE);
   
   end_if;
@@ -876,7 +876,7 @@ FUNCTION WewoLogger::WriteHeaderRtLog
     str         : Array [0..50] of CHAR;
   END_VAR
 
-  WriteString(p_String:="Safan B.V. (c)", Flush:=FALSE);
+  WriteString(p_String:="Wewo (c)", Flush:=FALSE);
   WriteChar(c:=cCr, Flush:=FALSE);
   WriteChar(c:=cLf, Flush:=FALSE);
 
@@ -887,27 +887,27 @@ FUNCTION WewoLogger::WriteHeaderRtLog
   WriteString(p_String:="Start LogTime: ", Flush:=FALSE);
 
   // Start Write Date/time
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wYear));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wYear));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=':', Flush:=FALSE);
 
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wMonth));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wMonth));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=':', Flush:=FALSE);
   
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wDay));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartDateRtLog.wDay));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=' ', Flush:=FALSE);
 
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wHour));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wHour));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=':', Flush:=FALSE);
 
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wMinute));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wMinute));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=':', Flush:=FALSE);
   
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wSecond));
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#str[0], Value:=to_Udint(StartTimeRtLog.wSecond));
   WriteString(p_String:=#str[0], Flush:=FALSE);
   WriteChar(c:=cCr, Flush:=FALSE);
   WriteChar(c:=cLf, Flush:=FALSE);
@@ -1424,30 +1424,30 @@ FUNCTION WewoLogger::_WriteMessageData
   //           G = Group = part of application object is used for.
   LogString[0] := 0;
 
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="MsgId: ",           DestSize:=MESSAGE_LOG_STRING_SIZE);
-  Obj_StringUtils.ConvertUdintToAsciiDec(p_string:=#udintString[0], Value:=p_LogData^.Id);
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:=#udintString[0],      DestSize:=MESSAGE_LOG_STRING_SIZE);
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:=": ",                 DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="MsgId: ",           DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.ConvertUdintToAsciiDec(p_string:=#udintString[0], Value:=p_LogData^.Id);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:=#udintString[0],      DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:=": ",                 DestSize:=MESSAGE_LOG_STRING_SIZE);
   
   // Combine string. to get one log entry. 
   case p_LogData^.LogLevel of
-    LL_DEBUG:             Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="DEBUG      : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
-    LL_INFO:              Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="INFO       : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
-    LL_WARNING:           Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="WARNING    : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
-    LL_ERROR_INTERNAL:    Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="ERROR INT  : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
-    LL_ERROR_APPLICATION: Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="ERROR APPL : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
-    LL_ERROR_CRITICAL:    Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:="CRITICAL   : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_DEBUG:             _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="DEBUG      : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_INFO:              _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="INFO       : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_WARNING:           _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="WARNING    : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_ERROR_INTERNAL:    _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="ERROR INT  : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_ERROR_APPLICATION: _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="ERROR APPL : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
+    LL_ERROR_CRITICAL:    _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:="CRITICAL   : ", DestSize:=MESSAGE_LOG_STRING_SIZE);
     
   else
     _strcpy(dest:=#LogString[0], src:="UKNOWN LEVEL:  ");
     
   end_case;
 
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:=p_LogData^.p_ObjName, DestSize:=MESSAGE_LOG_STRING_SIZE);
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:=": ",                 DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:=p_LogData^.p_ObjName, DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:=": ",                 DestSize:=MESSAGE_LOG_STRING_SIZE);
   
   // HENODI CHECKEN 19-11-2012  WAS ip_LogData^.p_Msg
-  Obj_StringUtils.StringCatLimited(p_Dest:=#LogString[0], p_Add:=p_LogData^.p_Msg,     DestSize:=MESSAGE_LOG_STRING_SIZE);
+  _ObjStr.StringCatLimited(p_Dest:=#LogString[0], p_Add:=p_LogData^.p_Msg,     DestSize:=MESSAGE_LOG_STRING_SIZE);
 
   if ( MsgLogTarget = LT_FILE ) L_OR ( MsgLogTarget = LT_FILE_SCREEN ) then
     // Log message into OS user log file 
@@ -1658,12 +1658,12 @@ FUNCTION WewoLogger::RegistrateWewoObject
     // Object available for registration
     if (op_sfnObjChain = NIL) then
       // First object to register
-      p_RegObj^.SetNextSfnObject(p_Object:=NIL); // Be sure last object in chain is closed
+      p_RegObj^.SetNextWewoObject(p_Object:=NIL); // Be sure last object in chain is closed
       op_sfnObjChain := p_RegObj;
     
     else
       // Add object to chain.
-      p_RegObj^.SetNextSfnObject(p_Object:=op_sfnObjChain $^WewoBase);
+      p_RegObj^.SetNextWewoObject(p_Object:=op_sfnObjChain $^WewoBase);
       op_sfnObjChain := p_RegObj;
 
     end_if;

@@ -19,7 +19,7 @@
 	Objectsize         = "(810,420)"
 	Comment            = "Base class for a linked list control class.&#13;&#10;&#13;&#10;Support methodes to manage a linked list">
 	<Channels>
-		<Server Name="NumberOfPeripherals" GUID="{9C9B350E-6417-485D-9F24-5F881DF1BF22}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="HardwareInterfaces" GUID="{9C9B350E-6417-485D-9F24-5F881DF1BF22}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Client Name="p_FirstObject" Required="false" Internal="false" Comment="First object in linked list"/>
 	</Channels>
 	<RevDoku>
@@ -68,7 +68,7 @@
 LinkedListControlBase : CLASS
 : WewoBase
   //Servers:
-	NumberOfPeripherals 	: SvrCh_UDINT;
+	HardwareInterfaces 	: SvrCh_UDINT;
   //Clients:
 	p_FirstObject 	: CltChCmd_LinkedObjectBase;
   //Variables:
@@ -193,7 +193,7 @@ FUNCTION GLOBAL TAB LinkedListControlBase::@CT_
 TO_UDINT(2398870984), "LinkedListControlBase", //Class
 TO_UDINT(817841270), "WewoBase", 0$UINT, 29$UINT, //Baseclass
 //Servers:
-(::LinkedListControlBase.NumberOfPeripherals.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1800519833), "NumberOfPeripherals", 
+(::LinkedListControlBase.HardwareInterfaces.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1100411909), "HardwareInterfaces", 
 //Clients:
 (::LinkedListControlBase.p_FirstObject.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(2906904304), "p_FirstObject", TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, 
 END_FUNCTION
@@ -263,7 +263,7 @@ WewoBase::Init();
     p_LastObject    := NIL;
     p_Object        := p_FirstObject;
     
-    NumberOfPeripherals := 0;
+    HardwareInterfaces := 0;
     while (p_object <> NIL) do 
       p_NextObj := p_object^$LinkedObjectBase.GetNextObjectPtr();
       
@@ -274,7 +274,7 @@ WewoBase::Init();
 
       p_Object := p_NextObj;
       
-      NumberOfPeripherals += 1;
+      HardwareInterfaces += 1;
     end_while;
     
     initFinished := TRUE;
@@ -450,7 +450,7 @@ FUNCTION GLOBAL LinkedListControlBase::AddLastObject
       
     end_if;
     
-    NumberOfPeripherals += 1;
+    HardwareInterfaces += 1;
     
   else
     WriteActiveErrorWarning(IntErrorWarningId:=MSGID_NIL_POINTER, LogLevel:=LL_WARNING, p_msg:="AddLastObject: Failed because of parameter NIL");
@@ -492,7 +492,7 @@ FUNCTION GLOBAL LinkedListControlBase::AddFirstObject
       
     end_if;
     
-    NumberOfPeripherals += 1;
+    HardwareInterfaces += 1;
   else
     WriteActiveErrorWarning(IntErrorWarningId:=MSGID_NIL_POINTER, LogLevel:=LL_WARNING, p_msg:="AddFirstObject: Failed because of parameter NIL");
     
@@ -583,7 +583,7 @@ FUNCTION GLOBAL LinkedListControlBase::RemoveObject
       p_Object^$LinkedObjectBase.SetNextObjectPtr(p_Object:=NIL);
       p_Object^$LinkedObjectBase.SetPreviousObjectPtr(p_Object:=NIL);    
       
-      NumberOfPeripherals -= 1;
+      HardwareInterfaces -= 1;
       
     else
       WriteActiveErrorWarning(IntErrorWarningId:=MSGID_UNKNOWN_OBJECT, LogLevel:=LL_WARNING, p_msg:="RemoveObject: Object not found in linked list");
@@ -686,7 +686,7 @@ FUNCTION GLOBAL LinkedListControlBase::AddAfterObject
       
     end_if;
     
-    NumberOfPeripherals += 1;
+    HardwareInterfaces += 1;
   
   else
     WriteActiveErrorWarning(IntErrorWarningId:=MSGID_NIL_POINTER, LogLevel:=LL_WARNING, p_msg:="AddAfterObject: Failed because of parameter NIL");
@@ -744,7 +744,7 @@ FUNCTION GLOBAL LinkedListControlBase::AddBeforeObject
       
     end_if;
     
-    NumberOfPeripherals += 1;
+    HardwareInterfaces += 1;
   
   else
     WriteActiveErrorWarning(IntErrorWarningId:=MSGID_NIL_POINTER, LogLevel:=LL_WARNING, p_msg:="AddBeforeObject: Failed because of parameter NIL");

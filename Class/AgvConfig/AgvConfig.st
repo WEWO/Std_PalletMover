@@ -62,6 +62,11 @@ AgvConfig : CLASS
   //Variables:
   //Functions:
 	
+	FUNCTION VIRTUAL GLOBAL Command::Read
+		VAR_OUTPUT
+			output (EAX) 	: gt_AgvSettingsCmd;
+		END_VAR;
+	
 	FUNCTION VIRTUAL GLOBAL Command::Write
 		VAR_INPUT
 			input (EAX) 	: gt_AgvSettingsCmd;
@@ -127,7 +132,7 @@ FUNCTION AgvConfig::@STD
 		ret_code	:= C_OUTOF_NEAR;
 		RETURN;
 	END_IF;
-	Command.pMeth			:= StoreMethod( #M_RD_DIRECT(), #Command::Write() );
+	Command.pMeth			:= StoreMethod( #Command::Read(), #Command::Write() );
 	IF Command.pMeth THEN
 		ret_code	:= C_OK;
 	ELSE
@@ -164,4 +169,16 @@ FUNCTION VIRTUAL GLOBAL AgvConfig::Command::Write
                    result:= LoadReadError;
       end_case;
        Command := result;
+END_FUNCTION
+
+
+FUNCTION VIRTUAL GLOBAL AgvConfig::Command::Read
+	VAR_OUTPUT
+		output (EAX) 	: gt_AgvSettingsCmd;
+	END_VAR
+
+    
+
+	output := Command;
+
 END_FUNCTION

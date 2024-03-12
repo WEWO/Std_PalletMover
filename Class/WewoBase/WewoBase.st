@@ -24,8 +24,8 @@
 		<Server Name="o_ErrorWarningStatus" GUID="{71D405E1-73D5-4283-95DF-BAB38DCB9D0B}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="Actual active Error or Warning status.&#13;&#10;&#13;&#10;A lower level message will not overwite an active higher level message.&#13;&#10;for example a warning will not overwrite this server if it has already an active error&#13;&#10;&#13;&#10;Note: see also internal variable FirstError &#13;&#10;to find the first error detected since last &#13;&#10;error handling."/>
 		<Server Name="ObjectStatus" GUID="{A29E2DB3-B7AD-4363-A726-DB93BF808383}" Visualized="false" Initialize="false" WriteProtected="false" Retentive="false" Comment="Generic object status interface.&#13;&#10;Bit 0 - 15 is reserved for generic Safan framework&#13;&#10;Bit 16 -31 can be used by the application&#13;&#10;&#13;&#10;See also type gt_ObjectStatus."/>
 		<Server Name="ToObject" GUID="{9EED831D-1495-49CA-AD11-0E8CDA8941D2}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false" Comment="ToObject:&#13;&#10;Object channel server.&#13;&#10;Channel to reach the methodes of this object.&#13;&#10;&#13;&#10;In case this object should be Accessible by a pointer&#13;&#10;the variable ToObject is used to handover the address of this object.&#13;&#10;&#13;&#10;This server is never used for anything else!!!&#13;&#10;&#13;&#10;&#13;&#10;"/>
+		<Client Name="_ObjStr" Required="true" Internal="true"/>
 		<Client Name="c_Group" Required="false" Internal="false" Comment="Group identification object is part of."/>
-		<Client Name="Obj_StringUtils" Required="true" Internal="true"/>
 		<Client Name="op_LogData" Required="false" Internal="false" Comment="Output for logging data to SF_Logger"/>
 		<Client Name="toOsLibTaskObjControl" Required="false" Internal="false"/>
 	</Channels>
@@ -53,7 +53,7 @@
 		<!-- List of Components in this network -->
 		<Components>
 			<Object
-				Name       = "Obj_StringUtils"
+				Name       = "_ObjStr"
 				GUID       = "{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}"
 				Class      = "WewoStringUtils"
 				Position   = "(330,540)"
@@ -67,7 +67,7 @@
 		</Comments>
 		<!-- List of Connections in this network -->
 		<Connections>
-			<Connection Source="this.Obj_StringUtils" Destination="Obj_StringUtils.ToObject"/>
+			<Connection Source="this._ObjStr" Destination="_ObjStr.ToObject"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -90,10 +90,10 @@ WewoBase : CLASS
 	m_Id 	: SvrCh_UDINT;
 	m_p_Name 	: SvrCh_pChar;
   //Clients:
-	Obj_StringUtils 	: CltChCmd_WewoStringUtils;
 	op_LogData 	: CltCh_gpt_LogData;
 	c_Group 	: CltCh_UDINT;
 	toOsLibTaskObjControl 	: CltChCmd__TaskObjectControl;
+	_ObjStr 	: CltChCmd_WewoStringUtils;
   //Variables:
 		initCnt 	: USINT;			//! <Variable Comment="Counts the Init() calls&#13;&#10;&#13;&#10;This variable can be used to init objects in a certain order if it is requirerd." Name="initCnt"/>
 		nextWewoObj 	: ^pVoid;			//! <Variable Comment="Next SFN_Base object in chain.&#13;&#10;&#13;&#10;Content of this variable is only available if this object is connected to Safanlogger!!!!&#13;&#10;It is used for an application to be able to go through all objects which is derived from SFN_Base and connected to the SFN_Logger.&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;" Name="nextWewoObj"/>
@@ -157,8 +157,8 @@ WewoBase : CLASS
 		VAR_OUTPUT
 			group 	: UDINT;
 		END_VAR;
-				//! <Function Comment="Get next object pointer for framework only.&#13;&#10;&#13;&#10;This methode is used to go through all safan class objects &#13;&#10;in linked list.&#13;&#10;&#13;&#10;" Name="GetNextSfnObject"/>
-	FUNCTION GLOBAL GetNextSfnObject
+				//! <Function Comment="Get next object pointer for framework only.&#13;&#10;&#13;&#10;This methode is used to go through all safan class objects &#13;&#10;in linked list.&#13;&#10;&#13;&#10;" Name="GetNextWewoObject"/>
+	FUNCTION GLOBAL GetNextWewoObject
 		VAR_OUTPUT
 			p_Object 	: ^WewoBase;
 		END_VAR;
@@ -225,8 +225,8 @@ WewoBase : CLASS
 		VAR_INPUT
 			SetValue 	: BOOL;			//! <Variable Comment="TRUE  set flag&#13;&#10;FALSE Reset flag&#13;&#10;" Name="SetCriticalErrorFlag.SetValue"/>
 		END_VAR;
-				//! <Function Comment="Writes next object pointer for framework only.&#13;&#10;&#13;&#10;This methode is only used by SFN_Logger to build &#13;&#10;a linked list of all safan objects used in the application.&#13;&#10;&#13;&#10;" Name="SetNextSfnObject"/>
-	FUNCTION GLOBAL SetNextSfnObject
+				//! <Function Comment="Writes next object pointer for framework only.&#13;&#10;&#13;&#10;This methode is only used by SFN_Logger to build &#13;&#10;a linked list of all safan objects used in the application.&#13;&#10;&#13;&#10;" Name="SetNextWewoObject"/>
+	FUNCTION GLOBAL SetNextWewoObject
 		VAR_INPUT
 			p_Object 	: ^WewoBase;
 		END_VAR;
@@ -276,7 +276,10 @@ WewoBase : CLASS
 				//! <Function Comment="Connect client channels.&#13;&#10;&#13;&#10;If implemented the derived class can connect dynamically &#13;&#10;client channels.&#13;&#10;&#13;&#10;&#13;&#10;" Name="ConnectClientChannels"/>
 	FUNCTION VIRTUAL GLOBAL ConnectClientChannels
 		VAR_INPUT
-			p_Object 	: pVoid;			//! <Variable Comment="Pointer to object to connect with." Name="ConnectClientChannels.p_Object"/>
+			ConnectionString 	: ^CHAR;
+		END_VAR
+		VAR_OUTPUT
+			ConnectionValid 	: DINT;
 		END_VAR;
 				//! <Function Comment="Reset internal object variables to the situation just after &#13;&#10;               Init() was finished. &#13;&#10;               So object can restart on a reproducable way" Name="ResetObject"/>
 	FUNCTION VIRTUAL GLOBAL ResetObject;
@@ -305,6 +308,11 @@ WewoBase : CLASS
 	FUNCTION GLOBAL configStatus
 		VAR_OUTPUT
 			value 	: DINT;
+		END_VAR;
+	
+	FUNCTION ParseConectionLine
+		VAR_INPUT
+			ConnectionStr 	: ^CHAR;
 		END_VAR;
 	
 	FUNCTION VIRTUAL GLOBAL ObjectStatus::Write
@@ -343,10 +351,10 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::WewoBase.m_Id.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(2144356276), "m_Id", 
 (::WewoBase.m_p_Name.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(4246244680), "m_p_Name", 
 //Clients:
-(::WewoBase.Obj_StringUtils.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2022690108), "Obj_StringUtils", TO_UDINT(1771708268), "WewoStringUtils", 0$UINT, 10$UINT, 
 (::WewoBase.op_LogData.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(1597732449), "op_LogData", 
 (::WewoBase.c_Group.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(1239514064), "c_Group", 
 (::WewoBase.toOsLibTaskObjControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(80495826), "toOsLibTaskObjControl", TO_UDINT(1584830088), "_TaskObjectControl", 1$UINT, 1$UINT, 
+(::WewoBase._ObjStr.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1429042568), "_ObjStr", TO_UDINT(1771708268), "WewoStringUtils", 0$UINT, 10$UINT, 
 END_FUNCTION
 
 
@@ -1154,8 +1162,8 @@ FUNCTION WewoBase::GetObjectName
   // Workaround to remove all "_BASE\" from server or client string in case of using derived 
   // complex classes.
   while p_Str <> NIL do
-    p_Str := Obj_StringUtils.StrStr(p_searchStr:=p_Str, p_lookforStr:=BASESTRING);
-    len   := Obj_StringUtils.StringLength(p_String:=BASESTRING);
+    p_Str := _ObjStr.StrStr(p_searchStr:=p_Str, p_lookforStr:=BASESTRING);
+    len   := _ObjStr.StringLength(p_String:=BASESTRING);
 
     if p_Str <> NIL then
       
@@ -1163,7 +1171,7 @@ FUNCTION WewoBase::GetObjectName
       p_Str^ := 0;                  
           
       // Last part of client/serverstring is moved to location where BASESTRING was found
-      Obj_StringUtils.StringCatLimited(p_Dest:=pName, p_Add:=p_Str+len, DestSize:=255);
+      _ObjStr.StringCatLimited(p_Dest:=pName, p_Add:=p_Str+len, DestSize:=255);
     
     end_if;
 
@@ -1411,8 +1419,24 @@ END_FUNCTION
 
 FUNCTION VIRTUAL GLOBAL WewoBase::ConnectClientChannels
 	VAR_INPUT
-		p_Object 	: pVoid;
+		ConnectionString 	: ^CHAR;
 	END_VAR
+	VAR_OUTPUT
+		ConnectionValid 	: DINT;
+	END_VAR
+    
+    VAR
+    	Logdata : gt_LogData;
+    END_VAR
+    
+    Logdata.LogLevel := LL_ERROR_APPLICATION;
+    Logdata.p_ObjName := "WewoBase.connection";
+    Logdata.p_Msg :=ConnectionString
+
+     ParseConectionLine(ConnectionString);
+
+
+  //  op_LogData.Write(input:=Logdata);
 
 
 END_FUNCTION
@@ -1495,7 +1519,7 @@ END_FUNCTION
   Note
   Typically used for framework handling
 **************************************************************************)
-FUNCTION GLOBAL WewoBase::GetNextSfnObject
+FUNCTION GLOBAL WewoBase::GetNextWewoObject
 	VAR_OUTPUT
 		p_Object 	: ^WewoBase;
 	END_VAR
@@ -1517,7 +1541,7 @@ END_FUNCTION
   startup application
   
 **************************************************************************)
-FUNCTION GLOBAL WewoBase::SetNextSfnObject
+FUNCTION GLOBAL WewoBase::SetNextWewoObject
 	VAR_INPUT
 		p_Object 	: ^WewoBase;
 	END_VAR
@@ -1629,4 +1653,73 @@ FUNCTION GLOBAL WewoBase::configStatus
 		value 	: DINT;
 	END_VAR
   value :=  ObjectStatus.ConfigEnable;
+END_FUNCTION
+
+
+FUNCTION WewoBase::ParseConectionLine
+	VAR_INPUT
+		ConnectionStr 	: ^CHAR;
+	END_VAR
+VAR
+  after_equal   :dint;
+  configtype    :dint;
+  index         : Usint;
+  counter       :dint;
+  temp          :pVoid;
+  DataType      :ARRAY[0..201] OF CHAR;
+  Str_DataValue :ARRAY[0..201] OF CHAR;
+  String2 :Array[0..201] of CHAR;
+  String :Array[0..201] of CHAR;
+  CurVal : char;
+END_VAR
+ 
+  after_equal := 0;
+  counter     := 0;
+  configtype  := 0;
+  
+  for index := 0 to 200 by 1 do
+    Str_DataValue[index]  := 0;
+    String2[index]        := 0;//dbg
+  end_for;
+  
+  index       := 0;
+  
+  while  ConnectionStr^+index <> 0 do
+ CurVal  := ConnectionStr^+index ;
+    if  CurVal='<' & (CurVal= '>') then
+      configtype := 1; // This is a connection line.  server <> client
+ 
+    end_if;
+    if (CurVal='$') then
+      configtype := 2; // This is a string server >> string
+     CurVal :='=';
+    end_if;
+    
+    if (CurVal> 31) & (CurVal < 123) then   // Filter all wrong Ascii characters from string
+     if (CurVal = '=') & (after_equal =0)then
+      after_equal         := index;
+      DataType[counter]   := 0;
+      string[counter]     := 0;
+      counter := 0;
+      elsif (after_equal = 0) then
+        DataType[counter]      := CurVal
+        string[counter]        := CurVal; //dbg
+        counter += 1;
+      else
+        Str_DataValue[counter]  := CurVal;
+        String2[counter]        := CurVal;//dbg
+        counter += 1;
+      end_if;
+    end_if;
+    Index +=1;
+  end_while;
+  
+  Str_DataValue[counter] := 0;
+  counter += 1;
+  case configtype of
+
+    1:// Connection   cl         client
+      ConnectCltSvr(#DataType[1], #DataType[0]);
+         
+   end_case;
 END_FUNCTION

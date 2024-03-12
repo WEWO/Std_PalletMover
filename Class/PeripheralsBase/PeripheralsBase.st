@@ -102,7 +102,7 @@ PeripheralsBase : CLASS
 	
 	FUNCTION VIRTUAL GLOBAL HandleGetSettings;
 	
-	FUNCTION GLOBAL HandleStartUp;
+	FUNCTION VIRTUAL GLOBAL HandleStartUp;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -126,7 +126,7 @@ TO_UDINT(1708657366), "LinkedObjectBase", 0$UINT, 10$UINT, //Baseclass
 END_FUNCTION
 
 
-#define USER_CNT_PeripheralsBase 18
+#define USER_CNT_PeripheralsBase 19
 
 TYPE
 	_LSL_STD_VMETH	: STRUCT
@@ -164,6 +164,10 @@ FUNCTION PeripheralsBase::@STD
 	vmt.UserFcts[17]		:= #HandleGetSettings();
 
 #pragma warning (default : 74)
+#pragma warning (disable : 74)
+	vmt.UserFcts[18]		:= #HandleStartUp();
+
+#pragma warning (default : 74)
 	WewoBase::ToObject.pMeth		:= StoreCmd (pCmd := #vmt.CmdTable, SHARED);
 
 	IF WewoBase::ToObject.pMeth THEN
@@ -197,6 +201,6 @@ FUNCTION VIRTUAL GLOBAL PeripheralsBase::HandleGetSettings
 END_FUNCTION
 
 
-FUNCTION GLOBAL PeripheralsBase::HandleStartUp
+FUNCTION VIRTUAL GLOBAL PeripheralsBase::HandleStartUp
 
 END_FUNCTION

@@ -206,6 +206,14 @@
 		<File Path=".\Class\InterfaceAuxHmiMqtt\InterfaceAuxHmiMqtt.st"/>
 		<File Path=".\Class\HalBmsMastervoltinterface\HalBmsMastervoltinterface.st"/>
 		<File Path=".\Class\CntrlPeriperalPiviotWheels\CntrlPeriperalPiviotWheels.st"/>
+		<File Path=".\Class\MainHardwareCntrl\MainHardwareCntrl.st"/>
+		<File Path=".\Class\HardwareBase\HardwareBase.st"/>
+		<File Path=".\Class\BasicHardwareInterface\BasicHardwareInterface.st"/>
+		<File Path=".\Class\I_Lift\I_Lift.st"/>
+		<File Path=".\Class\MainLiftControl\MainLiftControl.st"/>
+		<File Path=".\Class\HwI_BasicLift\HwI_BasicLift.st"/>
+		<File Path=".\Class\Dummy\Dummy.st"/>
+		<File Path=".\Class\MainPeripheralCntrl\MainPeripheralCntrl.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>
@@ -216,6 +224,10 @@
 		<File Path=".\Network\PeripheralPiviotWheels\PeripheralPiviotWheels.lcn"/>
 		<File Path=".\Network\CAN_Driver\CAN_Driver.lcn"/>
 		<File Path=".\Network\PeripheralbatteryMangementSystems\PeripheralbatteryMangementSystems.lcn"/>
+		<File Path=".\Network\HardwareControl\HardwareControl.lcn"/>
+		<File Path=".\Network\BasicAgv\BasicAgv.lcn"/>
+		<File Path=".\Network\PeripheralLift\PeripheralLift.lcn"/>
+		<File Path=".\Network\MainPeripheral\MainPeripheral.lcn"/>
 	</NetworkFiles>
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
@@ -248,7 +260,7 @@
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_en.pdf"/>
 	</DocuFiles>
 	<Options>
-		<Target UseFPU="true">
+		<Target UseFPU="true" Processor="ARM">
 		</Target>
 		<Compiler
 			CompilerVersion         = "71"
@@ -380,6 +392,7 @@
 				</Folder>
 			</Folder>
 			<Folder Name="Hardware">
+				<Class Name="HwI_BasicLift"/>
 				<Folder Name="BMS">
 					<Class Name="HAL_BMS_Base"/>
 					<Class Name="HAL_BMS_MasterVolt"/>
@@ -388,11 +401,14 @@
 			<Folder Name="Interface">
 				<Class Name="I_Bms"/>
 				<Class Name="I_Hmi"/>
+				<Class Name="I_Lift"/>
 				<Class Name="I_PivotWheel"/>
 			</Folder>
 			<Folder Name="Main">
 				<Class Name="AgvMain"/>
 				<Class Name="MainAuxCntrl"/>
+				<Class Name="MainHardwareCntrl"/>
+				<Class Name="MainPeripheralCntrl"/>
 				<Folder Name="Interfaces">
 				</Folder>
 			</Folder>
@@ -405,7 +421,9 @@
 				</Folder>
 			</Folder>
 			<Folder Name="peripherals">
+				<Class Name="MainLiftControl"/>
 				<Folder Name="Base">
+					<Class Name="HardwareBase"/>
 					<Class Name="PeripheralsBase"/>
 				</Folder>
 			</Folder>
@@ -447,7 +465,10 @@
 				</Folder>
 			</Folder>
 		</Folder>
+		<Folder Name="Simulation">
+		</Folder>
 		<Folder Name="WEWO_AGVLib">
+			<Class Name="Dummy"/>
 			<Class Name="WewoStringUtils"/>
 			<Folder Name="Communication">
 				<Class Name="MqttInterface"/>
@@ -498,8 +519,12 @@
 			</Folder>
 			<Folder Name="Configuration">
 				<Folder Name="Hardware">
+					<Network Name="HardwareControl"/>
 					<Folder Name="Can">
 						<Network Name="CAN_Driver"/>
+					</Folder>
+					<Folder Name="physicallyHardware">
+						<Network Name="BasicAgv"/>
 					</Folder>
 				</Folder>
 				<Folder Name="Settings">
@@ -513,11 +538,13 @@
 				<Network Name="Main"/>
 			</Folder>
 			<Folder Name="peripheral">
+				<Network Name="MainPeripheral"/>
 				<Network Name="PeripheralbatteryMangementSystems"/>
+				<Network Name="PeripheralLift"/>
 				<Network Name="PeripheralPiviotWheels"/>
 			</Folder>
 		</Folder>
-		<Folder Name="L4_Equipments">
+		<Folder Name="SimulationHardware">
 		</Folder>
 	</NetworkFolders>
 	<TypeFolders>
@@ -533,6 +560,9 @@
 				</Folder>
 				<Folder Name="Aux">
 					<Type Name="gt_AgvMainAux"/>
+				</Folder>
+				<Folder Name="Hardware">
+					<Type Name="gt_AgvMainHardware"/>
 				</Folder>
 				<Folder Name="ManualMode">
 					<Type Name="gt_AgvManual"/>

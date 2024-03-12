@@ -3,7 +3,7 @@
 	<!-- List of Components in this network -->
 	<Components>
 		<Object
-			Name       = "ObjPiviotweel1"
+			Name       = "ObjPiviotweel_1"
 			GUID       = "{78E8AF16-AD1F-4351-AB8A-4DBA556B7850}"
 			Class      = "PerPiviotWeel"
 			Position   = "(591,210)"
@@ -573,7 +573,7 @@
 																				<Network>
 																					<!-- List of Components in this network -->
 																					<Components>
-																						<Object Name="Obj_StringUtils" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																						<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
 																							<Channels>
 																								<Server Name="ToObject"/>
 																							</Channels>
@@ -677,8 +677,8 @@
 	</Comments>
 	<!-- List of Connections in this network -->
 	<Connections>
-		<Connection Source="ObjPiviotweel1.ToAgvConfig" Destination="ObjConfig.ClassSvr"/>
-		<Connection Source="ObjPiviotweel1.ToAgvSettings" Destination="ObjMachine.ClassSvr"/>
+		<Connection Source="ObjPiviotweel_1.ToAgvConfig" Destination="ObjConfig.ClassSvr"/>
+		<Connection Source="ObjPiviotweel_1.ToAgvSettings" Destination="ObjMachine.ClassSvr"/>
 	</Connections>
 	<!-- Headerfiles -->
 	<Options>

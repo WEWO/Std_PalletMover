@@ -90,6 +90,14 @@ TYPE
     AuxMainError,
     AuxMainIdle
   )$UDINT;
+  gt_AgvMainHardware :
+  (
+    HardwareConfig,
+    HardwareStartup,
+    HardwareOprational,
+    HardwareError,
+    HardwareIdle
+  )$UDINT;
   gt_agvMainPeripherals :
   (
     PerConfig,

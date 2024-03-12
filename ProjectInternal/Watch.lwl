@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<WatchVariable>
+	<Variable Name="MainElement" Expand="1">
+		<ChildVar Name="^" Expand="1">
+			<ChildVar Name="Next"/>
+			<ChildVar Name="Prev"/>
+			<ChildVar Name="Child" Expand="1">
+				<ChildVar Name="^" Expand="1">
+					<ChildVar Name="Next"/>
+					<ChildVar Name="Prev"/>
+					<ChildVar Name="Child" Expand="1">
+						<ChildVar Name="^" Expand="1">
+							<ChildVar Name="Next"/>
+							<ChildVar Name="Prev"/>
+							<ChildVar Name="Child" Expand="1">
+								<ChildVar Name="^" Expand="1">
+									<ChildVar Name="Next"/>
+									<ChildVar Name="Prev"/>
+									<ChildVar Name="Child" Expand="1">
+										<ChildVar Name="^" Expand="1">
+											<ChildVar Name="Next" Expand="1">
+												<ChildVar Name="^" Expand="1">
+													<ChildVar Name="Next"/>
+													<ChildVar Name="Prev"/>
+													<ChildVar Name="Child"/>
+													<ChildVar Name="JType"/>
+													<ChildVar Name="Val_String" Expand="1">
+														<ChildVar Name="^"/>
+													</ChildVar>
+													<ChildVar Name="Val_Int"/>
+													<ChildVar Name="Val_Double"/>
+													<ChildVar Name="String" Expand="1">
+														<ChildVar Name="^"/>
+													</ChildVar>
+												</ChildVar>
+											</ChildVar>
+											<ChildVar Name="Prev"/>
+											<ChildVar Name="Child"/>
+											<ChildVar Name="JType"/>
+											<ChildVar Name="Val_String"/>
+											<ChildVar Name="Val_Int"/>
+											<ChildVar Name="Val_Double"/>
+											<ChildVar Name="String" Expand="1">
+												<ChildVar Name="^"/>
+											</ChildVar>
+										</ChildVar>
+									</ChildVar>
+									<ChildVar Name="JType"/>
+									<ChildVar Name="Val_String"/>
+									<ChildVar Name="Val_Int"/>
+									<ChildVar Name="Val_Double"/>
+									<ChildVar Name="String" Expand="1">
+										<ChildVar Name="^"/>
+									</ChildVar>
+								</ChildVar>
+							</ChildVar>
+							<ChildVar Name="JType"/>
+							<ChildVar Name="Val_String"/>
+							<ChildVar Name="Val_Int"/>
+							<ChildVar Name="Val_Double"/>
+							<ChildVar Name="String" Expand="1">
+								<ChildVar Name="^"/>
+							</ChildVar>
+						</ChildVar>
+					</ChildVar>
+					<ChildVar Name="JType"/>
+					<ChildVar Name="Val_String"/>
+					<ChildVar Name="Val_Int"/>
+					<ChildVar Name="Val_Double"/>
+					<ChildVar Name="String" Expand="1">
+						<ChildVar Name="^"/>
+					</ChildVar>
+				</ChildVar>
+			</ChildVar>
+			<ChildVar Name="JType"/>
+			<ChildVar Name="Val_String"/>
+			<ChildVar Name="Val_Int"/>
+			<ChildVar Name="Val_Double"/>
+			<ChildVar Name="String">
+				<ChildVar Name="^"/>
+			</ChildVar>
+		</ChildVar>
+	</Variable>
+	<Variable Name="pReadVariableHandle" Expand="1">
+		<ChildVar Name="^" Expand="1">
+			<ChildVar Name="Next"/>
+			<ChildVar Name="Prev"/>
+			<ChildVar Name="Child"/>
+			<ChildVar Name="JType"/>
+			<ChildVar Name="Val_String" Expand="1">
+				<ChildVar Name="^"/>
+			</ChildVar>
+			<ChildVar Name="Val_Int"/>
+			<ChildVar Name="Val_Double"/>
+			<ChildVar Name="String" Expand="1">
+				<ChildVar Name="^"/>
+			</ChildVar>
+		</ChildVar>
+	</Variable>
+	<Variable Name="HasMaxHeightSensor" Expand="1">
+		<ChildVar Name="^"/>
+	</Variable>
+</WatchVariable>

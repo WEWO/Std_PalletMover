@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="PeripheralLift" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjD"
+			GUID       = "{6CB304BC-09BF-497E-BEDB-B07C8FDA893F}"
+			Class      = "Dummy"
+			Position   = "(1920,390)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="Test"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "ObjMainLiftControl"
+			GUID       = "{E23740A8-50A6-45AE-AF18-6BC231B6D55F}"
+			Class      = "MainLiftControl"
+			Position   = "(540,120)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ActualHeight"/>
+				<Server Name="SetHeight"/>
+				<Server Name="SetSpeed"/>
+				<Server Name="State"/>
+				<Server Name="ToObject"/>
+				<Client Name="ActuValveDown" Value="0"/>
+				<Client Name="ActuValveUp" Value="0"/>
+				<Client Name="AgvConfig"/>
+				<Client Name="AgvSettings"/>
+				<Client Name="Ain_AnalogPosition" Value="0"/>
+				<Client Name="op_LogData"/>
+				<Client Name="p_NextObject"/>
+				<Client Name="SensorMaxHeight" Value="0"/>
+				<Client Name="SensorMinHeight" Value="0"/>
+				<Client Name="Speed" Value="0"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{AAF26A40-BEB0-4BF7-8142-F690E7FBD02A}" Class="PeripheralsBase">
+							<Channels>
+								<Server Name="ToObject"/>
+								<Client Name="op_LogData"/>
+								<Client Name="p_NextObject"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{D2F0E01E-6B03-4CE3-90A0-8EAD1B9F28A8}" Class="LinkedObjectBase">
+											<Channels>
+												<Server Name="ToObject"/>
+												<Client Name="op_LogData"/>
+												<Client Name="p_NextObject"/>
+												<Client Name="p_PreviousObject"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{A552B37B-F16D-44A8-B20B-D9653B9D9C8F}" Class="WewoBase">
+															<Channels>
+																<Server Name="m_Id"/>
+																<Server Name="m_p_Name"/>
+																<Server Name="o_ErrorWarningStatus"/>
+																<Server Name="ObjectStatus"/>
+																<Server Name="ToObject"/>
+																<Client Name="c_Group"/>
+																<Client Name="op_LogData"/>
+																<Client Name="toOsLibTaskObjControl"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																			<Channels>
+																				<Server Name="ToObject"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="HwI_Lift" GUID="{9D536542-C5AD-4214-A431-11F0052B7376}" Class="HwI_BasicLift">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Client Name="ActuatorValveDown" Value="0"/>
+								<Client Name="ActuatorValveUp" Value="0"/>
+								<Client Name="Ain_AnalogPosition" Value="0"/>
+								<Client Name="SensorMaxHeight" Value="0"/>
+								<Client Name="SensorMinHeight" Value="0"/>
+								<Client Name="Speed" Value="0"/>
+							</Channels>
+						</Object>
+						<Object Name="I_Lift" GUID="{E26D8194-2357-4E3D-85F3-2B210961C2C6}" Class="I_Lift">
+							<Channels>
+								<Server Name="ActualHeight"/>
+								<Server Name="ClassSvr"/>
+								<Server Name="SetHeight"/>
+								<Server Name="SetSpeed"/>
+								<Server Name="State"/>
+							</Channels>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+		<Connection Source="ObjMainLiftControl.AgvConfig" Destination="ObjConfig.ClassSvr"/>
+		<Connection Source="ObjMainLiftControl.AgvSettings" Destination="ObjMachine.ClassSvr"/>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

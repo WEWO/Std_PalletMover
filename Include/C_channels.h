@@ -483,6 +483,20 @@ typedef struct CltChCmd_HandleSteeringCurtisAC2F
     HandleSteeringCurtisAC2F *pCmd;
   } CltChCmd_HandleSteeringCurtisAC2F;
 
+typedef struct CltChCmd_HwI_BasicLift 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HwI_BasicLift *pCmd;
+  } CltChCmd_HwI_BasicLift;
+
+typedef struct CltChCmd_I_Lift 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    I_Lift *pCmd;
+  } CltChCmd_I_Lift;
+
 typedef struct CltChCmd_I_PivotWheel 
   {
     struct SvrChCmd_DINT *pCh;
@@ -728,6 +742,13 @@ typedef struct SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base
     SVRDSC *pDsc;
   } SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base;
 
+typedef struct SvrCh_gt_AgvMainHardware 
+  {
+    CHMETH *pMeth;
+    gt_AgvMainHardware dData;
+    SVRDSC *pDsc;
+  } SvrCh_gt_AgvMainHardware;
+
 typedef struct SvrCh_gt_AgvMainState 
   {
     CHMETH *pMeth;
@@ -783,6 +804,13 @@ typedef struct SvrCh_gt_ObjectStatus
     gt_ObjectStatus dData;
     SVRDSC *pDsc;
   } SvrCh_gt_ObjectStatus;
+
+typedef struct SvrCh_LiftState_PTofCls_I_Lift 
+  {
+    CHMETH *pMeth;
+    LiftState dData;
+    SVRDSC *pDsc;
+  } SvrCh_LiftState_PTofCls_I_Lift;
 
 typedef struct SvrCh_pChar 
   {
