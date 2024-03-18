@@ -30,6 +30,18 @@
 #include "..\Class\CanDriverBase\GlCanDriverBase.h"
 #include "..\Class\CanBase\CanBaseGl.h"
 #include "..\Class\CanOpenBase\CanOpenBaseGl.h"
+#include <LinkerTypes.h>
+#include "..\Class\DiasMasterC\MasterSettings.h"
+#include "..\Class\DiasMaster\DIASMaster.h"
+#include <LSL_STITask.h>
+#include "..\Class\I2CCDIAS\EEFuncDef.h"
+#include "..\Class\VaranManager_Base\VaranManager_Base.h"
+#include "..\Source\interfaces\lsl_st_sdias.h"
+#include "..\Class\HwControl\HwControlLogging.h"
+#include "..\Source\interfaces\lsl_st_tcp_user.h"
+#include "..\Source\interfaces\lsl_st_varan.h"
+#include "..\Source\interfaces\lsl_st_cdias.h"
+#include <lsl_st_serial.h>
 
 #include "unit.h"
 #include "UserDef.h"

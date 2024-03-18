@@ -54,6 +54,7 @@
 		<Connections>
 			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(856,210),(684,210),"/>
 			<Connection Source="_base.op_LogData" Destination="this.op_LogData" Vertices="(218,210),(30,150),(38,210),"/>
+			<Connection Source="this.ObjectStatus" Destination="_base.ObjectStatus" Vertices="(856,270),(684,270),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>

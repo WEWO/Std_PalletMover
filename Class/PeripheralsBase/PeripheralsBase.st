@@ -29,6 +29,7 @@
 				Position   = "(218,120)"
 				Visualized = "false">
 				<Channels>
+					<Server Name="ObjectStatus"/>
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_NextObject"/>
@@ -43,6 +44,7 @@
 			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(1060,210),(888,210),"/>
 			<Connection Source="_base.p_NextObject" Destination="this.p_NextObject" Vertices="(218,330),(38,270),"/>
 			<Connection Source="_base.op_LogData" Destination="this.op_LogData" Vertices="(218,210),(38,210),"/>
+			<Connection Source="this.ObjectStatus" Destination="_base.ObjectStatus" Vertices="(1060,270),(888,270),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>

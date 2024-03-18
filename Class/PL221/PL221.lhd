@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HWClassInfo>
+  <HWDevice ModuleID="1091" SubModuleID="0x0" ModType="M_SDIAS" Desc="Class for PL221 Hardware Module (2x Pixel Led Outputs / 2x +24V PWM Outputs)">
+    <Types>
+      <Device Name="PL221" ClassName="PL221" DisplayGroup="Special" Default="true" PowerLoss="2500">
+        <Power Voltage="5000" Supply="0" Drain="68" />
+        <Power Voltage="24000" Supply="0" Drain="90" />
+      </Device>
+    </Types>
+    <VisualData>
+      <VisualView TypeId="0" Size="10,120">
+        <VisualModule ImgPath=".\S-Dias\S-DIAS Grundmodul.xaml" Position="0,0" Width="12.5" Height="101.8">
+          <!-- Texte -->
+          <VisualTexts>
+            <VisualText Text="PL  221 " FontFamily="ARIAL" Italic="true" FontSize="12" ClrForeground="4294967295" FontWeight="700" LineHeight="10" Width="7.94" Height="5.82" Left="4.76" Top="10.05" ClrBackground="16777215" />
+            <VisualText Text="S" FontFamily="ARIAL" ClrForeground="4294967295" Width="1.59" Height="2.65" Left="0.26" Top="9" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="U" FontFamily="ARIAL" ClrForeground="4294967295" Width="1.59" Height="2.65" Left="0.26" Top="11.64" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="X1" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="15.61" FontWeight="400" />
+            <VisualText Text="+5" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.81" Left="0.26" Top="17.99" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="LO" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="21.17" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="24.34" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="SH" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="27.52" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="X2" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="30.96" FontWeight="400" />
+            <VisualText Text="+5" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="33.34" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="LO" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="36.51" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="39.69" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="SH" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="42.86" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="X3" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="46.3" FontWeight="400" />
+            <VisualText Text="PWM" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="1.62" Left="0.28" Top="49.33" FontSize="5" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="51.86" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="SH" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="58.21" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="X4" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="61.65" FontWeight="400" />
+            <VisualText Text="PWM" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="64.03" FontSize="5" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="67.2" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="SH" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="73.55" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="X5" FontFamily="ARIAL" ClrForeground="4291330563" ClrBackground="4294967295" Width="3.17" Height="2.38" Left="0.26" Top="76.99" FontWeight="400" />
+            <VisualText Text="24" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="79.38" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="24" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="82.55" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="85.72" ClrBackground="16777215" FontWeight="400" />
+            <VisualText Text="0V" FontFamily="ARIAL" ClrForeground="4294967295" Width="3" Height="2.65" Left="0.26" Top="88.9" ClrBackground="16777215" FontWeight="400" />
+          </VisualTexts>
+          <!-- Leds -->
+          <VisualLeds>
+            <VisualLed Description="Module state" ImgPath=".\S-Dias\S-DIAS Led.xaml" ClrForeground="1342242560" Width="1.32" Height="1.32" Left="1.97" Top="10.05">
+              <Behaviour ClrForeground="4278255360">
+                <Activator TypeId="4">
+                  <Activator TypeId="1" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.ClassState" Value="0" />
+                </Activator>
+              </Behaviour>
+              <Behaviour ClrForeground="4278255360" Interval="200">
+                <Activator TypeId="4">
+                  <Activator TypeId="1" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.ClassState" Value="0" Negate="true" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed DataString="PL221.LedControl" Description="User" ImgPath=".\S-Dias\S-DIAS Led.xaml" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="2.12" Top="12.96">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="3" DataString="PL221.LedControl" Value="1" />
+              </Behaviour>
+              <Behaviour ClrForeground="4278229503" Interval="500">
+                <Activator TypeId="3" DataString="PL221.LedControl" Value="2" />
+              </Behaviour>
+              <Behaviour ClrForeground="4278229503" Interval="250">
+                <Activator TypeId="3" DataString="PL221.LedControl" Value="3" />
+              </Behaviour>
+            </VisualLed>
+            <!-- X1-->
+            <!-- X2-->
+            <!-- X3-->
+            <!-- X4-->
+            <!-- X5-->
+            <VisualLed ImgPath=".\S-Dias\S-DIAS Led.xaml" Description="Module state" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="2.01" Top="19.65">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="4">
+                  <Activator TypeId="2" DataString="PL221.Stripe1_Activate" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.LEDStripeOn" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.ExternVoltageOK.2" Value="1" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed ImgPath=".\S-Dias\S-DIAS Led.xaml" Description="Module state" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="1.97" Top="35.13">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="4" Value="1">
+                  <Activator TypeId="2" DataString="PL221.Stripe2_Activate" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.LEDStripeOn" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.ExternVoltageOK.2" Value="1" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed ImgPath=".\S-Dias\S-DIAS Led.xaml" Description="Module state" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="2.02" Top="50.53">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="4" Value="1">
+                  <Activator TypeId="2" DataString="PL221.PWM1Enable" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.PWMOut1" Value="0" Negate="true" />
+                  <Activator TypeId="3" DataString="PL221.ExternVoltageOK.1" Value="1" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed ImgPath=".\S-Dias\S-DIAS Led.xaml" Description="Module state" ClrForeground="1342216703" Width="1.32" Height="1.32" Left="1.82" Top="65.27">
+              <Behaviour ClrForeground="4278229503">
+                <Activator TypeId="4">
+                  <Activator TypeId="2" DataString="PL221.PWM2Enable" Value="1" />
+                  <Activator TypeId="3" DataString="PL221.PWMOut2" Value="0" Negate="true" />
+                  <Activator TypeId="3" DataString="PL221.ExternVoltageOK.1" Value="1" />
+                </Activator>
+              </Behaviour>
+            </VisualLed>
+            <VisualLed ImgPath=".\S-Dias\S-DIAS Led.xaml" Description="Module state" ClrForeground="1342242560" Width="1.32" Height="1.32" Left="1.82" Top="81.13">
+              <Behaviour ClrForeground="4278255360">
+                <Activator TypeId="3" DataString="PL221.ExternVoltageOK.1" Value="1" />
+              </Behaviour>
+            </VisualLed>
+          </VisualLeds>
+          <!-- Stecker -->
+          <VisualConnectors>
+            <VisualConnector Description="X1" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="16.93">
+              <ConnectorPin Description="+5V OUT" TypeId="0" />
+              <ConnectorPin Description="RGB Pixel LED Out 1" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+              <ConnectorPin Description="Shield" TypeId="0" />
+            </VisualConnector>
+            <VisualConnector Description="X2" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="32.28">
+              <ConnectorPin Description="+5V OUT" TypeId="0" />
+              <ConnectorPin Description="RGB Pixel LED Out 2" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+              <ConnectorPin Description="Shield" TypeId="0" />
+            </VisualConnector>
+            <VisualConnector Description="X3" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="47.62">
+              <ConnectorPin Description="+24V PWM Out1" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+              <ConnectorPin Description="n.c" TypeId="0" />
+              <ConnectorPin Description="Shield" TypeId="0" />
+            </VisualConnector>
+            <VisualConnector Description="X4" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="62.97">
+              <ConnectorPin Description="+24V PWM Out 2" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+              <ConnectorPin Description="n.c." TypeId="0" />
+              <ConnectorPin Description="Shield" TypeId="0" />
+            </VisualConnector>
+            <VisualConnector Description="X5" ImgPath=".\S-Dias\S-DIAS Phoenix 4-polig.xaml" Width="7.86" Height="15" Left="3.7" Top="78.32">
+              <ConnectorPin Description="+24 Volt" TypeId="0" />
+              <ConnectorPin Description="+24 Volt" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+              <ConnectorPin Description="Ground" TypeId="0" />
+            </VisualConnector>
+          </VisualConnectors>
+        </VisualModule>
+      </VisualView>
+    </VisualData>
+  </HWDevice>
+  <Class Name="PL221">
+    <Uplink Name="SdiasIn" BusType="SDIAS" PlaceName="Place" />
+	<Downlink Name="ClassState" Port="0" BusType="Hardwarealarme" Desc="Hardwarealarme" />
+    <!-- General -->
+    <Property Name="Required" Channel="Required" Editor="Combo:1=Module is required;0=Module is not required" Desc="0=module is not required 1=module is required (CPU will crash if module is missing)" />
+    <IOState Name="Class State" Channel="ClassState" Desc="This server shows the status of the hardware class. If the state is not equal than _ClassOK, an error has occurred " Type="" />
+    <IOState Name="Device ID" Channel="DeviceID" IsInfo="true" Type="" Desc="This server shows the device ID  of the hardware module" />
+    <IOState Name="FPGA Version" Channel="FPGAVersion" Format="V{5-8}.{1-4}" IsInfo="true" Desc="Shows the actual FPGA version of the module in the format x.y (e.g. 16#10 means v1.0)" />
+    <IOState Name="Hardware Version" Channel="HwVersion" IsInfo="true" Format="V{9-16}.{5-8}{1-4}" Type="" Desc="Shows the hardware version of the module" />
+    <IOState Name="Serial Number" Channel="SerialNo" IsInfo="true" Type="" Desc="Shows the Serial Number of the hardware module" />
+    <IOState Name="Retry Counter" Channel="RetryCounter" Desc="Increments incorrect data transfers." />
+    <Output Name="LED Control" Channel="LEDControl" Type="Digital" Desc="Sets a LED on hardware, to detect module. (0=LED off; 1=LED on; 2=blinking slowly; 3=blinking fast)." />
+    <IOState Name="Range" Channel="Range" Type="" Desc="Range detection: &#xD;&#xA;Bit0..Overcurrent PWM&#xD;&#xA;Bit1..Overcurrent LED&#xD;&#xA;Bit2..Shortcircuit PWM&#xD;&#xA;Bit3..Overtemperature PWM&#xD;&#xA;Bit4..5V supply overtemperature error&#xD;&#xA;a read call reset the server&#xD;&#xA;" />
+    <IOState Name="Extern Voltage OK" Channel="ExternVoltageOK" Type="Digital" Desc="This Server show the state of the voltage supply for 24V and 5V.&#xD;&#xA;Bit0..Voltage 24V DC OK&#xD;&#xA;Bit1..Voltage 5V DC OK&#xD;&#xA;" />
+    <!-- Stripe 1 -->
+	<Property Name="Stripe 1 Activate" Channel="Stripe1_Activate" Type="Digital" Editor="Combo:0=Stripe 1 deactivated;1=Stripe 1 activated" Desc="The Stripe 1 can be activated/deactivated with this client as init value." />
+	<Property Name="Stripe 1 Number of Leds" Channel="Stripe1_NumOfLeds" Type="Analog" Desc="The number of LED's on the Stripe 1 as init value.&#xD;&#xA;maximum ..512 LED's" Editor="EditNumber:Signed;Dec" />
+	<Property Name="Stripe 1 Type" Channel="Stripe1_Type" Type="Digital" Editor="Combo:0=WS2812B;1=WS2813;2=Individual " Desc="Set the Type of Stripe 1 as init value.&#xD;&#xA;If Type 2 Individual has been selected, enter the values with the function IndividualStripeConfig" />
+	<Property Name="Stripe 1 Color Resolution" Channel="Stripe1_ColorResolution" Type="Digital" Editor="Combo:0=24bit;1=16bit;2=8bit(CLUT);3=4bit(CLUT)" Desc="Set the color resolution of the transfer as init value.&#xD;&#xA;CLUT: Color data  are stored in a LookUp Table" />
+	<Property Name="Stripe 1 Refresh Cycle" Channel="Stripe1_RefreshCycle" Type="Analog" Desc="Specifies the frequency at which the LED strips are updated when WriteDataMode = 0 is selected.&#xD;&#xA;In order to maintain an even workload, the data is split up.&#xD;&#xA;The time must be a multiple of the bus cycle time. Set as initial value!" Editor="EditNumber:Signed;Dec" />
+    <!-- Stripe 2 -->
+	<Property Name="Stripe 2 Activate" Channel="Stripe2_Activate" Type="Digital" Editor="Combo:0=Stripe 2 deactivated; 1=Stripe 2 activated" Desc="The Stripe 2 can be activated/deactivated with this client as init value." />
+	<Property Name="Stripe 2 Number of Leds" Channel="Stripe2_NumOfLeds" Type="Analog" Desc="The number of LED's on the Stripe 2 as init value.&#xD;&#xA;maximum ..512 LED's" Editor="EditNumber:Signed;Dec" />
+	<Property Name="Stripe 2 Type" Channel="Stripe2_Type" Type="Digital" Editor="Combo:0=WS2812B;1=WS2813;2=Individual" Desc="Set the Type of Stripe 2 as init value.&#xD;&#xA;If Type 2 Individual has been selected, enter the values with the function IndividualStripeConfig" />
+	<Property Name="Stripe 2 Color Resolution" Channel="Stripe2_ColorResolution" Type="Digital" Editor="Combo:0=24bit;1=16bit;2=8bit(CLUT);3=4bit(CLUT)" Desc="Set the color resolution of the transfer as init value.&#xD;&#xA;CLUT: Color data  are stored in a LookUp Table" />
+	<Property Name="Stripe 2 Refresh Cycle" Channel="Stripe2_RefreshCycle" Type="Analog" Desc="Specifies the frequency at which the LED strips are updated when WriteDataMode = 0 is selected.&#xD;&#xA;In order to maintain an even workload, the data is split up.&#xD;&#xA;The time must be a multiple of the bus cycle time. Set as initial value!" Editor="EditNumber:Signed;Dec" />
+	<!-- LED Data Transfer Mode -->
+	<Property Name="WriteData Mode" Channel="WriteDataMode" Type="Digital" Editor="Combo:0=write whole stripe; 1=change individual LED's" Desc="This client is used to select how the data transfer should be done. " />
+    <!-- PWM Output -->
+    <Output Name="PMW Out 1" Type="Analog" Channel="PWMOut1" IsConfig="true" Desc="Set the pwm high time of the pwm output 1 in percent from 0 to 100%." >
+      <Property Name="PWM 1 Enable" Type="Digital" Channel="PWM1Enable" Editor="Combo:0=Output 1 is deactivated; 1=Output 1 is activated" Desc="The PWM Output 1 can be activated / deactivated with this client as init value." />
+      <Property Name="PWM 1 Periode" Type="Analog" Channel="PWM1Periode" Desc="Set PWM Output 1 Periode (50 - 1000) in 10us steps" Editor="EditNumber:Signed;Dec" /> 
+    </Output>
+    <Output Name="PMW Out 2" Type="Analog" Channel="PWMOut2" IsConfig="true" Desc="Set the pwm high time of the pwm output 2 in percent from 0 to 100%." >
+      <Property Name="PWM 2 Enable" Type="Digital" Channel="PWM2Enable" Editor="Combo:0=Output 2 is deactivated; 1=Output 2 is activated" Desc="The PWM Output 2 can be activated / deactivated with this client as init value." />
+      <Property Name="PWM 2 Periode" Type="Analog" Channel="PWM2Periode" Desc="Set PWM Output 2 Periode (50 - 1000) in 10us steps" Editor="EditNumber:Signed;Dec" />
+    </Output>
+    <Output Name="LED Stripe On" Type="Digital" Channel="LEDStripeOn" Desc="switch on/off power supply from led stripes. &#xD;&#xA;0..off&#xD;&#xA;1..on" />
+    <Output Name="Set AllLeds" Type="Digital" Channel="SetAllLeds" Desc= "Set whole led stripe to one color. Select the color on Server SetStripeColor[1-2] &#xD;&#xA;0..off&#xD;&#xA;1..stripe1&#xD;&#xA;2..stripe2&#xD;&#xA;3..both stripes" />
+    <Output Name="Set Color Stripe1" Type="Digital" Channel="SetColorStripe1" Desc="Set stripe 1 color for SetAllLeds Server. &#xD;&#xA;24bit..0xFFFFFF&#xD;&#xA;16bit..0xFFFF&#xD;&#xA;8bit..0-255&#xD;&#xA;4bit..0-15" />
+    <Output Name="Set Color Stripe2" Type="Digital" Channel="SetColorStripe2" Desc="Set stripe 2 color for SetAllLeds Server. &#xD;&#xA;24bit..0xFFFFFF&#xD;&#xA;16bit..0xFFFF&#xD;&#xA;8bit..0-255&#xD;&#xA;4bit..0-15" />
+    <Output Name="Start RollingAddress Stripe1" Type="Analog" Channel="StartRollingAddrStripe1" Desc="Start the rolling mode for the led stripe 1. &#xD;&#xA;off..-1&#xD;&#xA;on..startaddress (0 - (NumberOfLeds -1))" />
+    <Output Name="Start RollingAddress Stripe2" Type="Analog" Channel="StartRollingAddrStripe2" Desc="Start the rolling mode for the led stripe 2. &#xD;&#xA;off..-1&#xD;&#xA;on..startaddress (0 - (NumberOfLeds -1))" />
+    <Script Name="PL221">
+    <Parameter Name="PWM1Enable" Type="Client" Channel="PWM1Enable" Desc="" />
+    <Parameter Name="PWM2Enable" Type="Client" Channel="PWM2Enable" Desc="" />
+    <Parameter Name="Stripe1_Activate" Type="Client" Channel="Stripe1_Activate" Desc="" />    
+    <Parameter Name="Stripe2_Activate" Type="Client" Channel="Stripe2_Activate" Desc="" /> 
+    <Parameter Name="WriteDataMode" Type="Client" Channel="WriteDataMode" Desc="" /> 
+    
+<Code>
+def compPost_PL221(element, parameters):
+  
+  if parameters['varanBridge']:
+    parameters['AddToSDiasTime'] = True
+    element['result']['optional'] =  {'PDO': {'Wr':[], 'Rd':[], 'WrDyn':[], 'RdDyn':[]}}    
+        
+    SDIASPDORdAdd(0x1,element)
+
+    if operator.gt(element['options']['PWM1Enable'], 0) | operator.gt(element['options']['PWM2Enable'], 0) :
+      SDIASPDOWrAdd(0x02, element)  
+    
+    if operator.gt(element['options']['Stripe1_Activate'], 0) | operator.gt(element['options']['Stripe2_Activate'], 0) :
+      SDIASPDOWrAdd(0x05, element)
+      if operator.eq(element['options']['WriteDataMode'], 0):
+        if operator.gt(element['options']['Stripe1_Activate'], 0):  
+          SDIASPDOWrAdd(0x80, element)
+        if operator.gt(element['options']['Stripe2_Activate'], 0):
+          SDIASPDOWrAdd(0x80, element)
+      else:
+        SDIASPDOWrAdd(0x80, element)
+    
+
+
+</Code>
+    </Script>        
+  </Class>
+</HWClassInfo>

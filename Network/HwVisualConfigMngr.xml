@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <HwVisualConfigManager>
+	<HwVisualConfig Key="__HW_MAIN_PLC__" DeviceType="CP112" Top="20" Left="20"/>
+	<HwVisualConfig Key="CP112_IOs1" Top="177" Left="20"/>
+	<HwVisualConfig Key="HwObj_PL221" Top="128.8" Left="20"/>
+	<HwVisualConfig Key="VaranManager_11" Top="177" Left="20"/>
 </HwVisualConfigManager>

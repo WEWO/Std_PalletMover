@@ -50,6 +50,7 @@
 													<Components>
 														<Object Name="_base" GUID="{B453E322-0411-48D6-9B63-17D52E269CCF}" Class="LinkedObjectBase">
 															<Channels>
+																<Server Name="ObjectStatus"/>
 																<Server Name="ToObject"/>
 																<Client Name="op_LogData"/>
 																<Client Name="p_NextObject"/>

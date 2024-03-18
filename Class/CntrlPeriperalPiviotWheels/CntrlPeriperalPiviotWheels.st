@@ -31,6 +31,7 @@
 				Position   = "(218,120)"
 				Visualized = "false">
 				<Channels>
+					<Server Name="ObjectStatus"/>
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_NextObject"/>

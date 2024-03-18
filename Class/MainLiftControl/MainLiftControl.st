@@ -22,11 +22,13 @@
 		<Server Name="SetHeight" GUID="{0531612E-809B-4D93-96F2-6A8D81648C0F}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="SetSpeed" GUID="{371F702B-4332-4707-884B-5FD7135431A6}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="State" GUID="{2BF5462F-5109-4368-867B-0D4F36B3AED8}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Client Name="_LMCAxis" Required="true" Internal="true"/>
 		<Client Name="ActuValveDown" Required="true" Internal="false"/>
 		<Client Name="ActuValveUp" Required="true" Internal="false"/>
 		<Client Name="AgvConfig" Required="true" Internal="false"/>
 		<Client Name="AgvSettings" Required="true" Internal="false"/>
 		<Client Name="Ain_AnalogPosition" Required="true" Internal="false"/>
+		<Client Name="HydroController" Required="true" Internal="true"/>
 		<Client Name="I_Lift" Required="true" Internal="true"/>
 		<Client Name="SensorMaxHeight" Required="false" Internal="false"/>
 		<Client Name="SensorMinHeight" Required="true" Internal="false"/>
@@ -42,16 +44,104 @@
 				Position   = "(218,120)"
 				Visualized = "false">
 				<Channels>
+					<Server Name="ObjectStatus"/>
 					<Server Name="ToObject"/>
 					<Client Name="op_LogData"/>
 					<Client Name="p_NextObject"/>
 				</Channels>
 			</Object>
 			<Object
+				Name           = "_LMCAxis"
+				GUID           = "{5FCEE526-0683-4EEA-A621-88CA08D9AD6C}"
+				Class          = "_LMCAxis"
+				Position       = "(1080,870)"
+				Visualized     = "true"
+				Remotely       = "true"
+				RealTime       = "1 ms"
+				CyclicTime     = "10 ms"
+				BackgroundTime = "100 ms">
+				<Channels>
+					<Server Name="AbsEncoder"/>
+					<Server Name="ActPos"/>
+					<Server Name="ActVelocity"/>
+					<Server Name="AEmergency" Value="0"/>
+					<Server Name="AMax" Value="50m"/>
+					<Server Name="AxisError"/>
+					<Server Name="AxisStatus"/>
+					<Server Name="Control"/>
+					<Server Name="Destination"/>
+					<Server Name="ErrorConfig" Value="2#0000000001000000"/>
+					<Server Name="ExUnits" Value="65536"/>
+					<Server Name="IntUnits" Value="100mm"/>
+					<Server Name="JMax" Value="0"/>
+					<Server Name="Modulo" Value="0"/>
+					<Server Name="MoveType" Value="_RAMP_Profile"/>
+					<Server Name="Override"/>
+					<Server Name="PosMode"/>
+					<Server Name="Resolution" Value="1"/>
+					<Server Name="SetPos"/>
+					<Server Name="SetVelocity"/>
+					<Server Name="SimulateMode" Value="0"/>
+					<Server Name="SWMaxPos" Value="0"/>
+					<Server Name="SWMinPos" Value="0"/>
+					<Server Name="Tjerk" Value="0"/>
+					<Server Name="VMax" Value="5m"/>
+					<Client Name="ActPosition"/>
+					<Client Name="Config" Value="0"/>
+					<Client Name="Emergency"/>
+					<Client Name="HWError"/>
+					<Client Name="HWMax"/>
+					<Client Name="HWMin"/>
+					<Client Name="HWReady"/>
+					<Client Name="ID" Value="0"/>
+					<Client Name="LatchPos"/>
+					<Client Name="LMCController"/>
+					<Client Name="LMCPostRtWorkTrigger"/>
+					<Client Name="LMCPreRtWorkTrigger"/>
+					<Client Name="Provider"/>
+					<Client Name="RefSwitch"/>
+					<Client Name="ZImpulse"/>
+				</Channels>
+			</Object>
+			<Object
+				Name       = "HydroController"
+				GUID       = "{49FEC06E-8201-4FCE-A142-67B6B8B73BE2}"
+				Class      = "HydroController"
+				Position   = "(510,930)"
+				Visualized = "true"
+				Remotely   = "true">
+				<Channels>
+					<Server Name="Signal_Input"/>
+					<Server Name="XW"/>
+					<Server Name="XwMax"/>
+					<Client Name="cDraglimit" Value="0"/>
+					<Client Name="cEmerStop"/>
+					<Client Name="cImode"/>
+					<Client Name="cMaxSignal1" Value="40"/>
+					<Client Name="cMaxSignal2" Value="40"/>
+					<Client Name="cMaxSpeed" Value="100"/>
+					<Client Name="cOffSignal" Value="20"/>
+					<Client Name="HWErrorQuit"/>
+					<Client Name="iHWErrors"/>
+					<Client Name="oActive"/>
+					<Client Name="odirection"/>
+					<Client Name="oOutputSignal"/>
+					<Client Name="vHWDelay"/>
+					<Client Name="vKD1"/>
+					<Client Name="vKD2"/>
+					<Client Name="vKI1"/>
+					<Client Name="vKI2"/>
+					<Client Name="vKV1"/>
+					<Client Name="vKV2"/>
+					<Client Name="vVU1" Value="45"/>
+					<Client Name="vVU2" Value="45"/>
+				</Channels>
+			</Object>
+			<Object
 				Name       = "I_Lift"
 				GUID       = "{E26D8194-2357-4E3D-85F3-2B210961C2C6}"
 				Class      = "I_Lift"
-				Position   = "(210,390)"
+				Position   = "(570,360)"
 				Visualized = "false">
 				<Channels>
 					<Server Name="ActualHeight"/>
@@ -66,14 +156,17 @@
 		</Comments>
 		<!-- List of Connections in this network -->
 		<Connections>
-			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(976,210),(804,210),"/>
+			<Connection Source="this.ToObject" Destination="_base.ToObject" Vertices="(1918,210),(804,210),"/>
 			<Connection Source="_base.op_LogData" Destination="this.op_LogData" Vertices="(218,210),(38,210),"/>
 			<Connection Source="_base.p_NextObject" Destination="this.p_NextObject" Vertices="(218,270),(38,270),"/>
 			<Connection Source="this.I_Lift" Destination="I_Lift.ClassSvr"/>
-			<Connection Source="this.ActualHeight" Destination="I_Lift.ActualHeight" Vertices="(976,330),(796,540),"/>
-			<Connection Source="this.SetHeight" Destination="I_Lift.SetHeight" Vertices="(976,390),(796,600),"/>
-			<Connection Source="this.SetSpeed" Destination="I_Lift.SetSpeed" Vertices="(976,450),(796,660),"/>
-			<Connection Source="this.State" Destination="I_Lift.State" Vertices="(976,510),(796,720),"/>
+			<Connection Source="this._LMCAxis" Destination="_LMCAxis.Control"/>
+			<Connection Source="this.HydroController" Destination="HydroController.Signal_Input"/>
+			<Connection Source="_LMCAxis.LMCController" Destination="HydroController.Signal_Input" Vertices="(1080,1020),(948,1020),"/>
+			<Connection Source="this.ActualHeight" Destination="I_Lift.ActualHeight" Vertices="(1918,330),(1156,510),"/>
+			<Connection Source="this.SetHeight" Destination="I_Lift.SetHeight" Vertices="(1918,390),(1156,570),"/>
+			<Connection Source="this.SetSpeed" Destination="I_Lift.SetSpeed" Vertices="(1918,450),(1156,630),"/>
+			<Connection Source="this.State" Destination="I_Lift.State" Vertices="(1918,510),(1156,690),"/>
 		</Connections>
 		<!-- Headerfiles -->
 		<Options>
@@ -100,6 +193,8 @@ MainLiftControl : CLASS
 	ActuValveUp 	: CltCh_DINT;
 	ActuValveDown 	: CltCh_DINT;
 	Speed 	: CltCh_DINT;
+	HydroController 	: CltChCmd_HydroController;
+	_LMCAxis 	: CltChCmd__LMCAxis;
   //Variables:
 		ConnectionMaxHeightSensor 	: ^CHAR;
 		Stepper 	: DINT;
@@ -151,6 +246,8 @@ MainLiftControl : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
+#pragma using _LMCAxis
+#pragma using HydroController
 #pragma using I_Lift
 #pragma usingLtd AgvConfig
 
@@ -162,7 +259,7 @@ FUNCTION GLOBAL TAB MainLiftControl::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_MAINLIFTCONTROL
 0$UINT, 0$UINT, (SIZEOF(::MainLiftControl))$UINT, 
-4$UINT, 9$UINT, 0$UINT, 
+4$UINT, 11$UINT, 0$UINT, 
 TO_UDINT(1395773024), "MainLiftControl", //Class
 TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, //Baseclass
 //Servers:
@@ -180,6 +277,8 @@ TO_UDINT(480875673), "PeripheralsBase", 0$UINT, 0$UINT, //Baseclass
 (::MainLiftControl.ActuValveUp.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(371618052), "ActuValveUp", 
 (::MainLiftControl.ActuValveDown.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(2583098308), "ActuValveDown", 
 (::MainLiftControl.Speed.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(4168236102), "Speed", 
+(::MainLiftControl.HydroController.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(400507284), "HydroController", TO_UDINT(400507284), "HydroController", 1$UINT, 71$UINT, 
+(::MainLiftControl._LMCAxis.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1422175863), "_LMCAxis", TO_UDINT(1422175863), "_LMCAxis", 1$UINT, 108$UINT, 
 END_FUNCTION
 
 

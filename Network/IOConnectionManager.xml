@@ -7,5 +7,11 @@
 			<IOConnection SortIndex="0" KeyName="000000"/>
 		</IOConnections>
 	</Entry>
+	<Entry Name="IO_Element" Objectsize="284">
+		<!-- List of Connections -->
+		<IOConnections>
+			<IOConnection SortIndex="1" KeyName="000001"/>
+		</IOConnections>
+	</Entry>
 	<!-- List of Folders -->
 </IOConnectionManager>

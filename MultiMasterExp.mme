@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<RemoteStation
+	PrjRev        = "0.0"
+	PrjRev_DESC   = "Version of the project"
+	Project       = "Std_PalletMover"
+	Project_DESC  = "Name of the project"
+	IP            = "192.168.127.111"
+	IP_DESC       = "IP address of this station"
+	Filename      = "C:\Projecten\StandaardPalletMover\AgvCode\Std_PalletMover\Std_PalletMover.lcp"
+	Filename_DESC = "File name to project">
+	<RemoteServers>
+		<RemoteServer Name="CP112_IOs1.ClassState" Name_DESC="Name" GUID_Svr="{3A3AB6B3-8638-4EBF-BE1F-FF95BD2A673E}" GUID_Svr_DESC="GUID of the server" Class="XXXBase_IOs" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Shows the state of the class.&#13;&#10;0 ... ok." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="CP112_IOs1\_base\_CanLib1.Command" Name_DESC="Name" GUID_Svr="{F2E35EDC-EC38-404F-8628-971D9597C94C}" GUID_Svr_DESC="GUID of the server" Class="_CanLib" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{99F54FB9-50C4-4B09-9754-D88D3CAD66E4}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Connect a object client" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="CP112_IOs1\_base\_CanLib1.CanBus" Name_DESC="Name" GUID_Svr="{BF716426-E966-4889-A126-00EC213ABFBC}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{99F54FB9-50C4-4B09-9754-D88D3CAD66E4}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="which CanbusSystem [1,2,...](as initvalue)" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="CP112_IOs1\_base\_CanLib2.Command" Name_DESC="Name" GUID_Svr="{F2E35EDC-EC38-404F-8628-971D9597C94C}" GUID_Svr_DESC="GUID of the server" Class="_CanLib" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{AE619A04-D25E-4D1A-A696-5DECE6B25694}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Connect a object client" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="CP112_IOs1\_base\_CanLib2.CanBus" Name_DESC="Name" GUID_Svr="{BF716426-E966-4889-A126-00EC213ABFBC}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{AE619A04-D25E-4D1A-A696-5DECE6B25694}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="which CanbusSystem [1,2,...](as initvalue)" Comment_DESC="Comment of server"/>
+		<RemoteServer
+			Name                = "CP112_IOs1\_base\_SerLib1.Command"
+			Name_DESC           = "Name"
+			GUID_Svr            = "{E2A17142-EF9E-11D5-BDB2-000103C6CD0D}"
+			GUID_Svr_DESC       = "GUID of the server"
+			Class               = "_SerLib"
+			Class_DESC          = "Class"
+			DataType            = "DINT"
+			DataType_DESC       = "DataType"
+			GUID_Obj            = "{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{20E65384-3D3B-4ACE-BEEE-0C43CE37B814}"
+			GUID_Obj_DESC       = "GUID of the object"
+			Type                = "Object Channel"
+			Type_DESC           = "Type"
+			HasNewInst          = "true"
+			HasNewInst_DESC     = "Multimaster server has NewInst commands"
+			WriteProtected      = "true"
+			WriteProtected_DESC = "Write protection of multimaster server"
+			Comment             = "for calling global methods"
+			Comment_DESC        = "Comment of server">
+			<NewInst>
+				<Function Name="StartUserIPR">
+					<InputParameter>
+						<Parameter Name="Baudrate"/>
+						<Parameter Name="Wordlength"/>
+						<Parameter Name="ParityBits"/>
+						<Parameter Name="StopBits"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="StopUserIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SerCloseIPR">
+				</Function>
+				<Function Name="SerSendIPR">
+					<InputParameter>
+						<Parameter Name="SendValue"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="CorrectSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RecvCharIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="ReadChar"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetOnlineIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRecvStateIPR">
+					<OutputParameter>
+						<Parameter Name="length"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetSendStateIPR">
+					<OutputParameter>
+						<Parameter Name="BytesTooSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetErrorIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="IsInitializedIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="ClearRecBufferIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RtsOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdCtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="DtrOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDtrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDcdIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDsrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRiIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetRSModeIPR">
+					<InputParameter>
+						<Parameter Name="Mode"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRSModeIPR">
+					<OutputParameter>
+						<Parameter Name="Mode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetInterfaceTypeIPR">
+					<OutputParameter>
+						<Parameter Name="Retcode"/>
+					</OutputParameter>
+				</Function>
+			</NewInst>
+		</RemoteServer>
+		<RemoteServer Name="CP112_IOs1\_base\_SerLib1.Com" Name_DESC="Name" GUID_Svr="{D94EFF5B-283A-4927-BF86-6594255D3D0F}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{20E65384-3D3B-4ACE-BEEE-0C43CE37B814}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="No. of COM: 1-10" Comment_DESC="Comment of server"/>
+		<RemoteServer
+			Name                = "CP112_IOs1\_base\_SerLib2.Command"
+			Name_DESC           = "Name"
+			GUID_Svr            = "{E2A17142-EF9E-11D5-BDB2-000103C6CD0D}"
+			GUID_Svr_DESC       = "GUID of the server"
+			Class               = "_SerLib"
+			Class_DESC          = "Class"
+			DataType            = "DINT"
+			DataType_DESC       = "DataType"
+			GUID_Obj            = "{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{4164A4B8-81D1-4134-8792-127DF657E364}"
+			GUID_Obj_DESC       = "GUID of the object"
+			Type                = "Object Channel"
+			Type_DESC           = "Type"
+			HasNewInst          = "true"
+			HasNewInst_DESC     = "Multimaster server has NewInst commands"
+			WriteProtected      = "true"
+			WriteProtected_DESC = "Write protection of multimaster server"
+			Comment             = "for calling global methods"
+			Comment_DESC        = "Comment of server">
+			<NewInst>
+				<Function Name="StartUserIPR">
+					<InputParameter>
+						<Parameter Name="Baudrate"/>
+						<Parameter Name="Wordlength"/>
+						<Parameter Name="ParityBits"/>
+						<Parameter Name="StopBits"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="StopUserIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SerCloseIPR">
+				</Function>
+				<Function Name="SerSendIPR">
+					<InputParameter>
+						<Parameter Name="SendValue"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="CorrectSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RecvCharIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="ReadChar"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetOnlineIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRecvStateIPR">
+					<OutputParameter>
+						<Parameter Name="length"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetSendStateIPR">
+					<OutputParameter>
+						<Parameter Name="BytesTooSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetErrorIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="IsInitializedIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="ClearRecBufferIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RtsOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdCtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="DtrOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDtrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDcdIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDsrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRiIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetRSModeIPR">
+					<InputParameter>
+						<Parameter Name="Mode"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRSModeIPR">
+					<OutputParameter>
+						<Parameter Name="Mode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetInterfaceTypeIPR">
+					<OutputParameter>
+						<Parameter Name="Retcode"/>
+					</OutputParameter>
+				</Function>
+			</NewInst>
+		</RemoteServer>
+		<RemoteServer Name="CP112_IOs1\_base\_SerLib2.Com" Name_DESC="Name" GUID_Svr="{D94EFF5B-283A-4927-BF86-6594255D3D0F}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{4164A4B8-81D1-4134-8792-127DF657E364}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="No. of COM: 1-10" Comment_DESC="Comment of server"/>
+		<RemoteServer
+			Name                = "CP112_IOs1\_base\_SerLib3.Command"
+			Name_DESC           = "Name"
+			GUID_Svr            = "{E2A17142-EF9E-11D5-BDB2-000103C6CD0D}"
+			GUID_Svr_DESC       = "GUID of the server"
+			Class               = "_SerLib"
+			Class_DESC          = "Class"
+			DataType            = "DINT"
+			DataType_DESC       = "DataType"
+			GUID_Obj            = "{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{6D7A9FC0-9DDD-45A0-8169-90CDF9145BFC}"
+			GUID_Obj_DESC       = "GUID of the object"
+			Type                = "Object Channel"
+			Type_DESC           = "Type"
+			HasNewInst          = "true"
+			HasNewInst_DESC     = "Multimaster server has NewInst commands"
+			WriteProtected      = "true"
+			WriteProtected_DESC = "Write protection of multimaster server"
+			Comment             = "for calling global methods"
+			Comment_DESC        = "Comment of server">
+			<NewInst>
+				<Function Name="StartUserIPR">
+					<InputParameter>
+						<Parameter Name="Baudrate"/>
+						<Parameter Name="Wordlength"/>
+						<Parameter Name="ParityBits"/>
+						<Parameter Name="StopBits"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="StopUserIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SerCloseIPR">
+				</Function>
+				<Function Name="SerSendIPR">
+					<InputParameter>
+						<Parameter Name="SendValue"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="CorrectSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RecvCharIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+						<Parameter Name="ReadChar"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetOnlineIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRecvStateIPR">
+					<OutputParameter>
+						<Parameter Name="length"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetSendStateIPR">
+					<OutputParameter>
+						<Parameter Name="BytesTooSend"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetErrorIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="IsInitializedIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="ClearRecBufferIPR">
+					<OutputParameter>
+						<Parameter Name="ErrorCom"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="RtsOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdCtsIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="DtrOnOffIPR">
+					<InputParameter>
+						<Parameter Name="state"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDtrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDcdIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdDsrIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="rdRiIPR">
+					<OutputParameter>
+						<Parameter Name="state"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="SetRSModeIPR">
+					<InputParameter>
+						<Parameter Name="Mode"/>
+					</InputParameter>
+					<OutputParameter>
+						<Parameter Name="ErrorCode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetRSModeIPR">
+					<OutputParameter>
+						<Parameter Name="Mode"/>
+					</OutputParameter>
+				</Function>
+				<Function Name="GetInterfaceTypeIPR">
+					<OutputParameter>
+						<Parameter Name="Retcode"/>
+					</OutputParameter>
+				</Function>
+			</NewInst>
+		</RemoteServer>
+		<RemoteServer Name="CP112_IOs1\_base\_SerLib3.Com" Name_DESC="Name" GUID_Svr="{D94EFF5B-283A-4927-BF86-6594255D3D0F}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{43E6A152-6911-4570-9818-AAB5B521795A}\{337D461A-11B5-452C-9DE1-04064CF7AECF}\{6D7A9FC0-9DDD-45A0-8169-90CDF9145BFC}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="No. of COM: 1-10" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwControl1.Control" Name_DESC="Name" GUID_Svr="{6E0C095B-B92D-47BE-BA84-39E07206C58D}" GUID_Svr_DESC="GUID of the server" Class="HwControlBase" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{E55FFACD-A11C-4399-A96A-B4A513FDA251}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" HasNewInst="true" HasNewInst_DESC="Multimaster server has NewInst commands" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="connect VaranManager classes" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwControl1.State" Name_DESC="Name" GUID_Svr="{662C9213-4BB2-4CC6-AE9F-D19FC74B0F6B}" GUID_Svr_DESC="GUID of the server" DataType="t_e_VaranErrors" DataType_DESC="DataType" GUID_Obj="{E55FFACD-A11C-4399-A96A-B4A513FDA251}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="state of HwControl class" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwControl1.DiasMaster" Name_DESC="Name" GUID_Svr="{346AEDBC-831D-4D5C-B71F-A1BF17D120A4}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{E55FFACD-A11C-4399-A96A-B4A513FDA251}" GUID_Obj_DESC="GUID of the object" Comment="connect to client &apos;to_HWControl&quot; of class DiasMasterC if used (if Server is 1 class is connected)&#13;&#10;" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwControl1.SafetyState" Name_DESC="Name" GUID_Svr="{7E088AB6-AB0A-450E-964A-E46FE15A0D4B}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{E55FFACD-A11C-4399-A96A-B4A513FDA251}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Shows state of safety functionality initialisation&#13;&#10;&#13;&#10; 1..OK&#13;&#10; 0..not active or initializing&#13;&#10;-1..failed to allocate memory&#13;&#10;-2..invalid domain number set in this system&#13;&#10;-3..newer OS version required for domain number support&#13;&#10;-4..method to determine domain number not provided by lsl_st_hardwaretree.h&#13;&#10;-5..only 1 instance of safety manager allowed&#13;&#10;-6..a slave system can only have 1 master. check hw class configuration&#13;&#10;-7..invalid module type tried to log in&#13;&#10;-8..couldn&apos;t find InterfaceCRC which is requested by other domain. Check SafetyDesigner projects, most likely the interface variables doesn&apos;t match.&#13;&#10;-9..failed to add a new copy data object to varan manager&#13;&#10;-10..a non-optional module or domain is not available&#13;&#10;-11..timeout in initialisation (see debugger trace or logfile for further details)&#13;&#10;-13..the class safetymanager could not login into the class HwControl." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.ClassState" Name_DESC="Name" GUID_Svr="{070CD62D-F011-403B-A668-118E2A1842A7}" GUID_Svr_DESC="GUID of the server" Class="SdiasBase" Class_DESC="Class" DataType="t_e_VaranErrors" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" HasNewInst="true" HasNewInst_DESC="Multimaster server has NewInst commands" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Server shows the current Status of the Hardware Class." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.DeviceID" Name_DESC="Name" GUID_Svr="{1F67076F-D511-400A-8CEF-0F0E0579EC0B}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Server shows the DeviceID of the Hardware Module." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.FPGAVersion" Name_DESC="Name" GUID_Svr="{D5EF701A-412A-4C34-AA2E-FFC7D82C2F86}" GUID_Svr_DESC="GUID of the server" DataType="HDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Server shows the actual FPGA Version of the Module in the format x.y&#13;&#10;&#13;&#10;e.g. 16#10 means v1.0" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.HwVersion" Name_DESC="Name" GUID_Svr="{6BF31076-362C-4517-9DA7-F776C9F85012}" GUID_Svr_DESC="GUID of the server" DataType="HDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="shows hw version in the format xx.yy (16#0120 means v1.20)" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.SerialNo" Name_DESC="Name" GUID_Svr="{68FBC413-E3CB-4059-BC09-1D975B4D4819}" GUID_Svr_DESC="GUID of the server" Class="String" Class_DESC="Class" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Serial number of the Hardware Module." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.RetryCounter" Name_DESC="Name" GUID_Svr="{833C80D1-4726-4DCB-B1AB-C268D7D72245}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Number of Retries on SDIAS-Bus." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.LEDControl" Name_DESC="Name" GUID_Svr="{FA9DCFC5-B668-4B7B-8E80-E0410DEF9ED8}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Sets a LED on Hardware, to detect Module.&#13;&#10;0 ... LED off&#13;&#10;1 ... LED on&#13;&#10;2 ... blinking slow&#13;&#10;3 ... blinking fast" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.SDOState" Name_DESC="Name" GUID_Svr="{1C3F8C9A-F083-486D-A096-B459EA29A017}" GUID_Svr_DESC="GUID of the server" DataType="iprStates" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Type="Command Channel" Type_DESC="Type" HasNewInst="true" HasNewInst_DESC="Multimaster server has NewInst commands" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="State of the actual SDO Transmission." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.PWMOut1" Name_DESC="Name" GUID_Svr="{F570E199-1DE9-4B22-9FD1-4E4BFBF13E78}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Set the pwm high time of the pwm output 1 in percent from 0 to 100%.&#13;&#10;0 ... off&#13;&#10;100 ... maximum" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.PWMOut2" Name_DESC="Name" GUID_Svr="{C6EECCE7-1FE4-4755-98FB-4B19F65704FF}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Set the pwm high time of the pwm output 2 in percent from 0 to 100%.&#13;&#10;0 ... off&#13;&#10;100 ... maximum" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.LEDStripeOn" Name_DESC="Name" GUID_Svr="{A4B91AEB-8C3D-43C4-9F97-E28C3F1F25B4}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="switch on/off power supply from led stripes.&#13;&#10;0 ... off&#13;&#10;1 ... on" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.SetAllLeds" Name_DESC="Name" GUID_Svr="{81D77BD9-9355-4CBC-8529-9D2E87DD0C60}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Set whole led stripe to one color.&#13;&#10;Select the color on Server &quot;SetStripeColor&quot;.&#13;&#10;0 ... off&#13;&#10;1 ... stripe 1&#13;&#10;2 ... stripe 2&#13;&#10;3 ... both stripes" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.SetColorStripe1" Name_DESC="Name" GUID_Svr="{49B3E1B3-9003-4C37-8A5A-331AADCD8423}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Set stripe 1 color for &quot;SetAllLeds&quot; server.&#13;&#10;for example: &#13;&#10;24bit ... 0xFFFFFF (RGB)&#13;&#10;16bit ... 0xFFFF&#13;&#10;8bit ... 0-255 (LUT)&#13;&#10;4bit ... 0-15 (LUT)" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.SetColorStripe2" Name_DESC="Name" GUID_Svr="{8BD7D12C-00E6-498F-BA41-F9861E677AC1}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Set stripe 2 color for &quot;SetAllLeds&quot; server.&#13;&#10;for example: &#13;&#10;24bit ... 0xFFFFFF (RGB)&#13;&#10;16bit ... 0xFFFF&#13;&#10;8bit ... 0-255 (LUT)&#13;&#10;4bit ... 0-15 (LUT)" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.StartRollingAddrStripe1" Name_DESC="Name" GUID_Svr="{2CD4756A-F050-4A43-9A95-031D5C1F912E}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Start the rolling mode for the led stripe 1.&#13;&#10;on ... startaddress (0 - (Number of Leds-1))&#13;&#10;off ... -1" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.StartRollingAddrStripe2" Name_DESC="Name" GUID_Svr="{16B4BCD9-8E44-4F1A-959B-20E848BDBD02}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" Comment="Start the rolling mode for the led stripe 2.&#13;&#10;on ... startaddress (0 - (Number of Leds-1))&#13;&#10;off ... -1" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.Range" Name_DESC="Name" GUID_Svr="{E2E9475F-AC7C-49B2-8521-1F884E24450B}" GUID_Svr_DESC="GUID of the server" DataType="BDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" MMType="BDINT" MMType_DESC="Type of the multimaster server" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="range detection:&#13;&#10;Bit 0 ... Overcurrent PWM&#13;&#10;Bit 1 ... Overcurrent LED&#13;&#10;Bit 2 ... Shortcircuit PWM&#13;&#10;Bit 3 ... Overtemperature PWM&#13;&#10;Bit 4 ... 5V supply overtemperature error&#13;&#10;&#13;&#10;a read call reset the server" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="HwObj_PL221.ExternVoltageOK" Name_DESC="Name" GUID_Svr="{2834A11C-D56F-4456-94D7-C232925C94A5}" GUID_Svr_DESC="GUID of the server" DataType="BDINT" DataType_DESC="DataType" GUID_Obj="{A1A5E694-EBE0-4E51-8E29-659E938D2EF3}" GUID_Obj_DESC="GUID of the object" MMType="BDINT" MMType_DESC="Type of the multimaster server" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="This server show the state of the voltage supply for 24V and 5V.&#13;&#10;Bit0 ... Voltage 24V DC OK&#13;&#10;Bit1 ... Voltage   5V DC OK" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.CallCommand" Name_DESC="Name" GUID_Svr="{1D4B549F-9FAF-4951-A3A9-982F228F50D2}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" Type="Command Channel" Type_DESC="Type" HasNewInst="true" HasNewInst_DESC="Multimaster server has NewInst commands" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Command Channel to access the functionality of this class. All methods are access via the NewInst() method of this Server." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.FirmwareVersion" Name_DESC="Name" GUID_Svr="{110EDFDE-5D00-4525-834D-7E99AA65EEF4}" GUID_Svr_DESC="GUID of the server" DataType="HDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Server shows the actual FW Version of the Module in the format xx.yy&#13;&#10;&#13;&#10;e.g. 16#0130 means v01.30" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.ClassState" Name_DESC="Name" GUID_Svr="{CC338568-5E5E-4B72-BB67-E573CD9CE59F}" GUID_Svr_DESC="GUID of the server" DataType="t_e_VaranErrors" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Shows the state of the SDIAS Manager." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.RetryCounter" Name_DESC="Name" GUID_Svr="{3BC15DE0-3955-4B15-86D2-18FB43792F0F}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Actual Number of Retries on SDIAS-Bus." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.IsoWrTaskDuration" Name_DESC="Name" GUID_Svr="{107F6C59-3F86-4945-883C-1730324CE708}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="time measurement of last iso write task at SDIAS in [µs]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.IsoWrTaskMaxDuration" Name_DESC="Name" GUID_Svr="{732E66FA-8CD0-4FE7-BB47-F47F45CD63D4}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" Comment="maximal time measurement of iso write task at SDIAS in [µs]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.IsoRdTaskDuration" Name_DESC="Name" GUID_Svr="{6DEF0FB2-2B7B-4859-A498-992DF86A9C33}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Time measurement of last iso read task at SDIAS in [µs]&#13;&#10;The measured time could be higher then the calculated time according to bit 4 &#13;&#10;of the manager option bits (0 .. with preprocessor time, 1 .. only execution time)." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.IsoRdTaskMaxDuration" Name_DESC="Name" GUID_Svr="{7407C9C7-AEDD-478D-94B7-18DEC7EA7537}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" Comment="maximal time measurement of iso read task at SDIAS in [µs]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="SdiasPLC1.ManagerOptionBits" Name_DESC="Name" GUID_Svr="{1ACFAA3D-1F6C-4193-9962-DACD4520FB4A}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{B54011B7-FC7F-4C41-B72D-CB13776FB009}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Option Bits:&#13;&#10;Bit 1: Interrupts supported&#13;&#10;Bit 2: Half duplex (SDIAS S2), bus scan required&#13;&#10;Bit 3: Far Memory access supported&#13;&#10;Bit 4: Status wait supported (to differ TimeSliceError and TimeSliceErrorIRQ)&#13;&#10;Bit 5: Execution time selection supported 1&#13;&#10;Bit 6: Task interruption detection supported&#13;&#10;Bit 7: Execution time selection supported 2&#13;&#10;" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Control" Name_DESC="Name" GUID_Svr="{217B6364-B62D-4D4A-A8F6-84A5BF141EC1}" GUID_Svr_DESC="GUID of the server" Class="VaranManager_Base" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" HasNewInst="true" HasNewInst_DESC="Multimaster server has NewInst commands" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server"/>
+		<RemoteServer Name="VaranManager_11.State" Name_DESC="Name" GUID_Svr="{A82B4B9F-AB6D-423E-97B9-D67D4AE9D9BE}" GUID_Svr_DESC="GUID of the server" DataType="t_e_VaranErrors" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="state of varan manager class" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.ManagerOn" Name_DESC="Name" GUID_Svr="{3D57A698-3E86-4812-9F57-BCFA7179418A}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="0=Manager is off, 1=Manager is running; -1=VARAN not available or OS version too old" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Release" Name_DESC="Name" GUID_Svr="{B0FAF2D9-DA3F-4F0E-93DE-130D37732570}" GUID_Svr_DESC="GUID of the server" DataType="HDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="FPGA version of manager" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.RetryCounter" Name_DESC="Name" GUID_Svr="{E3E8AAA9-2CC2-4B74-AAFE-F03CBA5D574B}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="global Retry Counter" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.IsoVaranTime" Name_DESC="Name" GUID_Svr="{A21FDC9A-2A45-4D32-9D9F-16268E6DA2F3}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Isochronous time of varan task [ns]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.IsoVaranTimeMax" Name_DESC="Name" GUID_Svr="{D5EB16BB-6777-4076-8550-4754E7E31E6E}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="maximal isochronous time of varan task [ns]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.AsyVaranTime" Name_DESC="Name" GUID_Svr="{C1D6D199-88EA-4EFF-B4C4-3E5B075159E9}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Asynchronous time of varan task [ns]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Act_RtTime" Name_DESC="Name" GUID_Svr="{210878FF-5568-4CFA-BD03-CBAB5B1C1C27}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="actaual Rt - Time [us]&#13;&#10;measurement starts with call of first realtime-object and stops with last call of RtPostScan-Object" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Min_RtTime" Name_DESC="Name" GUID_Svr="{6C3D2B3C-0907-45F7-9C81-AEFDFF92C841}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="minimal realtime time [us]&#13;&#10;measurement starts with call of first realtime-object and stops with last call of RtPostScan-Object" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Max_RtTime" Name_DESC="Name" GUID_Svr="{A5565D8C-B6E2-4559-BC3D-FDD908F37782}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="maximum of realtime time [us]&#13;&#10;measurement starts with call of first realtime-object and stops with last call of RtPostScan-Object" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Act_RtCallTime" Name_DESC="Name" GUID_Svr="{86C8821F-08C9-4A88-B684-C7584BB5E1BB}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="actual realtime call time [us]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Min_RtCallTime" Name_DESC="Name" GUID_Svr="{EC5C52D8-64B5-4BFE-8297-4B42F3C4FB12}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="minimal call time of realtime methode [us]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.Max_RtCallTime" Name_DESC="Name" GUID_Svr="{2EC877A1-3026-425A-A66B-F95D4EBC7A94}" GUID_Svr_DESC="GUID of the server" DataType="UDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Comment="maximal realtime call time [us]" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.SuperiorSystemOK" Name_DESC="Name" GUID_Svr="{B2A1DA64-5A8A-47AC-89AD-B2EAB631558D}" GUID_Svr_DESC="GUID of the server" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="0 = alive counter of superior system not ok, 1 = superior system works, -1 = varan manager client is not used" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.ManagerProtocolVersion" Name_DESC="Name" GUID_Svr="{0D8AB714-B3BB-4F11-BE12-24EEB39635D1}" GUID_Svr_DESC="GUID of the server" DataType="HDINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="Server shows the VARAN Manager Protocol Version in the format xx.y.z&#13;&#10;e.g. 16#0130 means v01.3.0&#13;&#10;If this server is 16#0, then reading the VARAN Protocol Version is not supported by the OS-Interface." Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11.VaranOut_1" Name_DESC="Name" GUID_Svr="{0BE4D2F2-F359-40DE-B933-9F51683D8A0B}" GUID_Svr_DESC="GUID of the server" Class="Hub_Base" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="connect a varan client class" Comment_DESC="Comment of server"/>
+		<RemoteServer Name="VaranManager_11\_base\ASCII_BIN1.Obj_channel" Name_DESC="Name" GUID_Svr="{AA790E5E-E4EC-4B0F-80BB-3FC837048BBA}" GUID_Svr_DESC="GUID of the server" Class="ASCII_BIN" Class_DESC="Class" DataType="DINT" DataType_DESC="DataType" GUID_Obj="{C46B513D-8F93-42EA-BA4F-CF72F8D78DE8}\{B14264EC-37B0-4383-8218-E55E69FA2442}\{8C265742-AE37-41F3-9FFC-79C0C2DE41AA}" GUID_Obj_DESC="GUID of the object" Type="Object Channel" Type_DESC="Type" WriteProtected="true" WriteProtected_DESC="Write protection of multimaster server" Comment="you can call the method Ascii2Bin, Bin2Ascii, Ascii2udBin or udBin2Ascii" Comment_DESC="Comment of server"/>
+	</RemoteServers>
+</RemoteStation>
