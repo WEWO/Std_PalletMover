@@ -232,7 +232,7 @@
 		<File Path=".\Class\HandleSteeringCurtisAC2F\HandleSteeringCurtisAC2F.st"/>
 		<File Path=".\Class\Merker\Merker.st"/>
 		<File Path=".\Class\PeripheralsBase\PeripheralsBase.st"/>
-		<File Path=".\Class\PerPiviotWeel\PerPiviotWeel.st"/>
+		<File Path=".\Class\PerCurtisPiviotWeel\PerCurtisPiviotWeel.st"/>
 		<File Path=".\Class\I_PivotWheel\I_PivotWheel.st"/>
 		<File Path=".\Class\SpeedCalculator\SpeedCalculator.st"/>
 		<File Path=".\Class\System\System.st"/>
@@ -336,6 +336,9 @@
 		<File Path=".\Class\MES_MQTT_Handler\MES_MQTT_Handler.st"/>
 		<File Path=".\Class\MqttTopicText\MqttTopicText.st"/>
 		<File Path=".\Class\KinematicReverseModel\KinematicReverseModel.st"/>
+		<File Path=".\Class\MainFuctionCntrl\MainFuctionCntrl.st"/>
+		<File Path=".\Class\FunctionBase\FunctionBase.st"/>
+		<File Path=".\Class\NavigationKinematicPivots\NavigationKinematicPivots.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>
@@ -353,8 +356,9 @@
 		<File Path=".\Network\PeripheralLed\PeripheralLed.lcn"/>
 		<File Path=".\Network\HW_Network\HW_Network.lcn"/>
 		<File Path=".\Network\AuxNavitec\AuxNavitec.lcn"/>
-		<File Path=".\Network\ON_MQTT_MES_Interface\ON_MQTT_MES_Interface.lcn"/>
+		<File Path=".\Network\AuxMesInterface\AuxMesInterface.lcn"/>
 		<File Path=".\Network\NavigationSystem\NavigationSystem.lcn"/>
+		<File Path=".\Network\WewoMesControl\WewoMesControl.lcn"/>
 	</NetworkFiles>
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
@@ -637,6 +641,7 @@
 			<Folder Name="Main">
 				<Class Name="AgvMain"/>
 				<Class Name="MainAuxCntrl"/>
+				<Class Name="MainFuctionCntrl"/>
 				<Class Name="MainHardwareCntrl"/>
 				<Class Name="MainPeripheralCntrl"/>
 				<Folder Name="Interfaces">
@@ -654,6 +659,7 @@
 				<Class Name="MainLedControl"/>
 				<Class Name="MainLiftControl"/>
 				<Folder Name="Base">
+					<Class Name="FunctionBase"/>
 					<Class Name="HardwareBase"/>
 					<Class Name="PeripheralsBase"/>
 				</Folder>
@@ -772,6 +778,7 @@
 	<NetworkFolders>
 		<Folder Name="Application">
 			<Folder Name="Aux">
+				<Network Name="AuxMesInterface"/>
 				<Network Name="AuxMqttHmi"/>
 				<Network Name="AuxNavitec"/>
 				<Network Name="MainAuxControl"/>
@@ -792,6 +799,7 @@
 			</Folder>
 			<Folder Name="Functions">
 				<Network Name="NavigationSystem"/>
+				<Network Name="WewoMesControl"/>
 			</Folder>
 			<Folder Name="Logger">
 				<Network Name="Logger"/>
@@ -808,7 +816,6 @@
 			</Folder>
 		</Folder>
 		<Folder Name="L0_Hardware_Layer">
-			<Network Name="ON_MQTT_MES_Interface"/>
 		</Folder>
 		<Folder Name="SimulationHardware">
 		</Folder>
@@ -868,6 +875,7 @@
 		<Folder Name="Wewo">
 			<Folder Name="Application">
 				<Type Name="gt_AgvHandleState"/>
+				<Type Name="gt_AgvMainFunction"/>
 				<Type Name="gt_AgvMainState"/>
 				<Type Name="gt_AgvMotorControl"/>
 				<Type Name="gt_AgvMotorState"/>
@@ -887,7 +895,7 @@
 				<Folder Name="ManualMode">
 					<Type Name="gt_AgvManual"/>
 				</Folder>
-				<Folder Name="Per">
+				<Folder Name="Peripherals">
 					<Type Name="gt_agvMainPeripherals"/>
 				</Folder>
 			</Folder>

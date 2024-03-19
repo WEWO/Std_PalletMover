@@ -723,6 +723,14 @@ TYPE
     AuxMainError,
     AuxMainIdle
   )$UDINT;
+  gt_AgvMainFunction :
+  (
+    FuncConfig,
+    FuncStartup,
+    FuncOperational,
+    FuncError,
+    FuncIdle
+  )$UDINT;
   gt_AgvMainHardware :
   (
     HardwareConfig,

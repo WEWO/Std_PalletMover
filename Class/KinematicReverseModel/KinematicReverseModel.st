@@ -15,7 +15,7 @@
 	Revision           = "0.0"
 	GUID               = "{596E8076-9C16-491C-811A-51721DC523A1}"
 	RealtimeTask       = "false"
-	CyclicTask         = "true"
+	CyclicTask         = "false"
 	BackgroundTask     = "false"
 	Sigmatek           = "false"
 	OSInterface        = "false"

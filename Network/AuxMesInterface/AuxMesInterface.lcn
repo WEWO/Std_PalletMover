@@ -1,0 +1,2220 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="AuxMesInterface" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "MES_MQTT_Handler1"
+			GUID       = "{4E5AA4AC-B023-4EE2-B3C7-996AEED0BA65}"
+			Class      = "MES_MQTT_Handler"
+			Position   = "(669,330)"
+			Visualized = "true"
+			CyclicTime = "100 ms">
+			<Channels>
+				<Server Name="ClassSvr"/>
+				<Server Name="CntPublishHMI"/>
+				<Server Name="CntPublishLift"/>
+				<Server Name="CntPublishProduction"/>
+				<Server Name="CntPublishSafety"/>
+				<Server Name="CntPublishStatus"/>
+				<Server Name="CntSubscribeAlarm"/>
+				<Server Name="CntSubscribeHMI"/>
+				<Server Name="CntSubscribeLift"/>
+				<Server Name="CntSubscribeMES"/>
+				<Server Name="CntSubscribeProduction"/>
+				<Server Name="Connected"/>
+				<Client Name="agvID"/>
+				<Client Name="objHMIHandler"/>
+				<Client Name="objMQTTClient_Interface"/>
+				<Client Name="objRiwoEventLogger"/>
+				<Client Name="objSigclib"/>
+				<Client Name="objStateControl"/>
+				<Client Name="WillTopic"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object
+							Name           = "_JSONReader"
+							GUID           = "{7F1F3909-78EC-47E0-BC05-C6FE0646B215}"
+							Class          = "_JSONReader"
+							BackgroundTime = "10 ms">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="LibraryVersion"/>
+								<Server Name="ReadFSM"/>
+								<Client Name="_FileSys"/>
+								<Client Name="SigCLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object
+											Name    = "_cJSON"
+											GUID    = "{CCA87F71-9990-469E-AE89-CEF7ED76C0EA}"
+											Class   = "_cJSON"
+											Comment = "This instance of the _cJSON class is used by the encapsulating _JSONReader to access the cJSON library functions.">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name           = "_JSONWriter"
+							GUID           = "{DAE9E92C-9F50-4BE6-9E8D-FCEC9DF5EFDE}"
+							Class          = "_JSONWriter"
+							BackgroundTime = "10 ms">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="LibraryVersion"/>
+								<Server Name="WriteFSM"/>
+								<Client Name="_FileSys"/>
+								<Client Name="SigCLib"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_cJSON" GUID="{759A0F94-3E24-455F-AF8D-03264D380AB3}" Class="_cJSON">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="LibraryVersion"/>
+												<Client Name="SigCLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="cJSONVersion" GUID="{985B8132-9FF0-4EED-926E-A6AE698A2A44}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ASCII_BIN" GUID="{E6782275-1499-4F52-99B9-71A41AA8AA2E}" Class="ASCII_BIN">
+							<Channels>
+								<Server Name="Obj_channel"/>
+							</Channels>
+						</Object>
+						<Object
+							Name       = "PublishHMI"
+							GUID       = "{B98DB34C-362F-4A01-BEFC-E63A304AF3D0}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "PublishLift"
+							GUID       = "{31ABEA49-1640-4F80-A671-ED9120AE784B}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "PublishProduction"
+							GUID       = "{865D150E-41E6-4F4C-BD58-CB7AFC4F85D1}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "PublishSafety"
+							GUID       = "{0ADFD87F-BDFA-4C2F-9439-FD217323DB2E}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "PublishState"
+							GUID       = "{37AFF5BD-DF7B-4DA9-9C31-64BA53DEB313}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Publish_OnChange"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "SubscribeAlarm"
+							GUID       = "{AAB527A0-C783-4717-A59B-B575166CE7E6}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "SubscribeHMIMessage"
+							GUID       = "{02D780E5-43C0-4964-BE5E-27D2816057DA}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "SubscribeLiftTarget"
+							GUID       = "{C6121E1E-63C8-4584-8ACA-803AF60925A0}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "SubscribeMESOnline"
+							GUID       = "{4C21DE23-5741-4F89-A900-D82CA708FAE9}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object
+							Name       = "SubscribeProduction"
+							GUID       = "{D80E363B-11A6-411A-90BC-6F348F7624DC}"
+							Class      = "MqttTopicText"
+							CyclicTime = "100 ms">
+							<Channels>
+								<Server Name="DataReceived"/>
+								<Server Name="DataString" Value="&quot;&quot;"/>
+								<Server Name="EnableMessage" Value="1"/>
+								<Server Name="GrantedQoS"/>
+								<Server Name="PublishInterval" Value="0"/>
+								<Server Name="QoS" Value="1"/>
+								<Server Name="RetainData"/>
+								<Server Name="TopicName"/>
+								<Server Name="TopicState"/>
+								<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+								<Client Name="objRiwoEventLogger"/>
+								<Client Name="ocMQTTClient_Interface"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{05F648CE-A76B-4F29-B3CA-E8495312B81C}" Class="MQTTTopicString">
+											<Channels>
+												<Server Name="DataString" Value="&quot;&quot;"/>
+												<Server Name="GrantedQoS"/>
+												<Server Name="PublishInterval" Value="0"/>
+												<Server Name="QoS" Value="1"/>
+												<Server Name="RetainData"/>
+												<Server Name="TopicName"/>
+												<Server Name="TopicState"/>
+												<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+												<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+												<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+												<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+												<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+												<Client Name="ocMQTTClient_Interface"/>
+												<Client Name="ocSigCLib"/>
+												<Client Name="ocStdLib"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{F8D06025-142F-4993-BC12-A5F602ABD0F1}" Class="MQTTTopic">
+															<Channels>
+																<Server Name="GrantedQoS"/>
+																<Server Name="PublishInterval" Value="0"/>
+																<Server Name="QoS" Value="1"/>
+																<Server Name="RetainData"/>
+																<Server Name="TopicName"/>
+																<Server Name="TopicState"/>
+																<Server Name="TopicType" Value="MQTTTopic::MT_Subscribe"/>
+																<Client Name="cAutoResetTime" Value="MQTTTOPIC_DEFAULT_AUTORESET_TIME"/>
+																<Client Name="cPublishTimeout" Value="MQTTTOPIC_DEFAULT_PUBLISH_TIMEOUT"/>
+																<Client Name="cSubscribeTimeout" Value="MQTTTOPIC_DEFAULT_SUBSCRIBE_TIMEOUT"/>
+																<Client Name="cUnsubscribeTimeout" Value="MQTTTOPIC_DEFAULT_UNSUBSCRIBE_TIMEOUT"/>
+																<Client Name="ocMQTTClient_Interface"/>
+																<Client Name="ocSigCLib"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="objTopicName" GUID="{4CE40825-0DCC-4F9D-840F-A9AAD039F84D}" Class="StringRAM">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																				<Client Name="UseFile"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+																							<Channels>
+																								<Server Name="Data"/>
+																								<Client Name="DataBuffer"/>
+																								<Client Name="SingleRealloc" Value="1"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																											<Channels>
+																												<Server Name="Data"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																						<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+																							<Channels>
+																								<Server Name="m_udLength"/>
+																								<Client Name="MultiTask"/>
+																								<Client Name="ThreadSafe" Value="0"/>
+																								<Client Name="UseFile"/>
+																							</Channels>
+																							<!-- List of Networks in this component -->
+																							<Networks>
+																								<Network>
+																									<!-- List of Components in this network -->
+																									<Components>
+																										<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																											<Channels>
+																												<Server Name="m_udLength"/>
+																												<Client Name="ThreadSafe" Value="0"/>
+																											</Channels>
+																										</Object>
+																									</Components>
+																									<Connections>
+																									</Connections>
+																								</Network>
+																							</Networks>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="RetVals" GUID="{CC8F1DB1-F6DF-45F6-AF3A-B616602ECA7D}" Class="MQTTTopic_RetVals">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Server Name="udCRC" Value="-1"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="PubSubDataString" GUID="{7A35CC6A-98F4-4C4B-BB22-731CC48560E0}" Class="String">
+															<Channels>
+																<Server Name="Data" Value="&quot;&quot;"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

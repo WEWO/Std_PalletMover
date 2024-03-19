@@ -548,10 +548,6 @@ MES_MQTT_Handler : CLASS
 	FUNCTION _subscribeLiftTarget;
 	
 	FUNCTION _subscribeAlarm;
-	
-	FUNCTION _handleAlarmStates;
-	
-	FUNCTION _handleAlarmResets;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -668,11 +664,9 @@ FUNCTION VIRTUAL GLOBAL MES_MQTT_Handler::Init
     
     INIT_CYCLE_10:
     
-      AlarmStartId := AlarmStartId.Read();
+   
       
-      _Alarm_Error_NoCommunication.SetAlarmIds(startId:=AlarmStartId);
-      _Alarm_Error_NoCommunication.Level := RiwoParamAlarm::eal_Warning;
-      _Alarm_Error_NoCommunication.Report := RiwoParamAlarm::ear_Yes;    
+    
       
       agvID := agvID.Read();
       ASCII_BIN.Bin2Ascii(pt:=#tmpStringID[0], value:=agvID, format:=0);      
@@ -782,7 +776,7 @@ FUNCTION VIRTUAL GLOBAL MES_MQTT_Handler::Init
           // Write JSON to String
         pString := _JSONWriter.Print(pObjectHandle);
         if pString <> NIL then
-          AlarmText.WriteDataOff(udLen:=_strlen(pString), udOff:=0, pData:=pString);
+       
           objSigclib.Memory(pptr:=#pString, size:=0);
         end_if; 
       end_if;
@@ -875,10 +869,7 @@ FUNCTION VIRTUAL GLOBAL MES_MQTT_Handler::CyWork
     if PublishHMI.TopicState = MQTTTopic::MTS_Publish then
       CntPublishHMI += 1;
     end_if;  
-    
-    _handleAlarmStates();
-    _handleAlarmResets();
-    
+       
     Connected := _subMESOnline;
   
   end_if;  
@@ -925,9 +916,7 @@ FUNCTION MES_MQTT_Handler::_publishAGVstatus
     _JSONWriter.AddObjectToObject(object:=pObjectHandle, name:="errors");    
     
     // Get Alarm JSON handle
-    if AlarmText.GetLength() then
-      AlarmText.ReadDataOff(udOff:=0, pData:=#pAlarmText[0], udMax:=sizeof(pAlarmText));
-      pAlarmJSONHandle := _JSONReader.Parse(#pAlarmText[0]);
+ 
       
       if pAlarmJSONHandle <> nil then
         pAlarmHAndle := _JSONReader.GetObjectItem(object:=pAlarmJSONHandle, string:="errors");
@@ -935,7 +924,7 @@ FUNCTION MES_MQTT_Handler::_publishAGVstatus
         _JSONWriter.ReplaceItemInObject(object:=pObjectHandle, item:="errors", newItem:=pAlarmHAndle);
         _JSONWriter.ReplaceItemInObject(object:=pObjectHandle, item:="warnings", newItem:=pWarningHAndle); 
       end_if;
-    end_if;
+
     
     // Write JSON to MQTT string
     pString := _JSONWriter.Print(pObjectHandle);
@@ -1406,12 +1395,7 @@ FUNCTION MES_MQTT_Handler::_subscribeAlarm
   if alarmMessageLen <> 0 then
     SubscribeAlarm.GetDataString(pData:=#pAlarmMessageData[0], dataLength:=sizeof(pAlarmMessageData)); 
   end_if;
-
-  // Write data to string
-  if #pAlarmMessageData <> NIL then
-    AlarmText.WriteDataOff(udLen:=alarmMessageLen, udOff:=0, pData:=#pAlarmMessageData[0]);
-  end_if;
-  
+ 
   CntSubscribeAlarm += 1;
   
   // Publish status data, so it is forwarded to MES
@@ -1419,26 +1403,6 @@ FUNCTION MES_MQTT_Handler::_subscribeAlarm
     if PublishState.TopicState = MTS_WaitForPublishDataChange then
       _publishAGVstatus();
     end_if;
-  end_if;
-  
-END_FUNCTION
-
-
-FUNCTION MES_MQTT_Handler::_handleAlarmStates
- 
-  if _subMESOnline = FALSE then
-    if _Alarm_Error_NoCommunication.ClassSvr = false then
-      //_Alarm_Error_NoCommunication.SetActive();
-    end_if;
-  end_if;
-  
-END_FUNCTION
-
-
-FUNCTION MES_MQTT_Handler::_handleAlarmResets
-  
-  if _Alarm_Error_NoCommunication.ResetReq = TRUE then
-    _Alarm_Error_NoCommunication.SetInActive(); 
   end_if;
   
 END_FUNCTION

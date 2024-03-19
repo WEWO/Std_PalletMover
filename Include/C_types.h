@@ -728,6 +728,13 @@ typedef UDINT gt_AgvMainAux;
     #define AuxMainError 3
     #define AuxMainIdle 4
 
+typedef UDINT gt_AgvMainFunction; 
+    #define FuncConfig 0
+    #define FuncStartup 1
+    #define FuncOperational 2
+    #define FuncError 3
+    #define FuncIdle 4
+
 typedef UDINT gt_AgvMainHardware; 
     #define HardwareConfig 0
     #define HardwareStartup 1

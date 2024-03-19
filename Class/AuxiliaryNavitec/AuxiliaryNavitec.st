@@ -153,8 +153,6 @@ END_FUNCTION
 
 
 FUNCTION VIRTUAL GLOBAL AuxiliaryNavitec::HandleOperational
-    // 
-        ObjNavitec.WorkTask();
-
+    
 
 END_FUNCTION

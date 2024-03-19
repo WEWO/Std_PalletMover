@@ -1001,6 +1001,46 @@ MainAuxCntrl : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
+MainFuctionCntrl : CLASS_PUBLIC
+	TYPE
+	  tAuxMainStatus : BDINT
+	  [
+	    1 Configuration_loaded,
+	    2 bit2,
+	    3 AuxReady,
+	    4 AgvOnpostion,
+	    5 Bit5,
+	    6 Bit6,
+	    7 Bit7,
+	    8 Bit8,
+	    9 RestartRequest,
+	    10 Bit10,
+	    11 Bit11,
+	    12 Bit12,
+	    13 Bit13,
+	    14 Bit14,
+	    15 Bit15,
+	    16 Bit16,
+	    17 Bit17,
+	    18 Bit18,
+	    19 Bit19,
+	    20 Bit20,
+	    21 Bit21,
+	    22 Bit22,
+	    23 Bit23,
+	    24 Bit24,
+	    25 Bit25,
+	    26 Bit26,
+	    27 Bit27,
+	    28 Bit28,
+	    29 Bit29,
+	    30 Bit30,
+	    31 AuxError,
+	    32 CmdError,
+	  ];
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
 MainHardwareCntrl : CLASS_PUBLIC
 	TYPE
 	  tAuxMainStatus : BDINT

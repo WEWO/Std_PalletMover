@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
-	<View Key="PeripheralPiviotWheels" Type="0"/>
-	<View Key="AuxMqttHmi" Type="0"/>
-	<View Key="ObjAuxHmi" Type="1"/>
-	<View Key="ON_MQTT_MES_Interface" Type="0"/>
-	<View Key="MES_MQTT_Handler" Type="2" LineNr="153"/>
-	<View Key="NavigationSystem" Type="0"/>
-	<View Key="ON_Kinematic_nPivot (MachineControl)" Type="0"/>
-	<View Key="ON_NavitecInterface (MachineControl)" Type="0"/>
-	<View Key="PeripheralLift" Type="0"/>
-	<View Key="ObjMainLiftControl" Type="1"/>
-	<View Key="MainPeripheral" Type="0"/>
-	<View Key="Main" Type="0"/>
-	<View Key="MainLiftControl" Type="2" LineNr="51"/>
-	<View Key="MainLiftControl" Type="2" LineNr="51"/>
 	<Setting Variable="OutputDebugger" Value="3"/>
 </OpenViews>

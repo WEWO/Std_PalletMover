@@ -591,6 +591,11 @@ TYPE
     dData : DINT;
     pCmd : ^KinematicNpivot;
   END_STRUCT;
+  CltChCmd_KinematicReverseModel : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^KinematicReverseModel;
+  END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;
     dData : pVoid;
@@ -994,6 +999,11 @@ TYPE
   SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base : STRUCT
     pMeth : ^CHMETH;
     dData : Hal_Lidar_Base::eScannerPosition;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_gt_AgvMainFunction : STRUCT
+    pMeth : ^CHMETH;
+    dData : gt_AgvMainFunction;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_gt_AgvMainHardware : STRUCT

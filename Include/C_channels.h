@@ -826,6 +826,13 @@ typedef struct CltChCmd_KinematicNpivot
     KinematicNpivot *pCmd;
   } CltChCmd_KinematicNpivot;
 
+typedef struct CltChCmd_KinematicReverseModel 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    KinematicReverseModel *pCmd;
+  } CltChCmd_KinematicReverseModel;
+
 typedef struct CltChCmd_LinkedObjectBase 
   {
     struct SvrChCmd_pVoid *pCh;
@@ -1392,6 +1399,13 @@ typedef struct SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base
     eScannerPosition dData;
     SVRDSC *pDsc;
   } SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base;
+
+typedef struct SvrCh_gt_AgvMainFunction 
+  {
+    CHMETH *pMeth;
+    gt_AgvMainFunction dData;
+    SVRDSC *pDsc;
+  } SvrCh_gt_AgvMainFunction;
 
 typedef struct SvrCh_gt_AgvMainHardware 
   {

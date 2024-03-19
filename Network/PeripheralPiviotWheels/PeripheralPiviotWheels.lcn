@@ -3,9 +3,9 @@
 	<!-- List of Components in this network -->
 	<Components>
 		<Object
-			Name       = "ObjPiviotweel_1"
+			Name       = "ObjCurtisPiviotweel_1"
 			GUID       = "{78E8AF16-AD1F-4351-AB8A-4DBA556B7850}"
-			Class      = "PerPiviotWeel"
+			Class      = "PerCurtisPiviotWeel"
 			Position   = "(591,210)"
 			Visualized = "false">
 			<Channels>
@@ -679,8 +679,8 @@
 	</Comments>
 	<!-- List of Connections in this network -->
 	<Connections>
-		<Connection Source="ObjPiviotweel_1.ToAgvConfig" Destination="ObjConfig.ClassSvr"/>
-		<Connection Source="ObjPiviotweel_1.ToAgvSettings" Destination="ObjMachine.ClassSvr"/>
+		<Connection Source="ObjCurtisPiviotweel_1.ToAgvConfig" Destination="ObjConfig.ClassSvr"/>
+		<Connection Source="ObjCurtisPiviotweel_1.ToAgvSettings" Destination="ObjMachine.ClassSvr"/>
 	</Connections>
 	<!-- Headerfiles -->
 	<Options>

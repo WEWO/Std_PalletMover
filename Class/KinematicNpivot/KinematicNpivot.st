@@ -20,7 +20,7 @@
 	Revision           = "0.0"
 	GUID               = "{D43E1483-5BB2-4F59-913B-D5D445BFB2F6}"
 	RealtimeTask       = "false"
-	CyclicTask         = "true"
+	CyclicTask         = "false"
 	BackgroundTask     = "false"
 	Sigmatek           = "false"
 	OSInterface        = "false"
@@ -92,14 +92,14 @@ KinematicNpivot : CLASS
 	ChaoticManualRearSpeed 	: SvrCh_REAL;
 	ChaoticManualRearDirection 	: SvrCh_REAL;
   //Clients:
-	objPivotWheel1 	: CltChCmd_PivotWheel;
-	objPivotWheel2 	: CltChCmd_PivotWheel;
-	objPivotWheel3 	: CltChCmd_PivotWheel;
-	objPivotWheel4 	: CltChCmd_PivotWheel;
-	objPivotWheel5 	: CltChCmd_PivotWheel;
-	objPivotWheel6 	: CltChCmd_PivotWheel;
-	objPivotWheel7 	: CltChCmd_PivotWheel;
-	objPivotWheel8 	: CltChCmd_PivotWheel;
+	objPivotWheel1 	: CltChCmd_I_PivotWheel;
+	objPivotWheel2 	: CltChCmd_I_PivotWheel;
+	objPivotWheel3 	: CltChCmd_I_PivotWheel;
+	objPivotWheel4 	: CltChCmd_I_PivotWheel;
+	objPivotWheel5 	: CltChCmd_I_PivotWheel;
+	objPivotWheel6 	: CltChCmd_I_PivotWheel;
+	objPivotWheel7 	: CltChCmd_I_PivotWheel;
+	objPivotWheel8 	: CltChCmd_I_PivotWheel;
 	chaoticManualModeActive 	: CltCh_DINT;
 	AGVMode 	: CltCh_eAGVMode_PTofCls_StateControl;
 	sigClib 	: CltChCmd_SigCLib;
@@ -183,7 +183,7 @@ KinematicNpivot : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
-#pragma usingLtd PivotWheel
+#pragma usingLtd I_PivotWheel
 #pragma usingLtd SigCLib
 
 
@@ -212,14 +212,14 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::KinematicNpivot.ChaoticManualRearSpeed.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1254618602), "ChaoticManualRearSpeed", 
 (::KinematicNpivot.ChaoticManualRearDirection.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1603685491), "ChaoticManualRearDirection", 
 //Clients:
-(::KinematicNpivot.objPivotWheel1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1407998262), "objPivotWheel1", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel2.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3404007564), "objPivotWheel2", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel3.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3185719322), "objPivotWheel3", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel4.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(596028857), "objPivotWheel4", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel5.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1417780527), "objPivotWheel5", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel6.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3448294549), "objPivotWheel6", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel7.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3129998339), "objPivotWheel7", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
-(::KinematicNpivot.objPivotWheel8.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(707846546), "objPivotWheel8", TO_UDINT(3457971339), "PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1407998262), "objPivotWheel1", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel2.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3404007564), "objPivotWheel2", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel3.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3185719322), "objPivotWheel3", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel4.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(596028857), "objPivotWheel4", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel5.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1417780527), "objPivotWheel5", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel6.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3448294549), "objPivotWheel6", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel7.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3129998339), "objPivotWheel7", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
+(::KinematicNpivot.objPivotWheel8.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(707846546), "objPivotWheel8", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
 (::KinematicNpivot.chaoticManualModeActive.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(3441859921), "chaoticManualModeActive", 
 (::KinematicNpivot.AGVMode.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(1510331407), "AGVMode", 
 (::KinematicNpivot.sigClib.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(77440046), "sigClib", TO_UDINT(77440046), "SigCLib", 0$UINT, 38$UINT, 
