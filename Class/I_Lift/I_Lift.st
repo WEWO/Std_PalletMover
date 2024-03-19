@@ -16,7 +16,7 @@
 	Automatic          = "false"
 	UpdateMode         = "Prescan"
 	SharedCommandTable = "true"
-	Objectsize         = "(570,360)">
+	Objectsize         = "(630,360)">
 	<Channels>
 		<Server Name="ActualHeight" GUID="{18B1366B-9C2F-49A0-B859-79A11FF6AEA2}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="ClassSvr" GUID="{CF17C040-780D-404C-BB89-4DEA06D346E4}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>

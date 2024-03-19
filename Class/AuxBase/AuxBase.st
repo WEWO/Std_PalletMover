@@ -201,6 +201,9 @@ END_FUNCTION
 
 FUNCTION VIRTUAL GLOBAL AuxBase::HandleOperational
 
+
+
+
 END_FUNCTION
 
 FUNCTION VIRTUAL GLOBAL AuxBase::Handleconfiguration
@@ -208,6 +211,7 @@ FUNCTION VIRTUAL GLOBAL AuxBase::Handleconfiguration
 		RetValue 	: BOOL;
 	END_VAR
     
+   
    
    RetValue := true;
    // retrun true when Ready other wise False

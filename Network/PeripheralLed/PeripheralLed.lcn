@@ -105,6 +105,7 @@
 	<!-- List of Connections in this network -->
 	<Connections>
 		<Connection Source="MainLedControl1.AgvConfig" Destination="ObjConfig.ClassSvr"/>
+		<Connection Source="MainLedControl1.AgvSettings" Destination="ObjMachine.ClassSvr"/>
 	</Connections>
 	<!-- Headerfiles -->
 	<Options>

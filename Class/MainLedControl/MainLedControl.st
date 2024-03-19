@@ -96,12 +96,12 @@ MainLedControl : CLASS
 			RetValue 	: DINT;
 		END_VAR;
 	
-	FUNCTION GetConfig;
-	
 	FUNCTION VIRTUAL GLOBAL HandleStartUp
 		VAR_OUTPUT
 			RetValue 	: DINT;
 		END_VAR;
+	
+	FUNCTION GetConfig;
 	
 	FUNCTION GetSettings;
 	
@@ -286,6 +286,8 @@ FUNCTION VIRTUAL GLOBAL MainLedControl::HandleStartUp
             StartUpStepper += 1;
          2:
             RetValue := true;   
+            
+      end_case;
 
 END_FUNCTION
 
@@ -318,7 +320,10 @@ FUNCTION VIRTUAL GLOBAL MainLedControl::HandleOperational
         I_LedControl::LedState::LedBlueLeft:
         
         I_LedControl::LedState::LedBlueRight:
-
+        
+      end_case;
+      
+      
 END_FUNCTION
 
 

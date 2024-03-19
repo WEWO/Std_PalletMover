@@ -141,7 +141,7 @@
 				Name       = "I_Lift"
 				GUID       = "{E26D8194-2357-4E3D-85F3-2B210961C2C6}"
 				Class      = "I_Lift"
-				Position   = "(570,360)"
+				Position   = "(510,360)"
 				Visualized = "false">
 				<Channels>
 					<Server Name="ActualHeight"/>

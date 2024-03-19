@@ -31,6 +31,16 @@ TYPE
     dData : DINT;
     pCmd : ^SVRCHCMD;
   END_STRUCT;
+  SvrCh_eAGVMode_PTofCls_StateControl : STRUCT
+    pMeth : ^CHMETH;
+    dData : StateControl::eAGVMode;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  CltCh_eAGVMode_PTofCls_StateControl : STRUCT
+    pCh : ^SvrCh_eAGVMode_PTofCls_StateControl;
+    dData : StateControl::eAGVMode;
+    pCmd : ^SVRCHCMD;
+  END_STRUCT;
   SvrCh_FeSetup : STRUCT
     pMeth : ^CHMETH;
     dData : FeSetup;
@@ -301,6 +311,16 @@ TYPE
     dData : DINT;
     pCmd : ^_TaskObjectControl;
   END_STRUCT;
+  SvrChCmd__FSM_TCP_USER : STRUCT
+    pMeth : ^CMDMETH;
+    dData : _FSM_TCP_USER;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  CltChCmd__TCPIP_CLIENT : STRUCT
+    pCh : ^SvrChCmd__FSM_TCP_USER;
+    dData : _FSM_TCP_USER;
+    pCmd : ^_TCPIP_CLIENT;
+  END_STRUCT;
   SvrChCmd__FSM_TCPIP_CLIENT_PTofCls__TCPIPClient : STRUCT
     pMeth : ^CMDMETH;
     dData : _TCPIPClient::_FSM_TCPIP_CLIENT;
@@ -345,6 +365,11 @@ TYPE
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^ASCII_BIN;
+  END_STRUCT;
+  CltChCmd_AutomaticControl : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^AutomaticControl;
   END_STRUCT;
   CltChCmd_CanDriverBase : STRUCT
     pCh : ^SvrChCmd_DINT;
@@ -466,10 +491,20 @@ TYPE
     dData : UDINT;
     pCmd : ^ENVStringAction;
   END_STRUCT;
+  CltChCmd_HAL_BMS_Base : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HAL_BMS_Base;
+  END_STRUCT;
   CltChCmd_HAL_BMS_MasterVolt : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^HAL_BMS_MasterVolt;
+  END_STRUCT;
+  CltChCmd_Hal_Lidar_Base : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Hal_Lidar_Base;
   END_STRUCT;
   CltChCmd_HalBmsMastervoltinterface : STRUCT
     pCh : ^SvrChCmd_DINT;
@@ -485,6 +520,11 @@ TYPE
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^HandleSteeringCurtisAC2F;
+  END_STRUCT;
+  CltChCmd_HMIHandler : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^HMIHandler;
   END_STRUCT;
   CltChCmd_Hub_Base : STRUCT
     pCh : ^SvrChCmd_DINT;
@@ -545,6 +585,11 @@ TYPE
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^InterfaceAuxHmiMqtt;
+  END_STRUCT;
+  CltChCmd_KinematicNpivot : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^KinematicNpivot;
   END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;
@@ -611,6 +656,26 @@ TYPE
     dData : DINT;
     pCmd : ^MQTTTopic_RetVals;
   END_STRUCT;
+  SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic : STRUCT
+    pMeth : ^CMDMETH;
+    dData : MQTTTopic::t_e_MQTT_TopicState;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  CltChCmd_MqttTopicText : STRUCT
+    pCh : ^SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic;
+    dData : MQTTTopic::t_e_MQTT_TopicState;
+    pCmd : ^MqttTopicText;
+  END_STRUCT;
+  CltChCmd_NavitecInterface : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^NavitecInterface;
+  END_STRUCT;
+  CltChCmd_PivotWheel : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^PivotWheel;
+  END_STRUCT;
   SvrChCmd_t_e_VaranErrors : STRUCT
     pMeth : ^CMDMETH;
     dData : t_e_VaranErrors;
@@ -631,6 +696,11 @@ TYPE
     dData : ProfileCommandStatus;
     pCmd : ^SVRCHCMD;
   END_STRUCT;
+  CltChCmd_Ram : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^Ram;
+  END_STRUCT;
   CltChCmd_RAMex : STRUCT
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
@@ -640,6 +710,26 @@ TYPE
     pCh : ^SvrChCmd_UDINT;
     dData : UDINT;
     pCmd : ^RamFile;
+  END_STRUCT;
+  CltChCmd_RiwoAlarmCollect : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^RiwoAlarmCollect;
+  END_STRUCT;
+  CltChCmd_RiwoDateTimeLib : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^RiwoDateTimeLib;
+  END_STRUCT;
+  CltChCmd_RiwoEventLogger : STRUCT
+    pCh : ^SvrChCmd_UDINT;
+    dData : UDINT;
+    pCmd : ^RiwoEventLogger;
+  END_STRUCT;
+  CltChCmd_RiwoParamAlarm : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^RiwoParamAlarm;
   END_STRUCT;
   CltChCmd_SafetyManager : STRUCT
     pCh : ^SvrChCmd_DINT;
@@ -665,6 +755,11 @@ TYPE
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
     pCmd : ^SpeedCalculator;
+  END_STRUCT;
+  CltChCmd_StateControl : STRUCT
+    pCh : ^SvrChCmd_DINT;
+    dData : DINT;
+    pCmd : ^StateControl;
   END_STRUCT;
   CltChCmd_String : STRUCT
     pCh : ^SvrChCmd_UDINT;
@@ -730,11 +825,6 @@ TYPE
     pCh : ^SvrChCmd_pVoid;
     dData : pVoid;
     pCmd : ^WewoBase;
-  END_STRUCT;
-  SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic : STRUCT
-    pMeth : ^CMDMETH;
-    dData : MQTTTopic::t_e_MQTT_TopicState;
-    pDsc : ^SVRDSC;
   END_STRUCT;
   CltChCmd_WewoMqtt : STRUCT
     pCh : ^SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic;
@@ -861,6 +951,21 @@ TYPE
     dData : CanOpenBase::CanDeviceState;
     pDsc : ^SVRDSC;
   END_STRUCT;
+  SvrCh_DATE_LSL : STRUCT
+    pMeth : ^CHMETH;
+    dData : DATE_LSL;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eAGVMovementMode_PTofCls_StateControl : STRUCT
+    pMeth : ^CHMETH;
+    dData : StateControl::eAGVMovementMode;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eAlarmLevel_PTofCls_RiwoParamAlarm : STRUCT
+    pMeth : ^CHMETH;
+    dData : RiwoParamAlarm::eAlarmLevel;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
   SvrCh_eCurtisDriveMode_PTofCls_Curtis_Base : STRUCT
     pMeth : ^CHMETH;
     dData : Curtis_Base::eCurtisDriveMode;
@@ -874,6 +979,21 @@ TYPE
   SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base : STRUCT
     pMeth : ^CHMETH;
     dData : Curtis_Base::eCurtisDriveModeRequest;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eDirection_PTofCls_Hal_Lidar_Base : STRUCT
+    pMeth : ^CHMETH;
+    dData : Hal_Lidar_Base::eDirection;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eProductionStatus_PTofCls_StateControl : STRUCT
+    pMeth : ^CHMETH;
+    dData : StateControl::eProductionStatus;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base : STRUCT
+    pMeth : ^CHMETH;
+    dData : Hal_Lidar_Base::eScannerPosition;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_gt_AgvMainHardware : STRUCT
@@ -981,9 +1101,34 @@ TYPE
     dData : Curtis_AC2F::tCurtisFault;
     pDsc : ^SVRDSC;
   END_STRUCT;
+  SvrCh_tDLSday_PTofCls_RiwoDateTime : STRUCT
+    pMeth : ^CHMETH;
+    dData : RiwoDateTime::tDLSday;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tDLSTimeType_PTofCls_RiwoDateTime : STRUCT
+    pMeth : ^CHMETH;
+    dData : RiwoDateTime::tDLSTimeType;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tDLSWeekOption_PTofCls_RiwoDateTime : STRUCT
+    pMeth : ^CHMETH;
+    dData : RiwoDateTime::tDLSWeekOption;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
   SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt : STRUCT
     pMeth : ^CHMETH;
     dData : HAL_BMS_MasterVolt::tHMIAdditionalIconBMS;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_TIME_LSL : STRUCT
+    pMeth : ^CHMETH;
+    dData : TIME_LSL;
+    pDsc : ^SVRDSC;
+  END_STRUCT;
+  SvrCh_tLogSetting : STRUCT
+    pMeth : ^CHMETH;
+    dData : tLogSetting;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_XML_READ_STATE_PTofCls__XMLReader : STRUCT

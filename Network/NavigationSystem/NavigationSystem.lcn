@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="NavigationSystem" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "KinematicNpivot1"
+			GUID       = "{1BEC927E-6FF2-4B49-ADD7-DE166385273E}"
+			Class      = "KinematicNpivot"
+			Position   = "(810,210)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ACTIVATE" Value="1"/>
+				<Server Name="AGVInMotion"/>
+				<Server Name="ChaoticManualFrontDirection"/>
+				<Server Name="ChaoticManualFrontSpeed"/>
+				<Server Name="ChaoticManualRearDirection"/>
+				<Server Name="ChaoticManualRearSpeed"/>
+				<Server Name="ClassSvr"/>
+				<Server Name="Direction"/>
+				<Server Name="NumberOfPivotWheels"/>
+				<Server Name="Radius"/>
+				<Server Name="ReferenceWheel1"/>
+				<Server Name="ReferenceWheel2"/>
+				<Server Name="Speed"/>
+				<Client Name="AGVMode"/>
+				<Client Name="chaoticManualModeActive"/>
+				<Client Name="objPivotWheel1"/>
+				<Client Name="objPivotWheel2"/>
+				<Client Name="objPivotWheel3"/>
+				<Client Name="objPivotWheel4"/>
+				<Client Name="objPivotWheel5"/>
+				<Client Name="objPivotWheel6"/>
+				<Client Name="objPivotWheel7"/>
+				<Client Name="objPivotWheel8"/>
+				<Client Name="sigClib"/>
+			</Channels>
+		</Object>
+		<Object
+			Name       = "KinematicReverseModel1"
+			GUID       = "{E858C572-4135-4B48-9865-E5D248B1FBC8}"
+			Class      = "KinematicReverseModel"
+			Position   = "(810,1230)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ActualTotalDirection"/>
+				<Server Name="ActualTotalRadius"/>
+				<Server Name="ActualTotalSpeed"/>
+				<Server Name="ClassSvr"/>
+				<Client Name="objPivotWheel1"/>
+				<Client Name="objPivotWheel2"/>
+				<Client Name="objPivotWheel3"/>
+				<Client Name="objPivotWheel4"/>
+				<Client Name="Wheel1Angle"/>
+				<Client Name="Wheel1Speed"/>
+				<Client Name="Wheel2Angle"/>
+				<Client Name="Wheel2Speed"/>
+				<Client Name="Wheel3Angle"/>
+				<Client Name="Wheel3Speed"/>
+				<Client Name="Wheel4Angle"/>
+				<Client Name="Wheel4Speed"/>
+			</Channels>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

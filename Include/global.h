@@ -42,6 +42,8 @@
 #include "..\Source\interfaces\lsl_st_varan.h"
 #include "..\Source\interfaces\lsl_st_cdias.h"
 #include <lsl_st_serial.h>
+#include "..\Class\RiwoDefine\RiwoDef.h"
+#include "..\Class\_TCPIP_CLIENT\_TCPIP_CLIENT.h"
 
 #include "unit.h"
 #include "UserDef.h"

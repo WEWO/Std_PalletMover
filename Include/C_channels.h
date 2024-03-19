@@ -42,6 +42,20 @@ typedef struct CltCh_DINT
     SVRCHCMD *pCmd;
   } CltCh_DINT;
 
+typedef struct SvrCh_eAGVMode_PTofCls_StateControl 
+  {
+    CHMETH *pMeth;
+    eAGVMode dData;
+    SVRDSC *pDsc;
+  } SvrCh_eAGVMode_PTofCls_StateControl;
+
+typedef struct CltCh_eAGVMode_PTofCls_StateControl 
+  {
+    struct SvrCh_eAGVMode_PTofCls_StateControl *pCh;
+    eAGVMode dData;
+    SVRCHCMD *pCmd;
+  } CltCh_eAGVMode_PTofCls_StateControl;
+
 typedef struct SvrCh_FeSetup 
   {
     CHMETH *pMeth;
@@ -420,6 +434,20 @@ typedef struct CltChCmd__TaskObjectControl
     _TaskObjectControl *pCmd;
   } CltChCmd__TaskObjectControl;
 
+typedef struct SvrChCmd__FSM_TCP_USER 
+  {
+    CMDMETH *pMeth;
+    _FSM_TCP_USER dData;
+    SVRDSC *pDsc;
+  } SvrChCmd__FSM_TCP_USER;
+
+typedef struct CltChCmd__TCPIP_CLIENT 
+  {
+    struct SvrChCmd__FSM_TCP_USER *pCh;
+    _FSM_TCP_USER dData;
+    _TCPIP_CLIENT *pCmd;
+  } CltChCmd__TCPIP_CLIENT;
+
 typedef struct SvrChCmd__FSM_TCPIP_CLIENT_PTofCls__TCPIPClient 
   {
     CMDMETH *pMeth;
@@ -482,6 +510,13 @@ typedef struct CltChCmd_ASCII_BIN
     DINT dData;
     ASCII_BIN *pCmd;
   } CltChCmd_ASCII_BIN;
+
+typedef struct CltChCmd_AutomaticControl 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    AutomaticControl *pCmd;
+  } CltChCmd_AutomaticControl;
 
 typedef struct CltChCmd_CanDriverBase 
   {
@@ -651,12 +686,26 @@ typedef struct CltChCmd_ENVStringAction
     ENVStringAction *pCmd;
   } CltChCmd_ENVStringAction;
 
+typedef struct CltChCmd_HAL_BMS_Base 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HAL_BMS_Base *pCmd;
+  } CltChCmd_HAL_BMS_Base;
+
 typedef struct CltChCmd_HAL_BMS_MasterVolt 
   {
     struct SvrChCmd_DINT *pCh;
     DINT dData;
     HAL_BMS_MasterVolt *pCmd;
   } CltChCmd_HAL_BMS_MasterVolt;
+
+typedef struct CltChCmd_Hal_Lidar_Base 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Hal_Lidar_Base *pCmd;
+  } CltChCmd_Hal_Lidar_Base;
 
 typedef struct CltChCmd_HalBmsMastervoltinterface 
   {
@@ -678,6 +727,13 @@ typedef struct CltChCmd_HandleSteeringCurtisAC2F
     DINT dData;
     HandleSteeringCurtisAC2F *pCmd;
   } CltChCmd_HandleSteeringCurtisAC2F;
+
+typedef struct CltChCmd_HMIHandler 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    HMIHandler *pCmd;
+  } CltChCmd_HMIHandler;
 
 typedef struct CltChCmd_Hub_Base 
   {
@@ -762,6 +818,13 @@ typedef struct CltChCmd_InterfaceAuxHmiMqtt
     DINT dData;
     InterfaceAuxHmiMqtt *pCmd;
   } CltChCmd_InterfaceAuxHmiMqtt;
+
+typedef struct CltChCmd_KinematicNpivot 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    KinematicNpivot *pCmd;
+  } CltChCmd_KinematicNpivot;
 
 typedef struct CltChCmd_LinkedObjectBase 
   {
@@ -854,6 +917,34 @@ typedef struct CltChCmd_MQTTTopic_RetVals
     MQTTTopic_RetVals *pCmd;
   } CltChCmd_MQTTTopic_RetVals;
 
+typedef struct SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic 
+  {
+    CMDMETH *pMeth;
+    t_e_MQTT_TopicState dData;
+    SVRDSC *pDsc;
+  } SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic;
+
+typedef struct CltChCmd_MqttTopicText 
+  {
+    struct SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic *pCh;
+    t_e_MQTT_TopicState dData;
+    MqttTopicText *pCmd;
+  } CltChCmd_MqttTopicText;
+
+typedef struct CltChCmd_NavitecInterface 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    NavitecInterface *pCmd;
+  } CltChCmd_NavitecInterface;
+
+typedef struct CltChCmd_PivotWheel 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    PivotWheel *pCmd;
+  } CltChCmd_PivotWheel;
+
 typedef struct SvrChCmd_t_e_VaranErrors 
   {
     CMDMETH *pMeth;
@@ -882,6 +973,13 @@ typedef struct CltChCmd_ProfileCommandStatus
     SVRCHCMD *pCmd;
   } CltChCmd_ProfileCommandStatus;
 
+typedef struct CltChCmd_Ram 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    Ram *pCmd;
+  } CltChCmd_Ram;
+
 typedef struct CltChCmd_RAMex 
   {
     struct SvrChCmd_UDINT *pCh;
@@ -895,6 +993,34 @@ typedef struct CltChCmd_RamFile
     UDINT dData;
     RamFile *pCmd;
   } CltChCmd_RamFile;
+
+typedef struct CltChCmd_RiwoAlarmCollect 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    RiwoAlarmCollect *pCmd;
+  } CltChCmd_RiwoAlarmCollect;
+
+typedef struct CltChCmd_RiwoDateTimeLib 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    RiwoDateTimeLib *pCmd;
+  } CltChCmd_RiwoDateTimeLib;
+
+typedef struct CltChCmd_RiwoEventLogger 
+  {
+    struct SvrChCmd_UDINT *pCh;
+    UDINT dData;
+    RiwoEventLogger *pCmd;
+  } CltChCmd_RiwoEventLogger;
+
+typedef struct CltChCmd_RiwoParamAlarm 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    RiwoParamAlarm *pCmd;
+  } CltChCmd_RiwoParamAlarm;
 
 typedef struct CltChCmd_SafetyManager 
   {
@@ -930,6 +1056,13 @@ typedef struct CltChCmd_SpeedCalculator
     DINT dData;
     SpeedCalculator *pCmd;
   } CltChCmd_SpeedCalculator;
+
+typedef struct CltChCmd_StateControl 
+  {
+    struct SvrChCmd_DINT *pCh;
+    DINT dData;
+    StateControl *pCmd;
+  } CltChCmd_StateControl;
 
 typedef struct CltChCmd_String 
   {
@@ -1021,13 +1154,6 @@ typedef struct CltChCmd_WewoBase
     pVoid dData;
     WewoBase *pCmd;
   } CltChCmd_WewoBase;
-
-typedef struct SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic 
-  {
-    CMDMETH *pMeth;
-    t_e_MQTT_TopicState dData;
-    SVRDSC *pDsc;
-  } SvrChCmd_t_e_MQTT_TopicState_PTofCls_MQTTTopic;
 
 typedef struct CltChCmd_WewoMqtt 
   {
@@ -1204,6 +1330,27 @@ typedef struct SvrCh_CanDeviceState_PTofCls_CanOpenBase
     SVRDSC *pDsc;
   } SvrCh_CanDeviceState_PTofCls_CanOpenBase;
 
+typedef struct SvrCh_DATE_LSL 
+  {
+    CHMETH *pMeth;
+    DATE_LSL dData;
+    SVRDSC *pDsc;
+  } SvrCh_DATE_LSL;
+
+typedef struct SvrCh_eAGVMovementMode_PTofCls_StateControl 
+  {
+    CHMETH *pMeth;
+    eAGVMovementMode dData;
+    SVRDSC *pDsc;
+  } SvrCh_eAGVMovementMode_PTofCls_StateControl;
+
+typedef struct SvrCh_eAlarmLevel_PTofCls_RiwoParamAlarm 
+  {
+    CHMETH *pMeth;
+    eAlarmLevel dData;
+    SVRDSC *pDsc;
+  } SvrCh_eAlarmLevel_PTofCls_RiwoParamAlarm;
+
 typedef struct SvrCh_eCurtisDriveMode_PTofCls_Curtis_Base 
   {
     CHMETH *pMeth;
@@ -1224,6 +1371,27 @@ typedef struct SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base
     eCurtisDriveModeRequest dData;
     SVRDSC *pDsc;
   } SvrCh_eCurtisDriveModeRequest_PTofCls_Curtis_Base;
+
+typedef struct SvrCh_eDirection_PTofCls_Hal_Lidar_Base 
+  {
+    CHMETH *pMeth;
+    eDirection dData;
+    SVRDSC *pDsc;
+  } SvrCh_eDirection_PTofCls_Hal_Lidar_Base;
+
+typedef struct SvrCh_eProductionStatus_PTofCls_StateControl 
+  {
+    CHMETH *pMeth;
+    eProductionStatus dData;
+    SVRDSC *pDsc;
+  } SvrCh_eProductionStatus_PTofCls_StateControl;
+
+typedef struct SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base 
+  {
+    CHMETH *pMeth;
+    eScannerPosition dData;
+    SVRDSC *pDsc;
+  } SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base;
 
 typedef struct SvrCh_gt_AgvMainHardware 
   {
@@ -1372,12 +1540,47 @@ typedef struct SvrCh_tCurtisFault_PTofCls_Curtis_AC2F
     SVRDSC *pDsc;
   } SvrCh_tCurtisFault_PTofCls_Curtis_AC2F;
 
+typedef struct SvrCh_tDLSday_PTofCls_RiwoDateTime 
+  {
+    CHMETH *pMeth;
+    tDLSday dData;
+    SVRDSC *pDsc;
+  } SvrCh_tDLSday_PTofCls_RiwoDateTime;
+
+typedef struct SvrCh_tDLSTimeType_PTofCls_RiwoDateTime 
+  {
+    CHMETH *pMeth;
+    tDLSTimeType dData;
+    SVRDSC *pDsc;
+  } SvrCh_tDLSTimeType_PTofCls_RiwoDateTime;
+
+typedef struct SvrCh_tDLSWeekOption_PTofCls_RiwoDateTime 
+  {
+    CHMETH *pMeth;
+    tDLSWeekOption dData;
+    SVRDSC *pDsc;
+  } SvrCh_tDLSWeekOption_PTofCls_RiwoDateTime;
+
 typedef struct SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt 
   {
     CHMETH *pMeth;
     tHMIAdditionalIconBMS dData;
     SVRDSC *pDsc;
   } SvrCh_tHMIAdditionalIconBMS_PTofCls_HAL_BMS_MasterVolt;
+
+typedef struct SvrCh_TIME_LSL 
+  {
+    CHMETH *pMeth;
+    TIME_LSL dData;
+    SVRDSC *pDsc;
+  } SvrCh_TIME_LSL;
+
+typedef struct SvrCh_tLogSetting 
+  {
+    CHMETH *pMeth;
+    tLogSetting dData;
+    SVRDSC *pDsc;
+  } SvrCh_tLogSetting;
 
 typedef struct SvrCh_XML_READ_STATE_PTofCls__XMLReader 
   {

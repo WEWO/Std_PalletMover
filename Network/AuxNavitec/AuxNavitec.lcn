@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Network Name="AuxNavitec" Revision="0.0">
+	<!-- List of Components in this network -->
+	<Components>
+		<Object
+			Name       = "ObjAuxiliaryNavitec"
+			GUID       = "{64489EC0-2FF0-463E-AEA8-3D73CE47D2C5}"
+			Class      = "AuxiliaryNavitec"
+			Position   = "(270,390)"
+			Visualized = "false">
+			<Channels>
+				<Server Name="ToObject"/>
+				<Client Name="op_LogData"/>
+				<Client Name="p_NextObject"/>
+			</Channels>
+			<!-- List of Networks in this component -->
+			<Networks>
+				<Network>
+					<!-- List of Components in this network -->
+					<Components>
+						<Object Name="_base" GUID="{84F08BA9-CE96-4B07-AF79-044F99313425}" Class="AuxBase">
+							<Channels>
+								<Server Name="ToObject"/>
+								<Client Name="op_LogData"/>
+								<Client Name="p_NextObject"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_base" GUID="{B453E322-0411-48D6-9B63-17D52E269CCF}" Class="LinkedObjectBase">
+											<Channels>
+												<Server Name="ObjectStatus"/>
+												<Server Name="ToObject"/>
+												<Client Name="op_LogData"/>
+												<Client Name="p_NextObject"/>
+												<Client Name="p_PreviousObject"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{A552B37B-F16D-44A8-B20B-D9653B9D9C8F}" Class="WewoBase">
+															<Channels>
+																<Server Name="m_Id"/>
+																<Server Name="m_p_Name"/>
+																<Server Name="o_ErrorWarningStatus"/>
+																<Server Name="ObjectStatus"/>
+																<Server Name="ToObject"/>
+																<Client Name="c_Group"/>
+																<Client Name="op_LogData"/>
+																<Client Name="toOsLibTaskObjControl"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_ObjStr" GUID="{2B6E692A-8C0F-46D0-A9AA-41CFD79D3BDE}" Class="WewoStringUtils">
+																			<Channels>
+																				<Server Name="ToObject"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+						<Object Name="ObjNavitec" GUID="{8D3679BA-483C-489C-8191-59FE44B305CB}" Class="NavitecInterface">
+							<Channels>
+								<Server Name="ClassSvr"/>
+								<Server Name="Connected"/>
+								<Server Name="Data"/>
+								<Server Name="Enabled"/>
+								<Client Name="AlarmStartID"/>
+								<Client Name="objAutomaticControl" Value="0"/>
+								<Client Name="objBMS"/>
+								<Client Name="objKinematicNpivot" Value="0"/>
+								<Client Name="objStateControl" Value="0"/>
+							</Channels>
+							<!-- List of Networks in this component -->
+							<Networks>
+								<Network>
+									<!-- List of Components in this network -->
+									<Components>
+										<Object Name="_Alarm_Error_NavitrolError" GUID="{AFDC2160-8A1D-454E-86B6-F06DC3781867}" Class="RiwoParamAlarm">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="GroupId"/>
+												<Server Name="Id"/>
+												<Server Name="Level"/>
+												<Server Name="Parameter1"/>
+												<Server Name="Parameter2"/>
+												<Server Name="Parameter3"/>
+												<Server Name="Parameter4"/>
+												<Server Name="Report"/>
+												<Server Name="ResetReq"/>
+												<Client Name="objNextRiwoParamAlarm"/>
+												<Client Name="objRiwoEventLogger"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{27C80CA9-D9AC-4F86-AB7E-D3EE785C3523}" Class="_AlarmX3Para">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Client Name="Acknow"/>
+																<Client Name="Config" Value="0"/>
+																<Client Name="Group"/>
+																<Client Name="Para1"/>
+																<Client Name="Para2"/>
+																<Client Name="Para3"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{FF1586E3-7510-4496-B4A8-3A308EFCD780}" Class="_AlarmX0Para">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Client Name="Acknow"/>
+																				<Client Name="Config"/>
+																				<Client Name="Group"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="_Group" GUID="{778C6D46-8E9C-4D52-8A59-4934B69454EC}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+														<Object Name="_Id" GUID="{075EF87E-1F5C-4CAF-80DF-21DB25AB20C9}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="_Alarm_Error_NoCommunication" GUID="{63836C6F-85E3-46B7-BB18-B60C6BC9F856}" Class="RiwoParamAlarm">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="GroupId"/>
+												<Server Name="Id"/>
+												<Server Name="Level"/>
+												<Server Name="Parameter1"/>
+												<Server Name="Parameter2"/>
+												<Server Name="Parameter3"/>
+												<Server Name="Parameter4"/>
+												<Server Name="Report"/>
+												<Server Name="ResetReq"/>
+												<Client Name="objNextRiwoParamAlarm"/>
+												<Client Name="objRiwoEventLogger"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{27C80CA9-D9AC-4F86-AB7E-D3EE785C3523}" Class="_AlarmX3Para">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Client Name="Acknow"/>
+																<Client Name="Config" Value="0"/>
+																<Client Name="Group"/>
+																<Client Name="Para1"/>
+																<Client Name="Para2"/>
+																<Client Name="Para3"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{FF1586E3-7510-4496-B4A8-3A308EFCD780}" Class="_AlarmX0Para">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Client Name="Acknow"/>
+																				<Client Name="Config"/>
+																				<Client Name="Group"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="_Group" GUID="{778C6D46-8E9C-4D52-8A59-4934B69454EC}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+														<Object Name="_Id" GUID="{075EF87E-1F5C-4CAF-80DF-21DB25AB20C9}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="_Alarm_Error_WrongDataReceive" GUID="{4446DE72-EBCF-4837-B434-E9FF5A6BC9EB}" Class="RiwoParamAlarm">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="GroupId"/>
+												<Server Name="Id"/>
+												<Server Name="Level"/>
+												<Server Name="Parameter1"/>
+												<Server Name="Parameter2"/>
+												<Server Name="Parameter3"/>
+												<Server Name="Parameter4"/>
+												<Server Name="Report"/>
+												<Server Name="ResetReq"/>
+												<Client Name="objNextRiwoParamAlarm"/>
+												<Client Name="objRiwoEventLogger"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{27C80CA9-D9AC-4F86-AB7E-D3EE785C3523}" Class="_AlarmX3Para">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Client Name="Acknow"/>
+																<Client Name="Config" Value="0"/>
+																<Client Name="Group"/>
+																<Client Name="Para1"/>
+																<Client Name="Para2"/>
+																<Client Name="Para3"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{FF1586E3-7510-4496-B4A8-3A308EFCD780}" Class="_AlarmX0Para">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Client Name="Acknow"/>
+																				<Client Name="Config"/>
+																				<Client Name="Group"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="_Group" GUID="{778C6D46-8E9C-4D52-8A59-4934B69454EC}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+														<Object Name="_Id" GUID="{075EF87E-1F5C-4CAF-80DF-21DB25AB20C9}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="_Alarm_Error_WrongMessageNumber" GUID="{A37A48C1-6C47-41B3-AED6-F841F5900736}" Class="RiwoParamAlarm">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="GroupId"/>
+												<Server Name="Id"/>
+												<Server Name="Level"/>
+												<Server Name="Parameter1"/>
+												<Server Name="Parameter2"/>
+												<Server Name="Parameter3"/>
+												<Server Name="Parameter4"/>
+												<Server Name="Report"/>
+												<Server Name="ResetReq"/>
+												<Client Name="objNextRiwoParamAlarm"/>
+												<Client Name="objRiwoEventLogger"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{27C80CA9-D9AC-4F86-AB7E-D3EE785C3523}" Class="_AlarmX3Para">
+															<Channels>
+																<Server Name="ClassSvr"/>
+																<Client Name="Acknow"/>
+																<Client Name="Config" Value="0"/>
+																<Client Name="Group"/>
+																<Client Name="Para1"/>
+																<Client Name="Para2"/>
+																<Client Name="Para3"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{FF1586E3-7510-4496-B4A8-3A308EFCD780}" Class="_AlarmX0Para">
+																			<Channels>
+																				<Server Name="ClassSvr"/>
+																				<Client Name="Acknow"/>
+																				<Client Name="Config"/>
+																				<Client Name="Group"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="_Group" GUID="{778C6D46-8E9C-4D52-8A59-4934B69454EC}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+														<Object Name="_Id" GUID="{075EF87E-1F5C-4CAF-80DF-21DB25AB20C9}" Class="Ram">
+															<Channels>
+																<Server Name="Data"/>
+															</Channels>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object
+											Name           = "_TCPIP_CLIENT"
+											GUID           = "{F011F418-F41F-48E5-8CA7-E913A4CB333F}"
+											Class          = "_TCPIP_CLIENT"
+											CyclicTime     = "10 ms"
+											BackgroundTime = "always">
+											<Channels>
+												<Server Name="Control"/>
+												<Server Name="SemaName01"/>
+												<Server Name="SemaName02"/>
+												<Server Name="TaskName"/>
+												<Client Name="cConfig"/>
+												<Client Name="cMaxConnections" Value="0"/>
+												<Client Name="co_MultiTask"/>
+												<Client Name="co_SigCLib"/>
+												<Client Name="co_StdLib"/>
+												<Client Name="co_Task"/>
+												<Client Name="cPort" Value="502"/>
+												<Client Name="cSizeOfTXBuffer"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="CheckSum" GUID="{FC39352F-F797-497F-B594-E820A7A22227}" Class="_CheckSum">
+															<Channels>
+																<Server Name="ClassSvr"/>
+															</Channels>
+														</Object>
+														<Object Name="StrSemaName01" GUID="{E85D366E-9709-4F3D-AE62-C1B016CACD7B}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="StrSemaName02" GUID="{10DC5FEF-3685-401A-A366-325AC26C1ADC}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="StrTaskName" GUID="{C0143FE0-3A33-4991-A32A-076BDAE27564}" Class="String">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{B9D2D328-1416-469A-BE13-9F6CBBB1958D}" Class="StringInternal">
+																			<Channels>
+																				<Server Name="Data"/>
+																				<Client Name="DataBuffer"/>
+																				<Client Name="SingleRealloc" Value="1"/>
+																			</Channels>
+																			<!-- List of Networks in this component -->
+																			<Networks>
+																				<Network>
+																					<!-- List of Components in this network -->
+																					<Components>
+																						<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																							<Channels>
+																								<Server Name="Data"/>
+																							</Channels>
+																						</Object>
+																					</Components>
+																					<Connections>
+																					</Connections>
+																				</Network>
+																			</Networks>
+																		</Object>
+																		<Object Name="MerkerEx0" GUID="{53955FF7-8ABE-4B49-B914-227100C3FDEF}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe" Value="0"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object Name="_TCPIP_PORT" GUID="{AA184314-1891-4023-A5E8-5DD9B7B15595}" Class="Merker">
+											<Channels>
+												<Server Name="Data" Value="1000"/>
+											</Channels>
+										</Object>
+										<Object Name="IPString" GUID="{6BCAF9F8-6377-41E3-9241-6A0A11A6B970}" Class="StringRAM">
+											<Channels>
+												<Server Name="Data" Value="&quot;192.168.127.1&quot;"/>
+												<Client Name="SingleRealloc" Value="1"/>
+												<Client Name="UseFile"/>
+											</Channels>
+											<!-- List of Networks in this component -->
+											<Networks>
+												<Network>
+													<!-- List of Components in this network -->
+													<Components>
+														<Object Name="_base" GUID="{1F69B880-FAA2-42FA-9D00-85265E1C4A69}" Class="StringInternal">
+															<Channels>
+																<Server Name="Data"/>
+																<Client Name="DataBuffer"/>
+																<Client Name="SingleRealloc" Value="1"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{6CBDDE57-D222-420A-BC45-D2266096244E}" Class="VirtualBaseInit">
+																			<Channels>
+																				<Server Name="Data"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+														<Object Name="DataBuffer" GUID="{167807E4-6D9F-4D9F-A980-81FF93F0EFE0}" Class="RAMex">
+															<Channels>
+																<Server Name="m_udLength"/>
+																<Client Name="MultiTask"/>
+																<Client Name="ThreadSafe" Value="0"/>
+																<Client Name="UseFile"/>
+															</Channels>
+															<!-- List of Networks in this component -->
+															<Networks>
+																<Network>
+																	<!-- List of Components in this network -->
+																	<Components>
+																		<Object Name="_base" GUID="{69FA3C23-B049-4F83-B4BC-D30F993C8C98}" Class="MerkerEx">
+																			<Channels>
+																				<Server Name="m_udLength"/>
+																				<Client Name="ThreadSafe"/>
+																			</Channels>
+																		</Object>
+																	</Components>
+																	<Connections>
+																	</Connections>
+																</Network>
+															</Networks>
+														</Object>
+													</Components>
+													<Connections>
+													</Connections>
+												</Network>
+											</Networks>
+										</Object>
+										<Object
+											Name           = "RiwoAlarmCollect1"
+											GUID           = "{6F22CB17-4BAF-4103-9DC2-244B09A80CD1}"
+											Class          = "RiwoAlarmCollect"
+											BackgroundTime = "100 ms">
+											<Channels>
+												<Server Name="ClassSvr"/>
+												<Server Name="ErrorReportConfig"/>
+												<Server Name="Errors"/>
+												<Server Name="Warnings"/>
+												<Client Name="objFirstRiwoParamAlarm"/>
+											</Channels>
+										</Object>
+									</Components>
+									<Connections>
+									</Connections>
+								</Network>
+							</Networks>
+						</Object>
+					</Components>
+					<Connections>
+					</Connections>
+				</Network>
+			</Networks>
+		</Object>
+	</Components>
+	<Comments>
+	</Comments>
+	<!-- List of Connections in this network -->
+	<Connections>
+	</Connections>
+	<!-- Headerfiles -->
+	<Options>
+	</Options>
+</Network>

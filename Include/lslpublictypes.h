@@ -491,6 +491,18 @@ _XMLStructCreator : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
+AutomaticControl : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tAutomaticControlData : STRUCT
+	    acd_DrivingVectorAngle : REAL;
+	    acd_SteeringRadius : REAL;
+	    acd_DrivingSpeed : REAL;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
 #pragma InclDefBlk CanOpenBase
 CanOpenBase : CLASS_PUBLIC
 	TYPE
@@ -757,6 +769,39 @@ HAL_BMS_MasterVolt : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
+#pragma InclDefBlk Hal_Lidar_Base
+Hal_Lidar_Base : CLASS_PUBLIC
+	TYPE
+	  eDirection :
+	  (
+	    d_Fwd,
+	    d_Bwd
+	  )$UDINT;
+	  eScannerPosition :
+	  (
+	    sp_LeftCorner,
+	    sp_Middle,
+	    sp_RightCorner
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tScanFieldStatus : STRUCT
+	    sfs_WarningFieldDetection : DINT;
+	    sfs_StopFieldDetection : DINT;
+	    sfs_EStopFieldDetection : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+	  tVisuData : STRUCT
+	    vd_Direction : Hal_Lidar_Base::eDirection;
+	    vd_StartRange : DINT;
+	    vd_EndRange : DINT;
+	    vd_nrOfBeams : DINT;
+	    vd_Beams : ARRAY [1..MAXBEAMS] OF UINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
 HandleSteering : CLASS_PUBLIC
 	TYPE
 	  eDriveMode :
@@ -776,6 +821,30 @@ HandleSteering : CLASS_PUBLIC
 	    ds_FaultCode : DINT;
 	    ds_CommunicationOK : DINT;
 	    ds_EstopOK : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+HMIHandler : CLASS_PUBLIC
+	TYPE
+	  eMessageResponse :
+	  (
+	    mr_Idle,
+	    mr_Positive,
+	    mr_Negative
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tHMIMessage : STRUCT
+	    hm_Enable : BOOL;
+	    hm_pMessage : ^CHAR;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+	  tHMIMessageResponse : STRUCT
+	    hmr_Enable : BOOL;
+	    hmr_pMessage : ^CHAR;
+	    hmr_Response : eMessageResponse;
 	  END_STRUCT;
 #pragma pack(pop)
 	END_TYPE
@@ -853,6 +922,40 @@ I_PivotWheel : CLASS_PUBLIC
 	    pws_PivotWheelExists : BOOL;
 	    pws_Driving : HandleSteering::tDriveStatus;
 	    pws_Steering : HandleSteering::tDriveStatus;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+PivotWheel : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tPivotWheelParameters : STRUCT
+	    pwp_DistanceToCenterX : REAL;
+	    pwp_DistanceToCenterY : REAL;
+	    pwp_PivotWheelReferenced : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 4)
+	  tPivotWheelStatus : STRUCT
+	    pws_PivotWheelExists : BOOL;
+	    pws_Driving : HandleSteering::tDriveStatus;
+	    pws_Steering : HandleSteering::tDriveStatus;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+#pragma InclDefBlk KinematicNpivot
+KinematicNpivot : CLASS_PUBLIC
+	TYPE
+	  tnPivotStatus : ARRAY [1..8] OF PivotWheel::tPivotWheelStatus;
+#pragma pack(push, 1)
+	  tReferenceWheelsInfo : STRUCT
+	    rwi_ReferenceWheel1Angle : REAL;
+	    rwi_ReferenceWheel1Speed : REAL;
+	    rwi_ReferenceWheel2Angle : REAL;
+	    rwi_ReferenceWheel2Speed : REAL;
 	  END_STRUCT;
 #pragma pack(pop)
 	END_TYPE
@@ -987,6 +1090,51 @@ MerkerEx : CLASS_PUBLIC
 	    EXCHANGE_DATA_PTR,
 	    SAVE_DATA_TO_RAMEXFILE
 	  )$UINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+MES_MQTT_Handler : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tAGVStatusMES : STRUCT
+	    as_online : BOOL;
+	    as_docking : BOOL;
+	    as_manualDrive : BOOL;
+	    as_brakeRelease : BOOL;
+	    as_charging : BOOL;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 4)
+	  _tLiftTarget : STRUCT
+	    lt_x : REAL;
+	    lt_y : REAL;
+	    lt_radius : REAL;
+	    lt_heightIn : DINT;
+	    lt_heightOut : DINT;
+	    lt_loadRequired : BOOL;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 4)
+	  tLiftMES : STRUCT
+	    l_load : BOOL;
+	    l_liftHeight : DINT;
+	    l_manualLift : BOOL;
+	    l_target : _tLiftTarget;
+	  END_STRUCT;
+#pragma pack(pop)
+	  _eHMIMessageResponse :
+	  (
+	    hms_IDLE,
+	    hms_OK,
+	    hms_CANCEL
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tPubHMIMessageMES : STRUCT
+	    enable : BOOL;
+	    pMessage : ^CHAR;
+	    response : _eHMIMessageResponse;
+	  END_STRUCT;
+#pragma pack(pop)
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
@@ -1283,6 +1431,102 @@ MQTTTopic : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
+NavitecInterface : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  _tnavitrolStatusGeneral : STRUCT
+	    nsg_SectionID : UINT;
+	    nsg_SectionLength : UDINT;
+	    nsg_BatteryVoltage : REAL;
+	    nsg_OnRoute : UINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+RiwoDateTime : CLASS_PUBLIC
+	TYPE
+#pragma pack(push, 1)
+	  tDAT_DateAndTime : STRUCT
+	    DAT_Date : SYSDATE;
+	    DAT_Time : SYSTIME;
+	  END_STRUCT;
+#pragma pack(pop)
+	  tDLSday :
+	  (
+	    DayOfMonth_1:=1,
+	    DayOfMonth_2:=2,
+	    DayOfMonth_3:=3,
+	    DayOfMonth_4:=4,
+	    DayOfMonth_5:=5,
+	    DayOfMonth_6:=6,
+	    DayOfMonth_7:=7,
+	    DayOfMonth_8:=8,
+	    DayOfMonth_9:=9,
+	    DayOfMonth_10:=10,
+	    DayOfMonth_11:=11,
+	    DayOfMonth_12:=12,
+	    DayOfMonth_13:=13,
+	    DayOfMonth_14:=14,
+	    DayOfMonth_15:=15,
+	    DayOfMonth_16:=16,
+	    DayOfMonth_17:=17,
+	    DayOfMonth_18:=18,
+	    DayOfMonth_19:=19,
+	    DayOfMonth_20:=20,
+	    DayOfMonth_21:=21,
+	    DayOfMonth_22:=22,
+	    DayOfMonth_23:=23,
+	    DayOfMonth_24:=24,
+	    DayOfMonth_25:=25,
+	    DayOfMonth_26:=26,
+	    DayOfMonth_27:=27,
+	    DayOfMonth_28:=28,
+	    DayOfMonth_29:=29,
+	    DayOfMonth_30:=30,
+	    DayOfMonth_31:=31,
+	    DayOfWeek_Sunday:=100,
+	    DayOfWeek_Monday:=101,
+	    DayOfWeek_Tuesday:=102,
+	    DayOfWeek_Wednesday:=103,
+	    DayOfWeek_Thursday:=104,
+	    DayOfWeek_Friday:=105,
+	    DayOfWeek_Saturday:=106
+	  )$UDINT;
+	  tDLSTimeType :
+	  (
+	    CalculateByUTCTime,
+	    CalculateByLocalTime,
+	    CalculateByUTCFixedDate,
+	    CalculateByLocalFixedDate
+	  )$UDINT;
+	  tDLSWeekOption :
+	  (
+	    FirstWeekOfTheMonth:=0,
+	    SecondWeekOfTheMonth:=1,
+	    ThirdWeekOfTheMonth:=2,
+	    FourthWeekOfTheMonth:=3,
+	    LastWeekOfTheMonth:=4
+	  )$UDINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+RiwoParamAlarm : CLASS_PUBLIC
+	TYPE
+	  eAlarmLevel :
+	  (
+	    eal_Error,
+	    eal_Warning,
+	    eal_Info
+	  )$UDINT;
+	  eAlarmReport :
+	  (
+	    ear_No,
+	    ear_Yes
+	  )$UDINT;
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
 SafetyCDIAS_Base : CLASS_PUBLIC
 #include "..\Class\SafetyCDIAS_Base\SafetyCDIAS_Base.h"
 #include "..\Source\interfaces\lsl_st_safety.h"
@@ -1476,6 +1720,167 @@ SdiasBase : CLASS_PUBLIC
 	    udMemoryToAllocate : UDINT;
 	    uiLastPage : UINT;
 	    udUserDataOffset : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	END_TYPE
+END_CLASS;
+#pragma define (restore)
+#pragma InclDefBlk StateControl
+StateControl : CLASS_PUBLIC
+	TYPE
+	  _eSafetyFieldOptions :
+	  (
+	    sfo_None,
+	    sfo_DockingMode,
+	    sfo_ManualMode,
+	    sfo_ChargerLocation
+	  )$UDINT;
+	  eAGVMode :
+	  (
+	    am_Manual:=1,
+	    am_Auto:=2,
+	    am_SemiAuto:=3
+	  )$DINT;
+	  eAGVMovementMode :
+	  (
+	    amm_FastMovement,
+	    amm_NormalMovement,
+	    amm_SlowMovement,
+	    amm_NoMovement
+	  )$UDINT;
+	  eEstopStatus :
+	  (
+	    es_Clear,
+	    es_Pressed,
+	    es_PendingReset
+	  )$UDINT;
+	  eMasterState :
+	  (
+	    ms_Undefined,
+	    ms_StartState,
+	    ms_StandbyState,
+	    ms_AutoState,
+	    ms_FstopState,
+	    ms_LoadState,
+	    ms_HoldState,
+	    ms_ManualState,
+	    ms_PauseState
+	  )$UDINT;
+	  eProductionStatus :
+	  (
+	    ps_Idle,
+	    ps_InProduction,
+	    ps_NotInProduction
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tCustomAttributeMaster : STRUCT
+	    Value : REAL;
+	    Name : ARRAY [0..32] OF CHAR;
+	  END_STRUCT;
+#pragma pack(pop)
+	  tCustomAttributesMaster : ARRAY [1..5] OF tCustomAttributeMaster;
+#pragma pack(push, 1)
+	  tMasterCurrentStatus : STRUCT
+	    mcs_MasterState : eMasterState;
+	    mcs_AGVX : REAL;
+	    mcs_AGVY : REAL;
+	    mcs_AGVAngle : REAL;
+	    mcs_AGVLevel : DINT;
+	    mcs_AGVSpeed : REAL;
+	    mcs_PositionInitializeStatus : BOOL;
+	    mcs_PositionConfidence : DINT;
+	    mcs_ErrorStatus : BOOL;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+	  tMasterStatusControl : STRUCT
+	    msc_Error : DINT;
+	    msc_ControlEnable : DINT;
+	    msc_BrakeRelease : DINT;
+	  END_STRUCT;
+#pragma pack(pop)
+	  tRemoteControlInputs : BDINT
+	  [
+	    1 rci_Reference,
+	    2 rci_Up,
+	    3 rci_Down,
+	    4 rci_Reset,
+	    5 rci_SlowMode,
+	    6 rci_FastMode,
+	    7 rci_NormalMode,
+	    8 rci_OverruleSafetyFields,
+	    9 rci_SwitchModeRequest,
+	    10 Bit10,
+	    11 Bit11,
+	    12 Bit12,
+	    13 Bit13,
+	    14 Bit14,
+	    15 Bit15,
+	    16 Bit16,
+	    17 Bit17,
+	    18 Bit18,
+	    19 Bit19,
+	    20 Bit20,
+	    21 Bit21,
+	    22 Bit22,
+	    23 Bit23,
+	    24 Bit24,
+	    25 Bit25,
+	    26 Bit26,
+	    27 Bit27,
+	    28 Bit28,
+	    29 Bit29,
+	    30 Bit30,
+	    31 Bit31,
+	    32 Bit32,
+	  ];
+#pragma pack(push, 1)
+	  tRouteInformation : STRUCT
+	    ri_TargetPositionID : UDINT;
+	    ri_TargetReached : BOOL;
+	    ri_TargetPositionName : ARRAY [0..31] OF CHAR;
+	    ri_OriginPositionName : ARRAY [0..31] OF CHAR;
+	  END_STRUCT;
+#pragma pack(pop)
+	  tSafetyScannerFieldStatus :
+	  (
+	    ssf_Clear,
+	    ssf_Warning,
+	    ssf_Stop,
+	    ssf_Estop
+	  )$UDINT;
+#pragma pack(push, 1)
+	  tSafetyStatus : STRUCT
+	    ss_Scanner1 : tSafetyScannerFieldStatus;
+	    ss_Scanner2 : tSafetyScannerFieldStatus;
+	    ss_Scanner3 : tSafetyScannerFieldStatus;
+	    ss_OverhangScanner : BOOL;
+	    ss_ForkCollision : BOOL;
+	    ss_Estop : eEstopStatus;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+	  tStateData : STRUCT
+	    sd_AGVMode : eAGVMode;
+	    sd_GeneralAlarm : BOOL;
+	    sd_GeneralWarning : DINT;
+	    sd_EStopActive : BOOL;
+	    sd_BrakeReleased : BOOL;
+	    sd_ReadyForAutomaticControl : BOOL;
+	    sd_WaitingForTask : BOOL;
+	    sd_StartingToDrive : BOOL;
+	    sd_PrecautionNotification : BOOL;
+	    sd_DockingModeActive : BOOL;
+	    sd_Charging : BOOL;
+	    sd_InProduction : eProductionStatus;
+	    sd_AGVMovementMode : eAGVMovementMode;
+	  END_STRUCT;
+#pragma pack(pop)
+#pragma pack(push, 1)
+	  tVirtualTagsMaster : STRUCT
+	    vtm_TagActive : BOOL;
+	    vtm_ValueTag1 : UDINT;
+	    vtm_ValueTag2 : UDINT;
 	  END_STRUCT;
 #pragma pack(pop)
 	END_TYPE

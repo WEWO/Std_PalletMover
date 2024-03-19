@@ -115,6 +115,12 @@
 		<File Path=".\Source\interfaces\lsl_st_systrace.h"/>
 		<File Path=".\Class\HwControl\_HWKScope.h"/>
 		<File Path=".\lsl_st_serial.h" Global="true"/>
+		<File Path=".\Class\_AlarmXBuffer\AlarmXBuffer.h"/>
+		<File Path=".\Class\_AlarmX0Para\_AlarmX0Para.h"/>
+		<File Path=".\Class\RiwoDefine\RiwoDef.h" Global="true"/>
+		<File Path=".\Class\_TCPIP_CLIENT\_TCPIP_CLIENT.h" Global="true"/>
+		<File Path=".\Class\_TCPIP_CLIENT\SalamanderDelay.h"/>
+		<File Path=".\Class\_TCPIP_CLIENT\lsl_st_ssl_user.h"/>
 	</HeaderFiles>
 	<ClassFiles>
 		<File Path=".\Source\code\OsiBaseNew.st"/>
@@ -247,7 +253,6 @@
 		<File Path=".\Class\BasicHardwareInterface\BasicHardwareInterface.st"/>
 		<File Path=".\Class\I_Lift\I_Lift.st"/>
 		<File Path=".\Class\MainLiftControl\MainLiftControl.st"/>
-		<File Path=".\Class\HwI_BasicLift\HwI_BasicLift.st"/>
 		<File Path=".\Class\Dummy\Dummy.st"/>
 		<File Path=".\Class\MainPeripheralCntrl\MainPeripheralCntrl.st"/>
 		<File Path=".\Class\_LMCAxisBase\C_MathAxis.cpp"/>
@@ -307,6 +312,30 @@
 		<File Path=".\Class\XXXBase_IOs\XXXBase_IOs.st"/>
 		<File Path=".\Class\_SerLib\_SerLib.st"/>
 		<File Path=".\Class\PL221\PL221.st"/>
+		<File Path=".\Class\AuxiliaryNavitec\AuxiliaryNavitec.st"/>
+		<File Path=".\Class\TimeDateLib\TimDatC.cpp"/>
+		<File Path=".\Class\_AlarmX0Para\_AlarmX0Para.st"/>
+		<File Path=".\Class\_AlarmX3Para\_AlarmX3Para.st"/>
+		<File Path=".\Class\_AlarmXBuffer\_AlarmXBuffer.st"/>
+		<File Path=".\Class\_TCPIP_CLIENT\_TCPIP_CLIENT.st"/>
+		<File Path=".\Class\AutomaticControl\AutomaticControl.st"/>
+		<File Path=".\Class\Hal_Lidar_Base\Hal_Lidar_Base.st"/>
+		<File Path=".\Class\KinematicNpivot\KinematicNpivot.st"/>
+		<File Path=".\Class\NavitecInterface\NavitecInterface.st"/>
+		<File Path=".\Class\PivotWheel\PivotWheel.st"/>
+		<File Path=".\Class\Ram\Ram.st"/>
+		<File Path=".\Class\RiwoAlarmCollect\RiwoAlarmCollect.st"/>
+		<File Path=".\Class\RiwoDateTime\RiwoDateTime.st"/>
+		<File Path=".\Class\RiwoDateTimeLib\RiwoDateTimeLib.st"/>
+		<File Path=".\Class\RiwoEventLogger\RiwoEventLogger.st"/>
+		<File Path=".\Class\RiwoParamAlarm\RiwoParamAlarm.st"/>
+		<File Path=".\Class\StateControl\StateControl.st"/>
+		<File Path=".\Class\TimeDateLib\TimeDateLib.st"/>
+		<File Path=".\Class\I_WewoMes\I_WewoMes.st"/>
+		<File Path=".\Class\HMIHandler\HMIHandler.st"/>
+		<File Path=".\Class\MES_MQTT_Handler\MES_MQTT_Handler.st"/>
+		<File Path=".\Class\MqttTopicText\MqttTopicText.st"/>
+		<File Path=".\Class\KinematicReverseModel\KinematicReverseModel.st"/>
 	</ClassFiles>
 	<NetworkFiles>
 		<File Path=".\Network\Main\Main.lcn"/>
@@ -323,6 +352,9 @@
 		<File Path=".\Network\MainPeripheral\MainPeripheral.lcn"/>
 		<File Path=".\Network\PeripheralLed\PeripheralLed.lcn"/>
 		<File Path=".\Network\HW_Network\HW_Network.lcn"/>
+		<File Path=".\Network\AuxNavitec\AuxNavitec.lcn"/>
+		<File Path=".\Network\ON_MQTT_MES_Interface\ON_MQTT_MES_Interface.lcn"/>
+		<File Path=".\Network\NavigationSystem\NavigationSystem.lcn"/>
 	</NetworkFiles>
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
@@ -330,6 +362,7 @@
 	<LibraryFiles>
 		<File Path=".\Motion\MotionLib\MotionLib.lcp"/>
 		<File Path=".\Hardware\Hardware.lcp"/>
+		<File Path="..\..\..\AGV_New\daiwa-house-agv\DaiwaHouseAGV\Stations\MachineControl\MachineControl\MachineControl.lcp"/>
 	</LibraryFiles>
 	<DocuFiles>
 		<File Path=".\Class\WewoBase\SFN_Base.pdf"/>
@@ -356,6 +389,8 @@
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_de.pdf"/>
 		<File Path=".\Class\MQTTTopicString\MQTTTopicString_en.pdf"/>
 		<File Path=".\Class\_LMCAxis\_LMCAxis.vov"/>
+		<File Path=".\Class\_AlarmXBuffer\_AlarmXBuffer.pdf"/>
+		<File Path=".\Class\_AlarmXBuffer\_AlarmXBuffer_en.pdf"/>
 	</DocuFiles>
 	<Options>
 		<Target UseFPU="true" Processor="ARM">
@@ -445,17 +480,32 @@
 				<Class Name="_MemoryBubbles"/>
 				<Class Name="Merker"/>
 				<Class Name="MerkerEx"/>
+				<Class Name="Ram"/>
 				<Class Name="RAMex"/>
 				<Class Name="String"/>
 				<Class Name="StringInternal"/>
 				<Class Name="StringRAM"/>
 				<Class Name="VirtualBaseInit"/>
 			</Folder>
+			<Folder Name="Visualisation">
+				<Folder Name="LseRtk">
+					<Folder Name="Alarm">
+						<Folder Name="PLC">
+							<Class Name="_AlarmX0Para"/>
+							<Class Name="_AlarmX3Para"/>
+							<Class Name="_AlarmXBuffer"/>
+						</Folder>
+					</Folder>
+				</Folder>
+			</Folder>
 		</Folder>
 		<Folder Name="Tools">
 			<Folder Name="_old">
 				<Folder Name="Memory">
 					<Class Name="RamFile"/>
+				</Folder>
+				<Folder Name="TCPIP">
+					<Class Name="_TCPIP_CLIENT"/>
 				</Folder>
 			</Folder>
 			<Folder Name="Communication">
@@ -547,11 +597,15 @@
 					<Class Name="HydroController"/>
 				</Folder>
 			</Folder>
+			<Folder Name="TimeAndDate">
+				<Class Name="TimeDateLib"/>
+			</Folder>
 		</Folder>
 	</SigmatekFolders>
 	<ClassFolders>
 		<Folder Name="Application">
 			<Folder Name="auxiliary">
+				<Class Name="AuxiliaryNavitec"/>
 				<Class Name="CntrlAuxHmi"/>
 				<Folder Name="Base">
 					<Class Name="AuxBase"/>
@@ -567,7 +621,6 @@
 				</Folder>
 			</Folder>
 			<Folder Name="Hardware">
-				<Class Name="HwI_BasicLift"/>
 				<Folder Name="BMS">
 					<Class Name="HAL_BMS_Base"/>
 					<Class Name="HAL_BMS_MasterVolt"/>
@@ -579,6 +632,7 @@
 				<Class Name="I_LedControl"/>
 				<Class Name="I_Lift"/>
 				<Class Name="I_PivotWheel"/>
+				<Class Name="I_WewoMes"/>
 			</Folder>
 			<Folder Name="Main">
 				<Class Name="AgvMain"/>
@@ -614,6 +668,9 @@
 			</Folder>
 		</Folder>
 		<Folder Name="L0_Hardware_Layer">
+			<Class Name="MES_MQTT_Handler"/>
+			<Class Name="MqttTopicText"/>
+			<Class Name="NavitecInterface"/>
 			<Folder Name="CAN_OPEN">
 				<Folder Name="Curtis">
 					<Class Name="Curtis_Base"/>
@@ -628,10 +685,25 @@
 				</Folder>
 			</Folder>
 		</Folder>
+		<Folder Name="L2_System_Control">
+			<Class Name="AutomaticControl"/>
+			<Class Name="StateControl"/>
+		</Folder>
 		<Folder Name="L4_Equipments">
 			<Class Name="HandleSteeringCurtisAC2F"/>
+			<Class Name="KinematicNpivot"/>
+			<Class Name="PivotWheel"/>
 		</Folder>
 		<Folder Name="RiwoLibrary">
+			<Folder Name="AlarmHandling">
+				<Class Name="RiwoAlarmCollect"/>
+				<Class Name="RiwoParamAlarm"/>
+			</Folder>
+			<Folder Name="Common">
+				<Folder Name="Time">
+					<Class Name="RiwoDateTime"/>
+				</Folder>
+			</Folder>
 			<Folder Name="Communication">
 				<Folder Name="LibCan">
 					<Folder Name="LibCanOpen">
@@ -640,6 +712,12 @@
 						</Folder>
 					</Folder>
 				</Folder>
+			</Folder>
+			<Folder Name="LoggingAndBackup">
+				<Class Name="RiwoEventLogger"/>
+			</Folder>
+			<Folder Name="Time">
+				<Class Name="RiwoDateTimeLib"/>
 			</Folder>
 		</Folder>
 		<Folder Name="Simulation">
@@ -671,6 +749,9 @@
 					<Class Name="CanOpenCyncMaster"/>
 				</Folder>
 			</Folder>
+			<Folder Name="Lidar">
+				<Class Name="Hal_Lidar_Base"/>
+			</Folder>
 			<Folder Name="Uitzoeken">
 				<Class Name="Wewo_DynamicBuffer"/>
 				<Class Name="Wewo_EnumBase"/>
@@ -692,6 +773,7 @@
 		<Folder Name="Application">
 			<Folder Name="Aux">
 				<Network Name="AuxMqttHmi"/>
+				<Network Name="AuxNavitec"/>
 				<Network Name="MainAuxControl"/>
 			</Folder>
 			<Folder Name="Configuration">
@@ -708,6 +790,9 @@
 					<Network Name="Settings"/>
 				</Folder>
 			</Folder>
+			<Folder Name="Functions">
+				<Network Name="NavigationSystem"/>
+			</Folder>
 			<Folder Name="Logger">
 				<Network Name="Logger"/>
 			</Folder>
@@ -721,6 +806,9 @@
 				<Network Name="PeripheralLift"/>
 				<Network Name="PeripheralPiviotWheels"/>
 			</Folder>
+		</Folder>
+		<Folder Name="L0_Hardware_Layer">
+			<Network Name="ON_MQTT_MES_Interface"/>
 		</Folder>
 		<Folder Name="SimulationHardware">
 		</Folder>
@@ -770,6 +858,11 @@
 			<Folder Name="old">
 				<Type Name="CncFlags"/>
 				<Type Name="CntrFlgs"/>
+			</Folder>
+		</Folder>
+		<Folder Name="Riwo">
+			<Folder Name="Event_Logging">
+				<Type Name="tLogSetting"/>
 			</Folder>
 		</Folder>
 		<Folder Name="Wewo">

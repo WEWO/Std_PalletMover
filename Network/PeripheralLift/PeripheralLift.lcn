@@ -18,7 +18,7 @@
 			Name       = "ObjMainLiftControl"
 			GUID       = "{E23740A8-50A6-45AE-AF18-6BC231B6D55F}"
 			Class      = "MainLiftControl"
-			Position   = "(540,120)"
+			Position   = "(570,120)"
 			Visualized = "false">
 			<Channels>
 				<Server Name="ActualHeight"/>

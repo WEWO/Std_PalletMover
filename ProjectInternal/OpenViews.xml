@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
-	<View Key="PeripheralLift" Type="0"/>
-	<View Key="MainLiftControl" Type="5"/>
-	<View Key="PeripheralsBase" Type="2" LineNr="5"/>
-	<View Key="CanOpenCyncMaster" Type="2" LineNr="20"/>
-	<View Key=".\Class\_LMCABSEncoder\_LMCABSEncoder.st" Type="4" LineNr="1"/>
-	<View Key="ObjMainLiftControl" Type="1"/>
-	<View Key="PeripheralLed" Type="0"/>
-	<View Key="BasicAgv" Type="0"/>
-	<View Key="Hardware Editor" Type="12"/>
-	<View Key="HardwareControl" Type="0"/>
-	<View Key="HW_Network" Type="0"/>
-	<View Key="I_LedControl" Type="2" LineNr="1"/>
 	<View Key="PeripheralPiviotWheels" Type="0"/>
-	<View Key="HandleSteeringCurtisAC2F" Type="2" LineNr="1"/>
-	<View Key="MainLedControl" Type="2" LineNr="75"/>
-	<View Key="WewoBase" Type="2" LineNr="1002"/>
-	<View Key="MainLiftControl" Type="2" LineNr="72"/>
-	<View Key="Settings" Type="0"/>
-	<View Key="MainHardwareCntrl" Type="2" LineNr="116"/>
-	<View Key="MainLedControl1" Type="1"/>
-	<View Key="MainLedControl" Type="2" LineNr="75"/>
+	<View Key="AuxMqttHmi" Type="0"/>
+	<View Key="ObjAuxHmi" Type="1"/>
+	<View Key="ON_MQTT_MES_Interface" Type="0"/>
+	<View Key="MES_MQTT_Handler" Type="2" LineNr="153"/>
+	<View Key="NavigationSystem" Type="0"/>
+	<View Key="ON_Kinematic_nPivot (MachineControl)" Type="0"/>
+	<View Key="ON_NavitecInterface (MachineControl)" Type="0"/>
+	<View Key="PeripheralLift" Type="0"/>
+	<View Key="ObjMainLiftControl" Type="1"/>
+	<View Key="MainPeripheral" Type="0"/>
+	<View Key="Main" Type="0"/>
+	<View Key="MainLiftControl" Type="2" LineNr="51"/>
+	<View Key="MainLiftControl" Type="2" LineNr="51"/>
 	<Setting Variable="OutputDebugger" Value="3"/>
 </OpenViews>

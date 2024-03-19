@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<File CRC="28E24EA3" Version="1.1">
+<File CRC="26D73FD8" Version="1.1">
 	<Types>
 		<Type Name="iprStates" Datatype="UDINT" TypeId="ENUM">
 			<Elements>
@@ -121,6 +121,77 @@
 			</Servers>
 		</Class>
 		<Class
+			Name     = "_cJSON"
+			Datatype = "DINT"
+			Size     = "48"
+			Guid     = "9A5304A2-74BC-440C-BB78-7AD58610B11F">
+			<Servers>
+				<Server Name="LibraryVersion" Datatype="STRING" Guid="DC0E2C7B-F679-4E14-9647-02E1B7A70277" WriteProtected="true"/>
+			</Servers>
+			<Objects>
+				<Object Name="cJSONVersion" Datatype="String" Guid="985B8132-9FF0-4EED-926E-A6AE698A2A44"/>
+			</Objects>
+		</Class>
+		<Class
+			Name     = "_JSONReader"
+			Datatype = "DINT"
+			Size     = "112"
+			Guid     = "EDA654B8-074E-42B8-A7D5-4AB5A324B7C4">
+			<Types>
+				<Type Name="t_e_READSTEPS" Datatype="UDINT" TypeId="ENUM">
+					<Elements>
+						<Type Name="RS_WAIT" Value="0"/>
+						<Type Name="RS_OPEN_FILE" Value="1"/>
+						<Type Name="RS_WAIT_FOR_OPEN" Value="2"/>
+						<Type Name="RS_GET_FILELENGTH" Value="3"/>
+						<Type Name="RS_WAIT_FOR_LEN" Value="4"/>
+						<Type Name="RS_READ_FILE" Value="5"/>
+						<Type Name="RS_WAIT_FOR_READ" Value="6"/>
+						<Type Name="RS_CLOSE_FILE" Value="7"/>
+						<Type Name="RS_WAIT_FOR_CLOSE" Value="8"/>
+						<Type Name="RS_PARSE" Value="9"/>
+						<Type Name="RS_COMPLETE" Value="10"/>
+						<Type Name="RS_ERROR" Value="11"/>
+					</Elements>
+				</Type>
+			</Types>
+			<Servers>
+				<Server Name="LibraryVersion" Datatype="UDINT" Guid="F2106162-D665-416C-AE17-5509BBD39830" WriteProtected="true"/>
+				<Server Name="ReadFSM" Datatype="_JSONReader::t_e_READSTEPS" Guid="EDD42257-CB65-4DF2-BE5E-495C0521647F" WriteProtected="true"/>
+			</Servers>
+			<Objects>
+				<Object Name="_cJSON" Datatype="_cJSON" Guid="CCA87F71-9990-469E-AE89-CEF7ED76C0EA"/>
+			</Objects>
+		</Class>
+		<Class
+			Name     = "_JSONWriter"
+			Datatype = "DINT"
+			Size     = "116"
+			Guid     = "AFBA58E4-6445-46DE-A190-124C5222A6FF">
+			<Types>
+				<Type Name="t_e_WRITESTEPS" Datatype="UDINT" TypeId="ENUM">
+					<Elements>
+						<Type Name="WS_WAIT" Value="0"/>
+						<Type Name="WS_PRINT_TO_STRING" Value="1"/>
+						<Type Name="WS_OPEN_FILE" Value="2"/>
+						<Type Name="WS_WAIT_FOR_OPEN" Value="3"/>
+						<Type Name="WS_WRITE_FILE" Value="4"/>
+						<Type Name="WS_WAIT_FOR_WRITE" Value="5"/>
+						<Type Name="WS_CLOSE_FILE" Value="6"/>
+						<Type Name="WS_WAIT_FOR_CLOSE" Value="7"/>
+						<Type Name="WS_ERROR" Value="11"/>
+					</Elements>
+				</Type>
+			</Types>
+			<Servers>
+				<Server Name="LibraryVersion" Datatype="UDINT" Guid="60E58376-8B0B-471E-AFD7-EC926BE512EA" WriteProtected="true"/>
+				<Server Name="WriteFSM" Datatype="_JSONWriter::t_e_WRITESTEPS" Guid="4C2F9022-2DA0-4500-A0E6-AE2C22915CE9" WriteProtected="true"/>
+			</Servers>
+			<Objects>
+				<Object Name="_cJSON" Datatype="_cJSON" Guid="759A0F94-3E24-455F-AF8D-03264D380AB3"/>
+			</Objects>
+		</Class>
+		<Class
 			Name     = "ASCII_BIN"
 			Datatype = "DINT"
 			Size     = "12"
@@ -217,6 +288,82 @@
 			Datatype = "DINT"
 			Size     = "72"
 			Guid     = "25529921-015E-4979-B126-D406D2F83DDD">
+		</Class>
+		<Class
+			Name     = "MES_MQTT_Handler"
+			Datatype = "DINT"
+			Size     = "760"
+			Guid     = "A44164CD-AF60-45DD-94AB-A40C85322D92">
+			<Servers>
+				<Server Name="CntPublishStatus" Datatype="DINT" Guid="2F7F38E6-475C-4006-8DCD-7CF2E1C6D52B" WriteProtected="true"/>
+				<Server Name="CntPublishSafety" Datatype="DINT" Guid="94B78284-566E-4630-9C85-9A7086D03F84" WriteProtected="true"/>
+				<Server Name="CntPublishLift" Datatype="DINT" Guid="5241C35A-0495-4471-A9E3-8EDB925D122C" WriteProtected="true"/>
+				<Server Name="CntPublishProduction" Datatype="DINT" Guid="3EF15940-298A-4A02-B38B-4AF963175BE2" WriteProtected="true"/>
+				<Server Name="CntPublishHMI" Datatype="DINT" Guid="718E012E-5651-4477-88EE-94FE331255FE" WriteProtected="true"/>
+				<Server Name="CntSubscribeLift" Datatype="DINT" Guid="45C1AD41-7156-4C1F-AB9A-625DFBF7D8F2" WriteProtected="true"/>
+				<Server Name="CntSubscribeProduction" Datatype="DINT" Guid="92DDEB11-FB82-4BBE-A449-45AE5D32946B" WriteProtected="true"/>
+				<Server Name="CntSubscribeHMI" Datatype="DINT" Guid="61A114E9-0A64-412D-8F69-193D343EF5DA" WriteProtected="true"/>
+				<Server Name="CntSubscribeMES" Datatype="DINT" Guid="529CD7EF-E3AA-4727-9967-7B4A935D57C2" WriteProtected="true"/>
+			</Servers>
+			<Objects>
+				<Object Name="_JSONReader" Datatype="_JSONReader" Guid="7F1F3909-78EC-47E0-BC05-C6FE0646B215"/>
+				<Object Name="_JSONWriter" Datatype="_JSONWriter" Guid="DAE9E92C-9F50-4BE6-9E8D-FCEC9DF5EFDE"/>
+				<Object Name="ASCII_BIN" Datatype="ASCII_BIN" Guid="E6782275-1499-4F52-99B9-71A41AA8AA2E"/>
+				<Object Name="PublishHMI" Datatype="MqttTopicText" Guid="B98DB34C-362F-4A01-BEFC-E63A304AF3D0"/>
+				<Object Name="PublishLift" Datatype="MqttTopicText" Guid="31ABEA49-1640-4F80-A671-ED9120AE784B"/>
+				<Object Name="PublishProduction" Datatype="MqttTopicText" Guid="865D150E-41E6-4F4C-BD58-CB7AFC4F85D1"/>
+				<Object Name="PublishSafety" Datatype="MqttTopicText" Guid="0ADFD87F-BDFA-4C2F-9439-FD217323DB2E"/>
+				<Object Name="PublishState" Datatype="MqttTopicText" Guid="37AFF5BD-DF7B-4DA9-9C31-64BA53DEB313"/>
+				<Object Name="SubscribeAlarm" Datatype="MqttTopicText" Guid="AAB527A0-C783-4717-A59B-B575166CE7E6"/>
+				<Object Name="SubscribeHMIMessage" Datatype="MqttTopicText" Guid="02D780E5-43C0-4964-BE5E-27D2816057DA"/>
+				<Object Name="SubscribeLiftTarget" Datatype="MqttTopicText" Guid="C6121E1E-63C8-4584-8ACA-803AF60925A0"/>
+				<Object Name="SubscribeMESOnline" Datatype="MqttTopicText" Guid="4C21DE23-5741-4F89-A900-D82CA708FAE9"/>
+				<Object Name="SubscribeProduction" Datatype="MqttTopicText" Guid="D80E363B-11A6-411A-90BC-6F348F7624DC"/>
+			</Objects>
+		</Class>
+		<Class
+			Name     = "MQTTTopic"
+			Datatype = "MQTTTopic::t_e_MQTT_TopicState"
+			Size     = "2292"
+			Guid     = "04E7B0A7-EAD9-4281-A165-FECA7026E8D4">
+			<Types>
+				<Type Name="t_e_MQTT_TopicType" Datatype="UDINT" TypeId="ENUM">
+					<Elements>
+						<Type Name="MT_Deactivated" Value="0"/>
+						<Type Name="MT_Subscribe" Value="1"/>
+						<Type Name="MT_Publish_Poll" Value="2"/>
+						<Type Name="MT_Publish_OnChange" Value="3"/>
+						<Type Name="MT_Publish_Manual" Value="4"/>
+					</Elements>
+				</Type>
+			</Types>
+		</Class>
+		<Class
+			Name     = "MQTTTopicString"
+			Datatype = "MQTTTopic::t_e_MQTT_TopicState"
+			Base     = "MQTTTopic"
+			Size     = "3352"
+			Guid     = "1E7C8EF1-97DE-4C4C-8BE0-C9811E214661">
+		</Class>
+		<Class
+			Name     = "MqttTopicText"
+			Datatype = "MQTTTopic::t_e_MQTT_TopicState"
+			Base     = "MQTTTopicString"
+			Size     = "3388"
+			Guid     = "377C0CD8-686F-4BF1-A14F-2BCCB722B662">
+			<Servers>
+				<Server Name="TopicType" Datatype="MQTTTopic::t_e_MQTT_TopicType" Guid="31F32996-94C2-4EE6-BF65-F07730F9B3D1" WriteProtected="false"/>
+				<Server Name="TopicName" Datatype="STRING" Guid="1878CE84-190E-456E-B9BD-95B8BEB348A3" WriteProtected="false"/>
+				<Server Name="PublishInterval" Datatype="UDINT" Guid="1B5E490C-509E-427E-8197-742FB369AC0E" WriteProtected="false"/>
+				<Server Name="RetainData" Datatype="UDINT" Guid="15E4D1CC-4B14-40DA-B815-B4DE893D5E39" WriteProtected="false"/>
+				<Server Name="QoS" Datatype="DINT" Guid="85D58FB2-5D6E-4E87-9D88-321801651B1B" WriteProtected="false"/>
+				<Server Name="GrantedQoS" Datatype="DINT" Guid="E231FAED-743F-4C50-A376-B46EF8958B7C" WriteProtected="true"/>
+				<Server Name="DataString" Datatype="STRING" Guid="7A2EC243-DD04-4FA1-A1FA-EFE0E92C1A13" WriteProtected="false"/>
+			</Servers>
+			<Objects>
+				<Object Name="PubSubDataString" Datatype="String" Guid="7A35CC6A-98F4-4C4B-BB22-731CC48560E0"/>
+				<Object Name="objTopicName" Datatype="StringRAM" Guid="4CE40825-0DCC-4F9D-840F-A9AAD039F84D"/>
+			</Objects>
 		</Class>
 		<Class
 			Name     = "PL221"
@@ -356,6 +503,16 @@
 			Guid     = "2C12408A-7CCA-458A-912B-98C634EE4BD9">
 		</Class>
 		<Class
+			Name     = "StringRAM"
+			Datatype = "UDINT"
+			Base     = "StringInternal"
+			Size     = "60"
+			Guid     = "98E72A8A-307A-4EB2-9A52-A75C6DC58534">
+			<Servers>
+				<Server Name="Data" Datatype="STRING" Guid="81990015-D505-4977-9326-733789F9FEAA" WriteProtected="false"/>
+			</Servers>
+		</Class>
+		<Class
 			Name     = "VaranManager"
 			Datatype = "DINT"
 			Base     = "VaranManager_Base"
@@ -415,6 +572,7 @@
 		<Object Name="CP112_IOs1" Datatype="CP112_IOs" Guid="43E6A152-6911-4570-9818-AAB5B521795A"/>
 		<Object Name="HwControl1" Datatype="HwControl" Guid="E55FFACD-A11C-4399-A96A-B4A513FDA251"/>
 		<Object Name="HwObj_PL221" Datatype="PL221" Guid="A1A5E694-EBE0-4E51-8E29-659E938D2EF3"/>
+		<Object Name="MES_MQTT_Handler1" Datatype="MES_MQTT_Handler" Guid="4E5AA4AC-B023-4EE2-B3C7-996AEED0BA65"/>
 		<Object Name="ObjCanDriver1" Datatype="CanDriverCPU" Guid="4D278664-C979-46BD-BED2-0E8587B4232E"/>
 		<Object Name="ObjCanSyncMaster" Datatype="CanOpenCyncMaster" Guid="EA5F9656-46E5-4CFA-AB7F-A776BA523E47"/>
 		<Object Name="SdiasPLC1" Datatype="SdiasPLC" Guid="B54011B7-FC7F-4C41-B72D-CB13776FB009"/>

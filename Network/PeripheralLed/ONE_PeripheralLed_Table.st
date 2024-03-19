@@ -58,8 +58,9 @@ TO_UDINT(1), "ToLedModule", TO_UDINT(_NotInitialized),//|PeripheralLed.MainLedCo
 
 //External connections
 0$UDINT,
-1$UDINT,
+2$UDINT,
 TO_UDINT(1), "AgvConfig", C_DIR, TO_UDINT(4182867590), "ObjConfig","ClassSvr",
+TO_UDINT(1), "AgvSettings", C_DIR, TO_UDINT(1932410655), "ObjMachine","ClassSvr",
 
 //Magic internal connections
 0$UDINT,
