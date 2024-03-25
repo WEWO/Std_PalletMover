@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <OpenViews>
+	<View Key="NavigationSystem" Type="0"/>
+	<View Key="WewoMesControl" Type="0"/>
+	<View Key="MainFuctionCntrl" Type="2" LineNr="41"/>
+	<View Key="NAVIGATIONKINEMATICPIVOTS1" Type="1"/>
+	<View Key="KinematicNpivot" Type="2" LineNr="63"/>
+	<View Key="AuxMesInterface" Type="0"/>
+	<View Key="HMIHandler" Type="2" LineNr="1"/>
+	<View Key="MES_MQTT_Handler" Type="2" LineNr="1"/>
+	<View Key="NavitecInterface" Type="2" LineNr="1"/>
+	<View Key="NavigationSystem" Type="0"/>
 	<Setting Variable="OutputDebugger" Value="3"/>
 </OpenViews>

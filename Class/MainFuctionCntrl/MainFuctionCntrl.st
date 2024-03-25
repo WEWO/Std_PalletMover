@@ -104,7 +104,7 @@ MainFuctionCntrl : CLASS
 	FunctionControl 	: SvrCh_gt_AgvMainFunction;
   //Clients:
   //Variables:
-		ReMainPeripheralControl 	: gt_agvMainPeripherals;
+		ReMainFunctionControl 	: gt_AgvMainFunction;
 		ActualState 	: gt_AgvHandleState;
 		CurMainPeripheralControl 	: gt_agvMainPeripherals;
   //Functions:
@@ -267,7 +267,7 @@ FUNCTION VIRTUAL GLOBAL MainFuctionCntrl::FunctionControl::Write
 	END_VAR
 
 	FunctionControl := input;
-    ReMainPeripheralControl := FunctionControl;
+    ReMainFunctionControl := FunctionControl;
 	result := FunctionControl;
 
 END_FUNCTION
@@ -347,41 +347,41 @@ END_FUNCTION
 FUNCTION MainFuctionCntrl::MainFunctionLoop
   // Check if step change is posible.
    
-    if (ReMainPeripheralControl <> CurMainPeripheralControl)  then
-      CurMainPeripheralControl := ReMainPeripheralControl;    
+    if (ReMainFunctionControl <> CurMainPeripheralControl)  then
+      CurMainPeripheralControl := ReMainFunctionControl;    
     end_if;
     
     
     Case CurMainPeripheralControl of
         
-     PerConfig:
+     FUncConfig:
             ActualState := HandleConfiguration;
             if  HandleMainState() = true then
                 if GetMainError() = false then
-                    FunctionControl := perIdle;
+                    FunctionControl := FuncIdle;
                     else
-                    FunctionControl := perError;
+                    FunctionControl := FuncError;
                 end_if;
             end_if;
         
-       PerStartup:
+       FuncStartup:
             ActualState :=HandleStartUp;
              if  HandleMainState() = true then
                 if GetMainError() = false then
-                    FunctionControl := perIdle;
+                    FunctionControl := FuncIdle;
                     else
-                    FunctionControl := perError;
+                    FunctionControl := FuncError;
                 end_if;
             end_if;
         
-        PerOperational:
+        FuncOperational:
             ActualState := HandleOperational;
             HandleMainState();
         
-        PerIdle:
+        FuncIdle:
         
         
-        perError:
+        FuncError:
         
         
         

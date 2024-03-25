@@ -95,29 +95,12 @@
 								</Network>
 							</Networks>
 						</Object>
-						<Object Name="KinematicReverseModel1" GUID="{E858C572-4135-4B48-9865-E5D248B1FBC8}" Class="KinematicReverseModel">
-							<Channels>
-								<Server Name="ActualTotalDirection"/>
-								<Server Name="ActualTotalRadius"/>
-								<Server Name="ActualTotalSpeed"/>
-								<Server Name="ClassSvr"/>
-								<Client Name="objPivotWheel1"/>
-								<Client Name="objPivotWheel2"/>
-								<Client Name="objPivotWheel3"/>
-								<Client Name="objPivotWheel4"/>
-								<Client Name="Wheel1Angle"/>
-								<Client Name="Wheel1Speed"/>
-								<Client Name="Wheel2Angle"/>
-								<Client Name="Wheel2Speed"/>
-								<Client Name="Wheel3Angle"/>
-								<Client Name="Wheel3Speed"/>
-								<Client Name="Wheel4Angle"/>
-								<Client Name="Wheel4Speed"/>
-							</Channels>
-						</Object>
 						<Object Name="ObjKinematicNpivot" GUID="{1BEC927E-6FF2-4B49-ADD7-DE166385273E}" Class="KinematicNpivot">
 							<Channels>
 								<Server Name="ACTIVATE" Value="1"/>
+								<Server Name="ActualTotalDirection"/>
+								<Server Name="ActualTotalRadius"/>
+								<Server Name="ActualTotalSpeed"/>
 								<Server Name="AGVInMotion"/>
 								<Server Name="ChaoticManualFrontDirection"/>
 								<Server Name="ChaoticManualFrontSpeed"/>

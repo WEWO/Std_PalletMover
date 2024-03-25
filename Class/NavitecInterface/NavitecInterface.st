@@ -527,7 +527,7 @@ NavitecInterface : CLASS
 	AlarmStartID 	: CltCh_DINT;
 	objBMS 	: CltChCmd_HAL_BMS_Base;
 	objKinematicNpivot 	: CltChCmd_KinematicNpivot;
-	objStateControl 	: CltChCmd_StateControl;
+	objStateControl 	: CltChCmd_Standard;
 	objAutomaticControl 	: CltChCmd_AutomaticControl;
 	IPString 	: CltChCmd_StringRAM;
 	_Alarm_Error_WrongDataReceive 	: CltChCmd_RiwoParamAlarm;
@@ -645,7 +645,7 @@ NavitecInterface : CLASS
 			navitecState 	: _enavitrolState;
 		END_VAR
 		VAR_OUTPUT
-			returnValue 	: StateControl::eMasterState;
+			returnValue 	: Standard::eMasterState;
 		END_VAR;
 	
 	FUNCTION _handleAlarmResets;
@@ -678,7 +678,7 @@ END_CLASS;
 #pragma usingLtd AutomaticControl
 #pragma usingLtd HAL_BMS_Base
 #pragma usingLtd KinematicNpivot
-#pragma usingLtd StateControl
+#pragma usingLtd Standard
 
 
 //}}LSL_DECLARATION
@@ -702,7 +702,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::NavitecInterface.AlarmStartID.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000000$UINT, TO_UDINT(688888888), "AlarmStartID", 
 (::NavitecInterface.objBMS.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1576911554), "objBMS", TO_UDINT(3662255972), "HAL_BMS_Base", 0$UINT, 0$UINT, 
 (::NavitecInterface.objKinematicNpivot.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(4105540354), "objKinematicNpivot", TO_UDINT(1530409541), "KinematicNpivot", 0$UINT, 0$UINT, 
-(::NavitecInterface.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(2283691383), "StateControl", 0$UINT, 0$UINT, 
+(::NavitecInterface.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(3603188683), "Standard", 0$UINT, 0$UINT, 
 (::NavitecInterface.objAutomaticControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(249169011), "objAutomaticControl", TO_UDINT(3872218593), "AutomaticControl", 0$UINT, 0$UINT, 
 (::NavitecInterface.IPString.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2946579348), "IPString", TO_UDINT(2408581120), "StringRAM", 1$UINT, 10$UINT, 
 (::NavitecInterface._Alarm_Error_WrongDataReceive.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(903483506), "_Alarm_Error_WrongDataReceive", TO_UDINT(1396228774), "RiwoParamAlarm", 0$UINT, 2$UINT, 
@@ -1367,7 +1367,7 @@ FUNCTION NavitecInterface::_navitecStateToMasterState
 		navitecState 	: _enavitrolState;
 	END_VAR
 	VAR_OUTPUT
-		returnValue 	: StateControl::eMasterState;
+		returnValue 	: Standard::eMasterState;
 	END_VAR
   
   case navitecState of

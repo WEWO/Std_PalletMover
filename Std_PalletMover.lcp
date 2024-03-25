@@ -329,7 +329,7 @@
 		<File Path=".\Class\RiwoDateTimeLib\RiwoDateTimeLib.st"/>
 		<File Path=".\Class\RiwoEventLogger\RiwoEventLogger.st"/>
 		<File Path=".\Class\RiwoParamAlarm\RiwoParamAlarm.st"/>
-		<File Path=".\Class\StateControl\StateControl.st"/>
+		<File Path=".\Class\Standard\Standard.st"/>
 		<File Path=".\Class\TimeDateLib\TimeDateLib.st"/>
 		<File Path=".\Class\I_WewoMes\I_WewoMes.st"/>
 		<File Path=".\Class\HMIHandler\HMIHandler.st"/>
@@ -363,11 +363,6 @@
 	<ObjectFiles>
 		<File Path=".\Loader\Source\Loader.lob" Downloadable="false"/>
 	</ObjectFiles>
-	<LibraryFiles>
-		<File Path=".\Motion\MotionLib\MotionLib.lcp"/>
-		<File Path=".\Hardware\Hardware.lcp"/>
-		<File Path="..\..\..\AGV_New\daiwa-house-agv\DaiwaHouseAGV\Stations\MachineControl\MachineControl\MachineControl.lcp"/>
-	</LibraryFiles>
 	<DocuFiles>
 		<File Path=".\Class\WewoBase\SFN_Base.pdf"/>
 		<File Path=".\Class\WewoStringUtils\SFN_StringUtils.pdf"/>
@@ -693,7 +688,7 @@
 		</Folder>
 		<Folder Name="L2_System_Control">
 			<Class Name="AutomaticControl"/>
-			<Class Name="StateControl"/>
+			<Class Name="Standard"/>
 		</Folder>
 		<Folder Name="L4_Equipments">
 			<Class Name="HandleSteeringCurtisAC2F"/>

@@ -500,7 +500,7 @@ MES_MQTT_Handler : CLASS
 	SubscribeMESOnline 	: CltChCmd_MqttTopicText;
 	SubscribeLiftTarget 	: CltChCmd_MqttTopicText;
 	objRiwoEventLogger 	: CltChCmd_RiwoEventLogger;
-	objStateControl 	: CltChCmd_StateControl;
+	objStateControl 	: CltChCmd_Standard;
 	objHMIHandler 	: CltChCmd_HMIHandler;
 	objSigclib 	: CltChCmd_SigCLib;
 	SubscribeAlarm 	: CltChCmd_MqttTopicText;
@@ -564,7 +564,7 @@ END_CLASS;
 #pragma usingLtd MQTTClient_Interface
 #pragma usingLtd RiwoEventLogger
 #pragma usingLtd SigCLib
-#pragma usingLtd StateControl
+#pragma usingLtd Standard
 #pragma usingLtd StringRAM
 
 
@@ -607,7 +607,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::MES_MQTT_Handler.SubscribeMESOnline.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(500613383), "SubscribeMESOnline", TO_UDINT(3441159294), "MqttTopicText", 0$UINT, 0$UINT, 
 (::MES_MQTT_Handler.SubscribeLiftTarget.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2854049806), "SubscribeLiftTarget", TO_UDINT(3441159294), "MqttTopicText", 0$UINT, 0$UINT, 
 (::MES_MQTT_Handler.objRiwoEventLogger.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(846826333), "objRiwoEventLogger", TO_UDINT(2650024474), "RiwoEventLogger", 2$UINT, 3$UINT, 
-(::MES_MQTT_Handler.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(2283691383), "StateControl", 0$UINT, 0$UINT, 
+(::MES_MQTT_Handler.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(3603188683), "Standard", 0$UINT, 0$UINT, 
 (::MES_MQTT_Handler.objHMIHandler.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(3639223411), "objHMIHandler", TO_UDINT(1180050973), "HMIHandler", 0$UINT, 0$UINT, 
 (::MES_MQTT_Handler.objSigclib.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1576254127), "objSigclib", TO_UDINT(77440046), "SigCLib", 0$UINT, 38$UINT, 
 (::MES_MQTT_Handler.SubscribeAlarm.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(1969422787), "SubscribeAlarm", TO_UDINT(3441159294), "MqttTopicText", 0$UINT, 0$UINT, 

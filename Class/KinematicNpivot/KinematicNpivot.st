@@ -10,6 +10,11 @@
 #Define PIVOTWHEEL6       6
 #Define PIVOTWHEEL7       7
 #Define PIVOTWHEEL8       8
+
+#define PI    3.14159265359
+#define DEG2RAD PI/180
+#define INF   10**30
+
 //}}LSL_DEFINES
 
 //{{LSL_DECLARATION
@@ -31,6 +36,9 @@
 	Objectsize         = "(686,120)">
 	<Channels>
 		<Server Name="ACTIVATE" GUID="{7C7629B1-C304-4F16-BE21-0E5496E61328}" Visualized="false" Initialize="true" DefValue="1" WriteProtected="false" Retentive="false"/>
+		<Server Name="ActualTotalDirection" GUID="{EBF4D237-BA63-45D4-9666-0B7A7EE2DCC2}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="ActualTotalRadius" GUID="{D581BBA2-1001-49A9-AFDD-877C76F37245}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
+		<Server Name="ActualTotalSpeed" GUID="{A65E7E48-AED5-4E5D-868E-56E846997920}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="AGVInMotion" GUID="{9973B670-646C-4125-AB99-249838ECFECB}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="ChaoticManualFrontDirection" GUID="{1635641E-1DA0-47E8-A00F-C6DC1A7BE612}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
 		<Server Name="ChaoticManualFrontSpeed" GUID="{B49FEAD6-8B83-4254-BD97-1A6DA7B31F1B}" Visualized="false" Initialize="false" WriteProtected="true" Retentive="false"/>
@@ -58,6 +66,7 @@
 	<Separators>
 		<Servers>
 			<SepChn Position="9"/>
+			<SepChn Position="14"/>
 		</Servers>
 		<Clients>
 			<SepChn Position="8"/>
@@ -91,6 +100,9 @@ KinematicNpivot : CLASS
 	ChaoticManualFrontDirection 	: SvrCh_REAL;
 	ChaoticManualRearSpeed 	: SvrCh_REAL;
 	ChaoticManualRearDirection 	: SvrCh_REAL;
+	ActualTotalRadius 	: SvrCh_REAL;
+	ActualTotalDirection 	: SvrCh_REAL;
+	ActualTotalSpeed 	: SvrCh_REAL;
   //Clients:
 	objPivotWheel1 	: CltChCmd_I_PivotWheel;
 	objPivotWheel2 	: CltChCmd_I_PivotWheel;
@@ -101,12 +113,13 @@ KinematicNpivot : CLASS
 	objPivotWheel7 	: CltChCmd_I_PivotWheel;
 	objPivotWheel8 	: CltChCmd_I_PivotWheel;
 	chaoticManualModeActive 	: CltCh_DINT;
-	AGVMode 	: CltCh_eAGVMode_PTofCls_StateControl;
+	AGVMode 	: CltCh_eAGVMode_PTofCls_Standard;
 	sigClib 	: CltChCmd_SigCLib;
   //Variables:
 		_InitCounter 	: DINT;
 		_tmpPivotWheelParameters 	: PivotWheel::tPivotWheelParameters;
-		_nPivotStatus 	: tnPivotStatus;
+		_nPivotStatus : ARRAY [0..1] OF I_PivotWheel::tPivotWheelStatus;
+
 		_previousSetpointAngle : ARRAY [1..8] OF REAL;
 
 		RadiusDirection 	: REAL;
@@ -129,7 +142,7 @@ KinematicNpivot : CLASS
 			pivotWheel 	: DINT;
 		END_VAR
 		VAR_OUTPUT
-			WheelParameters 	: PivotWheel::tPivotWheelParameters;
+			WheelParameters 	: I_PivotWheel::tPivotWheelParameters;
 		END_VAR;
 	
 	FUNCTION _setNewWheelSetpoints
@@ -171,10 +184,7 @@ KinematicNpivot : CLASS
 			RearSpeed 	: REAL;
 		END_VAR;
 	
-	FUNCTION GLOBAL GetnPivotStatus
-		VAR_OUTPUT
-			returnValue 	: tnPivotStatus;
-		END_VAR;
+	FUNCTION _KinematicReverseModel;
   //Tables:
 	FUNCTION @STD
 		VAR_OUTPUT
@@ -194,7 +204,7 @@ FUNCTION GLOBAL TAB KinematicNpivot::@CT_
 0$UINT,
 2#0100000000000010$UINT, //TY_KINEMATICNPIVOT
 0$UINT, 0$UINT, (SIZEOF(::KinematicNpivot))$UINT, 
-13$UINT, 11$UINT, 0$UINT, 
+16$UINT, 11$UINT, 0$UINT, 
 TO_UDINT(1530409541), "KinematicNpivot", //Class
 TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 //Servers:
@@ -211,6 +221,9 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::KinematicNpivot.ChaoticManualFrontDirection.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(2679578763), "ChaoticManualFrontDirection", 
 (::KinematicNpivot.ChaoticManualRearSpeed.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1254618602), "ChaoticManualRearSpeed", 
 (::KinematicNpivot.ChaoticManualRearDirection.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1603685491), "ChaoticManualRearDirection", 
+(::KinematicNpivot.ActualTotalRadius.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(1916058636), "ActualTotalRadius", 
+(::KinematicNpivot.ActualTotalDirection.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(198553421), "ActualTotalDirection", 
+(::KinematicNpivot.ActualTotalSpeed.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(783541552), "ActualTotalSpeed", 
 //Clients:
 (::KinematicNpivot.objPivotWheel1.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(1407998262), "objPivotWheel1", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
 (::KinematicNpivot.objPivotWheel2.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000000$UINT, TO_UDINT(3404007564), "objPivotWheel2", TO_UDINT(282033681), "I_PivotWheel", 0$UINT, 0$UINT, 
@@ -293,7 +306,7 @@ FUNCTION VIRTUAL GLOBAL KinematicNpivot::Init
                            + IsClientConnected(#objPivotWheel6)
                            + IsClientConnected(#objPivotWheel7)
                            + IsClientConnected(#objPivotWheel8);
-
+                            // This goes to settings ?? 
   end_case;
 
 END_FUNCTION
@@ -307,7 +320,7 @@ FUNCTION VIRTUAL GLOBAL KinematicNpivot::CyWork
 	END_VAR
   VAR
   	i : DINT;
-    tmpPivotWheelParameter : PivotWheel::tPivotWheelParameters;
+    tmpPivotWheelParameter : I_PivotWheel::tPivotWheelParameters;
     distanceCenterX : REAL;
     distanceCenterY : REAL;
     vX: REAL;
@@ -441,6 +454,8 @@ FUNCTION VIRTUAL GLOBAL KinematicNpivot::CyWork
       _previousSetpointAngle[i] := tmpSetpointAngle[i];
   end_for;
       end_if; 
+      
+      _KinematicReverseModel();
 END_FUNCTION
 
 
@@ -449,26 +464,26 @@ FUNCTION KinematicNpivot::_getWheelParameters
 		pivotWheel 	: DINT;
 	END_VAR
 	VAR_OUTPUT
-		WheelParameters 	: PivotWheel::tPivotWheelParameters;
+		WheelParameters 	: I_PivotWheel::tPivotWheelParameters;
 	END_VAR
 
   // Get current status
   case pivotWheel of
-    PIVOTWHEEL1:
+   1:
       WheelParameters := objPivotWheel1.GetPivotWheelParameters();
-    PIVOTWHEEL2:
+   2:
       WheelParameters := objPivotWheel2.GetPivotWheelParameters();    
-    PIVOTWHEEL3:
+   3:
       WheelParameters := objPivotWheel3.GetPivotWheelParameters();
-    PIVOTWHEEL4:
+   4:
       WheelParameters := objPivotWheel4.GetPivotWheelParameters();
-    PIVOTWHEEL5:
+   5:
       WheelParameters := objPivotWheel5.GetPivotWheelParameters();
-    PIVOTWHEEL6:
+   6:
       WheelParameters := objPivotWheel6.GetPivotWheelParameters();
-    PIVOTWHEEL7:
+   7:
       WheelParameters := objPivotWheel7.GetPivotWheelParameters();
-    PIVOTWHEEL8:
+   8:
       WheelParameters := objPivotWheel8.GetPivotWheelParameters();
   end_case;
 
@@ -599,21 +614,22 @@ FUNCTION KinematicNpivot::_getnPivotStatus
 
   for pivotWheel := 1 to NumberOfPivotWheels do
     case pivotWheel of
-      PIVOTWHEEL1:
-        _nPivotStatus[pivotWheel] := objPivotWheel1.GetPivotWheelStatus();
-      PIVOTWHEEL2:
+      1:
+        _nPivotStatus[pivotWheel] :=objPivotWheel1.GetPivotWheelStatus();
+       
+      2:
         _nPivotStatus[pivotWheel] := objPivotWheel2.GetPivotWheelStatus();
-      PIVOTWHEEL3:
+      3:
         _nPivotStatus[pivotWheel] := objPivotWheel3.GetPivotWheelStatus();
-      PIVOTWHEEL4:
+      4:
         _nPivotStatus[pivotWheel] := objPivotWheel4.GetPivotWheelStatus();
-      PIVOTWHEEL5:
+      5:
         _nPivotStatus[pivotWheel] := objPivotWheel5.GetPivotWheelStatus();
-      PIVOTWHEEL6:
+      6:
         _nPivotStatus[pivotWheel] := objPivotWheel6.GetPivotWheelStatus();
-      PIVOTWHEEL7:
+      7:
         _nPivotStatus[pivotWheel] := objPivotWheel7.GetPivotWheelStatus();
-      PIVOTWHEEL8:
+      8:
         _nPivotStatus[pivotWheel] := objPivotWheel8.GetPivotWheelStatus();
     end_case;
     if _nPivotStatus[pivotWheel].pws_Driving.ds_Actual <> 0 then
@@ -642,16 +658,6 @@ FUNCTION GLOBAL KinematicNpivot::SetChaoticManualSetpoints
 END_FUNCTION
 
 
-FUNCTION GLOBAL KinematicNpivot::GetnPivotStatus
-	VAR_OUTPUT
-		returnValue 	: tnPivotStatus;
-	END_VAR
-  
-  returnValue := _nPivotStatus;
-
-END_FUNCTION
-
-
 FUNCTION KinematicNpivot::_sign
 	VAR_INPUT
 		input 	: REAL;
@@ -666,4 +672,87 @@ FUNCTION KinematicNpivot::_sign
     returnValue := -1;
   end_if;
 
+END_FUNCTION
+
+
+FUNCTION KinematicNpivot::_KinematicReverseModel
+ VAR
+  	W1  : REAL;
+    W2  : REAL;
+    W3  : REAL;
+    W4  : REAL;
+    Wheel1Angle : real;
+    Wheel2Angle : real;
+    Wheel3Angle : real;
+    Wheel4Angle : real;
+    Wheel1Speed:real;
+    Wheel2Speed:real;
+    Wheel3Speed:real;
+    Wheel4Speed:real;
+    omega :real;
+    Vx :real;
+    Vy:real;
+    
+    
+  END_VAR
+  // this function needs rework
+  
+  // Get values;
+  Wheel1Angle := objPivotWheel1.GetActualAngle();
+  Wheel2Angle := objPivotWheel2.GetActualAngle();
+  Wheel3Angle := objPivotWheel3.GetActualAngle();
+  Wheel4Angle := objPivotWheel4.GetActualAngle();
+  
+    Wheel1Speed := objPivotWheel1.GetActualSpeed();
+    Wheel2Speed := objPivotWheel1.GetActualSpeed();
+    Wheel3Speed := objPivotWheel1.GetActualSpeed();
+    Wheel4Speed := objPivotWheel1.GetActualSpeed();
+  
+  
+  
+  w1:= 0.0;
+  w2:= 0.0 ;
+  w3:= 0.0;
+  w4:= 0.0;
+
+
+ // Calculate weights W1 to W4 so later calculations look less messy
+ if NumberOfPivotWheels > 0 then
+    W1 := (-objPivotWheel1.DistanceToCenterY * cos(Wheel1Angle*DEG2RAD) + objPivotWheel1.DistanceToCenterX * sin(Wheel1Angle*DEG2RAD))/(4 * (objPivotWheel1.DistanceToCenterY**2 + objPivotWheel1.DistanceToCenterX**2));
+ end_if;
+
+ if NumberOfPivotWheels > 1 then
+    W2 := (-objPivotWheel2.DistanceToCenterY * cos(Wheel2Angle*DEG2RAD) + objPivotWheel2.DistanceToCenterX * sin(Wheel2Angle*DEG2RAD))/(4 * (objPivotWheel2.DistanceToCenterY**2 + objPivotWheel2.DistanceToCenterX**2));
+end_if
+
+if NumberOfPivotWheels > 2 then
+    W3 := (-objPivotWheel3.DistanceToCenterY * cos(Wheel3Angle*DEG2RAD) + objPivotWheel3.DistanceToCenterX * sin(Wheel3Angle*DEG2RAD))/(4 * (objPivotWheel3.DistanceToCenterY**2 + objPivotWheel3.DistanceToCenterX**2));
+end_if;
+  
+   if NumberOfPivotWheels > 3 then
+     W4 := (-objPivotWheel4.DistanceToCenterY * cos(Wheel4Angle*DEG2RAD) + objPivotWheel4.DistanceToCenterX * sin(Wheel4Angle*DEG2RAD))/(4 * (objPivotWheel4.DistanceToCenterY**2 + objPivotWheel4.DistanceToCenterX**2));
+   end_if;
+
+  // Calculate Speed in X, Y and angular velocity
+  Vx := (to_real(Wheel1Speed) * cos(Wheel1Angle*DEG2RAD) + to_real(Wheel2Speed) * cos(Wheel2Angle*DEG2RAD) + to_real(Wheel3Speed) * cos(Wheel3Angle*DEG2RAD) + to_real(Wheel4Speed) * cos(Wheel4Angle*DEG2RAD))/4;
+  Vy := (to_real(Wheel1Speed) * sin(Wheel1Angle*DEG2RAD) + to_real(Wheel2Speed) * sin(Wheel2Angle*DEG2RAD) + to_real(Wheel3Speed) * sin(Wheel3Angle*DEG2RAD) + to_real(Wheel4Speed) * sin(Wheel4Angle*DEG2RAD))/4;
+  omega := -(to_real(Wheel1Speed) * W1 + to_real(Wheel2Speed) * W2 + to_real(Wheel3Speed) * W3 + to_real(Wheel4Speed) * W4);
+  
+  // Calculate serverss(Vy) * 
+  ActualTotalSpeed := sqrt(Vx**2 + Vy**2);
+  if Vx <> 0 then
+    ActualTotalDirection := atan(Vy/Vx);
+    if Wheel1Speed > 0 & Wheel2Speed > 0 & Wheel3Speed > 0 & Wheel4Speed > 0 then
+      ActualTotalSpeed *= -1;
+    end_if;
+  else
+    if Vy <> 0 then
+      ActualTotalDirection := (Vy/abs(Vy))*(PI/2);
+    end_if;
+  end_if;
+  if omega <> 0 then
+    ActualTotalRadius := ActualTotalSpeed/omega;
+  else
+    ActualTotalRadius := INF;
+  end_if;
 END_FUNCTION

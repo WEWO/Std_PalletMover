@@ -73,7 +73,7 @@ HMIHandler : CLASS
 	ActiveIOObject 	: SvrCh_DINT;
 	ResetToHMI 	: SvrCh_DINT;
   //Clients:
-	objStateControl 	: CltChCmd_StateControl;
+	objStateControl 	: CltChCmd_Standard;
 	MESOnline 	: CltCh_DINT;
 	ResetButtonRemote 	: CltCh_DINT;
 	ResetButtonHardware 	: CltCh_DINT;
@@ -105,7 +105,7 @@ HMIHandler : CLASS
 	FUNCTION GLOBAL TAB @CT_;
 END_CLASS;
 
-#pragma usingLtd StateControl
+#pragma usingLtd Standard
 
 
 //}}LSL_DECLARATION
@@ -128,7 +128,7 @@ TO_UDINT(0), 0, 0$UINT, 0$UINT, //Baseclass
 (::HMIHandler.ActiveIOObject.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(3527112164), "ActiveIOObject", 
 (::HMIHandler.ResetToHMI.pMeth)$UINT, _CH_SVR$UINT, 2#0000000000000000$UINT, TO_UDINT(2857478453), "ResetToHMI", 
 //Clients:
-(::HMIHandler.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(2283691383), "StateControl", 0$UINT, 0$UINT, 
+(::HMIHandler.objStateControl.pCh)$UINT, _CH_CLT_OBJ$UINT, 2#0000000000000010$UINT, TO_UDINT(2641290446), "objStateControl", TO_UDINT(3603188683), "Standard", 0$UINT, 0$UINT, 
 (::HMIHandler.MESOnline.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(1704728466), "MESOnline", 
 (::HMIHandler.ResetButtonRemote.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(635131292), "ResetButtonRemote", 
 (::HMIHandler.ResetButtonHardware.pCh)$UINT, _CH_CLT_DATA$UINT, 2#0000000000000010$UINT, TO_UDINT(2161070621), "ResetButtonHardware", 

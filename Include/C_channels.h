@@ -42,19 +42,19 @@ typedef struct CltCh_DINT
     SVRCHCMD *pCmd;
   } CltCh_DINT;
 
-typedef struct SvrCh_eAGVMode_PTofCls_StateControl 
+typedef struct SvrCh_eAGVMode_PTofCls_Standard 
   {
     CHMETH *pMeth;
     eAGVMode dData;
     SVRDSC *pDsc;
-  } SvrCh_eAGVMode_PTofCls_StateControl;
+  } SvrCh_eAGVMode_PTofCls_Standard;
 
-typedef struct CltCh_eAGVMode_PTofCls_StateControl 
+typedef struct CltCh_eAGVMode_PTofCls_Standard 
   {
-    struct SvrCh_eAGVMode_PTofCls_StateControl *pCh;
+    struct SvrCh_eAGVMode_PTofCls_Standard *pCh;
     eAGVMode dData;
     SVRCHCMD *pCmd;
-  } CltCh_eAGVMode_PTofCls_StateControl;
+  } CltCh_eAGVMode_PTofCls_Standard;
 
 typedef struct SvrCh_FeSetup 
   {
@@ -826,13 +826,6 @@ typedef struct CltChCmd_KinematicNpivot
     KinematicNpivot *pCmd;
   } CltChCmd_KinematicNpivot;
 
-typedef struct CltChCmd_KinematicReverseModel 
-  {
-    struct SvrChCmd_DINT *pCh;
-    DINT dData;
-    KinematicReverseModel *pCmd;
-  } CltChCmd_KinematicReverseModel;
-
 typedef struct CltChCmd_LinkedObjectBase 
   {
     struct SvrChCmd_pVoid *pCh;
@@ -1064,12 +1057,12 @@ typedef struct CltChCmd_SpeedCalculator
     SpeedCalculator *pCmd;
   } CltChCmd_SpeedCalculator;
 
-typedef struct CltChCmd_StateControl 
+typedef struct CltChCmd_Standard 
   {
     struct SvrChCmd_DINT *pCh;
     DINT dData;
-    StateControl *pCmd;
-  } CltChCmd_StateControl;
+    Standard *pCmd;
+  } CltChCmd_Standard;
 
 typedef struct CltChCmd_String 
   {
@@ -1344,12 +1337,12 @@ typedef struct SvrCh_DATE_LSL
     SVRDSC *pDsc;
   } SvrCh_DATE_LSL;
 
-typedef struct SvrCh_eAGVMovementMode_PTofCls_StateControl 
+typedef struct SvrCh_eAGVMovementMode_PTofCls_Standard 
   {
     CHMETH *pMeth;
     eAGVMovementMode dData;
     SVRDSC *pDsc;
-  } SvrCh_eAGVMovementMode_PTofCls_StateControl;
+  } SvrCh_eAGVMovementMode_PTofCls_Standard;
 
 typedef struct SvrCh_eAlarmLevel_PTofCls_RiwoParamAlarm 
   {
@@ -1386,12 +1379,12 @@ typedef struct SvrCh_eDirection_PTofCls_Hal_Lidar_Base
     SVRDSC *pDsc;
   } SvrCh_eDirection_PTofCls_Hal_Lidar_Base;
 
-typedef struct SvrCh_eProductionStatus_PTofCls_StateControl 
+typedef struct SvrCh_eProductionStatus_PTofCls_Standard 
   {
     CHMETH *pMeth;
     eProductionStatus dData;
     SVRDSC *pDsc;
-  } SvrCh_eProductionStatus_PTofCls_StateControl;
+  } SvrCh_eProductionStatus_PTofCls_Standard;
 
 typedef struct SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base 
   {

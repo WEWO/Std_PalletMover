@@ -1765,8 +1765,8 @@ SdiasBase : CLASS_PUBLIC
 	END_TYPE
 END_CLASS;
 #pragma define (restore)
-#pragma InclDefBlk StateControl
-StateControl : CLASS_PUBLIC
+#pragma InclDefBlk Standard
+Standard : CLASS_PUBLIC
 	TYPE
 	  _eSafetyFieldOptions :
 	  (

@@ -31,14 +31,14 @@ TYPE
     dData : DINT;
     pCmd : ^SVRCHCMD;
   END_STRUCT;
-  SvrCh_eAGVMode_PTofCls_StateControl : STRUCT
+  SvrCh_eAGVMode_PTofCls_Standard : STRUCT
     pMeth : ^CHMETH;
-    dData : StateControl::eAGVMode;
+    dData : Standard::eAGVMode;
     pDsc : ^SVRDSC;
   END_STRUCT;
-  CltCh_eAGVMode_PTofCls_StateControl : STRUCT
-    pCh : ^SvrCh_eAGVMode_PTofCls_StateControl;
-    dData : StateControl::eAGVMode;
+  CltCh_eAGVMode_PTofCls_Standard : STRUCT
+    pCh : ^SvrCh_eAGVMode_PTofCls_Standard;
+    dData : Standard::eAGVMode;
     pCmd : ^SVRCHCMD;
   END_STRUCT;
   SvrCh_FeSetup : STRUCT
@@ -591,11 +591,6 @@ TYPE
     dData : DINT;
     pCmd : ^KinematicNpivot;
   END_STRUCT;
-  CltChCmd_KinematicReverseModel : STRUCT
-    pCh : ^SvrChCmd_DINT;
-    dData : DINT;
-    pCmd : ^KinematicReverseModel;
-  END_STRUCT;
   CltChCmd_LinkedObjectBase : STRUCT
     pCh : ^SvrChCmd_pVoid;
     dData : pVoid;
@@ -761,10 +756,10 @@ TYPE
     dData : DINT;
     pCmd : ^SpeedCalculator;
   END_STRUCT;
-  CltChCmd_StateControl : STRUCT
+  CltChCmd_Standard : STRUCT
     pCh : ^SvrChCmd_DINT;
     dData : DINT;
-    pCmd : ^StateControl;
+    pCmd : ^Standard;
   END_STRUCT;
   CltChCmd_String : STRUCT
     pCh : ^SvrChCmd_UDINT;
@@ -961,9 +956,9 @@ TYPE
     dData : DATE_LSL;
     pDsc : ^SVRDSC;
   END_STRUCT;
-  SvrCh_eAGVMovementMode_PTofCls_StateControl : STRUCT
+  SvrCh_eAGVMovementMode_PTofCls_Standard : STRUCT
     pMeth : ^CHMETH;
-    dData : StateControl::eAGVMovementMode;
+    dData : Standard::eAGVMovementMode;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_eAlarmLevel_PTofCls_RiwoParamAlarm : STRUCT
@@ -991,9 +986,9 @@ TYPE
     dData : Hal_Lidar_Base::eDirection;
     pDsc : ^SVRDSC;
   END_STRUCT;
-  SvrCh_eProductionStatus_PTofCls_StateControl : STRUCT
+  SvrCh_eProductionStatus_PTofCls_Standard : STRUCT
     pMeth : ^CHMETH;
-    dData : StateControl::eProductionStatus;
+    dData : Standard::eProductionStatus;
     pDsc : ^SVRDSC;
   END_STRUCT;
   SvrCh_eScannerPosition_PTofCls_Hal_Lidar_Base : STRUCT
